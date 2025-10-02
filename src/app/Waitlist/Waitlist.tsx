@@ -1,9 +1,3 @@
-
-
 export const WaitList = () => {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>
 }
