@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 //@ts-ignore
 import './globals.css'
-
-import { Navbar } from '../components/Navbar'
+import BootstrapClient from './BootstrapClient'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({
@@ -27,8 +26,7 @@ export default function RootLayout({
         data-bs-theme="light"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <BootstrapClient /> */}
-        <Navbar />
+        <BootstrapClient />
         <div className="min-h-screen overflow-x-hidden overflow-y-hidden">
           {children}
         </div>
