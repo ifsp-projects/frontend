@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "en-US"
+early_access: true
+reviews:
+  profile: "chill"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    base_branches:
+      - main
+      - master
+
+  path_filters:
+    - "!**/.xml"
+    - "!**/__generated__/**"
+    - "!**/generated/**"
+    - "!**/*.json"
+    - "!**/*.svg"
+    - "!**/*.png"
+    - "!**/*.jpg"
+    - "!**/*.gif"
+    - "!**/*.mp4"
+    - "!**/*.webp"
+    - "!**/*.lock"
+
+  path_instructions:
+    - path: "*"
+      instructions: |
+        Do not aim for code style, this is already handled by the linter. Unless the code style suggestion is objectively better, do not suggest changes.
+        Ensure Self-Documenting Code: Aim to make your code self-explanatory through clear naming and structure.
+        The less time a developer has to spend understanding the code, the better but without being overly verbose on the namings.
+        Follow the YAGNI Principle: 'You aren't gonna need it' is a principle that prevents developers from
+        adding functionality until it is necessary. This can help keep your codebase lean and simple.
+        Externalizing User-visible Strings: Ensuring all user-facing texts (such as messages, labels, and
+        instructions) are sourced from external resource files. This makes it easier to update or translate them
+        without having to modify the codebase.
+        Avoiding Concatenation of Translated Strings: Concatenation might change the meaning of a sentence
+        when it is translated to another language due to differences in grammar or sentence structure. Instead,
+        use  templates or positional parameters.
+
+    - path: "**/src/**"
+      instructions: |
+        Review the following code written using Nextjs ensuring:
+        - The code must adhere to best practices associated with Next and React libraries.
+        - The code is well-structured and easy to read. The reader must be able to understand the code without having to refer to other parts of the codebase.
+        - The code is modular and reusable. Components should be designed to be reusable across the library.
+        - The dev facing components API is flexible while offering a good developer experience.
+        - The dev-facing code should be well-documented with JSdoc comments.
+        - The existing JSDocs should be descriptive, direct but clear, and concise.
+        - The dev-facing API should be consistent, predictable, easy to use and resilient to changes.
+        - The code must be performant and optimized for rendering speed on the browser, mainly on V8 engine.
+        - The code should be memory efficient and avoid memory leaks.
+        - The code must be accessible and follow the best practices for accessibility.
+        - Prefer composition over inheritance. Composition provides better flexibility over inheritance. Avoid deep inheritance trees.
+        - Create reusable type definitions: If the same type structure is used in multiple places, create a type definition for it.
+        - Address potential errors with measures such as try/catch blocks, error returns, or error callback functions.
+        - If you observe overly repeated code (more that 2~3 times), create a new function. If a function becomes too complex, decompose it into smaller ones.
+
+chat:
+  auto_reply: true

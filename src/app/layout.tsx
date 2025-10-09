@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+
 //@ts-ignore
 import './globals.css'
 import BootstrapClient from './BootstrapClient'
@@ -23,8 +24,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        data-bs-theme="light"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        data-bs-theme="light"
       >
         <BootstrapClient />
         <div className="min-h-screen overflow-x-hidden overflow-y-hidden">
