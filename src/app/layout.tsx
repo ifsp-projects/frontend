@@ -30,9 +30,7 @@ export default function RootLayout({
       >
         <BootstrapClient />
         <Navbar />
-        <main className="min-h-screen overflow-x-hidden overflow-y-hidden">
-          {children}
-        </main>
+        <main className="min-h-screen overflow-x-hidden">{children}</main>
       </body>
     </html>
   )

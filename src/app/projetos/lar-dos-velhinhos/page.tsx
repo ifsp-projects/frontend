@@ -45,7 +45,7 @@ export default function LarDosVelhinhosPage() {
           viewport={{ once: true }}
           whileInView={{ opacity: 1, x: 0 }}
         >
-          <div>
+          <article>
             <h2 className="mb-3 text-2xl font-semibold text-blue-800">
               História
             </h2>
@@ -62,15 +62,15 @@ export default function LarDosVelhinhosPage() {
               comunidade local e de parceiros que colaboram para a manutenção de
               um espaço de cuidado e solidariedade.
             </p>
-          </div>
-          <div className="relative h-64 overflow-hidden rounded-2xl shadow-lg md:h-80">
+          </article>
+          <figure className="relative h-64 overflow-hidden rounded-2xl shadow-lg md:h-80">
             <Image
               alt="Idosos recebendo cuidados"
               className="object-cover transition-transform duration-700 hover:scale-105"
               src="https://www.jornalosemanario.com.br/wp-content/uploads/2020/11/fachada-lar-dos-velhinhos-sao-vicente-de-paulo-capivari.jpg"
               fill
             />
-          </div>
+          </figure>
         </motion.div>
 
         <motion.section
@@ -88,7 +88,7 @@ export default function LarDosVelhinhosPage() {
             whileInView={{ opacity: 1, y: 0 }}
           >
             {/* Voluntariado */}
-            <div>
+            <article>
               <h3 className="mb-2 text-xl font-semibold text-blue-800">
                 Voluntariado
               </h3>
@@ -121,10 +121,10 @@ export default function LarDosVelhinhosPage() {
                   </a>
                 </li>
               </ul>
-            </div>
+            </article>
 
             {/* Doações */}
-            <div>
+            <article>
               <h3 className="mb-2 text-xl font-semibold text-blue-800">
                 Doações
               </h3>
@@ -148,7 +148,7 @@ export default function LarDosVelhinhosPage() {
                   </a>
                 </li>
               </ul>
-            </div>
+            </article>
           </motion.div>
         </motion.section>
       </section>
