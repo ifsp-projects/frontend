@@ -29,11 +29,11 @@ export default function LarDosVelhinhosPage() {
             Missão e Propósito
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed">
-            O <strong>Lar dos Velhinhos São Vicente de Paulo</strong> é uma
-            associação civil que acolhe idosos com mais de 60 anos em caráter de
-            internação. O objetivo é oferecer um ambiente digno, com
-            alimentação, assistência médica, apoio espiritual e convivência
-            acolhedora — promovendo bem-estar e qualidade de vida.
+            O Lar dos Velhinhos São Vicente de Paulo é uma associação civil que
+            acolhe idosos com mais de 60 anos em caráter de internação. O
+            objetivo é oferecer um ambiente digno, com alimentação, assistência
+            médica, apoio espiritual e convivência acolhedora — promovendo
+            bem-estar e qualidade de vida.
           </p>
         </motion.div>
 
@@ -50,13 +50,12 @@ export default function LarDosVelhinhosPage() {
               História
             </h2>
             <p className="text-justify leading-relaxed">
-              Fundado em <strong>21 de junho de 1935</strong>, o Lar dos
-              Velhinhos São Vicente de Paulo iniciou suas atividades em uma
-              antiga vila de moradores, assumindo o trabalho dos Vicentinos. Em{' '}
-              <strong>8 de abril de 1943</strong>, passou a adotar a denominação
-              atual e, desde então, mantém um papel fundamental no acolhimento
-              de idosos em situação de vulnerabilidade na cidade de Capivari e
-              região.
+              Fundado em 21 de junho de 1935, o Lar dos Velhinhos São Vicente de
+              Paulo iniciou suas atividades em uma antiga vila de moradores,
+              assumindo o trabalho dos Vicentinos. Em 8 de abril de 1943, passou
+              a adotar a denominação atual e, desde então, mantém um papel
+              fundamental no acolhimento de idosos em situação de
+              vulnerabilidade na cidade de Capivari e região.
               <br />
               <br />A instituição segue ativa graças ao apoio de voluntários, da
               comunidade local e de parceiros que colaboram para a manutenção de
