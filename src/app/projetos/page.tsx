@@ -27,8 +27,8 @@ const projetos = [
     description: 'Outro projeto social da cidade',
     image:
       'https://www.larvelhinhoscapivari.org.br/wp-content/uploads/2013/06/logo_lar_velhinhos.jpg'
-  } as const
-]
+  }
+] as const
 
 export default function ProjetosPage(): JSX.Element {
   return (
