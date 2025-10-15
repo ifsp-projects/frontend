@@ -15,18 +15,19 @@ const projetos = [
       'https://www.larvelhinhoscapivari.org.br/wp-content/uploads/2013/06/logo_lar_velhinhos.jpg'
   },
   {
-    id: 'projeto-exemplo-2',
-    title: 'Projeto Exemplo 2',
-    description: 'Outro projeto social da cidade.',
+    id: 'casa-da-crianca',
+    title: 'Casa da Criança Capivari',
+    description:
+      'instituição sem fins lucrativos que apoia crianças, adolescentes e suas famílias.',
     image:
-      'https://www.larvelhinhoscapivari.org.br/wp-content/uploads/2013/06/logo_lar_velhinhos.jpg'
+      'https://capivarisocial.com.br/wp-content/uploads/2022/03/casa-da-crianca_logo-300x179.jpg'
   },
   {
     id: 'projeto-exemplo-3',
     title: 'Projeto Exemplo 3',
     description: 'Outro projeto social da cidade',
     image:
-      'https://www.larvelhinhoscapivari.org.br/wp-content/uploads/2013/06/logo_lar_velhinhos.jpg'
+      'https://capivarisocial.com.br/wp-content/uploads/2022/03/tetoeafeto_logo-300x240.png'
   }
 ] as const
 
