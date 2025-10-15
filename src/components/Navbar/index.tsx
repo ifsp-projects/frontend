@@ -1,22 +1,96 @@
-import Link from "next/link"
+'use client'
 
-export const Navbar = () => {
+import Link from 'next/link'
+import { useState } from 'react'
+
+export const Navbar: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
-    <nav className="fixed top-5 left-[25%] z-10 flex max-h-[6rem] items-center rounded-4xl inset-shadow-sm bg-neutral-100/20 text-neutral-200 backdrop-blur-mdS border-neutral-300/20 border-2 hover:bg-neutral-200/20 lg:w-[50%]">
-      <ul className="flex w-full items-center justify-center gap-5 px-10 py-5 font-medium font-AlanSans  lg:text-[1.2rem]">
-        <li className="flex cursor-pointer items-center justify-center rounded-lg px-1 py-2 hover:text-neutral-300">
-          Home
-        </li>
-        <li className="flex cursor-pointer items-center justify-center rounded-lg px-1 py-2 hover:text-neutral-300">
-          Cadastra-se
-        </li>
-        <li className="flex cursor-pointer items-center justify-center rounded-lg px-1 py-2 hover:text-neutral-300">
-          <Link href={'/faq'}>Sobre</Link>
-        </li>
-        <li className="flex cursor-pointer items-center justify-center rounded-lg px-1 py-2 hover:text-neutral-300">
-          Contato
-        </li>
-      </ul>
+    <nav className="fixed top-0 left-0 z-20 w-full bg-white/80 shadow-md">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-0">
+        <Link href={'/'}>
+          <span className="cursor-pointer text-2xl font-bold text-gray-800 lg:text-3xl">
+            Capivara Solidária
+          </span>
+        </Link>
+
+        {/* Desktop Menu */}
+        <ul className="hidden items-center gap-8 text-gray-700 lg:flex">
+          <li>
+            <Link className="transition-colors hover:text-gray-900" href="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="transition-colors hover:text-gray-900" href="/faq">
+              Sobre
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="transition-colors hover:text-gray-900"
+              href="/contato"
+            >
+              Contato
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="transition-colors hover:text-gray-900"
+              href="/projetos"
+            >
+              Projetos
+            </Link>
+          </li>
+        </ul>
+
+        {/* Mobile Hamburger */}
+        <div className="flex items-center lg:hidden">
+          <button
+            className="focus:outline-none"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span className="mb-1 block h-0.5 w-6 bg-gray-800"></span>
+            <span className="mb-1 block h-0.5 w-6 bg-gray-800"></span>
+            <span className="block h-0.5 w-6 bg-gray-800"></span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="flex w-full flex-col gap-4 bg-white/90 px-6 py-4 text-gray-700 shadow-md lg:hidden">
+          <Link
+            className="transition-colors hover:text-gray-900"
+            href="/"
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            className="transition-colors hover:text-gray-900"
+            href="/sobre"
+            onClick={() => setMenuOpen(false)}
+          >
+            Sobre
+          </Link>
+          <Link
+            className="transition-colors hover:text-gray-900"
+            href="/contato"
+            onClick={() => setMenuOpen(false)}
+          >
+            Contato
+          </Link>
+          <Link
+            className="transition-colors hover:text-gray-900"
+            href="/projetos"
+            onClick={() => setMenuOpen(false)}
+          >
+            Projetos
+          </Link>
+        </div>
+      )}
     </nav>
   )
 }

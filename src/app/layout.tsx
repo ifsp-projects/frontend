@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 
 //@ts-ignore
 import './globals.css'
+import { Navbar } from '../components/Navbar'
 import BootstrapClient from './BootstrapClient'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -28,9 +29,8 @@ export default function RootLayout({
         data-bs-theme="light"
       >
         <BootstrapClient />
-        <div className="min-h-screen overflow-x-hidden overflow-y-hidden">
-          {children}
-        </div>
+        <Navbar />
+        <main className="min-h-screen overflow-x-hidden">{children}</main>
       </body>
     </html>
   )
