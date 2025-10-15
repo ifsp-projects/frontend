@@ -51,14 +51,13 @@ export default function CasaDaCriancaPage() {
               História
             </h2>
             <p className="text-justify leading-relaxed">
-              A APAE de Capivari nasceu do esforço e da dedicação de pessoas que
-              acreditam em um futuro mais inclusivo e humano. Desde sua
-              fundação, a instituição atua sem fins lucrativos, promovendo o
-              desenvolvimento integral de crianças, adolescentes e adultos com
-              deficiência intelectual e múltipla. Por meio de apoio educacional,
-              terapias, oficinas, atividades esportivas e culturais, a APAE
-              contribui para o fortalecimento da autonomia, da cidadania e da
-              qualidade de vida dos atendidos e de suas famílias.
+              A Casa da Criança de Capivari nasceu do esforço e da dedicação de
+              pessoas comprometidas com o bem-estar de crianças e adolescentes
+              da cidade. A instituição atua sem fins lucrativos, oferecendo
+              apoio educacional, oficinas, atividades esportivas e culturais,
+              além de suporte emocional às famílias, contribuindo para o
+              desenvolvimento integral dos atendidos e fortalecendo vínculos
+              familiares e sociais.
             </p>
           </article>
           <figure className="relative h-64 overflow-hidden rounded-2xl shadow-lg md:h-80">
@@ -92,11 +91,10 @@ export default function CasaDaCriancaPage() {
                 Como Ajudar
               </h3>
               <p className="mb-2 leading-relaxed text-gray-800">
-                Você pode apoiar a <strong>Casa da Criança</strong> com doações
-                de alimentos, roupas, produtos de limpeza, móveis,
-                eletrodomésticos ou contribuições financeiras. Também são
-                bem-vindos voluntários dispostos a contribuir com tempo e
-                habilidades.
+                Você pode apoiar a Casa da Criança com doações de alimentos,
+                roupas, produtos de limpeza, móveis, eletrodomésticos ou
+                contribuições financeiras. Também são bem-vindos voluntários
+                dispostos a contribuir com tempo e habilidades.
               </p>
               <ul className="space-y-1 text-gray-700">
                 <li>
