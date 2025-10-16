@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 
 //@ts-ignore
 import './globals.css'
+import Footer from '../components/Footer'
 import { Navbar } from '../components/Navbar'
 import BootstrapClient from './BootstrapClient'
 
@@ -33,6 +34,7 @@ export default function RootLayout({
         <main className="min-h-screen overflow-x-hidden bg-gray-50">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   )
