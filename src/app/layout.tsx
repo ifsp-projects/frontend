@@ -3,7 +3,7 @@ import './globals.css'
 
 import { Footer } from '../components/shared/footer'
 import { Navbar } from '../components/shared/navbar'
-import { cairo } from '../constants/font'
+import { font } from '../constants/font'
 import BootstrapClient from './BootstrapClient'
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={`${cairo.className} text-neutral-700`}>
+      <body className={`${font.className} text-neutral-700`}>
         <BootstrapClient />
         <Navbar />
         <main className="overflow-x-hidden">{children}</main>
