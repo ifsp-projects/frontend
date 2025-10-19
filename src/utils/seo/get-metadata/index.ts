@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
-import type { GetMetaDataProps } from "./types";
-
-import { BASE_URL } from "../../../constants/environments/baseUrl";
+import { BASE_URL } from '../../../constants/environments/baseUrl'
+import type { GetMetaDataProps } from './types'
 
 export const getMetaData = ({
   description,
   image,
   title,
   url,
-  type = "website",
+  type = 'website'
 }: GetMetaDataProps): Metadata => {
   const metaDataObject: Metadata = {
     title,
@@ -19,18 +18,18 @@ export const getMetaData = ({
       images: [image],
       title,
       description,
-      url: image,
+      url
     },
     alternates: {
-      canonical: url,
+      canonical: url
     },
     metadataBase: new URL(BASE_URL),
     twitter: {
       title,
       description,
-      images: [image],
-    },
-  };
+      images: [image]
+    }
+  }
 
-  return metaDataObject;
-};
+  return metaDataObject
+}

@@ -2,11 +2,19 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import type { FC } from 'react'
 import { useState } from 'react'
 
 import { HamburgerButton } from '../hamburger-button'
 
-export const Navbar: React.FC = () => {
+/**
+ * Navbar - Main navigation component with responsive design.
+ *
+ * Displays a sticky header with logo, navigation links, and a CTA button on desktop.
+ * On mobile, shows a hamburger menu that toggles a vertical navigation menu.
+ *
+ */
+export const Navbar: FC = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
   return (
@@ -66,7 +74,7 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center lg:hidden">
           <HamburgerButton
             isOpen={menuOpen}
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen(false)}
             variant="primary"
           />
         </div>

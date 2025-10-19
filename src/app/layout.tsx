@@ -1,4 +1,3 @@
-//@ts-ignore
 import './globals.css'
 
 import { Footer } from '../components/shared/footer'

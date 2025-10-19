@@ -18,6 +18,6 @@ export const STEP_CARDS_ICONS = [
   />,
   <ArrowUpGraph
     className="h-6 w-6 text-rose-400 lg:h-7 lg:w-7"
-    key="second-step-icon"
+    key="fourth-step-icon"
   />
 ]

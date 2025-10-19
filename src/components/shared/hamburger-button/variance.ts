@@ -11,11 +11,12 @@ export const buttonVariants = cva(
     'transform',
     'duration-default'
   ],
-  // @ts-ignore
   {
     variants: {
-      primary: ['bg-neutral-50'],
-      secondary: ['bg-neutral-700']
+      variant: {
+        primary: ['bg-neutral-700'],
+        secondary: ['bg-neutral-50']
+      }
     },
     defaultVariants: {
       variant: 'primary'

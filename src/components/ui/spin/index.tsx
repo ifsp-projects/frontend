@@ -1,7 +1,12 @@
 import type { SpinProps } from './types'
 import { spinIconVariants, spinVariants } from './variance'
 
-export const Spin: React.FC<SpinProps> = ({ size, variant, className }) => {
+export const Spin: React.FC<SpinProps> = ({
+  size,
+  variant,
+  className,
+  ...props
+}) => {
   return (
     <figure
       className={spinVariants({
@@ -9,7 +14,10 @@ export const Spin: React.FC<SpinProps> = ({ size, variant, className }) => {
         size,
         className
       })}
+      aria-live="polite"
       data-cid="spin"
+      role="status"
+      {...props}
     >
       <svg
         className={spinIconVariants({

@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import { FOOTER_LINKS } from './data'
 import type { FooterLinkProps } from './types'
 
-export const Footer: FC = async () => {
+export const Footer: FC = () => {
   return (
     <footer className="relative z-20 w-full border-t-2 border-neutral-200 bg-neutral-100 px-4 py-8 sm:py-12 lg:pt-14 lg:pb-20">
       <div className="mx-auto flex w-full max-w-3xl flex-col justify-between gap-6 border-b border-neutral-300 pb-6 md:flex-row lg:max-w-6xl lg:gap-12">

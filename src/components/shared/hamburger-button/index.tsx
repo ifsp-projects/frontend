@@ -1,5 +1,17 @@
 import type { HamburgerButtonProps } from './types'
 
+/**
+ * HamburgerButton - An animated hamburger menu button that transforms into an X when opened.
+ *
+ * @example
+ * ```tsx
+ * <HamburgerButton
+ *   isOpen={menuOpen}
+ *   onClick={() => setMenuOpen(!menuOpen)}
+ *   variant="primary"
+ * />
+ * ```
+ */
 export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   isOpen,
   onClick,
@@ -11,8 +23,12 @@ export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
 
   return (
     <button
+      aria-controls="mobile-menu"
+      aria-expanded={isOpen}
+      aria-label={isOpen ? 'Close menu' : 'Open menu'}
       className="duration-default group flex cursor-pointer flex-col items-center justify-center rounded-sm p-2"
       onClick={onClick}
+      type="button"
     >
       <div
         className={`${genericHamburgerLine} ${

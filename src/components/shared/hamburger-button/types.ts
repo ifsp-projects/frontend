@@ -1,6 +1,6 @@
 import type { ButtonCopy } from '../../../types/components/button-copy'
 
-type Variants = 'primary' | 'secondary'
+export type Variants = 'primary' | 'secondary'
 
 export interface Navigation {
   items: {
