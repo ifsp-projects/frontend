@@ -1,4 +1,10 @@
-import type { ConversionFormFields } from '../../../app/waitlist/sections/form/types'
+interface ConversionFormFields {
+  email: string
+  name: string
+  org_name: string
+  page: string
+  phone: string
+}
 
 export interface HubspotFormTemplateData {
   conversion_form: ConversionFormFields
