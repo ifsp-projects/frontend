@@ -105,24 +105,24 @@ export default function Faq() {
       <h2 className="mb-3 text-center">Perguntas Frequentes (FAQ)</h2>
 
       <div className="mb-4">
-        <label htmlFor="faqSearch" className="form-label">
+        <label className="form-label" htmlFor="faqSearch">
           Pesquise por palavras-chave (ex.: doação, voluntário, contato)
         </label>
         <div className="d-flex gap-2">
           <input
-            id="faqSearch"
             className="form-control"
-            type="search"
-            placeholder="Digite para filtrar…"
-            value={q}
+            id="faqSearch"
             onChange={e => setQ(e.target.value)}
+            placeholder="Digite para filtrar…"
+            type="search"
+            value={q}
           />
           {q && (
             <button
-              type="button"
+              aria-label="Limpar busca"
               className="btn btn-outline-secondary"
               onClick={() => setQ('')}
-              aria-label="Limpar busca"
+              type="button"
             >
               Limpar
             </button>
@@ -138,21 +138,21 @@ export default function Faq() {
           <div className="accordion-item bg-body" key={f.id}>
             <h2 className="accordion-header" id={`heading-${f.id}`}>
               <button
-                className="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target={`#${f.id}`}
-                aria-expanded="false"
                 aria-controls={f.id}
+                aria-expanded="false"
+                className="accordion-button collapsed"
+                data-bs-target={`#${f.id}`}
+                data-bs-toggle="collapse"
+                type="button"
               >
                 {f.pergunta}
               </button>
             </h2>
             <div
-              id={f.id}
-              className="accordion-collapse collapse"
               aria-labelledby={`heading-${f.id}`}
+              className="accordion-collapse collapse"
               data-bs-parent="#faqAccordion"
+              id={f.id}
             >
               <div className="accordion-body text-body">{f.resposta}</div>
             </div>

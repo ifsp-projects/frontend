@@ -1,0 +1,75 @@
+'use client'
+
+import type { FC } from 'react'
+import { useState } from 'react'
+
+export const ContactForm: FC = () => {
+  const [isFormSubmitted, setIsFormSubmitted] = useState<boolean>(false)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsFormSubmitted(true)
+    e.currentTarget.reset()
+  }
+
+  return (
+    <section className="mx-auto max-w-3xl px-6 py-12">
+      <form
+        className="space-y-6 rounded-2xl bg-white p-8 shadow-lg"
+        onSubmit={handleSubmit}
+      >
+        <div>
+          <label className="mb-2 block font-medium text-neutral-700">
+            Nome
+          </label>
+          <input
+            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            name="nome"
+            placeholder="Seu nome"
+            type="text"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block font-medium text-neutral-700">
+            E-mail
+          </label>
+          <input
+            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            name="email"
+            placeholder="seuemail@exemplo.com"
+            type="email"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block font-medium text-neutral-700">
+            Sugestão de projeto ou ONG
+          </label>
+          <textarea
+            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            name="mensagem"
+            placeholder="Conte um pouco sobre o projeto, o nome da ONG e onde ela atua"
+            rows={5}
+            required
+          ></textarea>
+        </div>
+
+        <button
+          className="w-full rounded-lg bg-blue-600 py-2 font-semibold text-white transition hover:bg-blue-700"
+          type="submit"
+        >
+          Enviar
+        </button>
+
+        {isFormSubmitted && (
+          <p className="mt-4 text-center font-medium text-green-600">
+            Sua mensagem foi enviada com sucesso!
+          </p>
+        )}
+      </form>
+    </section>
+  )
+}
