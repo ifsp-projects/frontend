@@ -1,34 +1,32 @@
-import { NextConfig } from "next";
-import path from "path";
-import { fileURLToPath } from "url";
+import type { NextConfig } from 'next'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   eslint: { ignoreDuringBuilds: true },
   reactStrictMode: false,
   images: {
-    domains: [
-      "lh3.googleusercontent.com"
-    ],
+    domains: ['lh3.googleusercontent.com'],
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
+        protocol: 'https',
+        hostname: '**'
+      }
+    ]
   },
   webpack(config) {
-    config.resolve.alias["@"] = path.resolve(__dirname, "src");
+    config.resolve.alias['@'] = path.resolve(__dirname, 'src')
 
     config.experiments = {
       ...config.experiments,
-      topLevelAwait: true,
-    };
+      topLevelAwait: true
+    }
 
-    return config;
-  },
-};
+    return config
+  }
+}
 
-export default nextConfig;
+export default nextConfig

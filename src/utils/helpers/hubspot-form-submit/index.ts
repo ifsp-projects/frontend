@@ -24,6 +24,11 @@ export const hubspotFormSubmit = async <
   const hutk = serializeCookie('hubspotutk')
   const finalFormID = formId || HUBSPOT_FORMS_IDS[formVariant]
 
+  if (!finalFormID) {
+    console.error('HubSpot form ID is required but was not provided')
+    return false
+  }
+
   try {
     const response = await axios.post(
       `https://api.hsforms.com/submissions/v3/integration/submit/50610150/${finalFormID}`,
