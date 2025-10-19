@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { ArrowRight } from '../components/Icons/Arrow-right'
+import { ArrowRight } from '../assets/icons/arrow-right'
 import { Button } from '../components/ui/button'
 
 export default function Home() {
