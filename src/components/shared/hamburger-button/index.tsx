@@ -17,7 +17,7 @@ export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   onClick,
   variant
 }) => {
-  const genericHamburgerLine = `h-[2px] w-5 my-[2px] rounded-full transition cursor-pointer ease transform duration-default ${
+  const genericHamburgerLine = `h-[2px] w-5 my-[2px] rounded-full transition cursor-pointer ease transform duration-150 ${
     variant === 'secondary' ? 'bg-neutral-50' : 'bg-neutral-700'
   }`
 
@@ -26,7 +26,7 @@ export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
       aria-controls="mobile-menu"
       aria-expanded={isOpen}
       aria-label={isOpen ? 'Close menu' : 'Open menu'}
-      className="duration-default group flex cursor-pointer flex-col items-center justify-center rounded-sm p-2"
+      className="group flex cursor-pointer flex-col items-center justify-center rounded-sm p-2 duration-150"
       onClick={onClick}
       type="button"
     >

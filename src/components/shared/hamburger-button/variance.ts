@@ -9,7 +9,7 @@ export const buttonVariants = cva(
     'transition',
     'ease',
     'transform',
-    'duration-default'
+    'duration-150'
   ],
   {
     variants: {

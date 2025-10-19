@@ -74,7 +74,7 @@ export const Navbar: FC = () => {
         <div className="flex items-center lg:hidden">
           <HamburgerButton
             isOpen={menuOpen}
-            onClick={() => setMenuOpen(false)}
+            onClick={() => setMenuOpen(!menuOpen)}
             variant="primary"
           />
         </div>
