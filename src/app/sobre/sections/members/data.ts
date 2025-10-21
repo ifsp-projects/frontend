@@ -54,9 +54,9 @@ export const TEAM_MEMBERS: MemberData[] = [
   },
   {
     name: 'Vitor Gabriel',
-    job_title: 'Desenvolvedor Web',
+    job_title: 'Desenvolvedor Frontend',
     thumb:
-      'https://media.licdn.com/dms/image/v2/D4D03AQFebt15lmnnTg/profile-displayphoto-scale_200_200/B4DZnyGLxaJMAc-/0/1760703331937?e=1762387200&v=beta&t=2iFD__Vv2LZ88lZDiNU6dxvysgQ25RG8fASS0ROlsnA',
+      'https://media.licdn.com/dms/image/v2/D4D03AQF6K2OCC4bBTA/profile-displayphoto-crop_800_800/B4DZoBzl_LH0AI-/0/1760966893968?e=1762387200&v=beta&t=ReCL_XdM7hyT8nh5iU8E2iYoDedxsD8woXc0XE9ZEoM',
     urls: {
       linkedin: 'https://www.linkedin.com/in/vitor-silva-0ab38a261/',
       github: 'https://github.com/vitingr'
