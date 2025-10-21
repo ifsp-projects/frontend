@@ -13,9 +13,9 @@ export const ContactForm: FC = () => {
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-6 py-12">
+    <section className="mx-auto max-w-3xl px-4 py-12 lg:py-16 xl:px-0">
       <form
-        className="space-y-6 rounded-2xl bg-white p-8 shadow-lg"
+        className="space-y-6 rounded-sm border border-neutral-200 bg-white p-8"
         onSubmit={handleSubmit}
       >
         <div>
@@ -23,7 +23,7 @@ export const ContactForm: FC = () => {
             Nome
           </label>
           <input
-            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-neutral-500 focus:outline-none"
             name="nome"
             placeholder="Seu nome"
             type="text"
@@ -36,7 +36,7 @@ export const ContactForm: FC = () => {
             E-mail
           </label>
           <input
-            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-neutral-500 focus:outline-none"
             name="email"
             placeholder="seuemail@exemplo.com"
             type="email"
@@ -49,7 +49,7 @@ export const ContactForm: FC = () => {
             Sugestão de projeto ou ONG
           </label>
           <textarea
-            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-neutral-500 focus:outline-none"
             name="mensagem"
             placeholder="Conte um pouco sobre o projeto, o nome da ONG e onde ela atua"
             rows={5}
@@ -58,7 +58,7 @@ export const ContactForm: FC = () => {
         </div>
 
         <button
-          className="w-full rounded-lg bg-blue-600 py-2 font-semibold text-white transition hover:bg-blue-700"
+          className="w-full rounded-lg bg-neutral-600 py-2 font-semibold text-white transition hover:bg-neutral-700"
           type="submit"
         >
           Enviar
