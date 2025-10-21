@@ -12,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={`${font.className} text-neutral-700`}>
+      <body
+        className={`${font.className} text-neutral-700 selection:bg-rose-50`}
+      >
         <BootstrapClient />
         <Navbar />
         <main className="overflow-x-hidden">{children}</main>
