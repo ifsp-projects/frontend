@@ -9,7 +9,7 @@ import { TEAM_MEMBERS } from './data'
 export const Members: FC = async () => {
   return (
     <section className="bg-white px-4 py-12 lg:py-16 xl:px-0">
-      <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-6xl lg:gap-16">
+      <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-16">
         <article className="flex flex-col gap-4 lg:items-center">
           <h2 className="text-center text-2xl font-bold lg:text-4xl">
             Conheça nosso time

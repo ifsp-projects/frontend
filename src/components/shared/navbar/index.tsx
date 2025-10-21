@@ -18,7 +18,7 @@ export const Navbar: FC = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
   return (
-    <nav className="sticky top-0 left-0 z-20 w-full border-b border-neutral-100 bg-white">
+    <nav className="sticky top-0 left-0 z-[99999] w-full border-b border-neutral-100 bg-white">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:px-6 xl:px-0">
         <Link href="/">
           <Image
