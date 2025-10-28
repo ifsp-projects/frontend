@@ -9,7 +9,7 @@ import { spinIconVariants, spinVariants } from './variance'
  */
 export const Spin: React.FC = ({
   size,
-  variant,
+  variant = 'dark',
   className,
   ...props
 }: SpinProps) => {
