@@ -1,0 +1,22 @@
+export const HUBSPOT_ONG_VALUES = [
+  'Animais',
+  'Meio Ambiente',
+  'Educação',
+  'Saúde',
+  'Direitos Humanos',
+  'Combate à Fome',
+  'Crianças e Adolescentes',
+  'Idosos',
+  'Pessoas com Deficiência',
+  'Moradores de Rua',
+  'Igualdade de Gênero',
+  'Refugiados e Imigrantes',
+  'Proteção Animal',
+  'Desenvolvimento Comunitário',
+  'Cultura e Arte',
+  'Esporte e Inclusão',
+  'Voluntariado e Doações',
+  'Tecnologia Social',
+  'Direitos das Mulheres',
+  'Outros'
+] as const
