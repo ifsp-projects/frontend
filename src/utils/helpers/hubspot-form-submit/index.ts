@@ -10,16 +10,21 @@ export const hubspotFormSubmit = async <
 >(
   props: HubspotFormSubmitProps<K>
 ) => {
-  const { data, formId, formVariant, url, locale } = props
+  const { data, formId, formVariant, url } = props
 
-  const utmFieldsData = await getUTMData({
-    locale
-  })
+  const utmFieldsData = await getUTMData()
 
   const hubspotFields = {
     ...utmFieldsData,
     ...data
   }
+
+  const formattedFields = Object.entries(hubspotFields).map(
+    ([name, value]) => ({
+      name,
+      value
+    })
+  )
 
   const hutk = serializeCookie('hubspotutk')
   const finalFormID = formId || HUBSPOT_FORMS_IDS[formVariant]
@@ -34,7 +39,7 @@ export const hubspotFormSubmit = async <
       `https://api.hsforms.com/submissions/v3/integration/submit/50610150/${finalFormID}`,
       {
         submittedAt: '',
-        fields: hubspotFields,
+        fields: formattedFields,
         context: hutk
           ? {
               hutk,

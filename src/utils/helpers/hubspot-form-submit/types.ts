@@ -1,9 +1,9 @@
 interface ConversionFormFields {
-  email: string
-  name: string
-  org_name: string
-  page: string
-  phone: string
+  email?: string
+  fullname?: string
+  ong_name?: string
+  ong_type?: string
+  phone?: string
 }
 
 export interface HubspotFormTemplateData {
@@ -20,6 +20,5 @@ export interface HubspotFormSubmitProps<
   /** Form ID takes precedence over formVariant */
   formId?: string
   formVariant?: THubspotFormVariant
-  locale: string
   url?: string
 }

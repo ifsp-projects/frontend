@@ -1,9 +1,7 @@
 import { getUtmStoredParams } from '../get-utm-stored-params'
-import type { GetUTMDataProps, UTMData } from './types'
+import type { UTMData } from './types'
 
-export const getUTMData = async ({
-  locale
-}: GetUTMDataProps): Promise<UTMData> => {
+export const getUTMData = async (): Promise<UTMData> => {
   const storedUtmData = await getUtmStoredParams()
 
   const utmCampaign = storedUtmData?.utm_campaign ?? ''
@@ -13,7 +11,6 @@ export const getUTMData = async ({
   const utmTerm = storedUtmData?.utm_term ?? ''
 
   return {
-    hsLanguage: locale,
     utmCampaign,
     utmContent,
     utmMedium,

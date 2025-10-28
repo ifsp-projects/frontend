@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
-language: "en-US"
+language: 'en-US'
 early_access: true
 reviews:
-  profile: "chill"
+  profile: 'chill'
   request_changes_workflow: false
   high_level_summary: true
   poem: false
@@ -15,20 +15,20 @@ reviews:
       - master
 
   path_filters:
-    - "!**/.xml"
-    - "!**/__generated__/**"
-    - "!**/generated/**"
-    - "!**/*.json"
-    - "!**/*.svg"
-    - "!**/*.png"
-    - "!**/*.jpg"
-    - "!**/*.gif"
-    - "!**/*.mp4"
-    - "!**/*.webp"
-    - "!**/*.lock"
+    - '!**/.xml'
+    - '!**/__generated__/**'
+    - '!**/generated/**'
+    - '!**/*.json'
+    - '!**/*.svg'
+    - '!**/*.png'
+    - '!**/*.jpg'
+    - '!**/*.gif'
+    - '!**/*.mp4'
+    - '!**/*.webp'
+    - '!**/*.lock'
 
   path_instructions:
-    - path: "*"
+    - path: '*'
       instructions: |
         Do not aim for code style, this is already handled by the linter. Unless the code style suggestion is objectively better, do not suggest changes.
         Ensure Self-Documenting Code: Aim to make your code self-explanatory through clear naming and structure.
@@ -42,7 +42,7 @@ reviews:
         when it is translated to another language due to differences in grammar or sentence structure. Instead,
         use  templates or positional parameters.
 
-    - path: "**/src/**"
+    - path: '**/src/**'
       instructions: |
         Review the following code written using Nextjs ensuring:
         - The code must adhere to best practices associated with Next and React libraries.
@@ -59,6 +59,8 @@ reviews:
         - Create reusable type definitions: If the same type structure is used in multiple places, create a type definition for it.
         - Address potential errors with measures such as try/catch blocks, error returns, or error callback functions.
         - If you observe overly repeated code (more that 2~3 times), create a new function. If a function becomes too complex, decompose it into smaller ones.
+        - "Don't be too critical about the code architecture itself, like, don't focus on whether the indentation is right or wrong, the order of things, and so on. That doesn’t really make sense
+        - Don't judge the integration code with external tools like PostHog and HubSpot, those are already the recommended practices
 
 chat:
   auto_reply: true
