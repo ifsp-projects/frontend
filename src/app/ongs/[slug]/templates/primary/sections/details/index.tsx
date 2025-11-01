@@ -1,8 +1,6 @@
-import type { FC } from 'react'
-
 import { PeopleGroup } from '../../../../../../sobre/icons/people-group'
 
-export const Details: FC = async () => {
+export const Details = async () => {
   return (
     <section className="bg-slate-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">

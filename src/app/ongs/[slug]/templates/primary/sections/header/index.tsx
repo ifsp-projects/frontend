@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { FC } from 'react'
 
-export const Header: FC = async () => {
+export const Header = async () => {
   return (
     <section className="relative z-30 overflow-hidden bg-gradient-to-r from-neutral-50/10 to-white px-4 xl:px-0">
       <Image

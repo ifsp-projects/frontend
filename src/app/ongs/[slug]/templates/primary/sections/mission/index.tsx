@@ -1,6 +1,4 @@
-import type { FC } from 'react'
-
-export const Mission: FC = async () => {
+export const Mission = async () => {
   return (
     <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-6xl lg:gap-12">
