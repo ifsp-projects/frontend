@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-import type { QuestionItemProps } from './types'
 import { PlusIcon } from '../../../icons/plus-icon'
+import type { QuestionItemProps } from './types'
 
 export const QuestionItem: React.FC<QuestionItemProps> = ({ copy, index }) => {
   const [isQuestionOpen, setIsQuestionOpen] = useState<boolean>(false)

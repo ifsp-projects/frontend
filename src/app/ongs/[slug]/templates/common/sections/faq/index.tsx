@@ -1,8 +1,9 @@
 import Link from 'next/link'
+
 import { FAQ_QUESTIONS } from './data'
 import { QuestionItem } from './question-item'
 
-export const FAQ = async () => {
+export const FAQ = async ({ color }: { color: string }) => {
   return (
     <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col lg:max-w-7xl lg:flex-row lg:justify-between">
@@ -19,7 +20,7 @@ export const FAQ = async () => {
             gente:
           </p>
           <Link
-            className="mt-2 flex max-w-fit cursor-pointer items-center justify-center rounded-md border border-emerald-600 px-6 py-2 text-center text-sm text-emerald-600 transition-all duration-300 hover:brightness-105"
+            className={`mt-2 flex max-w-fit cursor-pointer items-center justify-center rounded-md border px-6 py-2 text-center text-sm transition-all duration-300 hover:brightness-105 text-${color}-500 border-${color}-500`}
             href="#"
           >
             Entrar em contato

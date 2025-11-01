@@ -1,11 +1,11 @@
 import type { FC } from 'react'
 
 import { FAQ } from '../common/sections/faq'
+import { ImagesGrid } from '../common/sections/images-grid'
 import { MoreInfoAbout } from '../common/sections/more-info-about'
 import { Depoiments } from './sections/depoiments'
 import { Details } from './sections/details'
 import { Header } from './sections/header'
-import { ImagesGrid } from './sections/images-grid'
 import { Mission } from './sections/mission'
 
 export const PrimaryLandingPageLayout: FC = async () => {
@@ -17,7 +17,7 @@ export const PrimaryLandingPageLayout: FC = async () => {
       <MoreInfoAbout />
       <Mission />
       <Depoiments />
-      <FAQ />
+      <FAQ color="emerald" />
     </main>
   )
 }
