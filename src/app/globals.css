@@ -271,7 +271,7 @@ html {
 }
 
 :root {
-  --glass-bg: color-mix(in oklab, var(--bg) 80%, transparent); 
+  --glass-bg: color-mix(in oklab, var(--bg) 80%, transparent);
   --bg: transparent;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -341,3 +341,155 @@ html {
   --sidebar-ring: oklch(0.553 0.013 58.071);
 }
 
+.list {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.item-wrapper {
+  position: absolute;
+  will-change: transform, width, height, opacity;
+  padding: 6px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+
+.item-wrapper > .item-img {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 10px;
+  border-radius: 10px;
+}
+
+.card {
+  width: 100%;
+  background-color: #fefefe;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.card__hero {
+  background-color: #e2feeb;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.card__hero .card__job-title {
+  margin: 2rem 0;
+  font-size: 2rem;
+  font-weight: 600;
+  padding-right: 2rem;
+}
+
+.card__hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  font-weight: 700;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 0.75rem;
+  row-gap: 1rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 340px) {
+  .card__footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.card__job-summary {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+}
+
+.darkveil-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+#cursor,
+#box,
+#text {
+  cursor: pointer;
+}
+#cursor {
+  overflow: visible;
+  transform: translate3d(300px, 0, 0) scale(1);
+  transform-origin: center center;
+  transform-box: fill-box;
+  animation: cursor 5s ease infinite alternate;
+}
+@keyframes cursor {
+  0% {
+    opacity: 0;
+    transform: translate3d(300px, 0, 0) scale(1);
+  }
+  30% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-200px, -200px, 0) scale(1);
+  }
+
+  /* clique */
+  65% {
+    opacity: 1;
+    transform: translate3d(-200px, -200px, 0) scale(0.95);
+  }
+  70% {
+    opacity: 1;
+    transform: translate3d(-200px, -200px, 0) scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(-300px, -50px, 0) scale(1);
+  }
+}
+
+#box {
+  opacity: 0;
+  animation: box 5s ease infinite alternate;
+}
+@keyframes box {
+  0%,
+  60% {
+    opacity: 0;
+  }
+  65%,
+  100% {
+    opacity: 1;
+  }
+}
+#text {
+}
