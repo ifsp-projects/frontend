@@ -18,16 +18,22 @@ export const Mission: FC = async () => {
         </article>
         <ul className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:flex-row lg:justify-between lg:gap-12">
           <li className="flex w-full flex-col items-center gap-3">
-            <span className="text-5xl font-medium text-emerald-600">24%</span>
-            <p className="text-sm lg:text-base">Revenue business</p>
+            <span className="bg-gradient-to-r from-emerald-400 to-emerald-700 bg-clip-text text-2xl font-semibold text-transparent lg:text-5xl">
+              +500
+            </span>
+            <p className="text-sm lg:text-base">Pessoas auxiliadas</p>
           </li>
           <li className="flex w-full flex-col items-center gap-3">
-            <span className="text-5xl font-medium text-emerald-600">24%</span>
-            <p className="text-sm lg:text-base">Revenue business</p>
+            <span className="bg-gradient-to-r from-emerald-400 to-emerald-700 bg-clip-text text-2xl font-semibold text-transparent lg:text-5xl">
+              +25 KG
+            </span>
+            <p className="text-sm lg:text-base">De alimentos arrecadados</p>
           </li>
           <li className="flex w-full flex-col items-center gap-3">
-            <span className="text-5xl font-medium text-emerald-600">24%</span>
-            <p className="text-sm lg:text-base">Revenue business</p>
+            <span className="bg-gradient-to-r from-emerald-400 to-emerald-700 bg-clip-text text-2xl font-semibold text-transparent lg:text-5xl">
+              +2
+            </span>
+            <p className="text-sm lg:text-base">Abrigos disponibilizados</p>
           </li>
         </ul>
       </div>

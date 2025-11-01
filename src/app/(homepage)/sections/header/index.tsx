@@ -5,8 +5,8 @@ import Iridescence from '../../../../components/ui/iridescence'
 
 export const Header: FC = () => {
   return (
-    <section className="relative min-h-[780px] px-4 xl:px-0">
-      <div className="absolute top-0 left-0 z-20 h-full min-h-[780px] w-full">
+    <section className="relative min-h-[600px] px-4 xl:px-0 2xl:min-h-[780px]">
+      <div className="absolute top-0 left-0 z-20 h-full min-h-[600px] w-full 2xl:min-h-[780px]">
         <Iridescence
           amplitude={0.1}
           color={[0.5, 0.45, 0.7]}
@@ -14,8 +14,8 @@ export const Header: FC = () => {
           speed={0.5}
         />
       </div>
-      <header className="relative z-30 mx-auto flex min-h-[780px] w-full max-w-2xl flex-col items-center justify-center gap-4 lg:max-w-6xl lg:gap-6">
-        <span className="mx-auto cursor-pointer rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[13px] font-medium text-white backdrop-blur-[10px] transition duration-200">
+      <header className="relative z-30 mx-auto flex min-h-[600px] w-full max-w-2xl flex-col items-center justify-center gap-4 lg:max-w-6xl lg:gap-6 2xl:min-h-[780px]">
+        <span className="mx-auto rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[13px] font-medium text-white backdrop-blur-[10px] transition duration-200">
           Projeto de Extensão
         </span>
         <h1 className="text-center text-2xl font-bold text-white lg:text-4xl xl:text-5xl">

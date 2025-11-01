@@ -6,9 +6,11 @@ export const Details: FC = async () => {
   return (
     <section className="bg-slate-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">
-        <article className="flex flex-col gap-2">
-          <p className="text-sm text-emerald-600 uppercase">Future Payment</p>
-          <h2 className="text-2xl font-bold lg:text-4xl">
+        <article className="flex flex-col gap-2 lg:items-center">
+          <p className="text-sm text-emerald-600 uppercase lg:text-center">
+            Future Payment
+          </p>
+          <h2 className="text-2xl font-bold lg:text-center lg:text-4xl">
             Experience that grows with your scale
           </h2>
         </article>
