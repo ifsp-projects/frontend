@@ -1,4 +1,4 @@
-import { PeopleGroup } from '../../../../../../sobre/icons/people-group'
+import { PeopleGroup } from '../../../../../sobre/icons/people-group'
 
 export const Details = async () => {
   return (

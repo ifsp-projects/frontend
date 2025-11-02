@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import DarkVeil from '../../../../../../../components/ui/dark-veil'
+import DarkVeil from '../../../../../../components/ui/dark-veil'
 
 export const Header = async () => {
   return (
