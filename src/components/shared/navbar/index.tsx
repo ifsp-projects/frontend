@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import type { FC } from 'react'
 import { useState } from 'react'
 
@@ -16,6 +17,10 @@ import { HamburgerButton } from '../hamburger-button'
  */
 export const Navbar: FC = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
+
+  const pathname = usePathname()
+
+  if (pathname === '/login') return null
 
   return (
     <nav className="sticky top-0 left-0 z-[99999] w-full border-b border-neutral-100 bg-white">
