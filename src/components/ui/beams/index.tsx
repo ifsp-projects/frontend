@@ -322,7 +322,7 @@ const MergedPlanes = forwardRef<THREE.Mesh, MergedPlanesProps>(
       }
     })
 
-    //@ts-expect-error
+    // @ts-ignore
     return <mesh geometry={geometry} material={material} ref={mesh} />
   }
 )
