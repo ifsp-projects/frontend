@@ -18,7 +18,7 @@ function extendMaterial(BaseMaterial, cfg) {
     fragmentShader: baseFrag,
     uniforms: baseUniforms
   } = physical
-  //@ts-expect-error
+  // @ts-ignore
   const baseDefines = physical.defines ?? {}
 
   const uniforms = THREE.UniformsUtils.clone(baseUniforms)
