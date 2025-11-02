@@ -1,13 +1,14 @@
-import type { HTMLProps, PropsWithChildren } from 'react'
+import type {
+  ComponentPropsWithoutRef,
+  ElementType,
+  PropsWithChildren
+} from 'react'
 
-type ClassName = HTMLProps<HTMLElement>['className']
-
-export interface EditableCopyFieldProps
-  extends PropsWithChildren,
-    HTMLProps<HTMLElement> {
-  as?: keyof JSX.IntrinsicElements
-  className?: ClassName
-  'data-cid'?: string
-  defaultValue: string
-  onChange?: (value: unknown) => void
-}
+export type EditableCopyFieldProps<T extends ElementType = 'div'> =
+  PropsWithChildren<ComponentPropsWithoutRef<T>> & {
+    as?: T
+    className?: string
+    'data-cid'?: string
+    defaultValue: string
+    onChange?: (value: unknown) => void
+  }

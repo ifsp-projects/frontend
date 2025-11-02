@@ -2,20 +2,22 @@ import { createElement } from 'react'
 
 import type { EditableCopyFieldProps } from './types'
 
-export const EditableCopyField: React.FC<EditableCopyFieldProps> = ({
+export const EditableCopyField = <T extends React.ElementType = 'div'>({
   children,
   className = '',
   'data-cid': dataCid,
-  as = 'div',
+  as,
   defaultValue = '',
   onChange,
   ...props
-}) => {
+}: EditableCopyFieldProps<T>) => {
+  const Component = as || 'div'
+
   const handleInput = (e: React.FormEvent<HTMLElement>) => {
     if (onChange) onChange(e.currentTarget.textContent || defaultValue)
   }
 
-  return createElement(as, {
+  return createElement(Component, {
     className: `outline-0 ${className}`,
     'data-cid': dataCid,
     contentEditable: true,
