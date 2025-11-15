@@ -1,4 +1,4 @@
-import type { User } from '../../../types/models/user'
+import type { User } from '../../../types/postgres/user'
 
 export interface SendEmailPayload {
   email: string
