@@ -1,19 +1,8 @@
-import type { User } from '../../../types/postgres/user'
+import type { PostgresOrganization } from '../../../types/postgres/postgres-organization'
 
 export interface SendEmailPayload {
   email: string
   locale: string
-}
-
-export interface ValidateCodePayload {
-  code: string
-  email: string
-}
-
-export interface ValidateCodeResponse {
-  refreshToken: string
-  token: string
-  user: User
 }
 
 export interface SocialLoginPayload {
@@ -23,9 +12,9 @@ export interface SocialLoginPayload {
 }
 
 export interface SocialLoginResponse {
+  organization: PostgresOrganization
   refreshToken: string
   token: string
-  user: User
 }
 
 export interface AppAuthPayload {

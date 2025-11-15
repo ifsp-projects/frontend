@@ -20,7 +20,7 @@ export const googleOptions = {
     })
 
     return {
-      ...data.user,
+      ...data.organization,
       accessToken: data.token,
       refreshToken: data.refreshToken,
       expiresIn: ACCESS_TOKEN_EXPIRES_SECONDS
