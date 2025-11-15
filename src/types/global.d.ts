@@ -1,10 +1,12 @@
-import type { User as UserType } from './authentication'
+import type { DefaultSession } from 'next-auth'
+
+import type { PostgresOrganization } from './postgres/postgres-organization'
 
 declare module 'next-auth' {
   interface Session extends DefaultSession {
     accessToken?: string
     error?: string
-    user: UserType
+    organization: PostgresOrganization
   }
 
   interface User {

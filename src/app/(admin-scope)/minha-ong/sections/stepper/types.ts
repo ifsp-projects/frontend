@@ -1,3 +1,5 @@
+import type React from 'react'
+
 export interface ChildrenProps {
   currentStep: number
   nextStep: () => void
@@ -8,7 +10,7 @@ export interface ChildrenProps {
 export type StepProps = ChildrenProps
 
 export interface StepperProps {
-  children: (props: ChildrenProps) => JSX.Element
+  children: (props: ChildrenProps) => React.JSX.Element
   customSteps?: string[]
   initialStep?: number | string
 }

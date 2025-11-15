@@ -14,7 +14,7 @@ import type {
 } from './types'
 
 export class Organizations {
-  crateOrganization = async ({ payload, token }: CreateOrganizationData) => {
+  createOrganization = async ({ payload, token }: CreateOrganizationData) => {
     try {
       return await apiPostgres.post<CreateOrganizationResponse>(
         '/organizations',

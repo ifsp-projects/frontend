@@ -12,16 +12,21 @@ export const Stepper: React.FC<StepperProps> = ({
   const defaultActive =
     typeof initialStep === 'number'
       ? initialStep
-      : customSteps.indexOf(initialStep)
+      : (customSteps?.indexOf(initialStep) ?? 0)
   const [active, setActive] = useState(defaultActive)
 
   const setActiveStep = (step: number | string) => {
     if (typeof step === 'number') {
-      setActive(step)
+      if (step >= 0) {
+        setActive(step)
+      }
       return
     }
 
-    setActive(customSteps.indexOf(step))
+    const index = customSteps?.indexOf(step) ?? -1
+    if (index >= 0) {
+      setActive(index)
+    }
   }
 
   const prevStep = () => {

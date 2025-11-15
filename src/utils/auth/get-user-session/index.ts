@@ -9,5 +9,5 @@ export const getUserSession = async (): Promise<
 > => {
   const session = await getServerSession(authOptions)
 
-  return session?.user
+  return session?.organization
 }

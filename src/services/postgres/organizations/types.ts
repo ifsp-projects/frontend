@@ -47,9 +47,9 @@ export interface GetOrganizationByEmailResponse {
 }
 
 export interface UpdateOrganizationResponse {
-  organizations: (PostgresOrganization & {
+  organizations: PostgresOrganization & {
     organization_profile: PostgresOrganizationProfile
-  })[]
+  }
 }
 
 export interface DeleteOrganizationResponse {
