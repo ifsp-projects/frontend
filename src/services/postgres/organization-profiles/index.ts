@@ -1,4 +1,5 @@
-import { apiPostgres } from '../../../instances/postgres'
+import { apiPostgres } from '@/instances/postgres'
+
 import type {
   CreateOrganizationProfileData,
   CreateOrganizationProfileResponse,

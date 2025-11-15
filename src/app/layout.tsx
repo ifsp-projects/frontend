@@ -1,9 +1,10 @@
 import './globals.css'
 
-import { Footer } from '../components/shared/footer'
-import { Navbar } from '../components/shared/navbar'
-import { font } from '../constants/font'
-import { PostHogProvider } from '../providers/PosthogProvider'
+import { Footer } from '@/components/shared/footer'
+import { Navbar } from '@/components/shared/navbar'
+import { font } from '@/constants/font'
+import { PostHogProvider } from '@/providers/PosthogProvider'
+
 import BootstrapClient from './BootstrapClient'
 
 export default function RootLayout({

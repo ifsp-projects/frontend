@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-import { apiBaseUrl } from '../../constants/environments/api-base-url'
-import { apiKey } from '../../constants/environments/api-key'
+import { apiBaseUrl } from '@/constants/environments/api-base-url'
+import { apiKey } from '@/constants/environments/api-key'
 
 if (!apiBaseUrl || !apiKey) {
   throw new Error(

@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { EditableCopyField } from '../../../../../../../../components/shared/template-fields/editable-copy-field'
+import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
 
 export const Header = () => {
   return (

@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { type FC, useState } from 'react'
 
-import { Google } from '../../../../../assets/socials/google'
-import Beams from '../../../../../components/ui/beams'
+import { Google } from '@/assets/socials/google'
+import Beams from '@/components/ui/beams'
 
 export const Header: FC = () => {
   const searchParams = useSearchParams()

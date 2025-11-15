@@ -1,9 +1,10 @@
 import type { AuthOptions, JWT } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 
-import { ACCESS_TOKEN_EXPIRES_MILLISECONDS } from '../../constants/auth/access-token-expires-milliseconds'
-import type { PostgresOrganization } from '../../types/postgres/postgres-organization'
-import { refreshAccessToken } from '../../utils/auth/refresh-access-token'
+import { ACCESS_TOKEN_EXPIRES_MILLISECONDS } from '@/constants/auth/access-token-expires-milliseconds'
+import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
+import { refreshAccessToken } from '@/utils/auth/refresh-access-token'
+
 import { googleOptions } from './google-options'
 
 export const authOptions: AuthOptions = {

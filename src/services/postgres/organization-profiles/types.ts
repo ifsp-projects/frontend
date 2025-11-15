@@ -1,4 +1,4 @@
-import type { PostgresOrganizationProfile } from '../../../types/postgres/postgres-organization-profile'
+import type { PostgresOrganizationProfile } from '@/types/postgres/postgres-organization-profile'
 
 export interface CreateOrganizationProfileData {
   payload: Omit<PostgresOrganizationProfile, 'id'>

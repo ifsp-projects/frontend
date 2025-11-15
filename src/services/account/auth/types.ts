@@ -1,4 +1,4 @@
-import type { PostgresOrganization } from '../../../types/postgres/postgres-organization'
+import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 
 export interface SendEmailPayload {
   email: string

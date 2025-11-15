@@ -1,6 +1,7 @@
 import type { Metadata, NextPage } from 'next'
 
-import { getMetaData } from '../../../utils/seo/get-metadata'
+import { getMetaData } from '@/utils/seo/get-metadata'
+
 import { ContactForm } from './sections/contact-form'
 import { Header } from './sections/header'
 

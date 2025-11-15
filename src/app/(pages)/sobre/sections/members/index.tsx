@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import type { FC } from 'react'
 
-import { GithubIcon } from '../../../../assets/socials/github'
-import { LinkedinIcon } from '../../../../assets/socials/linkedin'
-import { OtherIcon } from '../../../../assets/socials/other'
+import { GithubIcon } from '@/assets/socials/github'
+import { LinkedinIcon } from '@/assets/socials/linkedin'
+import { OtherIcon } from '@/assets/socials/other'
+
 import { TEAM_MEMBERS } from './data'
 
 export const Members: FC = async () => {

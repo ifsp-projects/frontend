@@ -1,6 +1,7 @@
 import type { Metadata, NextPage } from 'next'
 
-import { getMetaData } from '../../../../utils/seo/get-metadata'
+import { getMetaData } from '@/utils/seo/get-metadata'
+
 import { Header } from './sections/header'
 import { History } from './sections/history'
 import { HowToHelp } from './sections/how-to-help'

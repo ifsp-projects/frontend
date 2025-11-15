@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { FC } from 'react'
 
-import Iridescence from '../../../../../components/ui/iridescence'
+import Iridescence from '@/components/ui/iridescence'
 
 export const Header: FC = () => {
   return (

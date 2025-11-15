@@ -1,7 +1,8 @@
 import type { Metadata, NextPage } from 'next'
 
-import { PartnersCarousel } from '../../../components/ui/partners-carousel'
-import { getMetaData } from '../../../utils/seo/get-metadata'
+import { PartnersCarousel } from '@/components/ui/partners-carousel'
+import { getMetaData } from '@/utils/seo/get-metadata'
+
 import { HowItWorks } from '../sobre/sections/how-it-works'
 import { AboutTheProject } from './sections/about-the-project'
 import { Benefits } from './sections/benefits'

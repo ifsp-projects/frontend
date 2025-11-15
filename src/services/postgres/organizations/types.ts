@@ -1,5 +1,5 @@
-import type { PostgresOrganization } from '../../../types/postgres/postgres-organization'
-import type { PostgresOrganizationProfile } from '../../../types/postgres/postgres-organization-profile'
+import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
+import type { PostgresOrganizationProfile } from '@/types/postgres/postgres-organization-profile'
 
 export interface CreateOrganizationData {
   payload: Omit<PostgresOrganization, 'id'>

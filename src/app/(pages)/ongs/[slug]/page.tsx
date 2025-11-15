@@ -1,6 +1,7 @@
 import type { Metadata, NextPage } from 'next'
 
-import { getMetaData } from '../../../../utils/seo/get-metadata'
+import { getMetaData } from '@/utils/seo/get-metadata'
+
 import { PrimaryLandingPageLayout } from './templates/primary'
 
 export const generateMetadata = async (): Promise<Metadata> => {
