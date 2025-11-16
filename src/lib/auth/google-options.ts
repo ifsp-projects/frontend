@@ -13,11 +13,19 @@ export const googleOptions = {
     const { email } = profile
     const { id_token } = tokens
 
-    const { data } = await account.auth.socialLogin({
+    const response = await account.auth.socialLogin({
       email,
       socialToken: id_token,
       socialType: 'google'
     })
+
+    if (!response || !response.data) {
+      throw new Error('Failed to authenticate with backend')
+    }
+
+    const { data } = response
+
+    console.log(data)
 
     return {
       ...data.organization,

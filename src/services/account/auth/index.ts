@@ -19,6 +19,7 @@ export class Auth {
       )
     } catch (error) {
       console.error({ socialLoginError: error })
+      return null
     }
   }
 }

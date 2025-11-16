@@ -101,7 +101,7 @@ export const Header: FC = () => {
               />
             </div>
             <button
-              className="mt-4 min-w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-900 px-6 py-2 text-center !text-white"
+              className="mt-4 min-w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-900 px-6 py-2 text-center !text-white transition-all duration-150 hover:bg-neutral-800"
               onClick={() => {}}
             >
               Entrar
