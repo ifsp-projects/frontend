@@ -1,4 +1,4 @@
-import type { HubspotFormTemplateData } from '../../utils/helpers/hubspot-form-submit/types'
+import type { HubspotFormTemplateData } from '@/utils/helpers/hubspot-form-submit/types'
 
 type HubspotFormIds = {
   [formVariantName in keyof HubspotFormTemplateData]: string

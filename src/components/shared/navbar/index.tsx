@@ -35,7 +35,7 @@ export const Navbar: FC = () => {
           />
         </Link>
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-8 lg:flex xl:gap-12">
           <ul className="flex items-center gap-4">
             <li>
               <Link
@@ -71,9 +71,20 @@ export const Navbar: FC = () => {
             </li>
           </ul>
 
-          <button className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150">
-            Quero saber mais
-          </button>
+          <div className="flex items-center gap-3">
+            <Link
+              className="cursor-pointer rounded-sm border border-neutral-700 px-4 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+              href="/contato"
+            >
+              Acesso antecipado
+            </Link>
+            <Link
+              className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150"
+              href="/login"
+            >
+              Entrar
+            </Link>
+          </div>
         </div>
 
         <div className="flex items-center lg:hidden">

@@ -1,4 +1,4 @@
-import type { IconProps } from '../../types/components/icon-props'
+import type { IconProps } from '@/types/components/icon-props'
 
 export const LinkedinIcon: React.FC<IconProps> = props => {
   return (

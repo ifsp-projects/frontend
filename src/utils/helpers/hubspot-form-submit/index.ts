@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-import { HUBSPOT_FORMS_IDS } from '../../../constants/hubspot/hubspot-form-ids'
+import { HUBSPOT_FORMS_IDS } from '@/constants/hubspot/hubspot-form-ids'
+
 import { getUTMData } from '../get-utm-data'
 import { serializeCookie } from '../serialize-cookie'
 import type { HubspotFormSubmitProps, HubspotFormTemplateData } from './types'
