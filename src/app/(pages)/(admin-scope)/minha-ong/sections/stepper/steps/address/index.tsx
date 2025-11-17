@@ -9,19 +9,12 @@ import { tryCatch } from '@/utils/helpers/try-catch'
 import { useStepperContext } from '../../../stepper-context'
 import type { ChildrenProps } from '../../types'
 
-export const Address: FC<ChildrenProps> = ({
-  currentStep,
-  nextStep,
-  prevStep,
-  setActiveStep
-}) => {
+export const Address: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
   const { formMethods } = useStepperContext()
 
-  const { control, setValue } = formMethods
+  const { register, control, setValue } = formMethods
 
   const getMarketAddress = async (cep: string) => {
-    console.log('indo buscar cep')
-
     const request = await tryCatch(
       fetch(`https://viacep.com.br/ws/${cep}/json/`)
     )
@@ -49,6 +42,9 @@ export const Address: FC<ChildrenProps> = ({
 
   return (
     <div className="flex w-full flex-col gap-8">
+      <h2 className="text-2xl font-bold lg:text-3xl">
+        Aonde fica / atua a sua ONG?
+      </h2>
       <div className="flex w-full flex-col gap-4">
         <div className="w-full">
           <label className="mb-2 block font-medium text-neutral-700">
@@ -76,47 +72,49 @@ export const Address: FC<ChildrenProps> = ({
             name="postal_code"
           />
         </div>
-        <div className="w-full">
-          <label className="mb-2 block font-medium text-neutral-700">
-            Estado
-          </label>
-          <Controller
-            render={({ field }) => (
-              <input
-                {...field}
-                className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
-                id="state"
-                placeholder="Ex: São Paulo"
-                type="text"
-                value={field.value || ''}
-                required
-              />
-            )}
-            control={control}
-            name="state"
-          />
+        <div className="flex w-full flex-col gap-4 lg:flex-row lg:justify-between">
+          <div className="w-full">
+            <label className="mb-2 block font-medium text-neutral-700">
+              Estado
+            </label>
+            <Controller
+              render={({ field }) => (
+                <input
+                  {...field}
+                  className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
+                  id="state"
+                  placeholder="Ex: São Paulo"
+                  type="text"
+                  value={field.value || ''}
+                  required
+                />
+              )}
+              control={control}
+              name="state"
+            />
+          </div>
+          <div className="w-full">
+            <label className="mb-2 block font-medium text-neutral-700">
+              Cidade
+            </label>
+            <Controller
+              render={({ field }) => (
+                <input
+                  {...field}
+                  className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
+                  id="city"
+                  placeholder="Ex: Capivari"
+                  type="text"
+                  value={field.value || ''}
+                  required
+                />
+              )}
+              control={control}
+              name="city"
+            />
+          </div>
         </div>
-        <div className="w-full">
-          <label className="mb-2 block font-medium text-neutral-700">
-            Cidade
-          </label>
-          <Controller
-            render={({ field }) => (
-              <input
-                {...field}
-                className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
-                id="city"
-                placeholder="Ex: Capivari"
-                type="text"
-                value={field.value || ''}
-                required
-              />
-            )}
-            control={control}
-            name="city"
-          />
-        </div>
-        <div className="flex flex-col gap-4 lg:flex-row">
+        <div className="flex flex-col gap-4 lg:flex-row lg:justify-between">
           <div className="w-full">
             <label className="mb-2 block font-medium text-neutral-700">
               Rua
@@ -157,6 +155,22 @@ export const Address: FC<ChildrenProps> = ({
               name="number"
             />
           </div>
+        </div>
+        <div className="w-full">
+          <label className="mb-2 block font-medium text-neutral-700">
+            Complemento
+          </label>
+          <input
+            className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
+            id="complement"
+            maxLength={999}
+            minLength={1}
+            name="complement"
+            placeholder="Ex: Perto do pé de Jambo"
+            type="text"
+            {...register('complement')}
+            required
+          />
         </div>
       </div>
       <div className="flex w-full items-center gap-4 lg:justify-between">

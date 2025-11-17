@@ -16,18 +16,16 @@ import { formatPhone } from '@/utils/helpers/format-phone'
 import { useStepperContext } from '../../../stepper-context'
 import type { ChildrenProps } from '../../types'
 
-export const BasicInfo: FC<ChildrenProps> = ({
-  currentStep,
-  nextStep,
-  prevStep,
-  setActiveStep
-}) => {
+export const BasicInfo: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
   const { formMethods } = useStepperContext()
 
   const { control, register } = formMethods
 
   return (
     <div className="flex w-full flex-col gap-8">
+      <h2 className="text-2xl font-bold lg:text-3xl">
+        Precisamos de mais algumas informações sobre sua ONG
+      </h2>
       <div className="flex w-full flex-col gap-4">
         <div className="w-full">
           <label className="mb-2 block font-medium text-neutral-700">
