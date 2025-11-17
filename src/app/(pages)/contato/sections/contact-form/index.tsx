@@ -6,19 +6,19 @@ import { useForm } from 'react-hook-form'
 import type { SubmitHandler } from 'react-hook-form'
 import { Controller } from 'react-hook-form'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from '../../../../../components/ui/select'
-import { Spin } from '../../../../../components/ui/spin'
-import { HUBSPOT_ONG_VALUES } from '../../../../../constants/hubspot/hubspot-ong-types'
-import { formatPhone } from '../../../../../utils/helpers/format-phone'
-import { hubspotFormSubmit } from '../../../../../utils/helpers/hubspot-form-submit'
+} from '@/components/ui/select'
+import { Spin } from '@/components/ui/spin'
+import { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
+import { formatPhone } from '@/utils/helpers/format-phone'
+import { hubspotFormSubmit } from '@/utils/helpers/hubspot-form-submit'
+import { zodResolver } from '@hookform/resolvers/zod'
+
 import type { ContacFormInputs } from './schema'
 import { contactFormSchema } from './schema'
 

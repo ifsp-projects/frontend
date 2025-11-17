@@ -5,7 +5,7 @@ import { apiPostgres } from '@/instances/postgres'
 
 export async function refreshAccessToken(token: JWT) {
   try {
-    const { data } = await apiPostgres.post(
+    const response = await apiPostgres.post(
       '/refresh-token',
       {},
       {
@@ -15,8 +15,8 @@ export async function refreshAccessToken(token: JWT) {
       }
     )
 
-    const accessToken = data.token
-    const refreshToken = data.refreshToken
+    const accessToken = response.data.token
+    const refreshToken = response.data.refreshToken
 
     if (!accessToken || !refreshToken) {
       throw new Error('No access token')

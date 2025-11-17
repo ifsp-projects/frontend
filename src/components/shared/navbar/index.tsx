@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation'
 import type { FC } from 'react'
 import { useState } from 'react'
 
+import { useUserSession } from '@/hooks/use-user-session'
+
 import { HamburgerButton } from '../hamburger-button'
 
 /**
@@ -16,6 +18,8 @@ import { HamburgerButton } from '../hamburger-button'
  *
  */
 export const Navbar: FC = () => {
+  const { organization } = useUserSession()
+
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
   const pathname = usePathname()
@@ -71,20 +75,31 @@ export const Navbar: FC = () => {
             </li>
           </ul>
 
-          <div className="flex items-center gap-3">
-            <Link
-              className="cursor-pointer rounded-sm border border-neutral-700 px-4 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
-              href="/contato"
-            >
-              Acesso antecipado
-            </Link>
-            <Link
-              className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150"
-              href="/login"
-            >
-              Entrar
-            </Link>
-          </div>
+          {organization ? (
+            <div className="flex items-center gap-3">
+              <Link
+                className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150"
+                href="/minha-ong"
+              >
+                Minha ONG
+              </Link>
+            </div>
+          ) : (
+            <div className="flex items-center gap-3">
+              <Link
+                className="cursor-pointer rounded-sm border border-neutral-700 px-4 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                href="/contato"
+              >
+                Acesso antecipado
+              </Link>
+              <Link
+                className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150"
+                href="/login"
+              >
+                Entrar
+              </Link>
+            </div>
+          )}
         </div>
 
         <div className="flex items-center lg:hidden">
