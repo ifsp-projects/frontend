@@ -12,5 +12,5 @@ export interface PostgresOrganizationProfile {
   phone?: string
   slug?: string
   token?: string
-  updated_at: string
+  updated_at?: string
 }

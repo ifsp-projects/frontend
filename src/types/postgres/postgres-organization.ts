@@ -5,5 +5,5 @@ export interface PostgresOrganization {
   email: string
   id: string
   organization_profile?: PostgresOrganizationProfile
-  updated_at: string
+  updated_at?: string
 }

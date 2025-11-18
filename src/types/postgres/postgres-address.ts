@@ -9,5 +9,5 @@ export interface PostgresAddress {
   postal_code?: string
   state?: string
   street?: string
-  updated_at: string
+  updated_at?: string
 }
