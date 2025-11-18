@@ -1,0 +1,90 @@
+import { type NextRequest, NextResponse } from 'next/server'
+
+import { instanceMotor } from '@/instances/motor'
+
+export const POST = async (req: NextRequest) => {
+  try {
+    const {
+      ong_id,
+      ong_name,
+      ong_type,
+      phone,
+      street,
+      number,
+      city,
+      state,
+      postal_code,
+      complement,
+      desired_template,
+      token,
+      logo
+    } = await req.json()
+
+    if (!phone || !ong_type || !ong_name || !desired_template) {
+      return NextResponse.json(
+        {
+          message:
+            'Não foi possível concluir o seu cadastro pois faltam informações!'
+        },
+        { status: 500 }
+      )
+    }
+
+    if (street || city || number || postal_code || complement || state) {
+      await instanceMotor.addresses.createAddress({
+        payload: {
+          city,
+          number,
+          complement,
+          postal_code,
+          state,
+          street,
+          ong_id
+        },
+        token
+      })
+
+      await instanceMotor.organizationProfiles.createOrganizationProfile({
+        payload: {
+          logo,
+          ong_id,
+          ong_type,
+          phone,
+          name: ong_name
+        },
+        token
+      })
+
+      return NextResponse.json(
+        { message: 'Finalizado! Seu perfil está totalmente pronto.' },
+        { status: 201 }
+      )
+    }
+
+    await instanceMotor.organizationProfiles.createOrganizationProfile({
+      payload: {
+        logo,
+        ong_id,
+        ong_type,
+        phone,
+        name: ong_name
+      },
+      token
+    })
+
+    return NextResponse.json(
+      { message: 'Finalizado! Seu perfil está totalmente pronto.' },
+      { status: 201 }
+    )
+  } catch (error) {
+    console.error({
+      'POST/api/organization-profiles/create-organization-profile':
+        error.message
+    })
+
+    return NextResponse.json(
+      { message: error.message },
+      { status: error.statusCode }
+    )
+  }
+}
