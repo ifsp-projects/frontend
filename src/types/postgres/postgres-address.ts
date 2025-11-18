@@ -1,7 +1,6 @@
 export interface PostgresAddress {
   city?: string
   complement?: string
-  country?: string
   created_at: string
   id: string
   number?: string

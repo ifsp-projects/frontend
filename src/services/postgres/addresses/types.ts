@@ -1,9 +1,7 @@
 import type { PostgresAddress } from '@/types/postgres/postgres-address'
 
 export interface CreateAddressData {
-  payload: Omit<PostgresAddress, 'id' | 'created_at' | 'updated_at'> & {
-    ong_id: string
-  }
+  payload: Omit<PostgresAddress, 'id' | 'created_at' | 'updated_at'>
   token: string
 }
 

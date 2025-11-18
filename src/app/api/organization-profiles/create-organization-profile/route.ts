@@ -30,20 +30,7 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    if (street || city || number || postal_code || complement || state) {
-      await instanceMotor.addresses.createAddress({
-        payload: {
-          city,
-          number,
-          complement,
-          postal_code,
-          state,
-          street,
-          ong_id
-        },
-        token
-      })
-
+    const response =
       await instanceMotor.organizationProfiles.createOrganizationProfile({
         payload: {
           logo,
@@ -55,22 +42,22 @@ export const POST = async (req: NextRequest) => {
         token
       })
 
-      return NextResponse.json(
-        { message: 'Finalizado! Seu perfil está totalmente pronto.' },
-        { status: 201 }
-      )
-    }
+    if (street || city || number || postal_code || complement || state) {
+      console.log(response?.data?.organizationProfile)
 
-    await instanceMotor.organizationProfiles.createOrganizationProfile({
-      payload: {
-        logo,
-        ong_id,
-        ong_type,
-        phone,
-        name: ong_name
-      },
-      token
-    })
+      await instanceMotor.addresses.createAddress({
+        payload: {
+          city,
+          number,
+          complement,
+          postal_code,
+          state,
+          street,
+          organization_profile_id: response?.data?.organizationProfile?.id
+        },
+        token
+      })
+    }
 
     return NextResponse.json(
       { message: 'Finalizado! Seu perfil está totalmente pronto.' },
