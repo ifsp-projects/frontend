@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Metadata, NextPage } from 'next'
 
+import { getUserSession } from '@/utils/auth/get-user-session'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
-import { Form } from './sections/form'
-import { Header } from './sections/header'
+import { NewUserView } from './views/new-user'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -15,12 +16,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Page: NextPage = async () => {
-  return (
-    <main className="bg-neutral-50">
-      <Header />
-      <Form />
-    </main>
-  )
+  const user = await getUserSession()
+
+  // return user.is_user_new ? <NewUserView /> : <DefaultView />
+  return <NewUserView />
 }
 
 export default Page

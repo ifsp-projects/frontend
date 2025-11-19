@@ -24,6 +24,10 @@ export class OrganizationProfiles {
       )
     } catch (error) {
       console.error({ createOrganizationProfileErrorMessage: error.message })
+
+      return {
+        status: 500
+      }
     }
   }
 
@@ -43,6 +47,10 @@ export class OrganizationProfiles {
       )
     } catch (error) {
       console.error({ updateOrganizationProfileErrorMessage: error.message })
+
+      return {
+        status: 500
+      }
     }
   }
 }

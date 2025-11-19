@@ -15,12 +15,12 @@ export const POST = async (req: NextRequest) => {
       state,
       postal_code,
       complement,
-      desired_template,
+      design_template,
       token,
       logo
     } = await req.json()
 
-    if (!phone || !ong_type || !ong_name || !desired_template) {
+    if (!phone || !ong_type || !ong_name || !design_template) {
       return NextResponse.json(
         {
           message:
@@ -37,7 +37,8 @@ export const POST = async (req: NextRequest) => {
           ong_id,
           ong_type,
           phone,
-          name: ong_name
+          name: ong_name,
+          design_template
         },
         token
       })
@@ -48,7 +49,7 @@ export const POST = async (req: NextRequest) => {
       await instanceMotor.addresses.createAddress({
         payload: {
           city,
-          number,
+          number: number ? number.toString() : '',
           complement,
           postal_code,
           state,

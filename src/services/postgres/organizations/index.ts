@@ -30,6 +30,10 @@ export class Organizations {
       console.error({
         createOrganizationErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 
@@ -43,6 +47,10 @@ export class Organizations {
       console.error({
         getAllOrganizationsErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 
@@ -67,6 +75,10 @@ export class Organizations {
       console.error({
         getOrganizationByIdErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 
@@ -85,6 +97,10 @@ export class Organizations {
       console.error({
         updateOrganizationErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 
@@ -102,6 +118,10 @@ export class Organizations {
       console.error({
         deleteOrganizationErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 }

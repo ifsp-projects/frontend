@@ -29,6 +29,10 @@ export class Addresses {
       console.error({
         createAddressErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 
@@ -43,6 +47,10 @@ export class Addresses {
       console.error({
         getAllAddressesErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 
@@ -60,6 +68,10 @@ export class Addresses {
       console.error({
         getAddressByIdErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 
@@ -78,6 +90,10 @@ export class Addresses {
       console.error({
         updateAddressErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 
@@ -95,6 +111,10 @@ export class Addresses {
       console.error({
         deleteAddressErrorMessage: error.message
       })
+
+      return {
+        status: 500
+      }
     }
   }
 }

@@ -1,26 +1,59 @@
 'use client'
 
+import axios from 'axios'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
+import { useUserSession } from '@/hooks/use-user-session'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Stepper } from '../stepper'
 import { StepperContextProvider } from '../stepper-context'
+import { Address } from '../stepper/steps/address'
 import { BasicInfo } from '../stepper/steps/basic-info'
+import { DesiredTemplate } from '../stepper/steps/desired-template'
 import type { ComplementFormSchemaType } from './schema'
 import { complementInfoFormSchema } from './schema'
-import { Address } from '../stepper/steps/address'
-import { DesiredTemplate } from '../stepper/steps/desired-template'
 
 export const Form: FC = () => {
+  const {
+    token,
+    organization: { id: ong_id }
+  } = useUserSession()
+
   const formMethods = useForm<ComplementFormSchemaType>({
+    //@ts-ignore
     resolver: zodResolver(complementInfoFormSchema)
   })
 
-  const onSubmit = () => {}
+  const onSubmit = async values => {
+    try {
+      const response = await axios.post(
+        '/api/organization-profiles/create-organization-profile',
+        {
+          ...values,
+          ong_id,
+          token,
+          logo: 'https://static.vecteezy.com/ti/vetor-gratis/p1/19869277-ong-carta-logotipo-projeto-em-branco-fundo-ong-criativo-circulo-carta-logotipo-conceito-ong-carta-projeto-vetor.jpg'
+        }
+      )
+
+      const responseData = await response.data()
+
+      if (response.status !== 201) {
+        toast.error(responseData.message)
+        return
+      }
+
+      toast.success(responseData.message)
+    } catch (error) {
+      console.error(`Error trying to update organization profile: ${error}`)
+    }
+  }
 
   return (
+    //@ts-ignore
     <StepperContextProvider formMethods={formMethods} onSubmit={onSubmit}>
       <section className="min-h-[62dvh] bg-white px-4 py-12 lg:py-16 xl:px-0">
         <div className="mx-auto w-full max-w-2xl lg:max-w-5xl">

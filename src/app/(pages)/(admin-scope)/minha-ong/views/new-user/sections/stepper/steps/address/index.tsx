@@ -146,7 +146,7 @@ export const Address: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
                   className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
                   id="number"
                   placeholder="Ex: 1230"
-                  type="text"
+                  type="number"
                   value={field.value || ''}
                   required
                 />

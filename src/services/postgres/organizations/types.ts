@@ -15,7 +15,7 @@ export interface GetOrganizationByIdData {
 }
 
 export interface UpdateOrganizationData {
-  payload: Omit<PostgresOrganization, 'id'>
+  payload: PostgresOrganization
   token: string
 }
 
