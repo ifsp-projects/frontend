@@ -1,6 +1,7 @@
 'use client'
 
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
@@ -19,8 +20,11 @@ import { complementInfoFormSchema } from './schema'
 export const Form: FC = () => {
   const {
     token,
-    organization: { id: ong_id }
+    organization: { id: ong_id },
+    update
   } = useUserSession()
+
+  const router = useRouter()
 
   const formMethods = useForm<ComplementFormSchemaType>({
     //@ts-ignore
@@ -39,7 +43,7 @@ export const Form: FC = () => {
         }
       )
 
-      const responseData = await response.data()
+      const responseData = await response.data
 
       if (response.status !== 201) {
         toast.error(responseData.message)
@@ -47,6 +51,12 @@ export const Form: FC = () => {
       }
 
       toast.success(responseData.message)
+      console.log(responseData)
+      await update({
+        organization_profile: responseData.organizationProfile,
+        is_user_new: false
+      })
+      router.refresh()
     } catch (error) {
       console.error(`Error trying to update organization profile: ${error}`)
     }
@@ -58,7 +68,7 @@ export const Form: FC = () => {
       <section className="min-h-[62dvh] bg-white px-4 py-12 lg:py-16 xl:px-0">
         <div className="mx-auto w-full max-w-2xl lg:max-w-5xl">
           <Stepper
-            customSteps={['basic-info', 'template', 'disired-template']}
+            customSteps={['basic-info', 'template', 'design-template']}
             initialStep="basic-info"
           >
             {({ currentStep, nextStep, prevStep, setActiveStep }) => (

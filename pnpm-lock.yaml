@@ -23,6 +23,9 @@ importers:
       '@react-three/fiber':
         specifier: ^9.4.0
         version: 9.4.0(@types/react@19.1.13)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.180.0)
+      '@vectoricons/atlas-icons-react':
+        specifier: ^0.0.10
+        version: 0.0.10
       axios:
         specifier: ^1.12.2
         version: 1.12.2
@@ -1357,6 +1360,9 @@ packages:
     resolution: {integrity: sha512-Yy19y6O2GJq8f7CHf7L0nxL8bf4PZCPaVOCgJrusOeFHY1LvHgYXnmnXg6N5iwAnbgbZCDjo60SiM6IPJi9C5g==}
     peerDependencies:
       react: '>= 16.8.0'
+
+  '@vectoricons/atlas-icons-react@0.0.10':
+    resolution: {integrity: sha512-m87O98uBkvhG6U4o8yfK9gzVdDVWfqbypAYOkuNwDGVtq/gRvTgfHqb6EyYuQcORnKcO85TGDt1ibrQnDfV5vg==}
 
   '@vitest/expect@3.2.4':
     resolution: {integrity: sha512-Io0yyORnB6sikFlt8QW5K7slY4OjqNX9jmJQ02QDda8lyM6B5oNgVWoSoKPac8/kgnCUzuHQKrSLtu/uOqqrig==}
@@ -4419,6 +4425,8 @@ snapshots:
     dependencies:
       '@use-gesture/core': 10.3.1
       react: 19.1.0
+
+  '@vectoricons/atlas-icons-react@0.0.10': {}
 
   '@vitest/expect@3.2.4':
     dependencies:

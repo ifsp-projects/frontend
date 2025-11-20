@@ -1,4 +1,5 @@
 import { apiPostgres } from '@/instances/postgres'
+import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 
 import type {
   CreateOrganizationData,
@@ -10,6 +11,8 @@ import type {
   GetOrganizationByEmailResponse,
   GetOrganizationByIdData,
   GetOrganizationByIdResponse,
+  GetOrganizationBySlugData,
+  GetOrganizationBySlugResponse,
   UpdateOrganizationData,
   UpdateOrganizationResponse
 } from './types'
@@ -32,7 +35,8 @@ export class Organizations {
       })
 
       return {
-        status: 500
+        status: error.message,
+        data: { organization: {} as PostgresOrganization }
       }
     }
   }
@@ -49,7 +53,8 @@ export class Organizations {
       })
 
       return {
-        status: 500
+        status: error.message,
+        data: { organization: {} as PostgresOrganization }
       }
     }
   }
@@ -77,7 +82,25 @@ export class Organizations {
       })
 
       return {
-        status: 500
+        status: error.message,
+        data: { organization: {} as PostgresOrganization }
+      }
+    }
+  }
+
+  getOrganizationBySlug = async ({ slug }: GetOrganizationBySlugData) => {
+    try {
+      return await apiPostgres.get<GetOrganizationBySlugResponse>(
+        `/organizations/slug/${slug.toString()}`
+      )
+    } catch (error) {
+      console.error({
+        getOrganizationByIdErrorMessage: error.message
+      })
+
+      return {
+        status: error.message,
+        data: { organization: {} as PostgresOrganization }
       }
     }
   }
@@ -99,7 +122,8 @@ export class Organizations {
       })
 
       return {
-        status: 500
+        status: error.message,
+        data: { organization: {} as PostgresOrganization }
       }
     }
   }
@@ -120,7 +144,8 @@ export class Organizations {
       })
 
       return {
-        status: 500
+        status: error.message,
+        data: { organization: {} as PostgresOrganization }
       }
     }
   }

@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 
 import { instanceMotor } from '@/instances/motor'
+import { generateSlug } from '@/utils/helpers/generate-slug'
 
 export const POST = async (req: NextRequest) => {
   try {
@@ -38,15 +39,28 @@ export const POST = async (req: NextRequest) => {
           ong_type,
           phone,
           name: ong_name,
-          design_template
+          design_template,
+          slug: generateSlug({ text: ong_name })
         },
         token
       })
 
-    if (street || city || number || postal_code || complement || state) {
-      console.log(response?.data?.organizationProfile)
+    if (response.status === 500) {
+      return NextResponse.json(
+        { message: 'Erro! Não foi possível criar seu perfil.' },
+        { status: 500 }
+      )
+    }
 
-      await instanceMotor.addresses.createAddress({
+    if (response.status === 409) {
+      return NextResponse.json(
+        { message: 'Erro! Sua organização não pode ter 2 perfis!' },
+        { status: 409 }
+      )
+    }
+
+    if (street || city || number || postal_code || complement || state) {
+      const createdAddress = await instanceMotor.addresses.createAddress({
         payload: {
           city,
           number: number ? number.toString() : '',
@@ -58,10 +72,20 @@ export const POST = async (req: NextRequest) => {
         },
         token
       })
+
+      if (createdAddress.status === 500) {
+        return NextResponse.json(
+          { message: 'Erro! Não foi possível adicionar um novo endereço.' },
+          { status: 500 }
+        )
+      }
     }
 
     return NextResponse.json(
-      { message: 'Finalizado! Seu perfil está totalmente pronto.' },
+      {
+        message: 'Finalizado! Seu perfil está totalmente pronto.',
+        organizationProfile: response?.data?.organizationProfile
+      },
       { status: 201 }
     )
   } catch (error) {

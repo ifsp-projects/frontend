@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { useUserSession } from '@/hooks/use-user-session'
 
 import { HamburgerButton } from '../hamburger-button'
+import { signOut } from 'next-auth/react'
 
 /**
  * Navbar - Main navigation component with responsive design.
@@ -27,7 +28,7 @@ export const Navbar: FC = () => {
   if (pathname === '/login') return null
 
   return (
-    <nav className="sticky top-0 left-0 z-[99999] w-full border-b border-neutral-100 bg-white">
+    <nav className="sticky top-0 left-0 z-40 w-full border-b border-neutral-100 bg-white">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 lg:px-6 xl:px-0">
         <Link href="/">
           <Image
@@ -83,6 +84,9 @@ export const Navbar: FC = () => {
               >
                 Minha ONG
               </Link>
+              <button className="cursor-pointer" onClick={() => signOut()}>
+                Sair
+              </button>
             </div>
           ) : (
             <div className="flex items-center gap-3">

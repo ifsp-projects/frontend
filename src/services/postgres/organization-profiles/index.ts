@@ -1,4 +1,5 @@
 import { apiPostgres } from '@/instances/postgres'
+import type { PostgresOrganizationProfile } from '@/types/postgres/postgres-organization-profile'
 
 import type {
   CreateOrganizationProfileData,
@@ -26,7 +27,8 @@ export class OrganizationProfiles {
       console.error({ createOrganizationProfileErrorMessage: error.message })
 
       return {
-        status: 500
+        status: error.status,
+        data: { organizationProfile: {} as PostgresOrganizationProfile }
       }
     }
   }
@@ -49,7 +51,8 @@ export class OrganizationProfiles {
       console.error({ updateOrganizationProfileErrorMessage: error.message })
 
       return {
-        status: 500
+        status: 500,
+        data: { organizationProfile: {} as PostgresOrganizationProfile }
       }
     }
   }

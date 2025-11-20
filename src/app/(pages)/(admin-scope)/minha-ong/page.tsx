@@ -1,9 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Metadata, NextPage } from 'next'
+import { redirect } from 'next/navigation'
 
 import { getUserSession } from '@/utils/auth/get-user-session'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
+import { DefaultView } from './views/default-view'
 import { NewUserView } from './views/new-user'
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -18,8 +19,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const Page: NextPage = async () => {
   const user = await getUserSession()
 
-  // return user.is_user_new ? <NewUserView /> : <DefaultView />
-  return <NewUserView />
+  if (!user) {
+    redirect('/')
+  }
+
+  return user?.is_user_new ? <NewUserView /> : <DefaultView />
 }
 
 export default Page

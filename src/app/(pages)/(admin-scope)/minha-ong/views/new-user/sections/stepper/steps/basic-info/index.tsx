@@ -53,6 +53,7 @@ export const BasicInfo: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
                 onChange={e => field.onChange(formatPhone(e.target.value))}
                 placeholder="Seu telefone"
                 type="text"
+                value={field.value || ''}
               />
             )}
             control={control}

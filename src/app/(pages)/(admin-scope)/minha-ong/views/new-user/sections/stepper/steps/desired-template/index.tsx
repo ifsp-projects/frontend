@@ -43,6 +43,7 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
                 setSelectedTemplate('primary')
               }}
               className="mt-3 cursor-pointer rounded-sm border border-neutral-700 px-6 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:brightness-110"
+              type="button"
             >
               Escolher template
             </button>
@@ -65,6 +66,7 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
                 setSelectedTemplate('secondary')
               }}
               className="mt-3 cursor-pointer rounded-sm border border-neutral-700 px-6 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:brightness-110"
+              type="button"
             >
               Escolher template
             </button>
@@ -87,6 +89,7 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
                 setSelectedTemplate('tertiary')
               }}
               className="mt-3 cursor-pointer rounded-sm border border-neutral-700 px-6 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:brightness-110"
+              type="button"
             >
               Escolher template
             </button>
@@ -109,6 +112,7 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
                 setSelectedTemplate('quarternary')
               }}
               className="mt-3 cursor-pointer rounded-sm border border-neutral-700 px-6 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:brightness-110"
+              type="button"
             >
               Escolher template
             </button>

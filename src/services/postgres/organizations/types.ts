@@ -14,6 +14,10 @@ export interface GetOrganizationByIdData {
   id: string
 }
 
+export interface GetOrganizationBySlugData {
+  slug: string
+}
+
 export interface UpdateOrganizationData {
   payload: PostgresOrganization
   token: string
@@ -35,6 +39,12 @@ export interface GetAllOrganizationsResponse {
 }
 
 export interface GetOrganizationByIdResponse {
+  organization: PostgresOrganization & {
+    organization_profile: PostgresOrganizationProfile
+  }
+}
+
+export interface GetOrganizationBySlugResponse {
   organization: PostgresOrganization & {
     organization_profile: PostgresOrganizationProfile
   }
