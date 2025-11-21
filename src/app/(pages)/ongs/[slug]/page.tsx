@@ -4,7 +4,7 @@ import { instanceMotor } from '@/instances/motor'
 import { getUserSession } from '@/utils/auth/get-user-session'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
-import { PrimaryLandingPageLayout } from './templates/primary'
+import { PrimaryLandingPageLayout } from './readable-layout/templates/primary'
 import type { OngPageProps } from './types'
 
 export const generateMetadata = async (): Promise<Metadata> => {
