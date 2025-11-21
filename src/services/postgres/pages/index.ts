@@ -12,7 +12,7 @@ export class Pages {
   getPageBySlug = async ({ slug }: GetPageBySlugData) => {
     try {
       return await apiPostgres.get<GetPageBySlugResponse>(
-        `/pages/${slug.toString()}`
+        `/pages/slug/${slug.toString()}`
       )
     } catch (error) {
       console.error({

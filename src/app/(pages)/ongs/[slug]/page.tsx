@@ -4,7 +4,8 @@ import { instanceMotor } from '@/instances/motor'
 import { getUserSession } from '@/utils/auth/get-user-session'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
-import { PrimaryLandingPageLayout } from './readable-layout/templates/primary'
+import { EditablePrimaryLandingPageLayout } from './editable-layout/templates/primary'
+import { ReadablePrimaryLandingPageLayout } from './readable-layout/templates/primary'
 import type { OngPageProps } from './types'
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -23,10 +24,10 @@ const Page: NextPage<OngPageProps> = async ({ params }) => {
   const { data: response } =
     await instanceMotor.organizations.getOrganizationBySlug({ slug })
 
-  return user.email === response.organization.email ? (
-    <main>dono da page</main>
+  return user?.email === response.organization.email ? (
+    <EditablePrimaryLandingPageLayout slug={slug} />
   ) : (
-    <PrimaryLandingPageLayout />
+    <ReadablePrimaryLandingPageLayout slug={slug} />
   )
 }
 

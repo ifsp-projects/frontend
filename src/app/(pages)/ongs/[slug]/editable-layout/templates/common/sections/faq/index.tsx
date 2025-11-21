@@ -1,9 +1,13 @@
-import Link from 'next/link'
+'use client'
 
-import { FAQ_QUESTIONS } from './data'
+import type { FC } from 'react'
+
+import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+
 import { QuestionItem } from './question-item'
+import type { FaqProps } from './types'
 
-export const FAQ = async ({ color }: { color: string }) => {
+export const FAQ: FC<FaqProps> = ({ color, copy }) => {
   return (
     <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col lg:max-w-7xl lg:flex-row lg:justify-between">
@@ -19,15 +23,14 @@ export const FAQ = async ({ color }: { color: string }) => {
             <br /> Não teve sua pergunta respondida? Entre em contato com a
             gente:
           </p>
-          <Link
+          <EditableCopyField
+            as="div"
             className={`mt-2 flex max-w-fit cursor-pointer items-center justify-center rounded-md border px-6 py-2 text-center text-sm transition-all duration-300 hover:brightness-105 text-${color}-500 border-${color}-500`}
-            href="#"
-          >
-            Entrar em contato
-          </Link>
+            defaultValue={copy.anchor}
+          />
         </article>
         <div className="flex w-full flex-col gap-y-6">
-          {FAQ_QUESTIONS.map((question, index) => (
+          {copy.questions.map((question, index) => (
             <QuestionItem
               copy={question}
               index={index}

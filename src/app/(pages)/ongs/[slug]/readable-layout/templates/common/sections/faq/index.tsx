@@ -1,9 +1,10 @@
 import Link from 'next/link'
+import type { FC } from 'react'
 
-import { FAQ_QUESTIONS } from './data'
 import { QuestionItem } from './question-item'
+import type { FaqProps } from './types'
 
-export const FAQ = async ({ color }: { color: string }) => {
+export const FAQ: FC<FaqProps> = async ({ color, copy }) => {
   return (
     <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col lg:max-w-7xl lg:flex-row lg:justify-between">
@@ -23,11 +24,11 @@ export const FAQ = async ({ color }: { color: string }) => {
             className={`mt-2 flex max-w-fit cursor-pointer items-center justify-center rounded-md border px-6 py-2 text-center text-sm transition-all duration-300 hover:brightness-105 text-${color}-500 border-${color}-500`}
             href="#"
           >
-            Entrar em contato
+            {copy.anchor}
           </Link>
         </article>
         <div className="flex w-full flex-col gap-y-6">
-          {FAQ_QUESTIONS.map((question, index) => (
+          {copy.questions.map((question, index) => (
             <QuestionItem
               copy={question}
               index={index}

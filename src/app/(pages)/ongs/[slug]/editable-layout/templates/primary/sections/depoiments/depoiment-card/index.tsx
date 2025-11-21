@@ -1,6 +1,11 @@
 import Image from 'next/image'
+import type { FC } from 'react'
 
-export const DepoimentCard = async () => {
+import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+
+import type { DepoimentCardProps } from './types'
+
+export const DepoimentCard: FC<DepoimentCardProps> = ({ copy }) => {
   return (
     <article className="card">
       <section className="card__hero">
@@ -25,9 +30,11 @@ export const DepoimentCard = async () => {
           </div>
         </header>
 
-        <p className="card__job-title">
-          Me ajudou muito em conseguir a minha AWP safari mesh que sempre sonhei
-        </p>
+        <EditableCopyField
+          as="p"
+          className="card__job-title"
+          defaultValue={copy.content}
+        />
       </section>
 
       <footer className="card__footer">
@@ -42,10 +49,16 @@ export const DepoimentCard = async () => {
             />
           </figure>
           <article className="flex w-full flex-1 flex-col">
-            <p className="text-base font-semibold">
-              Getulio Aparecido dos Santos
-            </p>
-            <p className="text-sm font-light text-slate-500">Capivari, SP</p>
+            <EditableCopyField
+              as="p"
+              className="text-base font-semibold"
+              defaultValue={copy.author.name}
+            />
+            <EditableCopyField
+              as="p"
+              className="text-sm font-light text-slate-500"
+              defaultValue={copy.author.city}
+            />
           </article>
         </div>
       </footer>

@@ -3,11 +3,12 @@ import type { PostgresPageQuarternaryTemplate } from './postgres-page-quarternar
 import type { PostgresPageSecondaryTemplate } from './postgres-page-secondary-template'
 import type { PostgresPageTertiaryTemplate } from './postgres-page-tertiary-template'
 
-export type PostgresPage = PostgresPagePrimaryTemplate &
-  PostgresPageSecondaryTemplate &
-  PostgresPageTertiaryTemplate &
-  PostgresPageQuarternaryTemplate & {
-    id: string
-    organization_id: string
-    updated_at?: string
-  }
+export interface PostgresPage {
+  id: string
+  organization_id: string
+  sections: PostgresPagePrimaryTemplate &
+    PostgresPageSecondaryTemplate &
+    PostgresPageTertiaryTemplate &
+    PostgresPageQuarternaryTemplate
+  updated_at?: string
+}
