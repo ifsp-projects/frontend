@@ -27,6 +27,7 @@ export const QuestionItem: React.FC<QuestionItemProps> = ({ copy, index }) => {
           as="h3"
           className={`text-left text-base font-medium transition-all group-hover:brightness-125 sm:text-lg lg:font-semibold`}
           defaultValue={copy.title}
+          path={`faq.questions[${index}].title`}
         />
       </div>
 
@@ -35,6 +36,7 @@ export const QuestionItem: React.FC<QuestionItemProps> = ({ copy, index }) => {
           as="p"
           className={`max-h-[400px] overflow-hidden text-left text-sm text-slate-500 transition-all duration-300 ease-in-out md:text-base`}
           defaultValue={copy.description}
+          path={`faq.questions[${index}].description`}
         />
       )}
     </button>

@@ -17,11 +17,13 @@ export const ImagesGrid: FC<ImagesGridProps> = ({ copy }) => {
             as="h2"
             className="text-center text-2xl font-bold lg:text-4xl"
             defaultValue={copy.title}
+            path="imagesGrid.title"
           />
           <EditableCopyField
             as="p"
             className="text-sm text-slate-500"
             defaultValue={copy.description}
+            path="imagesGrid.description"
           />
         </article>
         <Masonry

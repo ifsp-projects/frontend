@@ -1,7 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { getUserSession } from '@/utils/auth/get-user-session'
-import Link from 'next/link'
 import { ExportArrowUpRight } from '@vectoricons/atlas-icons-react'
 
 export const MainInfo = async () => {
@@ -57,7 +57,7 @@ export const MainInfo = async () => {
             </p>
             <Link
               className="group mt-3 flex cursor-pointer items-center gap-2"
-              href="#"
+              href={`/ongs/${user?.organization_profile?.slug}`}
             >
               <p className="text-rose-400 transition-all duration-300 group-hover:brightness-105">
                 Ver página da ONG

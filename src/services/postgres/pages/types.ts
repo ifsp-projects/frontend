@@ -5,7 +5,7 @@ export interface GetPageBySlugData {
 }
 
 export interface UpdatePageData {
-  payload: PostgresPage
+  payload: Omit<PostgresPage, 'organization_id'>
   token: string
 }
 

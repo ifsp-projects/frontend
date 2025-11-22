@@ -16,11 +16,13 @@ export const Details: FC<DetailsProps> = ({ copy }) => {
             as="p"
             className="text-sm text-emerald-600 uppercase lg:text-center"
             defaultValue={copy.feature}
+            path="details.feature"
           />
           <EditableCopyField
             as="h2"
             className="text-2xl font-bold lg:text-center lg:text-4xl"
             defaultValue={copy.title}
+            path="details.title"
           />
         </article>
         <ul className="flex h-auto w-full flex-col items-stretch gap-8 lg:flex-row">
@@ -37,11 +39,13 @@ export const Details: FC<DetailsProps> = ({ copy }) => {
                   as="h3"
                   className="text-xl font-bold"
                   defaultValue={tab.title}
+                  path={`details.tabs[${index}].title`}
                 />
                 <EditableCopyField
                   as="p"
                   className="text-sm text-slate-500"
                   defaultValue={tab.description}
+                  path={`details.tabs[${index}].description`}
                 />
               </article>
             </li>

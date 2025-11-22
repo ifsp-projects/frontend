@@ -3,6 +3,7 @@ import type { GoogleProfile } from 'next-auth/providers/google'
 
 import { ACCESS_TOKEN_EXPIRES_SECONDS } from '@/constants/auth/access-token-expires-seconds'
 import { account } from '@/instances/account'
+import { redirect } from 'next/navigation'
 
 export const googleOptions = {
   clientId: process.env.GOOGLE_CLIENT_ID,
@@ -19,13 +20,13 @@ export const googleOptions = {
       socialType: 'google'
     })
 
-    if (!response || !response.data) {
+    if (!response.data) {
       throw new Error('Failed to authenticate with backend')
     }
 
     const { data } = response
 
-    console.log(data)
+    await redirect('/minha-ong')
 
     return {
       ...data.organization,

@@ -6,4 +6,5 @@ export interface DepoimentCardProps {
     }
     content: string
   }
+  index: number
 }

@@ -4,6 +4,7 @@ import type { FC } from 'react'
 import { Controller } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
+import { formatPostalCode } from '@/utils/helpers/format-postal-code'
 import { tryCatch } from '@/utils/helpers/try-catch'
 
 import { useStepperContext } from '../../../stepper-context'
@@ -55,13 +56,16 @@ export const Address: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
               <input
                 {...field}
                 onChange={e => {
-                  field.onChange(e)
-                  console.log(e)
-                  if (e.target.value.length === 8) {
-                    getMarketAddress(e.target.value)
+                  const formatted = formatPostalCode(e.target.value)
+                  field.onChange(formatted)
+
+                  const cleanValue = formatted.replace(/\D/g, '')
+                  if (cleanValue.length === 8) {
+                    getMarketAddress(cleanValue)
                   }
                 }}
                 className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
+                maxLength={9} // 8 números + 1 traço
                 placeholder="Ex:. 15041-050"
                 type="text"
                 value={field.value || ''}

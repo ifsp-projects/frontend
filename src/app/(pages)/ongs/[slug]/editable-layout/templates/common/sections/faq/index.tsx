@@ -25,8 +25,9 @@ export const FAQ: FC<FaqProps> = ({ color, copy }) => {
           </p>
           <EditableCopyField
             as="div"
-            className={`mt-2 flex max-w-fit cursor-pointer items-center justify-center rounded-md border px-6 py-2 text-center text-sm transition-all duration-300 hover:brightness-105 text-${color}-500 border-${color}-500`}
+            className={`mt-2 flex max-w-fit items-center justify-center rounded-md border px-6 py-2 text-center text-sm transition-all duration-300 hover:brightness-105 text-${color}-500 border-${color}-500`}
             defaultValue={copy.anchor}
+            path="faq.anchor"
           />
         </article>
         <div className="flex w-full flex-col gap-y-6">

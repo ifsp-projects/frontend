@@ -24,22 +24,26 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
               as="span"
               className="w-fit rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-500 backdrop-blur-[10px] transition duration-200"
               defaultValue={copy.span}
+              path="header.span"
             />
             <EditableCopyField
               as="h1"
               className="text-2xl font-bold text-slate-700 lg:text-4xl xl:text-5xl"
               defaultValue={copy.title}
+              path="header.title"
             />
             <EditableCopyField
               as="p"
               className="text-sm text-slate-500 lg:text-base"
               defaultValue={copy.description}
+              path="header.description"
             />
           </article>
           <EditableCopyField
             as="span"
-            className="flex max-w-fit cursor-pointer items-center justify-center rounded-md bg-emerald-600 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
+            className="flex max-w-fit items-center justify-center rounded-md bg-emerald-600 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
             defaultValue={copy.anchor}
+            path="header.anchor"
           />
           <div className="flex items-center gap-1">
             <p className="text-xs text-slate-500">Powered by</p>

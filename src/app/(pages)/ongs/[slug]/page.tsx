@@ -21,6 +21,7 @@ const Page: NextPage<OngPageProps> = async ({ params }) => {
   const { slug } = await params
 
   const user = await getUserSession()
+
   const { data: response } =
     await instanceMotor.organizations.getOrganizationBySlug({ slug })
 
