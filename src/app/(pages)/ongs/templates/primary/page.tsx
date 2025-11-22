@@ -1,6 +1,7 @@
 import type { Metadata, NextPage } from 'next'
 
-import { getMetaData } from '../../../../../utils/seo/get-metadata'
+import { getMetaData } from '@/utils/seo/get-metadata'
+
 import { FAQ } from '../common/sections/faq'
 import { ImagesGrid } from '../common/sections/images-grid'
 import { MoreInfoAbout } from '../common/sections/more-info-about'

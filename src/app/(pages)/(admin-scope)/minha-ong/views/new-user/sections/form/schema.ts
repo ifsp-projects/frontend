@@ -1,4 +1,4 @@
-import z from 'zod'
+import { z } from 'zod'
 
 export const complementInfoFormSchema = z.object({
   ong_name: z.string().nonempty('Esse campo é obrigatório'),

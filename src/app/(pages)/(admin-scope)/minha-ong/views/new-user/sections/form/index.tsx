@@ -18,11 +18,13 @@ import type { ComplementFormSchemaType } from './schema'
 import { complementInfoFormSchema } from './schema'
 
 export const Form: FC = () => {
-  const {
-    token,
-    organization: { id: ong_id },
-    update
-  } = useUserSession()
+  const { token, organization, update } = useUserSession()
+
+  if (!organization?.id) {
+    return null
+  }
+
+  const ong_id = organization?.id
 
   const router = useRouter()
 
@@ -59,6 +61,9 @@ export const Form: FC = () => {
       router.refresh()
     } catch (error) {
       console.error(`Error trying to update organization profile: ${error}`)
+      toast.error(
+        'Ocorreu um erro ao criar o perfil da organização. Por favor, tente novamente.'
+      )
     }
   }
 

@@ -21,7 +21,18 @@ export class Pages {
 
       return {
         status: error.message,
-        data: { page: {} as PostgresPage }
+        data: {
+          page: {
+            id: '',
+            organization_id: '',
+            depoiments: { title: '', description: '', cards: [] },
+            details: { feature: '', title: '', tabs: [] },
+            faq: { anchor: '', questions: [] },
+            header: { span: '', title: '', description: '', anchor: '' },
+            imagesGrid: { title: '', description: '' },
+            moreInfoAbout: { title: '', description: '' }
+          } as unknown as PostgresPage
+        }
       }
     }
   }
@@ -44,7 +55,18 @@ export class Pages {
 
       return {
         status: error.message,
-        data: { page: {} as PostgresPage }
+        data: {
+          page: {
+            id: '',
+            organization_id: '',
+            depoiments: { title: '', description: '', cards: [] },
+            details: { feature: '', title: '', tabs: [] },
+            faq: { anchor: '', questions: [] },
+            header: { span: '', title: '', description: '', anchor: '' },
+            imagesGrid: { title: '', description: '' },
+            moreInfoAbout: { title: '', description: '' }
+          } as unknown as PostgresPage
+        }
       }
     }
   }

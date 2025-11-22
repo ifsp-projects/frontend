@@ -1,4 +1,5 @@
 import type { Metadata, NextPage } from 'next'
+import { notFound } from 'next/navigation'
 
 import { instanceMotor } from '@/instances/motor'
 import { getUserSession } from '@/utils/auth/get-user-session'
@@ -8,12 +9,23 @@ import { EditablePrimaryLandingPageLayout } from './editable-layout/templates/pr
 import { ReadablePrimaryLandingPageLayout } from './readable-layout/templates/primary'
 import type { OngPageProps } from './types'
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params
+}: OngPageProps): Promise<Metadata> => {
+  const { slug } = await params
+
+  const { data: response } =
+    await instanceMotor.organizations.getOrganizationBySlug({ slug })
+
+  if (!response.organization) {
+    return notFound()
+  }
+
   return getMetaData({
     title: 'Projetos',
     description: 'Projetos',
     image: '',
-    url: '/ongs'
+    url: `/ongs/${slug}`
   })
 }
 

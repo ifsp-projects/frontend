@@ -7,6 +7,10 @@ import { ExportArrowUpRight } from '@vectoricons/atlas-icons-react'
 export const MainInfo = async () => {
   const user = await getUserSession()
 
+  if (!user) {
+    return null
+  }
+
   return (
     <section className="px-4 py-12 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 rounded-md border border-neutral-200 bg-white lg:max-w-7xl">

@@ -1,4 +1,5 @@
-import Masonry from '../../../../../../../components/ui/mansory'
+import Masonry from '@/components/ui/mansory'
+
 import { IMAGES_DATA } from './data'
 
 export const ImagesGrid = async () => {

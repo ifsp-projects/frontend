@@ -27,7 +27,7 @@ export const POST = async (req: NextRequest) => {
           message:
             'Não foi possível concluir o seu cadastro pois faltam informações!'
         },
-        { status: 500 }
+        { status: 400 }
       )
     }
 
@@ -60,6 +60,16 @@ export const POST = async (req: NextRequest) => {
     }
 
     if (street || city || number || postal_code || complement || state) {
+      if (!ong_id) {
+        return NextResponse.json(
+          {
+            message:
+              'ong_id é obrigatório quando informações de endereço são fornecidas!'
+          },
+          { status: 400 }
+        )
+      }
+
       const createdAddress = await instanceMotor.addresses.createAddress({
         payload: {
           city,

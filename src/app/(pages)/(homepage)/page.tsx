@@ -10,7 +10,6 @@ import { Contact } from './sections/contact'
 import { Header } from './sections/header'
 import { Highlights } from './sections/highlights'
 import { MoreInfoAbout } from './sections/more-info-about'
-import { getUserSession } from '@/utils/auth/get-user-session'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -23,11 +22,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Page: NextPage = async () => {
-  const user = await getUserSession()
-
   return (
     <main>
-      <p className="mt-40 pb-40">userdata: {JSON.stringify(user)}</p>
       <Header />
       <PartnersCarousel />
       <Highlights />
