@@ -11,4 +11,5 @@ export type EditableCopyFieldProps<T extends ElementType = 'div'> =
     'data-cid'?: string
     defaultValue: string
     onChange?: (value: unknown) => void
+    path: string
   }
