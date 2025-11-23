@@ -34,6 +34,7 @@ html {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(calc(-350px * 5));
   }
@@ -55,6 +56,7 @@ html {
 }
 
 @media only screen and (max-width: 600px) {
+
   .slider-effect,
   .slider::before,
   .slider::after {
@@ -63,6 +65,7 @@ html {
 }
 
 @media only screen and (min-width: 600px) {
+
   .slider-effect,
   .slider::before,
   .slider::after {
@@ -71,6 +74,7 @@ html {
 }
 
 @media only screen and (min-width: 768px) {
+
   .slider-effect,
   .slider::before,
   .slider::after {
@@ -79,6 +83,7 @@ html {
 }
 
 @media only screen and (min-width: 992px) {
+
   .slider-effect,
   .slider::before,
   .slider::after {
@@ -87,6 +92,7 @@ html {
 }
 
 @media only screen and (min-width: 1200px) {
+
   .slider-effect,
   .slider::before,
   .slider::after {
@@ -134,8 +140,7 @@ html {
 
 .slider .custom-slide {
   padding: 6px;
-  filter: brightness(0) saturate(100%) invert(66%) sepia(14%) saturate(400%)
-    hue-rotate(176deg) brightness(94%) contrast(93%);
+  filter: brightness(0) saturate(100%) invert(66%) sepia(14%) saturate(400%) hue-rotate(176deg) brightness(94%) contrast(93%);
 }
 
 .slider .slide.vertical {
@@ -172,21 +177,17 @@ html {
   right: -1px;
   top: 0;
   transform: rotateZ(180deg);
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 1) 5%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 1) 5%,
+      rgba(255, 255, 255, 0) 100%);
 }
 
 .slider-companies-map::before {
   left: -1px;
   top: 0;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 1) 5%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 1) 5%,
+      rgba(255, 255, 255, 0) 100%);
 }
 
 .slider-companies-map .slide-track {
@@ -210,6 +211,7 @@ html {
     display: flex;
     width: calc(350px * 10);
   }
+
   .slide-track__stop {
     animation-play-state: paused;
   }
@@ -356,7 +358,7 @@ html {
   left: 0;
 }
 
-.item-wrapper > .item-img {
+.item-wrapper>.item-img {
   position: relative;
   background-size: cover;
   background-position: center center;
@@ -440,6 +442,7 @@ html {
 #text {
   cursor: pointer;
 }
+
 #cursor {
   overflow: visible;
   transform: translate3d(300px, 0, 0) scale(1);
@@ -447,15 +450,18 @@ html {
   transform-box: fill-box;
   animation: cursor 5s ease infinite alternate;
 }
+
 @keyframes cursor {
   0% {
     opacity: 0;
     transform: translate3d(300px, 0, 0) scale(1);
   }
+
   30% {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   60% {
     opacity: 1;
     transform: translate3d(-200px, -200px, 0) scale(1);
@@ -466,6 +472,7 @@ html {
     opacity: 1;
     transform: translate3d(-200px, -200px, 0) scale(0.95);
   }
+
   70% {
     opacity: 1;
     transform: translate3d(-200px, -200px, 0) scale(1);
@@ -481,15 +488,35 @@ html {
   opacity: 0;
   animation: box 5s ease infinite alternate;
 }
+
 @keyframes box {
+
   0%,
   60% {
     opacity: 0;
   }
+
   65%,
   100% {
     opacity: 1;
   }
 }
-#text {
+
+#text {}
+
+.ant-empty-image svg {
+  height: 100%;
+  margin: auto;
+}
+
+.ant-empty-img-simple-ellipse {
+  fill: #f5f5f5;
+}
+
+.ant-empty-img-simple-g {
+  stroke: #d9d9d9;
+}
+
+.ant-empty-img-simple-path {
+  fill: #fafafa;
 }
