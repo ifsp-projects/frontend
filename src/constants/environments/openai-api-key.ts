@@ -1,1 +1,1 @@
-export const openAiApk = process.env.OPENAI_API_TOKEN
+export const openAiApk = process.env.OPENAI_API_KEY

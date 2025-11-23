@@ -16,17 +16,30 @@ const openai = new OpenAI({
 
 export const POST = async (req: NextRequest) => {
   try {
-    const { prompt } = await req.json()
+    const body = await req.json()
 
-    if (!prompt) {
+    const { messages } = body
+
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json(
-        { message: 'Prompt is required' },
+        { message: 'Messages are required and must be a non-empty array' },
+        { status: 400 }
+      )
+    }
+
+    const lastMessage = messages[messages.length - 1]
+    const promptContent =
+      typeof lastMessage.content === 'string' ? lastMessage.content : ''
+
+    if (!promptContent || promptContent.trim() === '') {
+      return NextResponse.json(
+        { message: 'Message content is empty' },
         { status: 400 }
       )
     }
 
     const moderation = await openai.moderations.create({
-      input: prompt,
+      input: promptContent,
       model: 'omni-moderation-latest'
     })
 
@@ -38,8 +51,6 @@ export const POST = async (req: NextRequest) => {
           result.categories[category as keyof typeof result.categories]
       )
 
-      console.warn('Blocked content:', triggeredCategories)
-
       return NextResponse.json(
         {
           message: 'Your input violates our content policy.',
@@ -49,20 +60,23 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    const streamResult = streamText({
+    const formattedMessages = messages.map((msg: any) => ({
+      role: msg.role,
+      content: msg.content
+    }))
+
+    const streamResult = await streamText({
       model: openaiProvider('gpt-4o-mini'),
-      messages: [{ role: 'user', content: prompt }]
+      messages: formattedMessages
     })
 
     return streamResult.toTextStreamResponse()
   } catch (error) {
-    console.error({
-      'POST/api/openai/continous-chat': error.message
-    })
+    console.error(error)
 
     return NextResponse.json(
-      { message: error.message },
-      { status: error.statusCode }
+      { message: error?.message || 'Internal server error' },
+      { status: 500 }
     )
   }
 }
