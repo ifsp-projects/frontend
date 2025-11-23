@@ -17,7 +17,6 @@ const openai = new OpenAI({
 export const POST = async (req: NextRequest) => {
   try {
     const body = await req.json()
-    console.log('Received body:', JSON.stringify(body, null, 2))
 
     const { messages } = body
 
@@ -27,12 +26,6 @@ export const POST = async (req: NextRequest) => {
         { status: 400 }
       )
     }
-
-    console.log('Messages count:', messages.length)
-    console.log(
-      'Last message:',
-      JSON.stringify(messages[messages.length - 1], null, 2)
-    )
 
     const lastMessage = messages[messages.length - 1]
     const promptContent =
@@ -45,15 +38,10 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    console.log('Prompt content:', promptContent)
-    console.log('Starting moderation check...')
-
     const moderation = await openai.moderations.create({
       input: promptContent,
       model: 'omni-moderation-latest'
     })
-
-    console.log('Moderation complete')
 
     const result = moderation.results[0]
 
@@ -72,24 +60,16 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    console.log('Starting stream...')
-
     const formattedMessages = messages.map((msg: any) => ({
       role: msg.role,
       content: msg.content
     }))
-
-    console.log(
-      'Formatted messages:',
-      JSON.stringify(formattedMessages, null, 2)
-    )
 
     const streamResult = await streamText({
       model: openaiProvider('gpt-4o-mini'),
       messages: formattedMessages
     })
 
-    console.log('Returning stream response')
     return streamResult.toTextStreamResponse()
   } catch (error) {
     console.error(error)
