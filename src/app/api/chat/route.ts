@@ -74,7 +74,6 @@ export const POST = async (req: NextRequest) => {
 
     console.log('Starting stream...')
 
-    // Format messages for the AI SDK - no conversion needed
     const formattedMessages = messages.map((msg: any) => ({
       role: msg.role,
       content: msg.content
@@ -87,18 +86,13 @@ export const POST = async (req: NextRequest) => {
 
     const streamResult = await streamText({
       model: openaiProvider('gpt-4o-mini'),
-      messages: formattedMessages // Pass directly without convertToCoreMessages
+      messages: formattedMessages
     })
 
     console.log('Returning stream response')
     return streamResult.toTextStreamResponse()
-  } catch (error: any) {
-    console.error('=== API ERROR ===')
-    console.error('Error message:', error?.message)
-    console.error('Error name:', error?.name)
-    console.error('Error stack:', error?.stack)
-    console.error('Full error:', error)
-    console.error('=================')
+  } catch (error) {
+    console.error(error)
 
     return NextResponse.json(
       { message: error?.message || 'Internal server error' },
