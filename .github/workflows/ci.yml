@@ -12,8 +12,19 @@ jobs:
 
     env:
       NEXT_PUBLIC_BASE_URL: "http://localhost:3000"
-      API_BASE_URL: "http://localhost:3030"
+      API_BASE_URL: "http://localhost:8000"
       API_KEY: "dummy"
+      NEXT_PUBLIC_POSTHOG_KEY: "dummy"
+      NEXTAUTH_URL: "http://localhost:3000"
+      NEXTAUTH_URL_INTERNAL: "http://localhost:3000"
+      NEXTAUTH_SECRET: "dummy"
+      GOOGLE_CLIENT_ID: "dummy"
+      GOOGLE_CLIENT_SECRET: "dummy"
+      SECRET_KEY_SSO_TOKEN: "dummy"
+      OPENAI_API_KEY: "dummy"
+      OPENAI_API_TOKEN_BASE_URL: "dummy"
+      OPENAI_ORGANIZATION_ID: "dummy"
+      OPENAI_PROJECT_ID: "dummy"
 
     steps:
       - name: Checkout
