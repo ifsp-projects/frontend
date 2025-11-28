@@ -28,7 +28,7 @@ export const DepoimentCard: FC<DepoimentCardProps> = async ({ copy }) => {
           </div>
         </header>
 
-        <p className="card__job-title">{copy.content}</p>
+        <p className="card__job-title">{copy?.content || ''}</p>
       </section>
 
       <footer className="card__footer">

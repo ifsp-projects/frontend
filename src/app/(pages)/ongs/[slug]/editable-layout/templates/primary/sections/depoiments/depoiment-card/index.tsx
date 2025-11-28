@@ -33,7 +33,7 @@ export const DepoimentCard: FC<DepoimentCardProps> = ({ copy, index }) => {
         <EditableCopyField
           as="p"
           className="card__job-title"
-          defaultValue={copy.content}
+          defaultValue={copy?.content || ''}
           path={`depoiments.cards[${index}].content`}
         />
       </section>
@@ -53,13 +53,13 @@ export const DepoimentCard: FC<DepoimentCardProps> = ({ copy, index }) => {
             <EditableCopyField
               as="p"
               className="text-base font-semibold"
-              defaultValue={copy.author.name}
+              defaultValue={copy?.author?.name}
               path={`depoiments.cards[${index}].author.name`}
             />
             <EditableCopyField
               as="p"
               className="text-sm font-light text-slate-500"
-              defaultValue={copy.author.city}
+              defaultValue={copy?.author?.city}
               path={`depoiments.cards[${index}].author.city`}
             />
           </article>

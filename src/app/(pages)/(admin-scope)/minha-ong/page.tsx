@@ -20,7 +20,7 @@ const Page: NextPage = async () => {
   const user = await getUserSession()
 
   if (!user) {
-    redirect('/')
+    redirect('/login')
   }
 
   return user?.is_user_new ? <NewUserView /> : <DefaultView />
