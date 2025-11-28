@@ -17,11 +17,13 @@ export const MoreInfoAbout: FC<MoreInfoAboutProps> = ({ copy }) => {
               as="h2"
               className="text-2xl font-bold lg:text-3xl"
               defaultValue={copy.title}
+              path="moreInfoAbout.title"
             />
             <EditableCopyField
               as="p"
               className="text-sm lg:text-base"
               defaultValue={copy.description}
+              path="moreInfoAbout.description"
             />
           </article>
           <figure className={`h-[320px] w-full rounded-sm lg:order-1`}>
