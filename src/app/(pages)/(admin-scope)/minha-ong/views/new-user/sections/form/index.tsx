@@ -58,7 +58,7 @@ export const Form: FC = () => {
         organization_profile: responseData.organizationProfile,
         is_user_new: false
       })
-      router.refresh()
+      router.push(`/ongs/${responseData.organizationProfile.slug}`)
     } catch (error) {
       console.error(`Error trying to update organization profile: ${error}`)
       toast.error(
