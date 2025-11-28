@@ -19,7 +19,10 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
       />
       <header className="relative z-40 mx-auto flex w-full max-w-2xl flex-col gap-8 py-12 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:py-20">
         <div className="flex w-full flex-col gap-6 lg:gap-8">
-          <article className="flex w-full max-w-[560px] flex-col gap-4">
+          <article
+            className="flex w-full max-w-[560px] flex-col gap-4"
+            id="header"
+          >
             <EditableCopyField
               as="span"
               className="w-fit rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-500 backdrop-blur-[10px] transition duration-200"

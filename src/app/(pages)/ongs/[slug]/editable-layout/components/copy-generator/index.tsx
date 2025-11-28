@@ -32,7 +32,6 @@ export const CopyGenerator: FC = () => {
   const [error, setError] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // Auto-scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
@@ -177,13 +176,14 @@ export const CopyGenerator: FC = () => {
     }
   }
 
-  console.log('RENDER - Messages:', messages.length, messages)
-
   return (
     <div className="fixed right-8 bottom-8 z-30">
       <Drawer direction="right">
         <DrawerTrigger asChild>
-          <button className="flex cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r from-rose-700 to-rose-500 px-4 py-2 shadow transition-all duration-200 hover:brightness-110">
+          <button
+            className="flex cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r from-rose-700 to-rose-500 px-4 py-2 shadow transition-all duration-200 hover:brightness-110"
+            id="copy-generator"
+          >
             <p className="text-sm font-medium text-white xl:text-base">
               Gerar texto automaticamente
             </p>

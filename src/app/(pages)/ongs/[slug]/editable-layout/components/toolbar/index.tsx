@@ -54,6 +54,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
             console.log('futuramente abril modal de suporte aqui')
           }}
           className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
+          id="eye"
           type="button"
         >
           <Eye className="h-5 w-5 text-neutral-50" />
@@ -63,6 +64,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
             console.log('futuramente abril modal de suporte aqui')
           }}
           className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
+          id="dashboard"
           type="button"
         >
           <ArrowUpGraph className="h-5 w-5 text-neutral-50" />
@@ -72,6 +74,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
             console.log('futuramente abril modal de suporte aqui')
           }}
           className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
+          id="review"
           type="button"
         >
           <DashboardPerformance className="h-5 w-5 text-neutral-50" />
@@ -81,6 +84,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
             console.log('futuramente abril modal de suporte aqui')
           }}
           className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
+          id="theme"
           type="button"
         >
           <Sunny className="h-5 w-5 text-neutral-50" />
@@ -89,6 +93,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
       <div className="w-auto px-2">
         <button
           className="cursor-pointer rounded-sm border border-white px-3 py-1.5 text-sm font-medium text-white transition-all duration-200 hover:bg-neutral-50 hover:text-neutral-700"
+          id="save"
           onClick={() => handleSave()}
           type="button"
         >

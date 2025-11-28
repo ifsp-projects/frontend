@@ -2,15 +2,12 @@
 
 import { signIn } from 'next-auth/react'
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
 import { type FC, useState } from 'react'
 
 import { Google } from '@/assets/socials/google'
 import Beams from '@/components/ui/beams'
 
 export const Header: FC = () => {
-  const searchParams = useSearchParams()
-
   const [isLoadingSubmit, setIsLoadingSubmit] = useState({
     google: false
   })
@@ -21,22 +18,7 @@ export const Header: FC = () => {
       google: true
     }))
 
-    const inviteToken = searchParams.get('inviteToken')
-    const hasInviteToken = Boolean(inviteToken)
-
-    if (hasInviteToken) {
-      await fetch('/api/invites/set-invite-cookie', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          inviteToken
-        })
-      })
-    }
-
-    await signIn('google')
+    await signIn('google', { callbackUrl: '/minha-ong' })
   }
 
   return (
