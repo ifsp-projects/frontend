@@ -74,6 +74,14 @@ export const Navbar: FC = () => {
                 Projetos
               </Link>
             </li>
+            <li>
+              <Link
+                className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
+                href="/faq"
+              >
+                FAQ
+              </Link>
+            </li>
           </ul>
 
           {organization ? (
