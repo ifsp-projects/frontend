@@ -4,6 +4,7 @@ import Image from 'next/image'
 import type { FC } from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
 
 import type { HeaderProps } from './types'
 
@@ -56,11 +57,19 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
           </div>
         </div>
         <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
-          <Image
+          {/* <Image
             alt="Hero Image"
             className="w-full object-cover"
             height={800}
             src="/templates/undraw_different-love_58hd.svg"
+            width={800}
+          /> */}
+          <EditableImageField
+            alt="Hero Background"
+            className="h-full w-full"
+            defaultValue={copy.heroImage}
+            height={800}
+            path="header.heroImage"
             width={800}
           />
         </figure>

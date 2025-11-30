@@ -11,6 +11,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^2.0.71",
     "@ai-sdk/react": "^2.0.100",
+    "@cloudinary/react": "^1.14.3",
     "@hookform/resolvers": "^5.2.2",
     "@nanostores/react": "git+https://github.com/ai/react.git",
     "@radix-ui/react-dialog": "^1.1.15",
@@ -23,6 +24,7 @@
     "axios": "^1.12.2",
     "bootstrap": "^5.3.8",
     "class-variance-authority": "^0.7.1",
+    "cloudinary": "^2.8.0",
     "clsx": "^2.1.1",
     "driver.js": "^1.4.0",
     "framer-motion": "^12.23.24",
@@ -34,6 +36,7 @@
     "motion": "^12.23.24",
     "next": "15.5.4",
     "next-auth": "^4.24.13",
+    "next-cloudinary": "^6.17.5",
     "ogl": "^1.0.11",
     "openai": "^6.9.1",
     "posthog-js": "^1.281.0",

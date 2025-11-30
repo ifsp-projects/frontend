@@ -26,7 +26,7 @@ export const EditablePrimaryLandingPageLayout: FC<
       <Details copy={data?.page?.sections?.details} />
       <ImagesGrid copy={data?.page?.sections?.imagesGrid} />
       <MoreInfoAbout copy={data?.page?.sections?.moreInfoAbout} />
-      <Mission />
+      <Mission copy={data?.page?.sections?.ourMission} />
       <Depoiments copy={data?.page?.sections?.depoiments} />
       <FAQ color="emerald" copy={data?.page?.sections?.faq} />
       <Toolbar id={data?.page?.id} slug={slug} />

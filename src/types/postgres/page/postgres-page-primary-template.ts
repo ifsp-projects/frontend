@@ -2,6 +2,7 @@ export interface PostgresPagePrimaryTemplate {
   depoiments: {
     title: string
     description: string
+    heroImage: string
     cards: {
       content: string
       author: {
@@ -31,6 +32,7 @@ export interface PostgresPagePrimaryTemplate {
     title: string
     description: string
     anchor: string
+    heroImage: string
   }
   imagesGrid: {
     title: string
@@ -39,5 +41,15 @@ export interface PostgresPagePrimaryTemplate {
   moreInfoAbout: {
     title: string
     description: string
+    heroImage: string
+  }
+  ourMission: {
+    title: string
+    subtitle: string
+    description: string
+    tabs: {
+      title: string
+      description: string
+    }[]
   }
 }
