@@ -1,6 +1,7 @@
 import './globals.css'
 
 import { getServerSession } from 'next-auth'
+import { Toaster } from 'sonner'
 
 import { Footer } from '@/components/shared/footer'
 import { Navbar } from '@/components/shared/navbar'
@@ -28,6 +29,7 @@ export default async function RootLayout({
             <Navbar />
             <main className="overflow-x-hidden">{children}</main>
             <Footer />
+            <Toaster />
           </NextAuthProvider>
         </PostHogProvider>
       </body>

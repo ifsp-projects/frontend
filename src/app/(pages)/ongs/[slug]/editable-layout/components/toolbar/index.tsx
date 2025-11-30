@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import type { FC } from 'react'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 
 import { useUserSession } from '@/hooks/use-user-session'
 import { usePageBuilderStore } from '@/stores/page-builder-store'
@@ -31,9 +31,13 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
         sections: currentSections,
         token
       })
-      toast.success('Página salva com sucesso!')
+      toast.success('Página salva com sucesso!', {
+        position: 'top-center'
+      })
     } catch (savePageCopiesError) {
-      toast.error(savePageCopiesError)
+      toast.error(savePageCopiesError, {
+        position: 'top-center'
+      })
     }
   }
 

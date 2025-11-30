@@ -19,8 +19,8 @@ export const Header: FC = () => {
           Projeto de Extensão
         </span>
         <h1 className="text-center text-2xl font-bold text-white lg:text-4xl xl:text-5xl">
-          Temos orgulho em impulsionar causas <br />
-          que transformam o mundo
+          Crie páginas profissionais e conquiste
+          <br /> mais apoio para sua causa.
         </h1>
         <div className="flex w-full items-center justify-center gap-4">
           <Link

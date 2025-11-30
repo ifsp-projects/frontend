@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 
 import { useUserSession } from '@/hooks/use-user-session'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -48,11 +48,15 @@ export const Form: FC = () => {
       const responseData = await response.data
 
       if (response.status !== 201) {
-        toast.error(responseData.message)
+        toast.error(responseData.message, {
+          position: 'top-center'
+        })
         return
       }
 
-      toast.success(responseData.message)
+      toast.success(responseData.message, {
+        position: 'top-center'
+      })
       console.log(responseData)
       await update({
         organization_profile: responseData.organizationProfile,
@@ -62,7 +66,10 @@ export const Form: FC = () => {
     } catch (error) {
       console.error(`Error trying to update organization profile: ${error}`)
       toast.error(
-        'Ocorreu um erro ao criar o perfil da organização. Por favor, tente novamente.'
+        'Ocorreu um erro ao criar o perfil da organização. Por favor, tente novamente.',
+        {
+          position: 'top-center'
+        }
       )
     }
   }

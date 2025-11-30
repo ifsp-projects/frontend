@@ -15,12 +15,14 @@ export const Projects: FC = () => {
             className="cursor-pointer overflow-hidden rounded-sm border border-neutral-200 bg-neutral-100"
             key={`${project.title}-${index}`}
           >
-            <Link href={`/projects/${project.id}`}>
-              <figure className="relative h-48 w-full bg-white p-4">
+            <Link className="group" href={`/projetos/${project.id}`}>
+              <figure className="relative h-48 w-full overflow-hidden bg-white p-4">
                 <Image
                   alt={project.title}
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-contain transition-all duration-300"
+                  fetchPriority="high"
                   height={720}
+                  loading="eager"
                   src={project.image}
                   width={1080}
                 />
@@ -28,9 +30,9 @@ export const Projects: FC = () => {
               <article className="flex flex-col gap-2 bg-neutral-100 px-4 pt-6 pb-4">
                 <h2 className="text-xl font-semibold">{project.title}</h2>
                 <p className="text-neutral-600">{project.description}</p>
-                <p className="flex items-center gap-2 text-rose-500">
+                <p className="flex items-center gap-2 text-rose-500 transition-all duration-300 hover:brightness-110">
                   Ler mais sobre{' '}
-                  <ArrowRight className="h-4 w-4 text-rose-500" />
+                  <ArrowRight className="h-4 w-4 text-rose-500 transition-all duration-300 hover:brightness-110" />
                 </p>
               </article>
             </Link>

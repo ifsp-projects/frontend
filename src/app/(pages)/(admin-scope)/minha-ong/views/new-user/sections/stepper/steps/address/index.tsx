@@ -2,7 +2,7 @@
 
 import type { FC } from 'react'
 import { Controller } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 
 import { formatPostalCode } from '@/utils/helpers/format-postal-code'
 import { tryCatch } from '@/utils/helpers/try-catch'
@@ -23,7 +23,10 @@ export const Address: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
     if (request.error) {
       console.error(request.error)
       toast.error(
-        'Houve um erro ao encontrar as informações referentes ao endereço do estabelecimento'
+        'Houve um erro ao encontrar as informações referentes ao endereço do estabelecimento',
+        {
+          position: 'top-center'
+        }
       )
       return
     }

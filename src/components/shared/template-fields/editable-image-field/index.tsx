@@ -28,8 +28,6 @@ export const EditableImageField: FC<EditableImageFieldProps> = ({
   }, [defaultValue])
 
   const handleSuccess = (result: CloudinaryUploadWidgetResults) => {
-    console.log('Resultado do Cloudinary:', result)
-
     if (
       typeof result.info === 'object' &&
       result.info !== null &&
