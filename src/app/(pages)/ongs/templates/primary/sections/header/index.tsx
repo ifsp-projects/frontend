@@ -32,7 +32,7 @@ export const Header = async () => {
             Quero saber mais
           </Link>
           <div className="flex items-center gap-1">
-            <p className="text-xs text-slate-500">Powered by</p>
+            <p className="text-xs text-slate-500">Com apoio de</p>
             <p className="text-sm font-semibold text-slate-600">
               Capivara Solidária
             </p>

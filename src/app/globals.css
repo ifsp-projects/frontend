@@ -2,6 +2,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@import "driver.js/dist/driver.css";
+
 @custom-variant dark (&:is(.dark *));
 
 html {
@@ -519,4 +521,67 @@ html {
 
 .ant-empty-img-simple-path {
   fill: #fafafa;
+}
+
+.driver-popover {
+  max-width: 420px !important;
+  padding-top: 32px !important;
+  padding-left: 24px !important;
+  padding-right: 32px !important;
+  padding-bottom: 32px !important;
+}
+
+.driver-popover-close-btn {
+  font-size: 26px !important;
+}
+
+.driver-popover-title {
+  font-size: 24px !important;
+}
+
+.driver-popover-description {
+  font-size: 15px;
+  color: #737373;
+}
+
+.driver-popover-prev-btn {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  font-size: 14px !important;
+  text-align: center !important;
+  background: white !important;
+  border: 1px solid #404040 !important;
+  color: 404040 !important;
+  border-radius: 2px !important;
+}
+
+
+.driver-popover-next-btn {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  font-size: 14px !important;
+  text-align: center !important;
+  background: #404040 !important;
+  border: 0 !important;
+  color: white !important;
+  border-radius: 2px !important;
+  transition-timing-function: ease-in-out !important;
+  transition-duration: 0.2s !important;
+  transition-property: all !important;
+}
+
+.driver-popover-footer {
+  margin-top: 20px !important;
+}
+
+.driver-popover-next-btn:hover {
+  background: #2e2e2e !important;
+}
+
+.driver-popover-navigation-btns button {
+  text-shadow: none !important;
 }

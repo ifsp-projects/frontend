@@ -8,8 +8,10 @@ import { Members } from './sections/members'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
-    title: 'Conheça mais sobre nós',
-    description: 'Conheça mais sobre nós',
+    title:
+      'Sobre a Capivara Solidário | Inovação Digital para ONGs Brasileiras',
+    description:
+      'Conheça a Capivara Solidário, uma plataforma feita para fortalecer ONGs com páginas profissionais, acessíveis e prontas para captar mais apoio.',
     image: '',
     url: '/sobre'
   })

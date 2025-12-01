@@ -1,6 +1,5 @@
 import type { TokenSet } from 'next-auth'
 import type { GoogleProfile } from 'next-auth/providers/google'
-import { redirect } from 'next/navigation'
 
 import { ACCESS_TOKEN_EXPIRES_SECONDS } from '@/constants/auth/access-token-expires-seconds'
 import { account } from '@/instances/account'
@@ -25,8 +24,6 @@ export const googleOptions = {
     }
 
     const { data } = response
-
-    await redirect('/minha-ong')
 
     return {
       ...data.organization,

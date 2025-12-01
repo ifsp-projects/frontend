@@ -4,8 +4,7 @@ export const TEAM_MEMBERS: MemberData[] = [
   {
     name: 'Gabriel Ortona',
     job_title: 'Analista de Dados',
-    thumb:
-      'https://media.licdn.com/dms/image/v2/D4D03AQGvD1ymFgqM-A/profile-displayphoto-shrink_200_200/B4DZTbFCmeHIAY-/0/1738842319787?e=1762387200&v=beta&t=tOlPaXf9L82unkUb_0Z3t_cewnztuGa7t0F7IV3XenI',
+    thumb: 'https://avatars.githubusercontent.com/u/111311744?v=4',
     urls: {
       linkedin:
         'https://www.linkedin.com/in/gabriel-gardeazabal-ortona-8332511ab/',
@@ -15,8 +14,7 @@ export const TEAM_MEMBERS: MemberData[] = [
   {
     name: 'Higor Figueiredo',
     job_title: 'Desenvolvedor de Controles Internos',
-    thumb:
-      'https://media.licdn.com/dms/image/v2/D4E03AQE08uw5Ut5CQg/profile-displayphoto-shrink_200_200/B4EZS.NEycHMAY-/0/1738357887873?e=1762387200&v=beta&t=Jhpa8JHy9mYKElaKfgBPCS1hTtRAfrmuid7lSf-ub50',
+    thumb: 'https://avatars.githubusercontent.com/u/166459334?v=4',
     urls: {
       linkedin: 'https://www.linkedin.com/in/higor-matias-7905262aa/',
       github: 'https://github.com/higorx019',
@@ -36,8 +34,7 @@ export const TEAM_MEMBERS: MemberData[] = [
   {
     name: 'Matheus Rocha',
     job_title: 'Desenvolvedor Backend',
-    thumb:
-      'https://media.licdn.com/dms/image/v2/D4D03AQGHNKgUqHEa4A/profile-displayphoto-shrink_200_200/B4DZbpHR5nIEAY-/0/1747667722332?e=1762387200&v=beta&t=h7qfmunIgCO9ukt_WdV_EKCtWqGnxtaRjWhXZHVKlew',
+    thumb: 'https://avatars.githubusercontent.com/u/159070076?v=4',
     urls: {
       linkedin: 'https://www.linkedin.com/in/matheus-rocha-45a077300/',
       github: 'https://github.com/rocha985'
@@ -56,7 +53,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     name: 'Vitor Gabriel',
     job_title: 'Desenvolvedor Frontend',
     thumb:
-      'https://media.licdn.com/dms/image/v2/D4D03AQF6K2OCC4bBTA/profile-displayphoto-crop_800_800/B4DZoBzl_LH0AI-/0/1760966893968?e=1762387200&v=beta&t=ReCL_XdM7hyT8nh5iU8E2iYoDedxsD8woXc0XE9ZEoM',
+      'https://media.licdn.com/dms/image/v2/D4D03AQF6K2OCC4bBTA/profile-displayphoto-scale_200_200/B4DZoBzl_LH0AY-/0/1760966894057?e=1766016000&v=beta&t=yW7ooeMc0WJRYu8ZL_fFL4Wp-_lABAbzZg8gLIunsy0',
     urls: {
       linkedin: 'https://www.linkedin.com/in/vitor-silva-0ab38a261/',
       github: 'https://github.com/vitingr'

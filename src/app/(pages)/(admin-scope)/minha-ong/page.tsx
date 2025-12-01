@@ -9,8 +9,9 @@ import { NewUserView } from './views/new-user'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
-    title: 'Projetos',
-    description: 'Projetos',
+    title: 'Meu Perfil | Capivara Solidária',
+    description:
+      'Gerencie as informações, imagens e campanhas da sua ONG em um só lugar. Edite seu perfil e mostre o impacto do seu trabalho.',
     image: '',
     url: '/minha-ong'
   })
@@ -20,7 +21,7 @@ const Page: NextPage = async () => {
   const user = await getUserSession()
 
   if (!user) {
-    redirect('/')
+    redirect('/login')
   }
 
   return user?.is_user_new ? <NewUserView /> : <DefaultView />

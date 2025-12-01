@@ -2,8 +2,8 @@
 
 import type { FC } from 'react'
 
-import { PeopleGroup } from '@/app/(pages)/sobre/icons/people-group'
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableIconField } from '@/components/shared/template-fields/editable-icon-field'
 
 import type { DetailsProps } from './types'
 
@@ -32,7 +32,11 @@ export const Details: FC<DetailsProps> = ({ copy }) => {
               key={`${tab.title}-${index}`}
             >
               <figure className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50">
-                <PeopleGroup className="h-4 w-4 text-emerald-600" />
+                {/* <PeopleGroup className="h-4 w-4 text-emerald-600" /> */}
+                <EditableIconField
+                  iconClassName="h-4 w-4 text-emerald-600"
+                  path={`details.tabs[${index}].icon`}
+                />
               </figure>
               <article className="flex w-full flex-col gap-1">
                 <EditableCopyField

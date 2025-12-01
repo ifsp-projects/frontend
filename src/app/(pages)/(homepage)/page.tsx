@@ -13,11 +13,12 @@ import { MoreInfoAbout } from './sections/more-info-about'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
-    title: 'Divulgue Sua ONG com a gente | Plataforma de Impacto Social',
+    title:
+      'Capivara Solidário | Crie Landing Pages Profissionais para ONGs em Minutos',
     description:
-      'Aumente a visibilidade da sua ONG com a gente. Crie páginas profissionais, compartilhe suas campanhas e conecte-se com apoiadores que acreditam na sua causa. Fortaleça seu impacto social e transforme mais vidas por meio da divulgação digital.',
+      'Transforme a presença digital da sua ONG com o Capivara Solidário. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade — sem precisar de programador.',
     image: '',
-    url: '/'
+    url: '  /'
   })
 }
 

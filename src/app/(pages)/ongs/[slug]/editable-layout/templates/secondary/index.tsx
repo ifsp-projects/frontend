@@ -11,11 +11,11 @@ export const SecondaryLandingPageLayout: FC = async () => {
   return (
     <main className="text-slate-700 selection:!bg-blue-50 selection:text-blue-600">
       <Header />
-      <ImagesGrid />
+      <ImagesGrid copy={{ description: '', title: '' }} />
       <HowItWorks />
       <MoreInfoAbout />
       <AboutUs />
-      <FAQ color="blue" />
+      <FAQ color="blue" copy={{ anchor: '', questions: [] }} />
     </main>
   )
 }

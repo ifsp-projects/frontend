@@ -2,8 +2,8 @@
 
 import { type FC, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { toast } from 'react-toastify'
 import rehypeRaw from 'rehype-raw'
+import { toast } from 'sonner'
 
 import { Check } from '../../icons/check'
 import { Copy } from '../../icons/copy'
@@ -23,7 +23,9 @@ export const AssistantMessage: FC<AssistantMessageProps> = ({ message }) => {
       setTimeout(() => {
         setIsCopied(false)
       }, 2000)
-      toast.info('A mensagem foi copiada!')
+      toast.info('A mensagem foi copiada!', {
+        position: 'top-center'
+      })
     } catch (err) {
       console.error('Falha ao copiar:', err)
     }

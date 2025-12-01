@@ -88,7 +88,7 @@ export const BasicInfo: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
       <div className="flex w-full items-center gap-4 lg:justify-between">
         <div className="item-center flex w-full justify-start">
           <button
-            className="cursor-not-allowed rounded-sm bg-neutral-700 px-6 py-2 text-sm font-semibold text-white transition-all duration-150 disabled:opacity-75 lg:text-base"
+            className="cursor-not-allowed rounded-sm bg-neutral-500 px-6 py-2 text-sm font-semibold text-white transition-all duration-150 disabled:opacity-75 lg:text-base"
             onClick={prevStep}
             disabled
           >

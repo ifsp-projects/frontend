@@ -1,41 +1,42 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
+
+import { ArrowRight } from '@vectoricons/atlas-icons-react'
 
 import { PROJECTS_DATA } from './data'
 
 export const Projects: FC = () => {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-12">
-      <div className="grid-cols-3 gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid">
+    <section className="mx-auto max-w-6xl px-4 py-12 lg:py-16 xl:px-0">
+      <div className="grid-cols-3 gap-8 sm:grid-cols-1 md:grid-cols-3 lg:grid">
         {PROJECTS_DATA.map((project, index: number) => (
-          <motion.div
-            className="cursor-pointer overflow-hidden rounded-xl bg-white shadow-md transition-shadow hover:shadow-xl"
-            initial={{ opacity: 0, y: 20 }}
+          <div
+            className="cursor-pointer overflow-hidden rounded-sm border border-neutral-200 bg-neutral-100"
             key={`${project.title}-${index}`}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.03 }}
-            whileInView={{ opacity: 1, y: 0 }}
           >
-            <Link href={`/projects/${project.id}`}>
-              <figure className="relative h-48 w-full">
+            <Link className="group" href={`/projetos/${project.id}`}>
+              <figure className="relative h-48 w-full overflow-hidden bg-white p-4">
                 <Image
                   alt={project.title}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain transition-all duration-300"
+                  fetchPriority="high"
+                  height={720}
+                  loading="eager"
                   src={project.image}
-                  fill
+                  width={1080}
                 />
               </figure>
-              <div className="p-4">
-                <h2 className="mb-2 text-xl font-semibold">{project.title}</h2>
+              <article className="flex flex-col gap-2 bg-neutral-100 px-4 pt-6 pb-4">
+                <h2 className="text-xl font-semibold">{project.title}</h2>
                 <p className="text-neutral-600">{project.description}</p>
-              </div>
+                <p className="flex items-center gap-2 text-rose-500 transition-all duration-300 hover:brightness-110">
+                  Ler mais sobre{' '}
+                  <ArrowRight className="h-4 w-4 text-rose-500 transition-all duration-300 hover:brightness-110" />
+                </p>
+              </article>
             </Link>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import type { FC } from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
 
 import type { HeaderProps } from './types'
 
@@ -19,7 +20,10 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
       />
       <header className="relative z-40 mx-auto flex w-full max-w-2xl flex-col gap-8 py-12 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:py-20">
         <div className="flex w-full flex-col gap-6 lg:gap-8">
-          <article className="flex w-full max-w-[560px] flex-col gap-4">
+          <article
+            className="flex w-full max-w-[560px] flex-col gap-4"
+            id="header"
+          >
             <EditableCopyField
               as="span"
               className="w-fit rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-500 backdrop-blur-[10px] transition duration-200"
@@ -46,18 +50,26 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
             path="header.anchor"
           />
           <div className="flex items-center gap-1">
-            <p className="text-xs text-slate-500">Powered by</p>
+            <p className="text-xs text-slate-500">Com apoio de</p>
             <p className="text-sm font-semibold text-slate-600">
               Capivara Solidária
             </p>
           </div>
         </div>
         <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
-          <Image
+          {/* <Image
             alt="Hero Image"
             className="w-full object-cover"
             height={800}
             src="/templates/undraw_different-love_58hd.svg"
+            width={800}
+          /> */}
+          <EditableImageField
+            alt="Hero Background"
+            className="h-full w-full"
+            defaultValue={copy.heroImage}
+            height={800}
+            path="header.heroImage"
             width={800}
           />
         </figure>

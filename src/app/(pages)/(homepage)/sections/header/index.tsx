@@ -19,19 +19,19 @@ export const Header: FC = () => {
           Projeto de Extensão
         </span>
         <h1 className="text-center text-2xl font-bold text-white lg:text-4xl xl:text-5xl">
-          Temos orgulho em impulsionar causas <br />
-          que transformam o mundo
+          Crie páginas profissionais e conquiste
+          <br /> mais apoio para sua causa.
         </h1>
         <div className="flex w-full items-center justify-center gap-4">
           <Link
             className="cursor-pointer rounded-full border border-white bg-white px-6 py-2 text-sm font-medium text-neutral-700 backdrop-blur-[10px] transition duration-200"
-            href="#"
+            href="/minha-ong"
           >
             Quero participar
           </Link>
           <Link
             className="cursor-pointer rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm font-medium text-white backdrop-blur-[10px] transition-all duration-300 hover:brightness-110"
-            href="#"
+            href="/sobre"
           >
             Saber mais
           </Link>

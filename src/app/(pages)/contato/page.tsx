@@ -7,8 +7,9 @@ import { Header } from './sections/header'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
-    title: 'Contato',
-    description: 'Contato',
+    title: 'Fale Conosco | Capivara Solidária',
+    description:
+      'Entre em contato com a equipe Capivara Solidário. Tire dúvidas, envie sugestões ou saiba como potencializar sua ONG com nossas soluções.',
     image: '',
     url: '/contato'
   })

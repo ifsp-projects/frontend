@@ -1,5 +1,6 @@
 'use client'
 
+import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -9,7 +10,6 @@ import { useState } from 'react'
 import { useUserSession } from '@/hooks/use-user-session'
 
 import { HamburgerButton } from '../hamburger-button'
-import { signOut } from 'next-auth/react'
 
 /**
  * Navbar - Main navigation component with responsive design.
@@ -72,6 +72,14 @@ export const Navbar: FC = () => {
                 href="/projetos"
               >
                 Projetos
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
+                href="/faq"
+              >
+                FAQ
               </Link>
             </li>
           </ul>
