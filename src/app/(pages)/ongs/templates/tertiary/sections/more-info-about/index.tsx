@@ -1,11 +1,10 @@
 import Image from 'next/image'
-import type { FC } from 'react'
 
 import { STEPS_COPIES } from './data'
 
-export const MoreInfoAbout: FC = () => {
+export const MoreInfoAbout = () => {
   return (
-    <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
+    <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-8">
         {STEPS_COPIES.map((section, index: number) => (
           <div
@@ -32,7 +31,7 @@ export const MoreInfoAbout: FC = () => {
                 alt="Section Image"
                 className="h-[320px] w-full rounded-sm object-cover"
                 height={1080}
-                src={section.image}
+                src="https://images.ctfassets.net/kftzwdyauwt9/4pZ1y9pOSiiyrm99zhBAzH/6bc57658ced65b6e97b4744b539703e7/oai_GA_Stories_1.1.png?w=3840&q=90&fm=webp"
                 width={1920}
               />
             </figure>

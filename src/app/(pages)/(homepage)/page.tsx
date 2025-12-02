@@ -31,7 +31,6 @@ const Page: NextPage = async () => {
       <MoreInfoAbout />
       <Benefits />
       <HowItWorks />
-      <AboutTheProject />
       <Contact />
     </main>
   )
