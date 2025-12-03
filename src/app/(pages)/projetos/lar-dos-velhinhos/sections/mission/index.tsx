@@ -1,8 +1,8 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import type { FC } from 'react'
-
-import { Donations } from './donations'
 
 export const Mission: FC = () => {
   return (
@@ -27,15 +27,15 @@ export const Mission: FC = () => {
       </motion.div>
 
       <motion.div
-        className="grid items-center gap-8 md:grid-cols-2"
+        className="grid items-center gap-10 md:grid-cols-2"
         initial={{ opacity: 0, x: -40 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
         whileInView={{ opacity: 1, x: 0 }}
       >
-        <article>
-          <h2 className="mb-3 text-2xl font-semibold text-blue-800">
-            História
+        <article className="flex flex-col items-center justify-center">
+          <h2 className="mb-3 text-center text-3xl font-semibold text-blue-800">
+            Nossa história
           </h2>
           <p className="text-justify leading-relaxed">
             Fundado em 21 de junho de 1935, o Lar dos Velhinhos São Vicente de
@@ -59,8 +59,6 @@ export const Mission: FC = () => {
           />
         </figure>
       </motion.div>
-
-      <Donations />
     </section>
   )
 }

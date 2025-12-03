@@ -26,7 +26,7 @@ export const Highlights: FC = () => {
                 alt={project.alt}
                 className="aspect-video w-full rounded-sm object-cover"
                 height={1080}
-                src="https://images.ctfassets.net/kftzwdyauwt9/3yPmQbqpiSyX7QyOR1axCy/7059c63fa6617789a9c00ca0d36c6d4a/oai_GA_Stories_1.1.png?w=1920&q=90&fm=webp"
+                src={project.image}
                 width={1920}
               />
               <article className="flex w-full flex-col">
