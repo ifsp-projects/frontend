@@ -33,7 +33,7 @@ export const Footer: FC = () => {
       </div>
       <div className="mx-auto flex w-full max-w-3xl items-center gap-6 pt-4 md:pt-6 lg:max-w-6xl">
         <p className="w-full text-[13px] font-light sm:text-xs lg:text-sm">
-          Copyright © 2025 Projeto Campanha Solidária All rights reserved.
+          Copyright © 2025 Projeto Capivara Solidária All rights reserved.
         </p>
         <p className="w-full text-right text-[13px] font-light sm:text-xs lg:text-sm">
           Brazil

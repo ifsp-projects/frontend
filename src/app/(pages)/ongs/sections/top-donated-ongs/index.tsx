@@ -35,7 +35,7 @@ export const TopDonatedOngs: FC = async () => {
                   <p className="text-neutral-600">{project.description}</p>
                   <p className="group flex items-center gap-2 text-rose-500 transition-all duration-300 hover:brightness-110">
                     Ler mais sobre{' '}
-                    <ArrowRight className="h-4 w-4 text-rose-500 transition-all duration-300 group-hover:translate-x-2 group-hover:brightness-110" />
+                    <ArrowRight className="h-4 w-4 text-rose-500 transition-all duration-300 group-hover:translate-x-1 group-hover:brightness-110" />
                   </p>
                 </article>
               </Link>

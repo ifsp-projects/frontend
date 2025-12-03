@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${font.className} text-neutral-700 selection:bg-rose-50`}
+        className={`${font.className} text-neutral-700 selection:bg-rose-50 selection:text-neutral-700`}
       >
         <PostHogProvider>
           <NextAuthProvider session={session}>

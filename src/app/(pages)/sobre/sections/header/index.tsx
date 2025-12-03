@@ -21,31 +21,37 @@ export const Header: FC = async () => {
           </p>
         </article>
         <div className="mx-auto flex h-auto max-w-2xl flex-col items-stretch gap-4 lg:max-w-5xl lg:flex-row lg:gap-6">
-          <figure className="aspect-square h-auto w-full rounded-sm">
+          <figure className="group aspect-square h-auto w-full overflow-hidden rounded-sm">
             <Image
               alt="Header Image"
-              className="aspect-square h-full w-full rounded-sm object-cover"
+              className="aspect-square h-full w-full scale-[1.01] rounded-sm object-cover transition-all duration-300 group-hover:scale-100"
+              fetchPriority="high"
               height={1080}
+              loading="eager"
               src="/images/olhos.webp"
               width={1920}
             />
           </figure>
           <div className="flex h-auto flex-col gap-4 lg:gap-6">
-            <figure className="aspect-video h-full max-h-[490px] w-full rounded-sm pl-5">
+            <figure className="group aspect-video h-full max-h-[490px] w-full overflow-hidden rounded-sm">
               <Image
                 alt="Header Image"
-                className="aspect-video h-full w-full rounded-sm object-cover"
+                className="aspect-video h-full w-full scale-[1.01] rounded-sm object-cover transition-all duration-300 group-hover:scale-100"
+                fetchPriority="high"
                 height={1080}
+                loading="eager"
                 src="/images/boy.webp"
                 width={1920}
               />
             </figure>
-            <figure className="aspect-video h-full max-h-[490px] w-full rounded-sm">
+            <figure className="group aspect-video h-full max-h-[490px] w-full overflow-hidden rounded-sm">
               <Image
                 alt="Header Image"
-                className="aspect-video h-full w-full rounded-sm object-cover"
+                className="aspect-video h-full w-full scale-[1.01] rounded-sm object-cover transition-all duration-300 group-hover:scale-100"
+                fetchPriority="high"
                 height={1080}
-                src="/images/muro.webp"
+                loading="eager"
+                src="https://deaf1.com.br/wp-content/uploads/2023/03/causas-sociais-e-ambientais.jpg"
                 width={1920}
               />
             </figure>

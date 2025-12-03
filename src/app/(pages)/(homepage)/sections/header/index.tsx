@@ -22,6 +22,11 @@ export const Header: FC = () => {
           Crie páginas profissionais e conquiste
           <br /> mais apoio para sua causa.
         </h1>
+        <p className="text-center text-sm text-white lg:text-base">
+          Com o Capivara Solidária, sua ONG pode gerar landing pages completas,
+          editar textos, imagens e ícones e <br className="hidden lg:block" />{' '}
+          se destacar entre as demais — em poucos minutos.
+        </p>
         <div className="flex w-full items-center justify-center gap-4">
           <Link
             className="cursor-pointer rounded-full border border-white bg-white px-6 py-2 text-sm font-medium text-neutral-700 backdrop-blur-[10px] transition duration-200"
@@ -30,10 +35,10 @@ export const Header: FC = () => {
             Quero participar
           </Link>
           <Link
-            className="cursor-pointer rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm font-medium text-white backdrop-blur-[10px] transition-all duration-300 hover:brightness-110"
-            href="/sobre"
+            className="cursor-pointer rounded-full border border-white bg-white/5 px-6 py-2 text-sm font-medium text-white backdrop-blur-[10px] transition-all duration-300 hover:brightness-110"
+            href="/ongs"
           >
-            Saber mais
+            Ver projetos
           </Link>
         </div>
       </header>

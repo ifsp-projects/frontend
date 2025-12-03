@@ -13,7 +13,7 @@ export const Mission: FC = () => {
             educação e oportunidades de desenvolvimento integral para crianças e
             adolescentes em situação de vulnerabilidade. A instituição atua
             promovendo o fortalecimento dos vínculos familiares, a inclusão
-            social e a construção de um futuro mais justo e solidário.
+            social e a construção de um futuro mais justo e solidária.
           </p>
         </div>
       </article>

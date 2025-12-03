@@ -14,18 +14,18 @@ export const BENEFITS_CARDS = [
     alt: 'Conquiste Doadores'
   },
   {
-    name: 'Transparência e Credibilidade',
-    description:
-      'Ao divulgar relatórios, fotos e histórias em uma landing page, sua organização mostra transparência e conquista confiança. Isso aumenta o engajamento do público e fortalece a imagem da ONG diante de parceiros e patrocinadores.',
-    image: 'https://cdn-icons-png.flaticon.com/512/991/991952.png',
-    alt: 'Transparência e Credibilidade'
-  },
-  {
     name: 'Divulgação Profissional e Acessível',
     description:
       'Landing pages são uma solução moderna e acessível para organizações de todos os tamanhos. Elas permitem que ONGs tenham uma presença digital profissional sem precisar investir alto em sites complexos ou agências especializadas.',
     image: 'https://cdn-icons-png.flaticon.com/512/1162/1162452.png',
     alt: 'Divulgação Profissional'
+  },
+  {
+    name: 'Transparência e Credibilidade',
+    description:
+      'Ao divulgar relatórios, fotos e histórias em uma landing page, sua organização mostra transparência e conquista confiança. Isso aumenta o engajamento do público e fortalece a imagem da ONG diante de parceiros e patrocinadores.',
+    image: 'https://cdn-icons-png.flaticon.com/512/991/991952.png',
+    alt: 'Transparência e Credibilidade'
   },
   {
     name: 'Aumente o Engajamento nas Redes',

@@ -9,9 +9,9 @@ import { Projects } from './sections/projects'
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
     title:
-      'Projetos Sociais | Capivara Solidário – Descubra e Apoie Causas Reais',
+      'Projetos Sociais | Capivara Solidária – Descubra e Apoie Causas Reais',
     description:
-      'Conheça os projetos sociais cadastrados no Capivara Solidário. Descubra ONGs incríveis, acompanhe seus resultados e apoie iniciativas que transformam vidas em todo o Brasil.',
+      'Conheça os projetos sociais cadastrados no Capivara Solidária. Descubra ONGs incríveis, acompanhe seus resultados e apoie iniciativas que transformam vidas em todo o Brasil.',
     image: '',
     url: '/projetos'
   })

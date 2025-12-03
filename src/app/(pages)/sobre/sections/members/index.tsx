@@ -31,7 +31,9 @@ export const Members: FC = async () => {
                   <Image
                     alt={member.name}
                     className="aspect-square h-full max-h-20 w-full max-w-20 rounded-sm object-cover"
+                    fetchPriority="low"
                     height={200}
+                    loading="lazy"
                     src={member.thumb}
                     width={200}
                   />

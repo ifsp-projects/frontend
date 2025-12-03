@@ -53,6 +53,14 @@ export const Navbar: FC = () => {
             <li>
               <Link
                 className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
+                href="/ongs"
+              >
+                Projetos
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
                 href="/sobre"
               >
                 Sobre
@@ -64,14 +72,6 @@ export const Navbar: FC = () => {
                 href="/contato"
               >
                 Contato
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
-                href="/projetos"
-              >
-                Projetos
               </Link>
             </li>
             <li>
@@ -92,7 +92,10 @@ export const Navbar: FC = () => {
               >
                 Minha ONG
               </Link>
-              <button className="cursor-pointer" onClick={() => signOut()}>
+              <button
+                className="cursor-pointer rounded-sm border border-neutral-700 px-4 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                onClick={() => signOut()}
+              >
                 Sair
               </button>
             </div>
@@ -102,7 +105,7 @@ export const Navbar: FC = () => {
                 className="cursor-pointer rounded-sm border border-neutral-700 px-4 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
                 href="/contato"
               >
-                Acesso antecipado
+                Contato
               </Link>
               <Link
                 className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150"
