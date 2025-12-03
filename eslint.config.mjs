@@ -10,6 +10,7 @@ import svgJsx from 'eslint-plugin-svg-jsx'
 export default [
   {
     ...js.configs.recommended,
+    ignores: ['node_modules/**', '.next/*'],
     files: ['**/*.{js,ts,jsx,tsx}'],
     languageOptions: {
       parser,
