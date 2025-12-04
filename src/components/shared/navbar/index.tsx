@@ -35,7 +35,7 @@ export const Navbar: FC = () => {
             alt="Project Logo"
             className="aspect-video max-h-10 max-w-28 object-cover"
             height={180}
-            src="/brands/company-logo.png"
+            src="/capivara-solidaria-logo.png"
             width={360}
           />
         </Link>
