@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const HowItWorks = async () => {
   return (
-    <section className="bg-slate-50 px-4 py-12 lg:py-16 xl:px-0">
+    <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12">
         <figure className="w-full">
           <svg

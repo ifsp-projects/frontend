@@ -10,7 +10,7 @@ export const ImagesGrid = async () => {
           <h2 className="text-center text-2xl font-bold lg:text-4xl">
             Nosso compromisso é com você!
           </h2>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-neutral-500">
             Confira algumas imagens do nosso das ações projeto com a sociedade
           </p>
         </article>

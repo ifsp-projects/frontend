@@ -28,7 +28,7 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
       </h2>
       <div className="flex w-full flex-col gap-4 lg:flex-row">
         <div
-          className={`w-full rounded-sm border bg-white px-3 py-4 ${selectedTemplate === 'primary' ? 'border-rose-500' : 'border-slate-300'}`}
+          className={`w-full rounded-sm border bg-white px-3 py-4 ${selectedTemplate === 'primary' ? 'border-rose-500' : 'border-neutral-300'}`}
         >
           <figure className="h-[140px] w-full rounded-sm">
             <Image
@@ -59,7 +59,7 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
           </article>
         </div>
         <div
-          className={`w-full rounded-sm border bg-white px-3 py-4 ${selectedTemplate === 'secondary' ? 'border-rose-500' : 'border-slate-300'}`}
+          className={`w-full rounded-sm border bg-white px-3 py-4 ${selectedTemplate === 'secondary' ? 'border-rose-500' : 'border-neutral-300'}`}
         >
           <figure className="h-[140px] w-full rounded-sm">
             <Image
@@ -90,7 +90,7 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
           </article>
         </div>
         <div
-          className={`w-full rounded-sm border bg-white px-3 py-4 ${selectedTemplate === 'tertiary' ? 'border-rose-500' : 'border-slate-300'}`}
+          className={`w-full rounded-sm border bg-white px-3 py-4 ${selectedTemplate === 'tertiary' ? 'border-rose-500' : 'border-neutral-300'}`}
         >
           <figure className="h-[140px] w-full rounded-sm">
             <Image
@@ -120,7 +120,7 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
           </article>
         </div>
         <div
-          className={`w-full rounded-sm border bg-white px-3 py-4 ${selectedTemplate === 'quarternary' ? 'border-rose-500' : 'border-slate-300'}`}
+          className={`w-full rounded-sm border bg-white px-3 py-4 ${selectedTemplate === 'quarternary' ? 'border-rose-500' : 'border-neutral-300'}`}
         >
           <figure className="h-[140px] w-full rounded-sm">
             <Image

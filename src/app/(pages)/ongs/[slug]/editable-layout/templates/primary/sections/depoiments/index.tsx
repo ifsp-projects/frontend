@@ -9,7 +9,7 @@ import type { DepoimentProps } from './types'
 
 export const Depoiments: FC<DepoimentProps> = ({ copy }) => {
   return (
-    <section className="bg-slate-50 px-4 py-12 lg:py-16 xl:px-0">
+    <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">
         <article className="flex w-full flex-col gap-2 lg:items-center">
           <EditableCopyField
@@ -21,7 +21,7 @@ export const Depoiments: FC<DepoimentProps> = ({ copy }) => {
 
           <EditableCopyField
             as="p"
-            className="text-sm text-slate-500 lg:text-center lg:text-base"
+            className="text-sm text-neutral-500 lg:text-center lg:text-base"
             defaultValue={copy.description}
             path="depoiments.description"
           />

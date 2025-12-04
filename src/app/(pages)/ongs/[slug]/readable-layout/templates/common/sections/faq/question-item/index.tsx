@@ -16,7 +16,7 @@ export const QuestionItem: React.FC<QuestionItemProps> = ({ copy, index }) => {
 
   return (
     <button
-      className={`group w-full cursor-pointer rounded-sm bg-slate-100 p-4 transition`}
+      className={`group w-full cursor-pointer rounded-sm bg-neutral-100 p-4 transition`}
       onClick={() => setIsQuestionOpen(!isQuestionOpen)}
     >
       <div
@@ -44,7 +44,7 @@ export const QuestionItem: React.FC<QuestionItemProps> = ({ copy, index }) => {
           style={{
             maxHeight: isQuestionOpen ? '400px' : '0px'
           }}
-          className={`overflow-hidden text-left text-sm text-slate-500 transition-all duration-300 ease-in-out md:text-base`}
+          className={`overflow-hidden text-left text-sm text-neutral-500 transition-all duration-300 ease-in-out md:text-base`}
           dangerouslySetInnerHTML={{ __html: copy.description }}
         />
       )}

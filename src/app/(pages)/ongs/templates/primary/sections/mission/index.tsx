@@ -9,7 +9,7 @@ export const Mission = async () => {
           <h2 className="text-2 w-full max-w-[400px] text-center text-2xl font-bold lg:text-center lg:text-4xl">
             We've helped innovative companies
           </h2>
-          <p className="max-w-[360px] text-sm text-slate-500 lg:text-center lg:text-base">
+          <p className="max-w-[360px] text-sm text-neutral-500 lg:text-center lg:text-base">
             Hundreds of all sizes and across all industries have made a big
             improvements with us
           </p>

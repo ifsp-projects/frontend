@@ -8,13 +8,13 @@ export const FAQ = async ({ color }: { color: string }) => {
     <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col lg:max-w-7xl lg:flex-row lg:justify-between">
         <article className="flex w-full flex-col gap-6">
-          <span className="w-fit rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-500 backdrop-blur-[10px] transition duration-200">
+          <span className="w-fit rounded-full border border-neutral-200 bg-neutral-50 px-4 py-1.5 text-xs font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200">
             FAQs
           </span>
           <h2 className="text-2xl font-bold lg:text-5xl xl:text-6xl">
             Perguntas <br /> mais frequentes
           </h2>
-          <p className="text-sm text-slate-500 lg:text-base">
+          <p className="text-sm text-neutral-500 lg:text-base">
             Respostas para as perguntas mais frequentes da nossa comunidade{' '}
             <br /> Não teve sua pergunta respondida? Entre em contato com a
             gente:

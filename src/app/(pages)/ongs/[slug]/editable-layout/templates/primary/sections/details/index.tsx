@@ -9,7 +9,7 @@ import type { DetailsProps } from './types'
 
 export const Details: FC<DetailsProps> = ({ copy }) => {
   return (
-    <section className="bg-slate-50 px-4 py-12 lg:py-16 xl:px-0">
+    <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">
         <article className="flex flex-col gap-2 lg:items-center">
           <EditableCopyField
@@ -28,7 +28,7 @@ export const Details: FC<DetailsProps> = ({ copy }) => {
         <ul className="flex h-auto w-full flex-col items-stretch gap-8 lg:flex-row">
           {copy.tabs.map((tab, index: number) => (
             <li
-              className="flex h-auto w-full flex-col gap-3 rounded-sm border border-slate-300 bg-white p-4"
+              className="flex h-auto w-full flex-col gap-3 rounded-sm border border-neutral-300 bg-white p-4"
               key={`tab-${index}`}
             >
               <figure className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50">
@@ -48,7 +48,7 @@ export const Details: FC<DetailsProps> = ({ copy }) => {
                 />
                 <EditableCopyField
                   as="p"
-                  className="text-sm text-slate-500"
+                  className="text-sm text-neutral-500"
                   defaultValue={tab?.description}
                   path={`details.tabs[${index}].description`}
                 />

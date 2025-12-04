@@ -4,7 +4,7 @@ import { STEPS_COPIES } from './data'
 
 export const MoreInfoAbout = () => {
   return (
-    <section className="border-y border-slate-200 bg-slate-100 px-4 py-12 lg:py-16 xl:px-0">
+    <section className="border-y border-neutral-200 bg-neutral-100 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-8">
         {STEPS_COPIES.map((section, index: number) => (
           <div

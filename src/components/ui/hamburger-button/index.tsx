@@ -6,7 +6,7 @@ export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   variant
 }) => {
   const genericHamburgerLine = `h-[2px] w-6 my-[2px] rounded-full transition ease transform duration-default ${
-    variant === 'secondary' ? 'bg-slate-50' : 'bg-slate-700'
+    variant === 'secondary' ? 'bg-neutral-50' : 'bg-neutral-700'
   }`
 
   return (

@@ -48,7 +48,7 @@ export const DepoimentCard: FC<DepoimentCardProps> = async ({ copy }) => {
           </figure>
           <article className="flex w-full flex-1 flex-col">
             <p className="text-base font-semibold">{copy.author.name}</p>
-            <p className="text-sm font-light text-slate-500">
+            <p className="text-sm font-light text-neutral-500">
               {copy.author.city}
             </p>
           </article>

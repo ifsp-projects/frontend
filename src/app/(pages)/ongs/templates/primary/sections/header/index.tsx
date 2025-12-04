@@ -14,13 +14,13 @@ export const Header = async () => {
       <header className="relative z-40 mx-auto flex w-full max-w-2xl flex-col gap-8 py-12 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:py-20">
         <div className="flex w-full flex-col gap-6 lg:gap-8">
           <article className="flex w-full max-w-[560px] flex-col gap-4">
-            <span className="w-fit rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-500 backdrop-blur-[10px] transition duration-200">
+            <span className="w-fit rounded-full border border-neutral-200 bg-neutral-50 px-4 py-1.5 text-xs font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200">
               Projeto sem fins lucrativos
             </span>
-            <h1 className="text-2xl font-bold text-slate-700 lg:text-4xl xl:text-5xl">
+            <h1 className="text-2xl font-bold text-neutral-700 lg:text-4xl xl:text-5xl">
               Get paid early save automatically everything your pay
             </h1>
-            <p className="text-sm text-slate-500 lg:text-base">
+            <p className="text-sm text-neutral-500 lg:text-base">
               Supports small businesses with simple invoicing powerfull
               integrations and cash fdlow management tools
             </p>
@@ -32,8 +32,8 @@ export const Header = async () => {
             Quero saber mais
           </Link>
           <div className="flex items-center gap-1">
-            <p className="text-xs text-slate-500">Com apoio de</p>
-            <p className="text-sm font-semibold text-slate-600">
+            <p className="text-xs text-neutral-500">Com apoio de</p>
+            <p className="text-sm font-semibold text-neutral-600">
               Capivara Solidária
             </p>
           </div>

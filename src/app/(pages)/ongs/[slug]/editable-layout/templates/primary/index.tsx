@@ -19,7 +19,7 @@ export const EditablePrimaryLandingPageLayout: FC<
   const { data } = await instanceMotor.pages.getPageBySlug({ slug })
 
   return (
-    <main className="text-slate-700 selection:!bg-emerald-50">
+    <main className="text-neutral-700 selection:!bg-emerald-50">
       <Driver />
       <Header copy={data?.page?.sections?.header} />
       <Details copy={data?.page?.sections?.details} />

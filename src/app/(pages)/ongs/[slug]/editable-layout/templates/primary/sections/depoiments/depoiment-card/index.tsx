@@ -45,7 +45,7 @@ export const DepoimentCard: FC<DepoimentCardProps> = ({ copy, index }) => {
             />
             <EditableCopyField
               as="p"
-              className="text-sm font-light text-slate-500"
+              className="text-sm font-light text-neutral-500"
               defaultValue={copy?.author?.city}
               path={`depoiments.cards[${index}].author.city`}
             />

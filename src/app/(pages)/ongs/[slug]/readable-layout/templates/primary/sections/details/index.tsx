@@ -6,7 +6,7 @@ import type { DetailsProps } from './types'
 
 export const Details: FC<DetailsProps> = async ({ copy }) => {
   return (
-    <section className="bg-slate-50 px-4 py-12 lg:py-16 xl:px-0">
+    <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">
         <article className="flex flex-col gap-2 lg:items-center">
           <p className="text-sm text-emerald-600 uppercase lg:text-center">
@@ -19,7 +19,7 @@ export const Details: FC<DetailsProps> = async ({ copy }) => {
         <ul className="flex h-auto w-full flex-col items-stretch gap-8 lg:flex-row">
           {copy.tabs.map((tab, index: number) => (
             <li
-              className="flex h-auto w-full flex-col gap-3 rounded-sm border border-slate-300 bg-white p-4"
+              className="flex h-auto w-full flex-col gap-3 rounded-sm border border-neutral-300 bg-white p-4"
               key={`${tab.title}-${index}`}
             >
               <figure className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50">
@@ -27,7 +27,7 @@ export const Details: FC<DetailsProps> = async ({ copy }) => {
               </figure>
               <article className="flex w-full flex-col gap-1">
                 <h3 className="text-xl font-bold">{tab.title}</h3>
-                <p className="text-sm text-slate-500">{tab.description}</p>
+                <p className="text-sm text-neutral-500">{tab.description}</p>
               </article>
             </li>
           ))}

@@ -20,7 +20,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const Page: NextPage = async () => {
   return (
-    <main className="text-slate-700 selection:!bg-blue-50 selection:text-blue-600">
+    <main className="text-neutral-700 selection:!bg-blue-50 selection:text-blue-600">
       <Header />
       <ImagesGrid />
       <HowItWorks />

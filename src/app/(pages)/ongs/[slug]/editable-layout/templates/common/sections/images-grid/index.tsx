@@ -21,7 +21,7 @@ export const ImagesGrid: FC<ImagesGridProps> = ({ copy }) => {
           />
           <EditableCopyField
             as="p"
-            className="text-sm text-slate-500"
+            className="text-sm text-neutral-500"
             defaultValue={copy.description}
             path="imagesGrid.description"
           />

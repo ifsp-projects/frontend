@@ -45,7 +45,7 @@ export const DepoimentCard = async () => {
             <p className="text-base font-semibold">
               Getulio Aparecido dos Santos
             </p>
-            <p className="text-sm font-light text-slate-500">Capivari, SP</p>
+            <p className="text-sm font-light text-neutral-500">Capivari, SP</p>
           </article>
         </div>
       </footer>

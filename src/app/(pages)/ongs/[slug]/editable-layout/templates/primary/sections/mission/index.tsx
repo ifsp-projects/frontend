@@ -23,7 +23,7 @@ export const Mission: FC<MissionProps> = async ({ copy }) => {
           />
           <EditableCopyField
             as="p"
-            className="max-w-[360px] text-sm text-slate-500 lg:text-center lg:text-base"
+            className="max-w-[360px] text-sm text-neutral-500 lg:text-center lg:text-base"
             defaultValue={copy.description}
             path="ourMission.description"
           />

@@ -13,7 +13,7 @@ export const ImagesGrid: FC<ImagesGridProps> = async ({ copy }) => {
           <h2 className="text-center text-2xl font-bold lg:text-4xl">
             {copy.title}
           </h2>
-          <p className="text-sm text-slate-500">{copy.description}</p>
+          <p className="text-sm text-neutral-500">{copy.description}</p>
         </article>
         <Masonry
           animateFrom="bottom"

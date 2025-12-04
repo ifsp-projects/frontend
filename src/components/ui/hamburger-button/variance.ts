@@ -14,8 +14,8 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: ['bg-slate-50'],
-        secondary: ['bg-slate-700']
+        primary: ['bg-neutral-50'],
+        secondary: ['bg-neutral-700']
       }
     },
     defaultVariants: {
