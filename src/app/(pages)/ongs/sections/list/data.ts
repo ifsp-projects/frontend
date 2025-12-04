@@ -10,7 +10,7 @@ export const ongs: ONG[] = [
     logo: 'https://www.larvelhinhoscapivari.org.br/wp-content/uploads/2013/06/logo_lar_velhinhos.jpg'
   },
   {
-    id: 'casa-da-crianca',
+    id: 'casa-da-crianca-capivari',
     name: 'Casa da Criança',
     description:
       'Organização focada na proteção e desenvolvimento de crianças e adolescentes, oferecendo educação, alimentação, atividades pedagógicas e suporte psicossocial.',

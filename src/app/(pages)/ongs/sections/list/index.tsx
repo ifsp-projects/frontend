@@ -93,7 +93,7 @@ export const List: FC = () => {
         {filteredOngs.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredOngs.map(ong => (
-              <Link href={`/projetos/${ong.id}`} key={ong.id}>
+              <Link href={`/ongs/${ong.id}`} key={ong.id}>
                 <SpotlightCard
                   className="custom-spotlight-card cursor-pointer bg-white"
                   spotlightColor="rgba(212, 212, 212, 0.3)"
