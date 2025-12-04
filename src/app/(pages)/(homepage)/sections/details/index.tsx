@@ -27,7 +27,7 @@ export const Details = async () => {
             </p>
           </article>
         </div>
-        <div className="flex h-auto w-full gap-8 lg:justify-between">
+        <div className="flex h-auto w-full flex-col gap-8 lg:flex-row lg:justify-between">
           <div className="flex w-full flex-col items-center gap-6 rounded-sm bg-[#e3dacc] px-8 py-12">
             <Image
               alt="Card Image"

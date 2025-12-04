@@ -4,7 +4,7 @@ import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { Header } from './sections/header'
 import { List } from './sections/list'
-import { TopDonatedOngs } from './sections/top-donated-ongs'
+// import { TopDonatedOngs } from './sections/top-donated-ongs'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -20,7 +20,7 @@ const Page: NextPage = async () => {
   return (
     <main>
       <Header />
-      <TopDonatedOngs />
+      {/* <TopDonatedOngs /> */}
       <List />
     </main>
   )
