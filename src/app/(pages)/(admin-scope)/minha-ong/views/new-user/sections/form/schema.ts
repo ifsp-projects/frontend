@@ -11,7 +11,7 @@ export const complementInfoFormSchema = z.object({
     .max(99999, 'Esse número parece ser alto demais')
     .optional(),
   city: z.string().nullable(),
-  state: z.string().nonempty('Esse campo é obrigatório'),
+  state: z.string().nullable(),
   postal_code: z.string().nullable(),
   complement: z.string().nullable(),
   design_template: z.string().nonempty('Esse campo é obrigatório')

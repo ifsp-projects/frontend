@@ -2,6 +2,7 @@
 
 import { signIn } from 'next-auth/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { type FC, useState } from 'react'
 
 import { Google } from '@/assets/socials/google'
@@ -91,7 +92,12 @@ export const Header: FC = () => {
         </form>
         <p className="mx-auto text-sm">
           Ou entre em contato com nosso{' '}
-          <span className="text-sm !text-rose-400">suporte</span>
+          <Link
+            className="text-sm !text-rose-400 underline-offset-2 hover:underline"
+            href="/contato"
+          >
+            suporte
+          </Link>
         </p>
       </div>
     </section>
