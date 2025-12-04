@@ -35,7 +35,8 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
         position: 'top-center'
       })
     } catch (savePageCopiesError) {
-      toast.error(savePageCopiesError, {
+      console.log(savePageCopiesError)
+      toast.error('Não foi possível salvar as alterações de conteúdo', {
         position: 'top-center'
       })
     }

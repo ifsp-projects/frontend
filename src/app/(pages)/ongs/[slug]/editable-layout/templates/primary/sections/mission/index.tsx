@@ -38,13 +38,13 @@ export const Mission: FC<MissionProps> = async ({ copy }) => {
                 as="p"
                 className="bg-gradient-to-r from-emerald-400 to-emerald-700 bg-clip-text text-2xl font-semibold text-transparent lg:text-5xl"
                 defaultValue={tab?.title || ''}
-                path={`ourMission?.tabs[${index}]?.title`}
+                path={`ourMission.tabs[${index}].title`}
               />
               <EditableCopyField
                 as="h3"
                 className="text-sm lg:text-base"
                 defaultValue={tab?.description || ''}
-                path={`ourMission?.tabs[${index}]?.description`}
+                path={`ourMission.tabs[${index}].description`}
               />
             </li>
           ))}
