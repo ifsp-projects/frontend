@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import type { FC } from 'react'
 
+import { CircleButton } from '@/components/ui/circle-button'
+
 export const MoreInfoAbout: FC = () => {
   return (
     <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
@@ -27,6 +29,9 @@ export const MoreInfoAbout: FC = () => {
                 informações sobre sua missão, história e projetos para que mais
                 pessoas conheçam e confiem no seu trabalho social.
               </p>
+            </div>
+            <div className="flex w-fit justify-start">
+              <CircleButton href="/login" label="Quero criar minha conta" />
             </div>
           </article>
         </div>

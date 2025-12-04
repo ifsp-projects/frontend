@@ -5,9 +5,9 @@ import { getMetaData } from '@/utils/seo/get-metadata'
 import { HowItWorks } from '../sobre/sections/how-it-works'
 import { Benefits } from './sections/benefits'
 import { Contact } from './sections/contact'
+import { Details } from './sections/details'
 import { Header } from './sections/header'
 import { MoreInfoAbout } from './sections/more-info-about'
-import { Details } from './sections/details'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

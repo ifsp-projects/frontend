@@ -63,13 +63,13 @@ export const List: FC = () => {
         </article>
 
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3">
             {categories.map(category => (
               <button
-                className={`focus:ring-opacity-50 cursor-pointer rounded-full border px-4 py-3 text-[13px] font-medium backdrop-blur-[10px] transition duration-200 hover:scale-105 focus:ring-2 focus:outline-none ${
+                className={`focus:ring-opacity-50 cursor-pointer rounded-full border px-4 py-2 text-[13px] font-medium backdrop-blur-[10px] transition-all focus:ring-2 focus:outline-none ${
                   selectedCategory === category
-                    ? 'border-[#5227ff] bg-[#5227ff] text-white shadow-lg focus:ring-[#5227ff]'
-                    : 'border-gray-300 bg-white/80 text-gray-700 hover:border-[#5227ff] hover:bg-white hover:text-[#5227ff] focus:ring-gray-300'
+                    ? 'border-rose-400 bg-rose-400 text-white shadow-lg focus:ring-rose-400'
+                    : 'border-neutral-300 bg-white/80 text-neutral-700 hover:border-rose-400 hover:bg-white hover:text-rose-400 focus:ring-neutral-300'
                 }`}
                 key={category}
                 onClick={handleSelectCategory.bind(null, category)}
@@ -81,7 +81,7 @@ export const List: FC = () => {
 
           <div className="mb-0.5 w-[350px] max-w-full">
             <input
-              className="focus:ring-opacity-20 w-full max-w-md rounded-full border border-gray-300 px-4 py-4 text-sm transition duration-200 hover:border-[#5227ff] focus:border-[#5227ff] focus:ring-2 focus:ring-[#5227ff] focus:outline-none"
+              className="focus:ring-opacity-20 w-full max-w-md rounded-sm border border-gray-300 px-4 py-3 text-sm transition duration-200 hover:border-rose-400 focus:border-rose-400 focus:ring-2 focus:ring-rose-400 focus:outline-none"
               onChange={handleSearchChange}
               placeholder="Pesquisar ONGs por nome ou descrição..."
               type="text"
@@ -96,9 +96,9 @@ export const List: FC = () => {
               <Link href={`/projetos/${ong.id}`} key={ong.id}>
                 <SpotlightCard
                   className="custom-spotlight-card cursor-pointer bg-white"
-                  spotlightColor="rgba(0, 229, 255, 0.2)"
+                  spotlightColor="rgba(212, 212, 212, 0.3)"
                 >
-                  <div className="rounded-lg bg-white p-6">
+                  <div className="rounded-lg bg-white">
                     <div className="mb-4 flex items-center gap-3">
                       {ong.logo ? (
                         <img
@@ -128,7 +128,7 @@ export const List: FC = () => {
                       >
                         {ong.category}
                       </span>
-                      <button className="cursor-pointer text-sm font-medium text-[#5227ff] hover:underline">
+                      <button className="cursor-pointer text-sm font-medium text-rose-400 hover:underline">
                         Ver detalhes
                       </button>
                     </div>

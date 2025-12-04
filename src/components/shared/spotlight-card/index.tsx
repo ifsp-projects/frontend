@@ -14,7 +14,7 @@ interface SpotlightCardProps extends React.PropsWithChildren {
 const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
-  spotlightColor = 'rgba(255, 255, 255, 0.25)'
+  spotlightColor = '#d4d4d4'
 }) => {
   const divRef = useRef<HTMLDivElement>(null)
   const [isFocused, setIsFocused] = useState<boolean>(false)
@@ -48,7 +48,7 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900 p-8 ${className}`}
+      className={`relative overflow-hidden rounded-sm border border-neutral-200 bg-neutral-900 px-5 py-6 ${className}`}
       onBlur={handleBlur}
       onFocus={handleFocus}
       onMouseEnter={handleMouseEnter}

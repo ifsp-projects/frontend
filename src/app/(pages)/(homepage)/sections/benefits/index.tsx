@@ -12,13 +12,13 @@ export const Benefits: FC = () => {
         <ul className="hidden w-full gap-4 lg:flex lg:justify-between">
           {BENEFITS_CARDS.map((benefit, index: number) => (
             <li
-              className="flex w-full flex-col gap-4 border-r border-neutral-400 px-4 py-1 last:border-transparent"
+              className="flex w-full flex-col gap-4 border-r border-neutral-500 px-4 py-1 last:border-transparent"
               key={`benefit-card-${index}`}
             >
-              <h3 className="text-xl font-bold text-neutral-300">
+              <h3 className="text-xl font-bold text-neutral-200">
                 {benefit.name}
               </h3>
-              <p className="text-sm text-neutral-400">{benefit.description}</p>
+              <p className="text-sm text-neutral-300">{benefit.description}</p>
             </li>
           ))}
         </ul>
