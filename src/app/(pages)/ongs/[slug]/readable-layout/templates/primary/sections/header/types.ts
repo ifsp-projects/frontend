@@ -4,5 +4,6 @@ export interface HeaderProps {
     title: string
     description: string
     anchor: string
+    heroImage: string
   }
 }

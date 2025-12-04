@@ -47,7 +47,7 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
             alt="Hero Image"
             className="w-full object-cover"
             height={800}
-            src="/templates/undraw_different-love_58hd.svg"
+            src={copy?.heroImage || '/templates/undraw_different-love_58hd.svg'}
             width={800}
           />
         </figure>
