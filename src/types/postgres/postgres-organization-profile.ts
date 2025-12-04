@@ -1,7 +1,7 @@
 import type { PostgresAddress } from './postgres-address'
 
 export interface PostgresOrganizationProfile {
-  addresses?: PostgresAddress[]
+  addresses?: PostgresAddress
   created_at: string
   design_template?: string
   google_id?: string
