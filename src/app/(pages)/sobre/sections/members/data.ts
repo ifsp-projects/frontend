@@ -17,8 +17,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     thumb: 'https://avatars.githubusercontent.com/u/166459334?v=4',
     urls: {
       linkedin: 'https://www.linkedin.com/in/higor-matias-7905262aa/',
-      github: 'https://github.com/higorx019',
-      other: 'https://www.youtube.com/watch?v=pelR5ZqLdIg'
+      github: 'https://github.com/higorx019'
     }
   },
   {

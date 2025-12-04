@@ -3,7 +3,6 @@ import type { FC } from 'react'
 
 import { GithubIcon } from '@/assets/socials/github'
 import { LinkedinIcon } from '@/assets/socials/linkedin'
-import { OtherIcon } from '@/assets/socials/other'
 
 import { TEAM_MEMBERS } from './data'
 
@@ -66,16 +65,6 @@ export const Members: FC = async () => {
                 >
                   <GithubIcon className="h-5.5 w-5.5 text-neutral-700" />
                 </a>
-                {member.urls.other ? (
-                  <a
-                    aria-label="Other Social Profile"
-                    href={member.urls.other}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <OtherIcon />
-                  </a>
-                ) : null}
               </div>
             </li>
           ))}
