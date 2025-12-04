@@ -1,6 +1,5 @@
 import type { Metadata, NextPage } from 'next'
 
-import { PartnersCarousel } from '@/components/ui/partners-carousel'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { HowItWorks } from '../sobre/sections/how-it-works'
@@ -8,7 +7,7 @@ import { Benefits } from './sections/benefits'
 import { Contact } from './sections/contact'
 import { Header } from './sections/header'
 import { MoreInfoAbout } from './sections/more-info-about'
-import { TopDonatedOngs } from './sections/top-donated-ongs'
+import { Details } from './sections/details'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -25,9 +24,8 @@ const Page: NextPage = async () => {
   return (
     <main>
       <Header />
-      <PartnersCarousel />
-      <TopDonatedOngs />
       <MoreInfoAbout />
+      <Details />
       <Benefits />
       <HowItWorks />
       <Contact />
