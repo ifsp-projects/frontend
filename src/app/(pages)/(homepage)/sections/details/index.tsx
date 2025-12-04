@@ -8,19 +8,22 @@ export const Details = async () => {
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-12">
         <div className="flex w-full flex-col items-start gap-4 lg:flex-row lg:gap-8">
           <h2 className="text-2xl font-bold lg:text-3xl">
-            At Anthropic, we build AI to serve humanity’s long-term well-being.
+            No Capivara Solidária, acreditamos que toda causa merece ser vista e
+            apoiada.
           </h2>
           <article className="flex flex-col gap-4">
             <p className="text-sm text-neutral-700 lg:text-base">
-              While no one can foresee every outcome AI will have on society, we
-              do know that designing powerful technologies requires both bold
-              steps forward and intentional pauses to consider the effects.
+              Nosso propósito é fortalecer ONGs e projetos sociais que muitas
+              vezes não têm visibilidade, oferecendo uma plataforma simples e
+              intuitiva para criar páginas, compartilhar suas ações e alcançar
+              novos apoiadores.
             </p>
             <p className="text-sm text-neutral-700 lg:text-base">
-              That’s why we focus on building tools with human benefit at their
-              foundation, like Claude. Through our daily research, policy work,
-              and product design, we aim to show what responsible AI development
-              looks like in practice.
+              Acreditamos que a tecnologia pode ser uma aliada poderosa do
+              impacto social. Por isso, desenvolvemos o Capivara Solidário para
+              dar autonomia às ONGs — sem precisar de equipe técnica — e ajudar
+              cada projeto a contar sua história de forma profissional,
+              transparente e inspiradora.
             </p>
           </article>
         </div>
@@ -34,7 +37,7 @@ export const Details = async () => {
               width={400}
             />
             <p className="text-base font-bold lg:text-xl xl:text-2xl">
-              Core Views on AI Safety
+              Tecnologia a serviço das causas sociais
             </p>
           </div>
           <div className="flex w-full flex-col items-center gap-6 rounded-sm bg-[#bcd1ca] px-8 py-12">
@@ -46,7 +49,7 @@ export const Details = async () => {
               width={400}
             />
             <p className="text-base font-bold lg:text-xl xl:text-2xl">
-              Core Views on AI Safety
+              Conectando pessoas, ideias e impacto real
             </p>
           </div>
           <div className="flex w-full flex-col items-center gap-6 rounded-sm bg-[#cbcadb] px-8 py-12">
@@ -58,7 +61,7 @@ export const Details = async () => {
               width={400}
             />
             <p className="text-base font-bold lg:text-xl xl:text-2xl">
-              Core Views on AI Safety
+              Soluções simples para desafios reais
             </p>
           </div>
         </div>
