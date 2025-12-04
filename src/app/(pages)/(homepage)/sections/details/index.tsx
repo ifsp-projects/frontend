@@ -25,7 +25,7 @@ export const Details = async () => {
           </article>
         </div>
         <div className="flex h-auto w-full gap-8 lg:justify-between">
-          <div className="flex w-full flex-col items-center gap-6 bg-[#e3dacc] px-8 py-12">
+          <div className="flex w-full flex-col items-center gap-6 rounded-sm bg-[#e3dacc] px-8 py-12">
             <Image
               alt="Card Image"
               className="h-full max-h-[205px] w-full max-w-[205px] object-cover"
@@ -37,24 +37,24 @@ export const Details = async () => {
               Core Views on AI Safety
             </p>
           </div>
-          <div className="flex w-full flex-col items-center gap-6 bg-[#bcd1ca] px-8 py-12">
+          <div className="flex w-full flex-col items-center gap-6 rounded-sm bg-[#bcd1ca] px-8 py-12">
             <Image
               alt="Card Image"
               className="h-full max-h-[205px] w-full max-w-[205px] object-cover"
               height={400}
-              src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7bd686b6d20bb1cd568c_Hands-Build.svg"
+              src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7bd72914c76f710d86fc_Hands-Stack.svg"
               width={400}
             />
             <p className="text-base font-bold lg:text-xl xl:text-2xl">
               Core Views on AI Safety
             </p>
           </div>
-          <div className="flex w-full flex-col items-center gap-6 bg-[#cbcadb] px-8 py-12">
+          <div className="flex w-full flex-col items-center gap-6 rounded-sm bg-[#cbcadb] px-8 py-12">
             <Image
               alt="Card Image"
               className="h-full max-h-[205px] w-full max-w-[205px] object-cover"
               height={400}
-              src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7bd686b6d20bb1cd568c_Hands-Build.svg"
+              src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7b8d86b6d20bb1cd1292_Objects-Puzzle.svg"
               width={400}
             />
             <p className="text-base font-bold lg:text-xl xl:text-2xl">

@@ -15,13 +15,13 @@ export const Details: FC<DetailsProps> = ({ copy }) => {
           <EditableCopyField
             as="p"
             className="text-sm text-emerald-600 uppercase lg:text-center"
-            defaultValue={copy.feature}
+            defaultValue={copy?.feature}
             path="details.feature"
           />
           <EditableCopyField
             as="h2"
             className="text-2xl font-bold lg:text-center lg:text-4xl"
-            defaultValue={copy.title}
+            defaultValue={copy?.title}
             path="details.title"
           />
         </article>
@@ -29,11 +29,12 @@ export const Details: FC<DetailsProps> = ({ copy }) => {
           {copy.tabs.map((tab, index: number) => (
             <li
               className="flex h-auto w-full flex-col gap-3 rounded-sm border border-slate-300 bg-white p-4"
-              key={`${tab.title}-${index}`}
+              key={`tab-${index}`}
             >
               <figure className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50">
                 {/* <PeopleGroup className="h-4 w-4 text-emerald-600" /> */}
                 <EditableIconField
+                  defaultValue={tab.icon}
                   iconClassName="h-4 w-4 text-emerald-600"
                   path={`details.tabs[${index}].icon`}
                 />
@@ -42,13 +43,13 @@ export const Details: FC<DetailsProps> = ({ copy }) => {
                 <EditableCopyField
                   as="h3"
                   className="text-xl font-bold"
-                  defaultValue={tab.title}
+                  defaultValue={tab?.title}
                   path={`details.tabs[${index}].title`}
                 />
                 <EditableCopyField
                   as="p"
                   className="text-sm text-slate-500"
-                  defaultValue={tab.description}
+                  defaultValue={tab?.description}
                   path={`details.tabs[${index}].description`}
                 />
               </article>

@@ -6,7 +6,6 @@ import { CopyGenerator } from '../../components/copy-generator'
 import { Driver } from '../../components/driver'
 import { Toolbar } from '../../components/toolbar'
 import { FAQ } from '../common/sections/faq'
-import { ImagesGrid } from '../common/sections/images-grid'
 import { MoreInfoAbout } from '../common/sections/more-info-about'
 import type { LandingPageTemplateProps } from '../types'
 import { Depoiments } from './sections/depoiments'
@@ -24,7 +23,7 @@ export const EditablePrimaryLandingPageLayout: FC<
       <Driver />
       <Header copy={data?.page?.sections?.header} />
       <Details copy={data?.page?.sections?.details} />
-      <ImagesGrid copy={data?.page?.sections?.imagesGrid} />
+      {/* <ImagesGrid copy={data?.page?.sections?.imagesGrid} /> */}
       <MoreInfoAbout copy={data?.page?.sections?.moreInfoAbout} />
       <Mission copy={data?.page?.sections?.ourMission} />
       <Depoiments copy={data?.page?.sections?.depoiments} />

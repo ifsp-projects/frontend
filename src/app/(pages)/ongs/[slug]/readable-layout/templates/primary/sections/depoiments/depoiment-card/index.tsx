@@ -35,10 +35,14 @@ export const DepoimentCard: FC<DepoimentCardProps> = async ({ copy }) => {
         <div className="card__job-summary">
           <figure className="card__job-icon">
             <Image
+              src={
+                copy.author?.image
+                  ? copy.author?.image
+                  : 'https://sb.kaleidousercontent.com/67418/1920x1545/c5f15ac173/samuel-raita-ridxdghg7pw-unsplash.jpg'
+              }
               alt="Person Image"
               className="h-10 w-10 rounded-full object-cover lg:h-12 lg:w-12"
               height={80}
-              src="https://sb.kaleidousercontent.com/67418/1920x1545/c5f15ac173/samuel-raita-ridxdghg7pw-unsplash.jpg"
               width={80}
             />
           </figure>

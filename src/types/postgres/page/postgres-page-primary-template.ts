@@ -6,6 +6,7 @@ export interface PostgresPagePrimaryTemplate {
     cards: {
       content: string
       author: {
+        image: string
         name: string
         city: string
       }

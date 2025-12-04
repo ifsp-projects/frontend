@@ -3,6 +3,7 @@ export interface DepoimentProps {
     cards: {
       content: string
       author: {
+        image: string
         name: string
         city: string
       }

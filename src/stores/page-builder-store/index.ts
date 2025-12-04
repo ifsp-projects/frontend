@@ -1,4 +1,4 @@
-import lodashSet from 'lodash.set' // 1. Renomeie para evitar conflito com o 'set' do Zustand
+import lodashSet from 'lodash.set'
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
@@ -12,7 +12,11 @@ export const usePageBuilderStore = create<PageBuilderState>()(
 
     updateField: (path, value) =>
       set((state: any) => {
-        lodashSet(state.sections, path, value)
+        const clonedSections = JSON.parse(JSON.stringify(state.sections))
+
+        lodashSet(clonedSections, path, value)
+
+        state.sections = clonedSections
       }),
 
     getSections: () => get().sections

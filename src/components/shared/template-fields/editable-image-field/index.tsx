@@ -56,7 +56,7 @@ export const EditableImageField: FC<EditableImageFieldProps> = ({
           <div className="relative h-full w-full">
             <Image
               alt={alt}
-              className="max-h-full max-w-full object-cover"
+              className={`max-h-full max-w-full object-cover ${className}`}
               height={height}
               src={currentImage}
               width={width}
