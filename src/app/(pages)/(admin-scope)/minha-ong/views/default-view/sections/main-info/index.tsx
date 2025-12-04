@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Controller } from 'react-hook-form'
@@ -84,8 +85,28 @@ export const MainInfo = () => {
   }, [])
 
   return (
-    <section className="px-4 py-12 xl:px-0">
-      <div className="mx-auto flex max-w-2xl flex-col gap-6 rounded-sm border border-neutral-200 bg-white p-4 lg:max-w-4xl lg:gap-6 lg:p-6">
+    <section className="flex flex-col gap-8 px-4 py-12 lg:py-16 xl:px-0">
+      <div className="max-w-2-xl mx-auto flex w-full flex-col gap-4 rounded-sm border border-neutral-200 bg-neutral-100 p-4 lg:max-w-4xl lg:flex-row lg:justify-between">
+        <article className="flex w-full flex-1 flex-col gap-1">
+          <h2 className="text-xl font-bold lg:text-2xl">
+            A sua LP está pronta!
+          </h2>
+          <p className="text-sm text-neutral-600">
+            Clique parar ver como ela ficou, você pode alterar o que{' '}
+            <br className="hidden lg:block" /> desejar. Desde texto, imagens e
+            ícones.
+          </p>
+        </article>
+        <div className="flex w-auto items-end justify-end">
+          <Link
+            className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150"
+            href={`/ongs/${organization?.organization_profile?.slug}`}
+          >
+            Acessar minha página
+          </Link>
+        </div>
+      </div>
+      <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 rounded-sm border border-neutral-200 bg-white p-4 lg:max-w-4xl lg:gap-6 lg:p-6">
         <article>
           <h1 className="text-2xl font-bold">Meus dados</h1>
           <p className="text-sm text-neutral-500 lg:text-base">
