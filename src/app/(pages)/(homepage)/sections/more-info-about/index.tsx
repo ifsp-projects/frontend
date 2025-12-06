@@ -12,7 +12,9 @@ export const MoreInfoAbout: FC = () => {
             <Image
               alt="Section Image"
               className="h-[380px] w-full rounded-sm object-cover"
+              fetchPriority="high"
               height={1080}
+              loading="eager"
               src="/images/campanha.webp"
               width={1920}
             />

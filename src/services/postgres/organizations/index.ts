@@ -54,7 +54,7 @@ export class Organizations {
 
       return {
         status: error.message,
-        data: { organization: {} as PostgresOrganization }
+        data: { organizations: {} as PostgresOrganization[] }
       }
     }
   }

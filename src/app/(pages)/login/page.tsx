@@ -8,13 +8,19 @@ import { getMetaData } from '@/utils/seo/get-metadata'
 import { Header } from './sections/header'
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  return getMetaData({
-    title: 'Login | Capivara Solidária',
-    description:
-      'Acesse sua conta Capivara Solidária para criar e editar suas landing pages de forma rápida e segura.',
-    image: '',
-    url: '/login'
-  })
+  return {
+    ...getMetaData({
+      title: 'Login | Capivara Solidária',
+      description:
+        'Acesse sua conta Capivara Solidária para criar e editar suas landing pages de forma rápida e segura.',
+      image: '',
+      url: '/login'
+    }),
+    robots: {
+      index: false,
+      follow: false
+    }
+  }
 }
 
 const Page: NextPage = async () => {
