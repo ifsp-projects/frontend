@@ -45,6 +45,4 @@ next-env.d.ts
 .cjs
 
 # Sitemap
-/public/sitemap-en.xml
-/public/sitemap-es.xml
 /public/sitemap.xml
