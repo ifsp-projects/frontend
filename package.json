@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "build-cjs": "tsup",
-    "prebuild": "tsx src/utils/seo/generate-sitemap/index.ts && next build --turbopack",
+    "postbuild": "tsx src/utils/seo/generate-sitemap/index.ts",
     "start": "next start",
     "lint": "eslint"
   },
