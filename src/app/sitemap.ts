@@ -6,7 +6,7 @@ import { instanceMotor } from '@/instances/motor'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://capivara-solidaria.com.br'
 
-  const staticRoutes = ['/', '/login', '/sobre', '/minha-ong', '/ongs'].map(
+  const staticRoutes = ['/', '/faq', '/sobre', '/contato', '/ongs'].map(
     route => ({
       url: `${baseUrl}${route}`,
       lastModified: new Date(),
