@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next'
 
-import { BASE_URL } from '@/constants/environments/base-url'
 import { instanceMotor } from '@/instances/motor'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -22,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     if (data?.organizations) {
       ongsRoutes = data.organizations.map(organization => ({
-        url: `${BASE_URL}/ongs/${organization.organization_profile.slug}`,
+        url: `${baseUrl}/ongs/${organization.organization_profile.slug}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.8
