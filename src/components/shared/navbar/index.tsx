@@ -4,7 +4,6 @@ import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import type { FC } from 'react'
 import { useState } from 'react'
 
 import { useUserSession } from '@/hooks/use-user-session'
@@ -18,7 +17,7 @@ import { HamburgerButton } from '../hamburger-button'
  * On mobile, shows a hamburger menu that toggles a vertical navigation menu.
  *
  */
-export const Navbar: FC = () => {
+export const Navbar = async () => {
   const { organization } = useUserSession()
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false)

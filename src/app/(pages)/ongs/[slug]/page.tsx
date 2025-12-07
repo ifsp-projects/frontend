@@ -21,10 +21,12 @@ export const generateMetadata = async ({
     return notFound()
   }
 
+  const { data } = await instanceMotor.pages.getPageBySlug({ slug })
+
   return getMetaData({
-    title: 'Projetos',
-    description: 'Projetos',
-    image: '',
+    title: response.organization?.organization_profile?.name,
+    description: `Conheça mais sobre o projeto ${response.organization?.organization_profile?.name}, apoie causas que impactam positivamente nossa sociedade`,
+    image: data?.page?.sections?.header?.heroImage || '',
     url: `/ongs/${slug}`
   })
 }
