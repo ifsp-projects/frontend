@@ -17,7 +17,7 @@ import { HamburgerButton } from '../hamburger-button'
  * On mobile, shows a hamburger menu that toggles a vertical navigation menu.
  *
  */
-export const Navbar = async () => {
+export const Navbar = () => {
   const { organization } = useUserSession()
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false)

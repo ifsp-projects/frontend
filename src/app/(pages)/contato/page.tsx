@@ -17,7 +17,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const Page: NextPage = async () => {
   return (
-    <main>
+    <main className="bg-neutral-50">
       <Header />
       <ContactForm />
     </main>

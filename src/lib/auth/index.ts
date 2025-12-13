@@ -35,12 +35,33 @@ export const authOptions: AuthOptions = {
         return token
       }
 
-      return await refreshAccessToken(token as JWT)
+      const refreshedToken = await refreshAccessToken(token as JWT)
+
+      if (!refreshedToken) {
+        return {
+          ...token,
+          accessToken: null,
+          refreshToken: null,
+          error: 'RefreshAccessTokenError'
+        }
+      }
+
+      return refreshedToken
     },
 
     async session({ session, token }) {
+      if (!token.accessToken || token.error === 'RefreshAccessTokenError') {
+        return {
+          expires: new Date(0).toISOString(),
+          user: undefined,
+          error: 'RefreshAccessTokenError'
+        } as any
+      }
+
       session.accessToken = token.accessToken as string
       session.error = token.error as string
+
+      console.log(session)
 
       const { refreshToken: _refreshToken, ...safeToken } = token as JWT
       session.organization = safeToken as unknown as PostgresOrganization

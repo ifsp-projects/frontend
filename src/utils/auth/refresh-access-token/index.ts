@@ -26,7 +26,8 @@ export async function refreshAccessToken(token: JWT) {
       ...token,
       accessToken,
       refreshToken,
-      accessTokenExpires: Date.now() + ACCESS_TOKEN_EXPIRES_MILLISECONDS
+      accessTokenExpires: Date.now() + ACCESS_TOKEN_EXPIRES_MILLISECONDS,
+      error: null
     }
 
     return newToken
@@ -35,9 +36,6 @@ export async function refreshAccessToken(token: JWT) {
       'Error refreshing access token': error.message
     })
 
-    return {
-      ...token,
-      error: 'RefreshAccessTokenError'
-    }
+    return null
   }
 }

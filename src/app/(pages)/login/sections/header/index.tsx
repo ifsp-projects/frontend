@@ -36,7 +36,7 @@ export const Header: FC = () => {
           />
         </figure>
         <article className="-mt-3 flex flex-col items-center gap-1">
-          <p className="text=base text-center !text-neutral-500">
+          <p className="text=base text-center text-neutral-500!">
             Entre na sua conta para continuar sua jornada{' '}
             <br className="hidden xl:block" /> comentando ou curtindo artigos
           </p>
@@ -52,8 +52,8 @@ export const Header: FC = () => {
           <p className="text-sm">Entrar com o Google</p>
         </button>
         <div className="relative w-full">
-          <div className="h-[1px] w-full border-b border-neutral-200" />
-          <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neutral-100 px-2 py-1 text-xs !text-neutral-600">
+          <div className="h-px w-full border-b border-neutral-200" />
+          <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neutral-100 px-2 py-1 text-xs text-neutral-600!">
             Ou continuar com
           </span>
         </div>
@@ -84,7 +84,7 @@ export const Header: FC = () => {
             />
           </div>
           <button
-            className="mt-4 min-w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-900 px-6 py-2 text-center !text-white transition-all duration-150 hover:bg-neutral-800"
+            className="mt-4 min-w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-900 px-6 py-2 text-center text-white! transition-all duration-150 hover:bg-neutral-800"
             onClick={() => {}}
           >
             Entrar
@@ -93,7 +93,7 @@ export const Header: FC = () => {
         <p className="mx-auto text-sm">
           Ou entre em contato com nosso{' '}
           <Link
-            className="text-sm !text-rose-400 underline-offset-2 hover:underline"
+            className="text-sm text-rose-400! underline-offset-2 hover:underline"
             href="/contato"
           >
             suporte

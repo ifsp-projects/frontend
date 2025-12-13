@@ -20,7 +20,7 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions)
 
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${font.className} text-neutral-700 selection:bg-rose-50 selection:text-neutral-700`}
       >

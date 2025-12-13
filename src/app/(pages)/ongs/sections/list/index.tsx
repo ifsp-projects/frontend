@@ -1,10 +1,10 @@
 'use client'
 
-import { Trash } from 'lucide-react'
 import Link from 'next/link'
 import type { FC } from 'react'
 import { useState } from 'react'
 
+import { EmptyBox } from '@/assets/icons/empty-box'
 import SpotlightCard from '@/components/shared/spotlight-card'
 
 import { categories, ongs } from './data'
@@ -66,9 +66,9 @@ export const List: FC = () => {
           <div className="flex flex-wrap items-center gap-3">
             {categories.map(category => (
               <button
-                className={`focus:ring-opacity-50 cursor-pointer rounded-full border px-4 py-2 text-[13px] font-medium backdrop-blur-[10px] transition-all focus:ring-2 focus:outline-none ${
+                className={`cursor-pointer rounded-sm border px-4 py-2 text-[13px] font-medium backdrop-blur-[10px] transition-all duration-75 focus:outline-none ${
                   selectedCategory === category
-                    ? 'border-rose-400 bg-rose-400 text-white shadow-lg focus:ring-rose-400'
+                    ? 'border-rose-400 bg-rose-400 text-white focus:ring-rose-400'
                     : 'border-neutral-300 bg-white/80 text-neutral-700 hover:border-rose-400 hover:bg-white hover:text-rose-400 focus:ring-neutral-300'
                 }`}
                 key={category}
@@ -81,7 +81,7 @@ export const List: FC = () => {
 
           <div className="mb-0.5 w-[350px] max-w-full">
             <input
-              className="focus:ring-opacity-20 w-full max-w-md rounded-sm border border-gray-300 px-4 py-3 text-sm transition duration-200 hover:border-rose-400 focus:border-rose-400 focus:ring-2 focus:ring-rose-400 focus:outline-none"
+              className="w-full max-w-md rounded-sm border border-gray-300 px-4 py-3 text-sm transition duration-75 hover:border-rose-400 focus:border-rose-400 focus:outline-none"
               onChange={handleSearchChange}
               placeholder="Pesquisar ONGs por nome ou descrição..."
               type="text"
@@ -139,13 +139,13 @@ export const List: FC = () => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-16 text-center">
-            <div className="mb-4 rounded-full bg-gray-100 p-6">
-              <Trash className="h-8 w-8 text-gray-400" />
-            </div>
-            <h3 className="mb-2 text-lg font-semibold text-gray-900">
+            <figure className="mb-4 rounded-full">
+              <EmptyBox />
+            </figure>
+            <h3 className="mb-2 text-lg font-semibold">
               Não há ONGs disponíveis
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-neutral-500">
               Nenhuma organização foi encontrada para os filtros selecionados.
               <br />
               Tente alterar a categoria ou termo de busca.
