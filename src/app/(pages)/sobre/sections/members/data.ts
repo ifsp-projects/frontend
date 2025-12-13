@@ -55,7 +55,8 @@ export const TEAM_MEMBERS: MemberData[] = [
       'https://media.licdn.com/dms/image/v2/D4D03AQF6K2OCC4bBTA/profile-displayphoto-scale_200_200/B4DZoBzl_LH0AY-/0/1760966894057?e=1766016000&v=beta&t=yW7ooeMc0WJRYu8ZL_fFL4Wp-_lABAbzZg8gLIunsy0',
     urls: {
       linkedin: 'https://www.linkedin.com/in/vitor-silva-0ab38a261/',
-      github: 'https://github.com/vitingr'
+      github: 'https://github.com/vitingr',
+      portfolio: 'https://vitor-silva.com'
     }
   }
 ] as const

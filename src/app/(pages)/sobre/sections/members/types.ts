@@ -5,6 +5,6 @@ export interface MemberData {
   urls: {
     linkedin: string
     github: string
-    other?: string
+    portfolio?: string
   }
 }

@@ -5,6 +5,7 @@ import { GithubIcon } from '@/assets/socials/github'
 import { LinkedinIcon } from '@/assets/socials/linkedin'
 
 import { TEAM_MEMBERS } from './data'
+import { Paperclip } from '@vectoricons/atlas-icons-react'
 
 export const Members: FC = async () => {
   return (
@@ -65,6 +66,16 @@ export const Members: FC = async () => {
                 >
                   <GithubIcon className="h-5.5 w-5.5 text-neutral-700" />
                 </a>
+                {member.urls?.portfolio ? (
+                  <a
+                    aria-label="Portfolio"
+                    href={member.urls?.portfolio}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <Paperclip className="h-5.5 w-5.5 text-neutral-700" />
+                  </a>
+                ) : null}
               </div>
             </li>
           ))}
