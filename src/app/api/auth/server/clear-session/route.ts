@@ -1,6 +1,3 @@
-// app/api/auth/clear-session/route.ts (App Router)
-// ou pages/api/auth/clear-session.ts (Pages Router)
-
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 
