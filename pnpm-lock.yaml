@@ -16,7 +16,7 @@ importers:
         version: 2.0.108(react@19.1.0)(zod@4.1.13)
       '@cloudinary/react':
         specifier: ^1.14.3
-        version: 1.14.3(react@19.1.0)
+        version: 1.14.4(react@19.1.0)
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.68.0(react@19.1.0))
@@ -310,11 +310,11 @@ packages:
   '@cloudinary-util/util@4.0.0':
     resolution: {integrity: sha512-S4xcou/3A7l5o+bcKlw2VHBNgwups7/0lbVDT/cO5YmtrcEYXgj6LGmwnjvpTm/x571VPVN8x5jWdT3rLZiKJQ==}
 
-  '@cloudinary/html@1.13.4':
-    resolution: {integrity: sha512-noBk9D2VZgZkQIs5/y29OsJDmwp0FtgAlKrrp1+0Jp2HMu+68sdDJ3zi4/ZuLCnbdqthGuxP83trowG+Zsa68Q==}
+  '@cloudinary/html@1.13.5':
+    resolution: {integrity: sha512-t9mqy7u4D7oIU1NdFWwRrG8pCd+IxZ940PQx5gcm4AxIQhMrWXdhWTHYwDc5HzxjYhDzj4IpQ148EeDWSMq88g==}
 
-  '@cloudinary/react@1.14.3':
-    resolution: {integrity: sha512-AJ662pNAGEapRdkOOQstQHiKtXHBdoNkduWU3levugZ34ZiabBxmViISo16MtxZuBkzj96sV9ppmcq6foPqJ2w==}
+  '@cloudinary/react@1.14.4':
+    resolution: {integrity: sha512-r1HRmGk1aJle8AAoa7C4qVYaLrXxcjo4UQgZoTt/VkHWyxQppKR35YT/MGazNK0cwJuxhrWsLt6WpMIjGWdqlg==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.3.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -1402,6 +1402,9 @@ packages:
 
   '@types/lodash@4.17.21':
     resolution: {integrity: sha512-FOvQ0YPD5NOfPgMzJihoT+Za5pdkDJWcbpuj1DjaKZIr/gxodQjY/uWEFlTNqW2ugXHUiL8lRQgw63dzKHZdeQ==}
+
+  '@types/lodash@4.17.23':
+    resolution: {integrity: sha512-RDvF6wTulMPjrNdCoYRC8gNR880JNGT8uB+REUpC2Ns4pRqQJhGz90wh7rgdXDPpCczF3VGktDuFGVnz8zP7HA==}
 
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
@@ -4065,7 +4068,7 @@ snapshots:
 
   '@cloudinary-util/util@4.0.0': {}
 
-  '@cloudinary/html@1.13.4':
+  '@cloudinary/html@1.13.5':
     dependencies:
       '@types/lodash.clonedeep': 4.5.9
       '@types/lodash.debounce': 4.0.9
@@ -4074,9 +4077,9 @@ snapshots:
       lodash.debounce: 4.0.8
       typescript: 4.9.5
 
-  '@cloudinary/react@1.14.3(react@19.1.0)':
+  '@cloudinary/react@1.14.4(react@19.1.0)':
     dependencies:
-      '@cloudinary/html': 1.13.4
+      '@cloudinary/html': 1.13.5
       react: 19.1.0
 
   '@cloudinary/transformation-builder-sdk@1.21.2':
@@ -4976,17 +4979,19 @@ snapshots:
 
   '@types/lodash.clonedeep@4.5.9':
     dependencies:
-      '@types/lodash': 4.17.21
+      '@types/lodash': 4.17.23
 
   '@types/lodash.debounce@4.0.9':
     dependencies:
-      '@types/lodash': 4.17.21
+      '@types/lodash': 4.17.23
 
   '@types/lodash.set@4.3.9':
     dependencies:
       '@types/lodash': 4.17.21
 
   '@types/lodash@4.17.21': {}
+
+  '@types/lodash@4.17.23': {}
 
   '@types/mdast@4.0.4':
     dependencies:
