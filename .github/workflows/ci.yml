@@ -20,7 +20,7 @@ jobs:
       NEXTAUTH_SECRET: "dummy"
       GOOGLE_CLIENT_ID: "dummy"
       GOOGLE_CLIENT_SECRET: "dummy"
-      SECRET_KEY_SSO_TOKEN: "dummy"
+      JWT_SECRET: "dummy"
       OPENAI_API_KEY: "dummy"
       OPENAI_API_TOKEN_BASE_URL: "dummy"
       OPENAI_ORGANIZATION_ID: "dummy"

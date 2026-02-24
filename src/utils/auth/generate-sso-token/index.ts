@@ -1,10 +1,10 @@
 import type { SignOptions } from 'jsonwebtoken'
 import { sign } from 'jsonwebtoken'
 
-const SECRET = process.env.SECRET_KEY_SSO_TOKEN
+const SECRET = process.env.JWT_SECRET
 
 if (!SECRET) {
-  throw new Error('SECRET_KEY_SSO_TOKEN environment variable is required')
+  throw new Error('JWT_SECRET environment variable is required')
 }
 
 interface SsoTokenData {
