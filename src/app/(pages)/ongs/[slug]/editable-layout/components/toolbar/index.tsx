@@ -7,7 +7,6 @@ import { toast } from 'sonner'
 import { useUserSession } from '@/hooks/use-user-session'
 import { usePageBuilderStore } from '@/stores/page-builder-store'
 import {
-  ArrowUpGraph,
   DashboardPerformance,
   Eye,
   QuestionMessage,
@@ -43,23 +42,23 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
   }
 
   return (
-    <div className="fixed bottom-8 left-1/2 z-30 flex w-full max-w-[392px] -translate-x-1/2 transform items-center gap-1 rounded-sm bg-gradient-to-r from-neutral-900 to-neutral-800 px-1 py-1 shadow lg:justify-between">
+    <div className="fixed bottom-8 left-1/2 z-30 flex w-[calc(100%-2rem)] max-w-[392px] -translate-x-1/2 transform items-center gap-1 rounded-sm bg-gradient-to-r from-neutral-900 to-neutral-800 px-1 py-1 shadow lg:justify-between">
       <button
         onClick={() => {
           console.log('futuramente abril modal de suporte aqui')
         }}
-        className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
+        className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
         type="button"
       >
         <QuestionMessage className="h-5 w-5 text-neutral-50" />
       </button>
-      <div className="flex w-full flex-1 gap-1 border-x border-neutral-700 px-1">
-        <button
+      <div className="flex w-full flex-1 gap-1 overflow-x-auto border-x border-neutral-700 px-1">
+         <button
           onClick={() => {
             console.log('futuramente abril modal de suporte aqui')
           }}
-          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
-          id="eye"
+          className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
+          id="review"
           type="button"
         >
           <Eye className="h-5 w-5 text-neutral-50" />
@@ -68,17 +67,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
           onClick={() => {
             console.log('futuramente abril modal de suporte aqui')
           }}
-          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
-          id="dashboard"
-          type="button"
-        >
-          <ArrowUpGraph className="h-5 w-5 text-neutral-50" />
-        </button>
-        <button
-          onClick={() => {
-            console.log('futuramente abril modal de suporte aqui')
-          }}
-          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
+          className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
           id="review"
           type="button"
         >
@@ -88,16 +77,16 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
           onClick={() => {
             console.log('futuramente abril modal de suporte aqui')
           }}
-          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
+          className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
           id="theme"
           type="button"
         >
           <Sunny className="h-5 w-5 text-neutral-50" />
         </button>
       </div>
-      <div className="w-auto px-2">
+      <div className="w-auto shrink-0 px-2">
         <button
-          className="cursor-pointer rounded-sm border border-white px-3 py-1.5 text-sm font-medium text-white transition-all duration-200 hover:bg-neutral-50 hover:text-neutral-700"
+          className="cursor-pointer whitespace-nowrap rounded-sm border border-white px-3 py-1.5 text-xs font-medium text-white transition-all duration-200 hover:bg-neutral-50 hover:text-neutral-700 lg:text-sm"
           id="save"
           onClick={() => handleSave()}
           type="button"

@@ -177,21 +177,21 @@ export const CopyGenerator: FC = () => {
   }
 
   return (
-    <div className="fixed right-8 bottom-8 z-30">
+    <div className="fixed right-4 bottom-22 z-40 lg:right-8 lg:bottom-8">
       <Drawer direction="right">
         <DrawerTrigger asChild>
           <button
-            className="flex cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r from-rose-700 to-rose-500 px-4 py-2 shadow transition-all duration-200 hover:brightness-110"
+            className="flex cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r from-rose-700 to-rose-500 px-3 py-2 shadow transition-all duration-200 hover:brightness-110 lg:px-4"
             id="copy-generator"
           >
-            <p className="text-sm font-medium text-white xl:text-base">
+            <p className="text-sm font-medium text-white sm:block xl:text-base">
               Gerar texto automaticamente
             </p>
             <Sparkles className="h-5 w-5 text-white" />
           </button>
         </DrawerTrigger>
         <DrawerContent>
-          <div className="flex h-full w-full flex-col gap-4 px-4 pt-4 pb-8">
+          <div className="flex h-full w-full flex-col gap-4 px-3 pt-4 pb-6 lg:px-4 lg:pb-8">
             <DrawerHeader>
               <DrawerClose asChild>
                 <button>
@@ -202,9 +202,9 @@ export const CopyGenerator: FC = () => {
               </DrawerClose>
             </DrawerHeader>
 
-            <div className="flex flex-1 flex-col gap-6 overflow-hidden">
-              <div className="flex-1 overflow-y-auto pr-2">
-                <div className="flex flex-col gap-4 py-4">
+            <div className="flex flex-1 flex-col gap-4 overflow-hidden lg:gap-6">
+              <div className="flex-1 overflow-y-auto pr-1 lg:pr-2">
+                <div className="flex flex-col gap-3 py-3 lg:gap-4 lg:py-4">
                   {messages.length === 0 && !isLoading && (
                     <div className="flex flex-col items-center gap-2">
                       <EmptyBox />
@@ -245,9 +245,9 @@ export const CopyGenerator: FC = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3 lg:gap-4">
                 {messages.length === 0 && (
-                  <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                  <div className="grid grid-cols-2 gap-2 lg:grid-cols-2 lg:gap-4">
                     <button
                       onClick={() =>
                         handleSuggestionClick(
@@ -300,20 +300,20 @@ export const CopyGenerator: FC = () => {
                   </div>
                 )}
 
-                <form
+               <form
                   className="flex h-auto w-full items-stretch gap-2"
                   onSubmit={handleSubmit}
                 >
                   <input
-                    className="h-auto w-full flex-1 rounded-sm border border-neutral-300 px-3 py-2 text-sm text-neutral-600 transition-all duration-300 ease-in-out outline-none focus:border-neutral-400"
+                    className="h-auto w-full min-w-0 flex-1 rounded-sm border border-neutral-300 px-3 py-2 text-sm text-neutral-600 transition-all duration-300 ease-in-out outline-none focus:border-neutral-400"
                     disabled={isLoading}
                     onChange={handleInputChange}
-                    placeholder="Digite sua mensagem aqui..."
+                    placeholder="Digite sua mensagem..."
                     value={input}
                     autoFocus
                   />
                   <button
-                    className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm bg-neutral-500 transition-all duration-300 hover:bg-neutral-600 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-sm bg-neutral-500 transition-all duration-300 hover:bg-neutral-600 disabled:cursor-not-allowed disabled:opacity-50"
                     disabled={isLoading || !input.trim()}
                     type="submit"
                   >
