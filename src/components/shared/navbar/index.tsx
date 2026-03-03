@@ -4,7 +4,7 @@ import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useUserSession } from '@/hooks/use-user-session'
 
@@ -21,8 +21,20 @@ export const Navbar = () => {
   const { organization } = useUserSession()
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const [menuHeight, setMenuHeight] = useState<number>(0)
 
   const pathname = usePathname()
+
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    if (menuRef.current) {
+      setMenuHeight(menuRef.current.scrollHeight)
+    }
+  }, [menuOpen, organization])
 
   if (pathname === '/login') return null
 
@@ -38,7 +50,6 @@ export const Navbar = () => {
             width={360}
           />
         </Link>
-
         <div className="hidden items-center gap-8 lg:flex xl:gap-12">
           <ul className="flex items-center gap-4">
             <li>
@@ -86,7 +97,7 @@ export const Navbar = () => {
           {organization ? (
             <div className="flex items-center gap-3">
               <Link
-                className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150"
+                className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
                 href="/minha-ong"
               >
                 Minha ONG
@@ -94,6 +105,7 @@ export const Navbar = () => {
               <button
                 className="cursor-pointer rounded-sm border border-neutral-700 px-4 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
                 onClick={() => signOut()}
+                type="button"
               >
                 Sair
               </button>
@@ -107,7 +119,7 @@ export const Navbar = () => {
                 Contato
               </Link>
               <Link
-                className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150"
+                className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
                 href="/login"
               >
                 Entrar
@@ -125,38 +137,95 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {menuOpen ? (
-        <div className="flex w-full flex-col gap-4 bg-white/90 px-6 py-4 text-neutral-700 shadow-md lg:hidden">
+      <div
+        className="overflow-hidden transition-all duration-300 ease-in-out lg:hidden"
+        style={{
+          maxHeight: menuOpen ? `${menuHeight}px` : '0px',
+          opacity: menuOpen ? 1 : 0,
+        }}
+      >
+        <div
+          ref={menuRef}
+          className="flex w-full flex-col gap-1 bg-white px-4 py-3 text-neutral-700 shadow-md"
+        >
           <Link
-            className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
+            className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/' ? 'bg-neutral-50 text-rose-500' : ''}`}
             href="/"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen(false)}
           >
             Home
           </Link>
           <Link
-            className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
+            className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/ongs' ? 'bg-neutral-50 text-rose-500' : ''}`}
+            href="/ongs"
+            onClick={() => setMenuOpen(false)}
+          >
+            Projetos
+          </Link>
+          <Link
+            className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/sobre' ? 'bg-neutral-50 text-rose-500' : ''}`}
             href="/sobre"
             onClick={() => setMenuOpen(false)}
           >
             Sobre
           </Link>
           <Link
-            className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
+            className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/contato' ? 'bg-neutral-50 text-rose-500' : ''}`}
             href="/contato"
             onClick={() => setMenuOpen(false)}
           >
             Contato
           </Link>
           <Link
-            className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
-            href="/projetos"
+            className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/faq' ? 'bg-neutral-50 text-rose-500' : ''}`}
+            href="/faq"
             onClick={() => setMenuOpen(false)}
           >
-            Projetos
+            FAQ
           </Link>
+
+          <div className="my-1 h-px w-full bg-neutral-100" />
+
+          {organization ? (
+            <div className="flex flex-col gap-2 px-3 py-2">
+              <Link
+                className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
+                href="/minha-ong"
+                onClick={() => setMenuOpen(false)}
+              >
+                Minha ONG
+              </Link>
+              <button
+                className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                onClick={() => {
+                  setMenuOpen(false)
+                  signOut()
+                }}
+                type="button"
+              >
+                Sair
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2 px-3 py-2">
+              <Link
+                className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
+                href="/login"
+                onClick={() => setMenuOpen(false)}
+              >
+                Entrar
+              </Link>
+              <Link
+                className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                href="/contato"
+                onClick={() => setMenuOpen(false)}
+              >
+                Contato
+              </Link>
+            </div>
+          )}
         </div>
-      ) : null}
+      </div>
     </nav>
   )
 }
