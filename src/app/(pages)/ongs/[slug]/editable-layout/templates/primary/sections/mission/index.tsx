@@ -31,12 +31,12 @@ export const Mission: FC<MissionProps> = async ({ copy }) => {
         <ul className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:flex-row lg:justify-between lg:gap-12">
           {copy.tabs.map((tab, index: number) => (
             <li
-              className="flex w-full flex-col items-center gap-3"
+              className="flex w-full flex-col items-center gap-1.5 border border-emerald-500 bg-emerald-50 px-2 py-3 lg:gap-3 lg:border-transparent lg:bg-transparent lg:p-0"
               key={`${tab?.title}-${index}`}
             >
               <EditableCopyField
                 as="p"
-                className="bg-gradient-to-r from-emerald-400 to-emerald-700 bg-clip-text text-2xl font-semibold text-transparent lg:text-5xl"
+                className="bg-linear-to-r from-emerald-400 to-emerald-700 bg-clip-text text-2xl font-semibold text-transparent lg:text-5xl"
                 defaultValue={tab?.title || ''}
                 path={`ourMission.tabs[${index}].title`}
               />

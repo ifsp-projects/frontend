@@ -16,6 +16,10 @@ export const Header = async () => {
           Temos orgulho em impulsionar causas <br />
           que transformam o mundo
         </h1>
+        <p className="text-center text-sm text-white lg:text-base">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor enim
+          ad eius iste ipsum delectus fugiat nobis corporis id mollitia
+        </p>
         <div className="flex w-full items-center justify-center gap-4">
           <Link
             className="cursor-pointer rounded-full border border-white bg-white px-6 py-2 text-sm font-medium text-neutral-700 backdrop-blur-[10px] transition duration-200"

@@ -7,7 +7,7 @@ export const MoreInfoAbout: FC<MoreInfoAboutProps> = ({ copy }) => {
   return (
     <section className="border-y border-neutral-200 bg-neutral-100 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-8">
-        <div className="mx-auto flex w-full max-w-2xl flex-col-reverse py-8 last:border-transparent lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:py-8">
+        <div className="mx-auto flex w-full max-w-2xl flex-col-reverse gap-8 py-8 last:border-transparent lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:py-8">
           <article className={`flex w-full flex-col gap-4 lg:order-2 lg:gap-6`}>
             <h2 className="text-2xl font-bold lg:text-3xl">{copy.title}</h2>
             <p className="text-sm lg:text-base">{copy.description}</p>

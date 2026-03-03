@@ -4,11 +4,11 @@ import { STEPS_COPIES } from './data'
 
 export const MoreInfoAbout = () => {
   return (
-    <section className="px-4 py-12 lg:py-16 xl:px-0">
+    <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-8">
         {STEPS_COPIES.map((section, index: number) => (
           <div
-            className="mx-auto flex w-full max-w-2xl flex-col-reverse border-b border-neutral-200 py-8 last:border-transparent lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:py-8"
+            className="mx-auto flex w-full max-w-2xl flex-col-reverse gap-8 border-b border-neutral-200 py-8 last:border-transparent lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:py-8"
             key={`${section.title}-${index}`}
           >
             <article

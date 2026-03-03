@@ -177,17 +177,17 @@ export const CopyGenerator: FC = () => {
   }
 
   return (
-    <div className="fixed right-8 bottom-8 z-30">
+    <div className="fixed right-11 bottom-24 z-30 lg:right-8 lg:bottom-8">
       <Drawer direction="right">
         <DrawerTrigger asChild>
           <button
-            className="flex cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r from-rose-700 to-rose-500 px-4 py-2 shadow transition-all duration-200 hover:brightness-110"
+            className="flex cursor-pointer items-center gap-2 rounded-full bg-linear-to-r from-rose-700 to-rose-500 px-4 py-2 shadow transition-all duration-200 hover:brightness-110"
             id="copy-generator"
           >
-            <p className="text-sm font-medium text-white xl:text-base">
+            <p className="text-xs font-medium text-white lg:text-sm xl:text-base">
               Gerar texto automaticamente
             </p>
-            <Sparkles className="h-5 w-5 text-white" />
+            <Sparkles className="h-4 w-4 text-white lg:h-5 lg:w-5" />
           </button>
         </DrawerTrigger>
         <DrawerContent>

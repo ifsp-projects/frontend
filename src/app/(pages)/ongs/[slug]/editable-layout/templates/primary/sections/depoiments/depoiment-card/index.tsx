@@ -21,7 +21,7 @@ export const DepoimentCard: FC<DepoimentCardProps> = ({ copy, index }) => {
         />
       </section>
 
-      <footer className="card__footer">
+      <div className="card__footer">
         <div className="card__job-summary">
           <figure className="card__job-icon">
             <EditableImageField
@@ -51,7 +51,7 @@ export const DepoimentCard: FC<DepoimentCardProps> = ({ copy, index }) => {
             />
           </article>
         </div>
-      </footer>
+      </div>
     </article>
   )
 }

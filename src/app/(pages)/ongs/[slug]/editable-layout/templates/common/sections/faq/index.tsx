@@ -10,8 +10,8 @@ import type { FaqProps } from './types'
 export const FAQ: FC<FaqProps> = ({ color, copy }) => {
   return (
     <section className="px-4 py-12 lg:py-16 xl:px-0">
-      <div className="mx-auto flex w-full max-w-2xl flex-col lg:max-w-7xl lg:flex-row lg:justify-between">
-        <article className="flex w-full flex-col gap-6">
+      <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:justify-between lg:gap-0">
+        <article className="flex w-full flex-col gap-3 lg:gap-6">
           <span className="w-fit rounded-full border border-neutral-200 bg-neutral-50 px-4 py-1.5 text-xs font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200">
             FAQs
           </span>

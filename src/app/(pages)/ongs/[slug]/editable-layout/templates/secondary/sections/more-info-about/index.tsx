@@ -1,12 +1,13 @@
-import Image from 'next/image'
+import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
 
-import { STEPS_COPIES } from './data'
+import type { MoreInfoAboutProps } from './types'
 
-export const MoreInfoAbout = () => {
+export const MoreInfoAbout: React.FC<MoreInfoAboutProps> = ({ copy }) => {
   return (
     <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-8">
-        {STEPS_COPIES.map((section, index: number) => (
+        {copy.cards.map((section, index: number) => (
           <div
             className="mx-auto flex w-full max-w-2xl flex-col-reverse border-b border-neutral-200 py-8 last:border-transparent lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:py-8"
             key={`${section.title}-${index}`}
@@ -14,24 +15,29 @@ export const MoreInfoAbout = () => {
             <article
               className={`flex w-full flex-col gap-4 lg:gap-6 ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
             >
-              <h2 className="text-2xl font-bold lg:text-3xl">
-                {section.title}
-              </h2>
-              <div className="flex flex-col gap-4">
-                <p
-                  className="text-sm text-neutral-600 lg:text-base"
-                  dangerouslySetInnerHTML={{ __html: section.description }}
-                />
-              </div>
+              <EditableCopyField
+                as="h3"
+                className="text-2xl font-bold lg:text-3xl"
+                defaultValue={section.title}
+                path={`moreInfoAbout.cards[${index}].title`}
+              />
+
+              <EditableCopyField
+                as="p"
+                className="text-sm text-neutral-600 lg:text-base"
+                defaultValue={section.description}
+                path={`moreInfoAbout.cards[${index}].description`}
+              />
             </article>
             <figure
               className={`h-[320px] w-full rounded-sm ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}
             >
-              <Image
+              <EditableImageField
                 alt="Section Image"
                 className="h-[320px] w-full rounded-sm object-cover"
+                defaultValue={section.image}
                 height={1080}
-                src="https://images.ctfassets.net/kftzwdyauwt9/4pZ1y9pOSiiyrm99zhBAzH/6bc57658ced65b6e97b4744b539703e7/oai_GA_Stories_1.1.png?w=3840&q=90&fm=webp"
+                path={`moreInfoAbout.cards[${index}].image`}
                 width={1920}
               />
             </figure>

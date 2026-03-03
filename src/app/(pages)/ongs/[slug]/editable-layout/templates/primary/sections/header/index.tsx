@@ -9,23 +9,16 @@ import type { HeaderProps } from './types'
 
 export const Header: FC<HeaderProps> = ({ copy }) => {
   return (
-    <section className="relative z-30 overflow-hidden bg-gradient-to-r from-neutral-50/10 to-white px-4 xl:px-0">
-      {/* <Image
-        alt="Template Background"
-        className="absolute z-20 h-full w-full opacity-10 2xl:opacity-20"
-        height={1080}
-        src="/templates/template-background-image.svg"
-        width={1920}
-      /> */}
+    <section className="relative z-30 overflow-hidden bg-linear-to-r from-neutral-50/10 to-white px-4 xl:px-0">
       <header className="relative z-40 mx-auto flex w-full max-w-2xl flex-col gap-8 py-12 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:py-20">
         <div className="flex w-full flex-col gap-6 lg:gap-8">
           <article
-            className="flex w-full max-w-[560px] flex-col gap-4"
+            className="flex w-full flex-col gap-4 lg:max-w-[560px]"
             id="header"
           >
             <EditableCopyField
               as="span"
-              className="w-fit rounded-full border border-neutral-200 bg-neutral-50 px-4 py-1.5 text-xs font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200"
+              className="w-fit rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-[11px] font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200 lg:px-4 lg:py-1.5 lg:text-xs"
               defaultValue={copy.span}
               path="header.span"
             />
@@ -55,14 +48,7 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
             </p>
           </div>
         </div>
-        <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
-          {/* <Image
-            alt="Hero Image"
-            className="w-full object-cover"
-            height={800}
-            src="/templates/undraw_different-love_58hd.svg"
-            width={800}
-          /> */}
+        <figure className="relative z-30 w-full rounded-sm lg:max-w-[500px] lg:pr-24">
           <EditableImageField
             alt="Hero Background"
             className="h-full w-full"

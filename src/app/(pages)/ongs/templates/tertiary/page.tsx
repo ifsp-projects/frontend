@@ -3,11 +3,12 @@ import type { Metadata, NextPage } from 'next'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { FAQ } from '../common/sections/faq'
-import { ImagesGrid } from '../common/sections/images-grid'
 import { AboutUs } from './sections/about-us'
 import { Header } from './sections/header'
 import { HowItWorks } from './sections/how-it-works'
-import { Mission } from './sections/mission'
+import { Initiatives } from './sections/initiatives'
+import { MoreInfoAbout } from './sections/more-info-about'
+import { Testimonials } from './sections/testimonials'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -20,13 +21,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const Page: NextPage = async () => {
   return (
-    <main className="text-neutral-700 selection:!bg-blue-50 selection:text-green-600">
+    <main className="text-neutral-700 selection:bg-yellow-50! selection:text-yellow-600">
       <Header />
-      <ImagesGrid />
       <HowItWorks />
-      <Mission />
+      <Testimonials />
+      <MoreInfoAbout />
+      <Initiatives />
       <AboutUs />
-      <FAQ color="green" />
+      <FAQ color="yellow" />
     </main>
   )
 }

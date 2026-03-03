@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const Header = async () => {
   return (
-    <section className="relative z-30 overflow-hidden bg-gradient-to-r from-neutral-50/10 to-white px-4 xl:px-0">
+    <section className="relative z-30 overflow-hidden bg-linear-to-r from-neutral-50/10 to-white px-4 xl:px-0">
       <Image
         alt="Template Background"
         className="absolute z-20 h-full w-full opacity-15 2xl:opacity-20"
