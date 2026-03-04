@@ -7,7 +7,8 @@ import { useState } from 'react'
 import { EmptyBox } from '@/assets/icons/empty-box'
 import SpotlightCard from '@/components/shared/spotlight-card'
 
-import { categories, ongs } from './data'
+import { categories } from './data'
+import type { ListProps } from './types'
 
 const categoryColors = {
   'Assistência Social': 'bg-blue-100 text-blue-800',
@@ -23,17 +24,19 @@ const getCategoryColor = (category: string) => {
   )
 }
 
-export const List: FC = () => {
+export const List: FC<ListProps> = ({ data }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [searchTerm, setSearchTerm] = useState<string>('')
 
-  const filteredOngs = ongs.filter(ong => {
+  const filteredOngs = data?.organizations.filter(ong => {
     const matchesCategory =
-      !selectedCategory || ong.category === selectedCategory
+      !selectedCategory ||
+      ong.organization_profile?.ong_type === selectedCategory
     const matchesSearch =
       !searchTerm ||
-      ong.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      ong.description.toLowerCase().includes(searchTerm.toLowerCase())
+      ong.organization_profile?.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
 
     return matchesCategory && matchesSearch
   })
@@ -100,33 +103,34 @@ export const List: FC = () => {
                 >
                   <div className="rounded-lg bg-white">
                     <div className="mb-4 flex items-center gap-3">
-                      {ong.logo ? (
+                      {ong.organization_profile?.logo ? (
                         <img
-                          alt={ong.name}
+                          alt={ong.organization_profile?.name}
                           className="h-12 w-12 rounded-lg object-contain"
-                          src={ong.logo}
+                          src={ong.organization_profile?.logo}
                         />
                       ) : (
                         <div
-                          className={`flex h-12 w-12 items-center justify-center rounded-lg text-white ${ong.bgColor}`}
+                          className={`flex h-12 w-12 items-center justify-center rounded-lg text-white`}
                         >
                           <span className="text-lg font-bold">
-                            {ong.initials}
+                            {ong.organization_profile?.name.charAt(0)}
                           </span>
                         </div>
                       )}
                       <h3 className="text-lg font-semibold text-gray-900">
-                        {ong.name}
+                        {ong.organization_profile?.name}
                       </h3>
                     </div>
                     <p className="mb-4 text-sm text-gray-600">
-                      {ong.description}
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Et vitae nemo voluptatibus neque suscipit
                     </p>
                     <div className="flex items-center justify-between">
                       <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${getCategoryColor(ong.category)}`}
+                        className={`rounded-full px-3 py-1 text-xs font-medium ${getCategoryColor(ong.organization_profile?.ong_type)}`}
                       >
-                        {ong.category}
+                        {ong.organization_profile?.ong_type}
                       </span>
                       <button className="cursor-pointer text-sm font-medium text-rose-400 hover:underline">
                         Ver detalhes

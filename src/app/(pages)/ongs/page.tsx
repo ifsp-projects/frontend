@@ -1,5 +1,6 @@
 import type { Metadata, NextPage } from 'next'
 
+import { instanceMotor } from '@/instances/motor'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { Header } from './sections/header'
@@ -17,11 +18,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Page: NextPage = async () => {
+  const { data } = await instanceMotor.organizations.getAllOrganizations()
+
   return (
     <main>
       <Header />
       {/* <TopDonatedOngs /> */}
-      <List />
+      <List data={data} />
     </main>
   )
 }
