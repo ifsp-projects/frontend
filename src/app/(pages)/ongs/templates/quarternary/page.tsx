@@ -19,12 +19,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const Page: NextPage = async () => {
   return (
-    <main className="text-neutral-700 selection:bg-red-50! selection:text-red-600">
+    <main className="text-neutral-700 selection:bg-rose-50! selection:text-rose-600">
       <Header />
       <Causes />
       <Timeline />
       <GetInvolved />
-      <FAQ color="red" />
+      <FAQ color="rose" />
     </main>
   )
 }
