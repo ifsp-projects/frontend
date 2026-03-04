@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 export const Header = async () => {
@@ -72,7 +71,7 @@ export const Header = async () => {
           </div> */}
         </div>
 
-        <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
+        {/* <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
           <Image
             alt="Hero Image"
             className="w-full object-cover"
@@ -80,7 +79,7 @@ export const Header = async () => {
             src="/templates/undraw_different-love_58hd.svg"
             width={800}
           />
-        </figure>
+        </figure> */}
       </header>
     </section>
   )
