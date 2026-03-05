@@ -12,6 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger
 } from '@/components/ui/drawer'
+import { useUserStore } from '@/stores/user-store'
 import { ArrowLeft, StarLightbulb } from '@vectoricons/atlas-icons-react'
 
 import { AssistantMessage } from './components/assistant-message'
@@ -31,6 +32,7 @@ export const CopyGenerator: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const getOngDescription = useUserStore(state => state.getDescription)
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -81,6 +83,8 @@ export const CopyGenerator: FC = () => {
         content: m.content
       }))
 
+      const context = getOngDescription()
+
       console.log('Sending to API:', messageHistory)
 
       const response = await fetch('/api/chat', {
@@ -89,7 +93,8 @@ export const CopyGenerator: FC = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          messages: messageHistory
+          messages: messageHistory,
+          context: context
         })
       })
 
@@ -300,7 +305,7 @@ export const CopyGenerator: FC = () => {
                   </div>
                 )}
 
-               <form
+                <form
                   className="flex h-auto w-full items-stretch gap-2"
                   onSubmit={handleSubmit}
                 >

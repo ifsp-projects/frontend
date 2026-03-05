@@ -84,6 +84,28 @@ export const BasicInfo: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
             name="ong_type"
           />
         </div>
+        <div className="w-full">
+          <label className="mb-2 block font-medium text-neutral-700">
+            Descreve resumidamente sua ONG
+            <span className="ml-2 text-rose-500">*</span>
+          </label>
+
+          <Controller
+            render={({ field }) => (
+              <input
+                {...field}
+                className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
+                maxLength={15}
+                onChange={e => field.onChange(formatPhone(e.target.value))}
+                placeholder="Descrição"
+                type="text"
+                value={field.value || ''}
+              />
+            )}
+            control={control}
+            name="description"
+          />
+        </div>
       </div>
       <div className="flex w-full items-center gap-4 lg:justify-between">
         <div className="item-center flex w-full justify-start">
