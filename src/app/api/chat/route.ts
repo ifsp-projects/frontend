@@ -18,7 +18,7 @@ export const POST = async (req: NextRequest) => {
   try {
     const body = await req.json()
 
-    const { messages } = body
+    const { messages, context } = body
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json(
@@ -29,7 +29,9 @@ export const POST = async (req: NextRequest) => {
 
     const lastMessage = messages[messages.length - 1]
     const promptContent =
-      typeof lastMessage.content === 'string' ? lastMessage.content : ''
+      typeof lastMessage.content === 'string'
+        ? `Descrição do projeto(utilize se for necessário para melhorar a resposta) ${context} ${lastMessage.content}`
+        : ''
 
     if (!promptContent || promptContent.trim() === '') {
       return NextResponse.json(

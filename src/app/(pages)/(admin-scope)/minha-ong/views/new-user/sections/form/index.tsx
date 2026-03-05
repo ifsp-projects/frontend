@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
 import { useUserSession } from '@/hooks/use-user-session'
+import { useUserStore } from '@/stores/user-store'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Stepper } from '../stepper'
@@ -19,6 +20,7 @@ import { complementInfoFormSchema } from './schema'
 
 export const Form: FC = () => {
   const { token, organization, update } = useUserSession()
+  const updateUserStore = useUserStore(state => state.setUserSession)
 
   if (!organization?.id) {
     return null
@@ -35,6 +37,9 @@ export const Form: FC = () => {
 
   const onSubmit = async values => {
     try {
+      const context = values.context
+
+      updateUserStore(context ?? '')
       const response = await axios.post(
         '/api/organization-profiles/create-organization-profile',
         {
