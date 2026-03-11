@@ -167,7 +167,7 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
             onClick={() => {
               console.log(errors)
             }}
-            className="duration-15- flex cursor-pointer items-center gap-4 rounded-sm bg-neutral-700 px-6 py-2 text-sm font-semibold text-white transition-all hover:brightness-110 lg:text-base"
+            className="flex cursor-pointer items-center gap-4 rounded-sm bg-neutral-700 px-6 py-2 text-sm font-semibold text-white transition-all duration-150 hover:brightness-110 lg:text-base"
             disabled={isSubmitting}
             type="submit"
           >
