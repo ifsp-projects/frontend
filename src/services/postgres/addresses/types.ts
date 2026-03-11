@@ -15,7 +15,7 @@ export interface GetAllAddressesData {
 }
 
 export interface UpdateAddressData {
-  payload: PostgresAddress
+  payload: Omit<PostgresAddress, 'created_at'>
   token: string
 }
 

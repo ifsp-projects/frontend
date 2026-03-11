@@ -31,13 +31,13 @@ export const Header: React.FC<HeaderProps> = async ({ copy }) => {
         <div className="flex w-full items-center justify-center gap-4">
           <EditableCopyField
             as="div"
-            className="cursor-pointer rounded-full border border-white bg-white px-6 py-2 text-sm font-medium text-neutral-700 backdrop-blur-[10px] transition duration-200"
+            className="rounded-full border border-white bg-white px-6 py-2 text-sm font-medium text-neutral-700 backdrop-blur-[10px] transition duration-200"
             defaultValue={copy.button}
             path="header.button"
           />
           <EditableCopyField
             as="div"
-            className="cursor-pointer rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm font-medium text-white backdrop-blur-[10px] transition-all duration-300 hover:brightness-110"
+            className="rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm font-medium text-white backdrop-blur-[10px] transition-all duration-300 hover:brightness-110"
             defaultValue={copy.anchor}
             path="header.anchor"
           />

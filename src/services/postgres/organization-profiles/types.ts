@@ -9,8 +9,12 @@ export interface CreateOrganizationProfileResponse {
   organizationProfile: PostgresOrganizationProfile
 }
 
-export interface UpdateOrganizationProfileData
-  extends CreateOrganizationProfileData {}
+export interface UpdateOrganizationProfileData {
+  payload: Omit<
+    PostgresOrganizationProfile,
+    'id' | 'created_at' | 'updated_at' | 'ong_name' | 'slug'
+  >
+  token: string
+}
 
-export interface UpdateOrganizationProfileResponse
-  extends CreateOrganizationProfileResponse {}
+export interface UpdateOrganizationProfileResponse extends CreateOrganizationProfileResponse {}

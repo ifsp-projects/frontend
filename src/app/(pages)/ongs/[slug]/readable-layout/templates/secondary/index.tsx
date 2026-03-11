@@ -10,9 +10,9 @@ import { Header } from './sections/header'
 import { HowItWorks } from './sections/how-it-works'
 import { MoreInfoAbout } from './sections/more-info-about'
 
-export const SecondaryLandingPageLayout: FC<LandingPageTemplateProps> = async ({
-  slug
-}) => {
+export const ReadableSecondaryLandingPageLayout: FC<
+  LandingPageTemplateProps
+> = async ({ slug }) => {
   const { data } = await instanceMotor.pages.getPageBySlug({ slug })
 
   return (

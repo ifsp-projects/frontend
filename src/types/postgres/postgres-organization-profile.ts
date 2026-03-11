@@ -8,6 +8,7 @@ export interface PostgresOrganizationProfile {
   id: string
   logo?: string
   name?: string
+  ong_description?: string
   ong_id?: string
   ong_type?: string
   phone?: string

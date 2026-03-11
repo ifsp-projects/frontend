@@ -9,7 +9,7 @@ import { GetInvolved } from './sections/get-involved'
 import { Header } from './sections/header'
 import { Timeline } from './sections/timeline'
 
-export const QuarternaryLandingPageLayout: FC<
+export const EditableQuarternaryLandingPageLayout: FC<
   LandingPageTemplateProps
 > = async ({ slug }) => {
   const { data } = await instanceMotor.pages.getPageBySlug({ slug })

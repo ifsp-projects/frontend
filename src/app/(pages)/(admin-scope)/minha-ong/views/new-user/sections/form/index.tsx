@@ -62,11 +62,12 @@ export const Form: FC = () => {
       toast.success(responseData.message, {
         position: 'top-center'
       })
-      console.log(responseData)
+
       await update({
         organization_profile: responseData.organizationProfile,
         is_user_new: false
       })
+
       router.push(`/ongs/${responseData.organizationProfile.slug}`)
     } catch (error) {
       console.error(`Error trying to update organization profile: ${error}`)

@@ -18,7 +18,8 @@ export const POST = async (req: NextRequest) => {
       complement,
       design_template,
       token,
-      logo
+      logo,
+      description
     } = await req.json()
 
     if (!phone || !ong_type || !ong_name || !design_template) {
@@ -40,6 +41,7 @@ export const POST = async (req: NextRequest) => {
           phone,
           name: ong_name,
           design_template,
+          ong_description: description,
           slug: generateSlug({ text: ong_name })
         },
         token

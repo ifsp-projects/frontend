@@ -6,7 +6,13 @@ import { getUserSession } from '@/utils/auth/get-user-session'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { EditablePrimaryLandingPageLayout } from './editable-layout/templates/primary'
+import { EditableQuarternaryLandingPageLayout } from './editable-layout/templates/quarternary'
+import { EditableSecondaryLandingPageLayout } from './editable-layout/templates/secondary'
+import { EditableTertiaryLandingPageLayout } from './editable-layout/templates/tertiary'
 import { ReadablePrimaryLandingPageLayout } from './readable-layout/templates/primary'
+import { ReadableQuarternaryLandingPageLayout } from './readable-layout/templates/quarternary'
+import { ReadableSecondaryLandingPageLayout } from './readable-layout/templates/secondary'
+import { ReadableTertiaryLandingPageLayout } from './readable-layout/templates/tertiary'
 import type { OngPageProps } from './types'
 
 export const generateMetadata = async ({
@@ -39,11 +45,27 @@ const Page: NextPage<OngPageProps> = async ({ params }) => {
   const { data: response } =
     await instanceMotor.organizations.getOrganizationBySlug({ slug })
 
-  return user?.email === response.organization.email ? (
-    <EditablePrimaryLandingPageLayout slug={slug} />
-  ) : (
-    <ReadablePrimaryLandingPageLayout slug={slug} />
-  )
+  const EDITABLE_LAYOUTS = {
+    primary: <EditablePrimaryLandingPageLayout slug={slug} />,
+    secondary: <EditableSecondaryLandingPageLayout slug={slug} />,
+    tertiary: <EditableTertiaryLandingPageLayout slug={slug} />,
+    quarternary: <EditableQuarternaryLandingPageLayout slug={slug} />
+  }
+
+  const READABLE_LAYOUTS = {
+    primary: <ReadablePrimaryLandingPageLayout slug={slug} />,
+    secondary: <ReadableSecondaryLandingPageLayout slug={slug} />,
+    tertiary: <ReadableTertiaryLandingPageLayout slug={slug} />,
+    quarternary: <ReadableQuarternaryLandingPageLayout slug={slug} />
+  }
+
+  return user?.email === response.organization.email
+    ? EDITABLE_LAYOUTS[
+        response.organization.organization_profile?.design_template
+      ]
+    : READABLE_LAYOUTS[
+        response.organization.organization_profile?.design_template
+      ]
 }
 
 export default Page

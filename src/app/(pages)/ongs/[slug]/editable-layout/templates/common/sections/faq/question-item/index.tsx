@@ -15,9 +15,7 @@ export const QuestionItem: React.FC<QuestionItemProps> = ({ copy, index }) => {
   }, [index])
 
   return (
-    <button
-      className={`group w-full cursor-pointer rounded-sm bg-neutral-100 p-4 transition`}
-    >
+    <button className={`group w-full rounded-sm bg-neutral-100 p-4 transition`}>
       <div
         className={`${
           isQuestionOpen ? 'mb-2' : 'mb-0'
@@ -25,7 +23,7 @@ export const QuestionItem: React.FC<QuestionItemProps> = ({ copy, index }) => {
       >
         <EditableCopyField
           as="h3"
-          className={`text-left text-base font-medium transition-all group-hover:brightness-125 lg:text-lg lg:font-semibold`}
+          className={`cursor-text text-left text-base font-medium transition-all group-hover:brightness-125 lg:text-lg lg:font-semibold`}
           defaultValue={copy.title}
           path={`faq.questions[${index}].title`}
         />
@@ -34,7 +32,7 @@ export const QuestionItem: React.FC<QuestionItemProps> = ({ copy, index }) => {
       {isClient && (
         <EditableCopyField
           as="p"
-          className={`max-h-[400px] overflow-hidden text-left text-sm text-neutral-500 transition-all duration-300 ease-in-out lg:text-base`}
+          className={`max-h-[400px] cursor-text overflow-hidden text-left text-sm text-neutral-500 transition-all duration-300 ease-in-out lg:text-base`}
           defaultValue={copy.description}
           path={`faq.questions[${index}].description`}
         />

@@ -15,10 +15,7 @@ export const complementInfoFormSchema = z.object({
   postal_code: z.string().nullable(),
   complement: z.string().nullable(),
   design_template: z.string().nonempty('Esse campo é obrigatório'),
-  description: z
-    .string()
-    .max(40, 'A descrição não pode ter mais de 40 caracteres')
-    .optional()
+  description: z.string().max(280, 'Descrição muito longa!').optional()
 })
 
 export type ComplementFormSchemaType = z.infer<typeof complementInfoFormSchema>

@@ -8,7 +8,19 @@ import type {
   UpdatePageResponse
 } from './types'
 
+/**
+ * Service class responsible for handling page-related API requests.
+ * Provides methods for retrieving pages by their slug and updating existing pages.
+ */
 export class Pages {
+  /**
+   * Retrieves a specific page by its slug.
+   * * @async
+   * @param {GetPageBySlugData} params - The data required to fetch the page.
+   * @param {string} params.slug - The URL-friendly slug of the page.
+   * @returns {Promise<GetPageBySlugResponse | { status: string, data: { page: PostgresPage } }>}
+   * A promise that resolves to the page data, or a fallback object containing the error message as status and a mocked empty page on failure.
+   */
   getPageBySlug = async ({ slug }: GetPageBySlugData) => {
     try {
       return await apiPostgres.get<GetPageBySlugResponse>(
@@ -37,6 +49,15 @@ export class Pages {
     }
   }
 
+  /**
+   * Updates an existing page's data.
+   * * @async
+   * @param {UpdatePageData} params - The data required to update the page.
+   * @param {Object} params.payload - The page details to update (must include the page `id`).
+   * @param {string} params.token - The authorization bearer token.
+   * @returns {Promise<UpdatePageResponse | { status: string, data: { page: PostgresPage } }>}
+   * A promise that resolves to the updated page response, or a fallback object containing the error message as status and a mocked empty page on failure.
+   */
   updatePage = async ({ payload, token }: UpdatePageData) => {
     try {
       return await apiPostgres.patch<UpdatePageResponse>(

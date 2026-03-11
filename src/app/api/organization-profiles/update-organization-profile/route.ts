@@ -1,0 +1,112 @@
+import { type NextRequest, NextResponse } from 'next/server'
+
+import { instanceMotor } from '@/instances/motor'
+
+export const PUT = async (req: NextRequest) => {
+  try {
+    const {
+      ong_id,
+      ong_type,
+      phone,
+      street,
+      number,
+      city,
+      state,
+      postal_code,
+      complement,
+      design_template,
+      token,
+      logo,
+      description,
+      addressId
+    } = await req.json()
+
+    if (!phone || !ong_type || !design_template) {
+      return NextResponse.json(
+        {
+          message:
+            'Não foi possível concluir o seu cadastro pois faltam informações!'
+        },
+        { status: 400 }
+      )
+    }
+
+    const response =
+      await instanceMotor.organizationProfiles.updateOrganizationProfile({
+        payload: {
+          logo,
+          ong_id,
+          ong_type,
+          phone,
+          design_template,
+          ong_description: description
+        },
+        token
+      })
+
+    if (response.status === 500) {
+      return NextResponse.json(
+        { message: 'Erro! Não foi possível criar seu perfil.' },
+        { status: 500 }
+      )
+    }
+
+    if (response.status === 409) {
+      return NextResponse.json(
+        { message: 'Erro! Sua organização não pode ter 2 perfis!' },
+        { status: 409 }
+      )
+    }
+
+    if (street || city || number || postal_code || complement || state) {
+      if (!ong_id) {
+        return NextResponse.json(
+          {
+            message:
+              'ong_id é obrigatório quando informações de endereço são fornecidas!'
+          },
+          { status: 400 }
+        )
+      }
+
+      const createdAddress = await instanceMotor.addresses.updateAddress({
+        payload: {
+          id: addressId,
+          city,
+          number: number ? number.toString() : '',
+          complement,
+          postal_code,
+          state,
+          street,
+          organization_profile_id: response?.data?.organizationProfile?.id
+        },
+        token
+      })
+
+      if (createdAddress.status === 500) {
+        return NextResponse.json(
+          { message: 'Erro! Não foi possível adicionar um novo endereço.' },
+          { status: 500 }
+        )
+      }
+    }
+
+    return NextResponse.json(
+      {
+        message: 'Finalizado! Seu perfil está totalmente pronto.',
+        organizationProfile: response?.data?.organizationProfile
+      },
+      { status: 201 }
+    )
+  } catch (error) {
+    console.error({
+      'POST/api/organization-profiles/update-organization-profile':
+        error.message
+    })
+
+    return NextResponse.json(
+      { message: error.message },
+      { status: error.statusCode }
+    )
+  }
+}

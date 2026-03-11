@@ -86,24 +86,16 @@ export const BasicInfo: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
         </div>
         <div className="w-full">
           <label className="mb-2 block font-medium text-neutral-700">
-            Descreve resumidamente sua ONG
-            <span className="ml-2 text-rose-500">*</span>
+            Descreva brevemente sua ONG
           </label>
 
-          <Controller
-            render={({ field }) => (
-              <input
-                {...field}
-                className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
-                maxLength={15}
-                onChange={e => field.onChange(formatPhone(e.target.value))}
-                placeholder="Descrição"
-                type="text"
-                value={field.value || ''}
-              />
-            )}
-            control={control}
-            name="description"
+          <textarea
+            className="w-full resize-none rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none"
+            name="text"
+            placeholder="Ex: Somos uma ONG dedicada a apoiar crianças em situação de vulnerabilidade por meio de educação, alimentação e atividades culturais."
+            rows={4}
+            required
+            {...register('description')}
           />
         </div>
       </div>

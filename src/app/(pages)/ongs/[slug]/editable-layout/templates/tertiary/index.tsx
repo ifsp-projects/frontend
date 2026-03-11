@@ -11,9 +11,9 @@ import { Initiatives } from './sections/initiatives'
 import { MoreInfoAbout } from './sections/more-info-about'
 import { Testimonials } from './sections/testimonials'
 
-export const TertiaryLandingPageLayout: FC<LandingPageTemplateProps> = async ({
-  slug
-}) => {
+export const EditableTertiaryLandingPageLayout: FC<
+  LandingPageTemplateProps
+> = async ({ slug }) => {
   const { data } = await instanceMotor.pages.getPageBySlug({ slug })
 
   return (

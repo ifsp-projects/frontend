@@ -40,7 +40,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = async ({ copy }) => {
           </article>
           <EditableCopyField
             as="div"
-            className="flex max-w-fit cursor-pointer items-center justify-center rounded-md bg-blue-500 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
+            className="flex max-w-fit items-center justify-center rounded-md bg-blue-500 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
             defaultValue={copy.anchor}
             path="howItWorks.anchor"
           />
