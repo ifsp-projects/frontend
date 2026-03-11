@@ -61,8 +61,6 @@ export const authOptions: AuthOptions = {
       session.accessToken = token.accessToken as string
       session.error = token.error as string
 
-      console.log(session)
-
       const { refreshToken: _refreshToken, ...safeToken } = token as JWT
       session.organization = safeToken as unknown as PostgresOrganization
       return session

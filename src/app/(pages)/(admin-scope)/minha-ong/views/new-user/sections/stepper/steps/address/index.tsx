@@ -20,8 +20,6 @@ export const Address: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
       fetch(`https://viacep.com.br/ws/${cep}/json/`)
     )
 
-    console.log(JSON.stringify(request))
-
     if (request.error) {
       console.error(request.error)
       toast.error(

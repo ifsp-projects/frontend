@@ -38,10 +38,6 @@ export const CopyGenerator: FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  useEffect(() => {
-    console.log('Messages state changed:', messages)
-  }, [messages])
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value)
   }
@@ -52,10 +48,8 @@ export const CopyGenerator: FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Submit triggered')
 
     if (!input.trim() || isLoading) {
-      console.log('Submit blocked')
       return
     }
 
@@ -65,11 +59,8 @@ export const CopyGenerator: FC = () => {
       content: input.trim()
     }
 
-    console.log('Adding user message:', userMessage)
-
     setMessages(prev => {
       const newMessages = [...prev, userMessage]
-      console.log('New messages after user:', newMessages)
       return newMessages
     })
 
@@ -85,8 +76,6 @@ export const CopyGenerator: FC = () => {
 
       const context = getOngDescription()
 
-      console.log('Sending to API:', messageHistory)
-
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
@@ -98,16 +87,12 @@ export const CopyGenerator: FC = () => {
         })
       })
 
-      console.log('Response status:', response.status)
-
       if (!response.ok) {
         const errorData = await response.json()
         throw new Error(errorData.message || 'Failed to get response')
       }
 
       const assistantMessageId = Date.now().toString() + '-assistant'
-
-      console.log('Adding empty assistant message:', assistantMessageId)
 
       setMessages(prev => {
         const newMessages = [
@@ -118,7 +103,6 @@ export const CopyGenerator: FC = () => {
             content: ''
           }
         ]
-        console.log('Messages with assistant placeholder:', newMessages)
         return newMessages
       })
 
@@ -162,12 +146,9 @@ export const CopyGenerator: FC = () => {
               ? { ...m, content: accumulatedContent }
               : m
           )
-          console.log('Updated messages:', updated)
           return updated
         })
       }
-
-      console.log('Stream processing complete')
     } catch (err) {
       console.error('Chat error:', err)
       setError(true)
@@ -177,7 +158,6 @@ export const CopyGenerator: FC = () => {
       )
     } finally {
       setIsLoading(false)
-      console.log('Loading finished')
     }
   }
 

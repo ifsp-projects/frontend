@@ -20,33 +20,36 @@ export const MainInfo = () => {
 
   const profile = organization.organization_profile
 
-  const { handleSubmit, register, control, setValue } =
-    useForm<ProfileFormSchemaType>({
-      resolver: zodResolver(
-        profileFormSchema
-      ) as Resolver<ProfileFormSchemaType>,
-      defaultValues: {
-        phone: profile?.phone || '',
-        postal_code: profile?.addresses?.postal_code || '',
-        ong_type: profile?.ong_type || '',
-        description: profile?.ong_description || '',
-        state: profile?.addresses?.state || '',
-        city: profile?.addresses?.city || '',
-        street: profile?.addresses?.street || '',
-        number: Number(profile?.addresses?.number) || 0,
-        complement: profile?.addresses?.complement || ''
-      }
-    })
+  const {
+    handleSubmit,
+    register,
+    control,
+    setValue,
+    formState: { isSubmitting }
+  } = useForm<ProfileFormSchemaType>({
+    resolver: zodResolver(profileFormSchema) as Resolver<ProfileFormSchemaType>,
+    defaultValues: {
+      phone: profile?.phone || '',
+      postal_code: profile?.addresses?.postal_code || '',
+      ong_type: profile?.ong_type || '',
+      description: profile?.ong_description || '',
+      state: profile?.addresses?.state || '',
+      city: profile?.addresses?.city || '',
+      street: profile?.addresses?.street || '',
+      number: Number(profile?.addresses?.number) || 0,
+      complement: profile?.addresses?.complement || ''
+    }
+  })
 
   const onSubmit = async (values: ProfileFormSchemaType) => {
     if (!organization?.id) return null
 
     try {
-      const response = await axios.post(
+      const response = await axios.patch(
         '/api/organization-profiles/update-organization-profile',
         {
           ...values,
-          ong_id: organization.id,
+          ong_id: organization.organization_profile?.id,
           address_id: profile?.addresses?.id,
           token
         }
@@ -83,6 +86,7 @@ export const MainInfo = () => {
         <AboutSection
           control={control}
           defaultDescription={profile?.ong_description}
+          isSubmitting={isSubmitting}
           register={register}
         />
 

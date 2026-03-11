@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 
 import { instanceMotor } from '@/instances/motor'
 
-export const PUT = async (req: NextRequest) => {
+export const PATCH = async (req: NextRequest) => {
   try {
     const {
       ong_id,
@@ -21,11 +21,11 @@ export const PUT = async (req: NextRequest) => {
       addressId
     } = await req.json()
 
-    if (!phone || !ong_type || !design_template) {
+    if (!ong_id) {
       return NextResponse.json(
         {
           message:
-            'Não foi possível concluir o seu cadastro pois faltam informações!'
+            'Não foi possível atualizar seu perfil pois faltam informações!'
         },
         { status: 400 }
       )
@@ -46,7 +46,7 @@ export const PUT = async (req: NextRequest) => {
 
     if (response.status === 500) {
       return NextResponse.json(
-        { message: 'Erro! Não foi possível criar seu perfil.' },
+        { message: 'Erro! Não foi possível atualizar seu perfil.' },
         { status: 500 }
       )
     }
@@ -78,7 +78,7 @@ export const PUT = async (req: NextRequest) => {
           postal_code,
           state,
           street,
-          organization_profile_id: response?.data?.organizationProfile?.id
+          organization_profile_id: response?.data?.organization?.id
         },
         token
       })
@@ -93,8 +93,8 @@ export const PUT = async (req: NextRequest) => {
 
     return NextResponse.json(
       {
-        message: 'Finalizado! Seu perfil está totalmente pronto.',
-        organizationProfile: response?.data?.organizationProfile
+        message: 'Finalizado! Seu perfil está atualizado.',
+        organizationProfile: response?.data?.organization
       },
       { status: 201 }
     )

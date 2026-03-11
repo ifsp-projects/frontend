@@ -4,8 +4,7 @@ import type { PostgresOrganizationProfile } from '@/types/postgres/postgres-orga
 import type {
   CreateOrganizationProfileData,
   CreateOrganizationProfileResponse,
-  UpdateOrganizationProfileData,
-  UpdateOrganizationProfileResponse
+  UpdateOrganizationProfileData
 } from './types'
 
 /**
@@ -60,8 +59,8 @@ export class OrganizationProfiles {
     token
   }: UpdateOrganizationProfileData) => {
     try {
-      return await apiPostgres.patch<UpdateOrganizationProfileResponse>(
-        '/organizations-profiles',
+      return await apiPostgres.patch(
+        `/organizations-profiles/${payload.ong_id.toString()}`,
         payload,
         {
           headers: {

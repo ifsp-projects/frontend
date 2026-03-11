@@ -5,6 +5,7 @@ import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import type { SubmitHandler } from 'react-hook-form'
 import { Controller } from 'react-hook-form'
+import { toast } from 'sonner'
 
 import Beams from '@/components/ui/beams'
 import {
@@ -47,13 +48,13 @@ export const ContactForm: FC = () => {
       })
 
       if (!isHubspotFormSubmittedSuccessfull) {
-        console.log('adicionar toast message aqui dps')
+        toast.error('Houve um erro ao enviar o formulário!')
 
         return
       }
 
       reset()
-      console.log('Formulário enviado com sucesso! Add toast dps')
+      toast.success('Formulário enviado com sucesso!')
     } catch (err) {
       console.error(err)
     }

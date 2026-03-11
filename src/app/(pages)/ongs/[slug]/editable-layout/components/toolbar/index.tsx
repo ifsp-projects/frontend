@@ -34,7 +34,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
         position: 'top-center'
       })
     } catch (savePageCopiesError) {
-      console.log(savePageCopiesError)
+      console.error(savePageCopiesError)
       toast.error('Não foi possível salvar as alterações de conteúdo', {
         position: 'top-center'
       })
@@ -42,7 +42,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
   }
 
   return (
-    <div className="fixed bottom-8 left-1/2 z-30 flex w-[calc(100%-2rem)] max-w-[392px] -translate-x-1/2 transform items-center gap-1 rounded-sm bg-gradient-to-r from-neutral-900 to-neutral-800 px-1 py-1 shadow lg:justify-between">
+    <div className="fixed bottom-8 left-1/2 z-30 flex w-[calc(100%-2rem)] max-w-[392px] -translate-x-1/2 transform items-center gap-1 rounded-sm bg-linear-to-r from-neutral-900 to-neutral-800 px-1 py-1 shadow lg:justify-between">
       <button
         onClick={() => {
           console.log('futuramente abril modal de suporte aqui')
@@ -53,7 +53,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
         <QuestionMessage className="h-5 w-5 text-neutral-50" />
       </button>
       <div className="flex w-full flex-1 gap-1 overflow-x-auto border-x border-neutral-700 px-1">
-         <button
+        <button
           onClick={() => {
             console.log('futuramente abril modal de suporte aqui')
           }}
@@ -86,7 +86,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
       </div>
       <div className="w-auto shrink-0 px-2">
         <button
-          className="cursor-pointer whitespace-nowrap rounded-sm border border-white px-3 py-1.5 text-xs font-medium text-white transition-all duration-200 hover:bg-neutral-50 hover:text-neutral-700 lg:text-sm"
+          className="cursor-pointer rounded-sm border border-white px-3 py-1.5 text-xs font-medium whitespace-nowrap text-white transition-all duration-200 hover:bg-neutral-50 hover:text-neutral-700 lg:text-sm"
           id="save"
           onClick={() => handleSave()}
           type="button"

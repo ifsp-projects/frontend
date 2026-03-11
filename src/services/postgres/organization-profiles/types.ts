@@ -17,4 +17,6 @@ export interface UpdateOrganizationProfileData {
   token: string
 }
 
-export interface UpdateOrganizationProfileResponse extends CreateOrganizationProfileResponse {}
+export interface UpdateOrganizationProfileResponse {
+  data: { organization: PostgresOrganizationProfile }
+}
