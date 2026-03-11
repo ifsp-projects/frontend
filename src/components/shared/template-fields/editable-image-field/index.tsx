@@ -1,3 +1,5 @@
+'use client'
+
 import type { CloudinaryUploadWidgetResults } from 'next-cloudinary'
 import { CldUploadButton } from 'next-cloudinary'
 import Image from 'next/image'
