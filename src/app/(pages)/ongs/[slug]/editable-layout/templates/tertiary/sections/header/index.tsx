@@ -31,6 +31,7 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
               <span className="relative inline-block">
                 <EditableCopyField
                   as="span"
+                  className="text-3xl leading-tight font-black text-amber-950 lg:text-5xl xl:text-6xl"
                   defaultValue={copy.decoratedText}
                   path="header.decoratedText"
                 />

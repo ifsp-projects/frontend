@@ -39,6 +39,48 @@ export const AboutSection = ({
 
     <div className="w-full">
       <label className="mb-2 block font-medium text-neutral-700">
+        Template de Design da minha page
+        <span className="ml-2 text-rose-500">*</span>
+      </label>
+      <Controller
+        render={({ field }) => (
+          <Select onValueChange={field.onChange} value={field.value ?? ''}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Escolha o template do layout da sua página." />
+            </SelectTrigger>
+            <SelectContent>
+              {[
+                {
+                  label: 'Primary',
+                  value: 'primary'
+                },
+                {
+                  label: 'Secondary',
+                  value: 'secondary'
+                },
+                {
+                  label: 'Tertiary',
+                  value: 'tertiary'
+                },
+                {
+                  label: 'Quarternary',
+                  value: 'quarternary'
+                }
+              ].map((option, index: number) => (
+                <SelectItem key={`option-${index}`} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
+        control={control}
+        name="design_template"
+      />
+    </div>
+
+    <div className="w-full">
+      <label className="mb-2 block font-medium text-neutral-700">
         Área de atuação da ONG
         <span className="ml-2 text-rose-500">*</span>
       </label>

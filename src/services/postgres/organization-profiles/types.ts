@@ -12,7 +12,7 @@ export interface CreateOrganizationProfileResponse {
 export interface UpdateOrganizationProfileData {
   payload: Omit<
     PostgresOrganizationProfile,
-    'id' | 'created_at' | 'updated_at' | 'ong_name' | 'slug'
+    'id' | 'created_at' | 'updated_at' | 'ong_name'
   >
   token: string
 }

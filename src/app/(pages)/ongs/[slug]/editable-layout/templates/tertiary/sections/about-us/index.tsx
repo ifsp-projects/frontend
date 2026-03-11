@@ -58,7 +58,7 @@ export const AboutUs: FC<AboutUsProps> = ({ copy }) => {
                       strokeWidth?: number
                     }>,
                     {
-                      className: 'h-6 w-6 text-blue-400 lg:h-7 lg:w-7',
+                      className: 'h-6 w-6 text-amber-500 lg:h-7 lg:w-7',
                       strokeWidth: 2
                     }
                   )}

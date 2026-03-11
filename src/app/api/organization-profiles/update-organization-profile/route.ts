@@ -18,10 +18,11 @@ export const PATCH = async (req: NextRequest) => {
       token,
       logo,
       description,
-      addressId
+      addressId,
+      slug
     } = await req.json()
 
-    if (!ong_id) {
+    if (!ong_id || !slug) {
       return NextResponse.json(
         {
           message:
@@ -35,6 +36,7 @@ export const PATCH = async (req: NextRequest) => {
       await instanceMotor.organizationProfiles.updateOrganizationProfile({
         payload: {
           logo,
+          slug,
           ong_id,
           ong_type,
           phone,

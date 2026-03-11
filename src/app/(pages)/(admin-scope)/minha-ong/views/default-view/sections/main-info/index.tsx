@@ -49,6 +49,7 @@ export const MainInfo = () => {
         '/api/organization-profiles/update-organization-profile',
         {
           ...values,
+          slug: organization.organization_profile?.slug,
           ong_id: organization.organization_profile?.id,
           address_id: profile?.addresses?.id,
           token
