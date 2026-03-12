@@ -22,7 +22,7 @@ importers:
         version: 2.2.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@hookform/resolvers':
         specifier: ^5.2.2
-        version: 5.2.2(react-hook-form@7.68.0(react@19.1.0))
+        version: 5.2.2(react-hook-form@7.71.2(react@19.1.0))
       '@nanostores/react':
         specifier: git+https://github.com/ai/react.git
         version: git+https://github.com/ai/react.git#a6ad745cc307881916944ee4d6ba04bdda978dc6(nanostores@1.1.0)(react@19.1.0)
@@ -124,7 +124,7 @@ importers:
         version: 19.1.0(react@19.1.0)
       react-hook-form:
         specifier: ^7.65.0
-        version: 7.68.0(react@19.1.0)
+        version: 7.71.2(react@19.1.0)
       react-markdown:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.2.14)(react@19.1.0)
@@ -3584,8 +3584,8 @@ packages:
     peerDependencies:
       react: ^19.1.0
 
-  react-hook-form@7.68.0:
-    resolution: {integrity: sha512-oNN3fjrZ/Xo40SWlHf1yCjlMK417JxoSJVUXQjGdvdRCU07NTFei1i1f8ApUAts+IVh14e4EdakeLEA+BEAs/Q==}
+  react-hook-form@7.71.2:
+    resolution: {integrity: sha512-1CHvcDYzuRUNOflt4MOq3ZM46AronNJtQ1S7tnX6YN4y72qhgiUItpacZUAQ0TyWYci3yz1X+rXaSxiuEm86PA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -4491,10 +4491,10 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       use-sync-external-store: 1.6.0(react@19.1.0)
 
-  '@hookform/resolvers@5.2.2(react-hook-form@7.68.0(react@19.1.0))':
+  '@hookform/resolvers@5.2.2(react-hook-form@7.71.2(react@19.1.0))':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.68.0(react@19.1.0)
+      react-hook-form: 7.71.2(react@19.1.0)
 
   '@humanfs/core@0.19.1': {}
 
@@ -7607,7 +7607,7 @@ snapshots:
       react: 19.1.0
       scheduler: 0.26.0
 
-  react-hook-form@7.68.0(react@19.1.0):
+  react-hook-form@7.71.2(react@19.1.0):
     dependencies:
       react: 19.1.0
 
