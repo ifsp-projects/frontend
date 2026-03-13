@@ -26,3 +26,14 @@ export interface AppAuthPayload {
 export interface AppAuthResponse {
   code: string
 }
+
+export interface SSOLoginPayload {
+  email: string
+  password: string
+}
+
+export interface SSOLoginResponse extends SocialLoginResponse {}
+
+export interface SSOLogoutPayload {
+  session_id: string
+}

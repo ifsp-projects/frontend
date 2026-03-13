@@ -1,6 +1,12 @@
 import { apiPostgres } from '@/instances/postgres'
 
-import type { SocialLoginPayload, SocialLoginResponse } from './types'
+import type {
+  SSOLoginPayload,
+  SSOLoginResponse,
+  SSOLogoutPayload,
+  SocialLoginPayload,
+  SocialLoginResponse
+} from './types'
 
 /**
  * Service class responsible for handling authentication-related API requests.
@@ -16,7 +22,7 @@ export class Auth {
    */
   refreshToken = async () => {
     try {
-      return await apiPostgres.post('/refresh-token', {})
+      return await apiPostgres.post('/auth/social/refresh-token', {})
     } catch (error) {
       console.error({ refreshTokenError: error })
     }
@@ -34,11 +40,59 @@ export class Auth {
   socialLogin = async (payload: SocialLoginPayload) => {
     try {
       return await apiPostgres.post<SocialLoginResponse>(
-        '/social-login',
+        '/auth/social',
         payload
       )
     } catch (error) {
       console.error({ socialLoginError: error })
+      return null
+    }
+  }
+
+  changePasswordAndLogin = async ({
+    new_password,
+    invite_token
+  }: {
+    new_password: string
+    invite_token: string
+  }) => {
+    try {
+      return await apiPostgres.post<SocialLoginResponse>(
+        '/auth/sso/reset-password',
+        {
+          new_password,
+          invite_token
+        }
+      )
+    } catch (error) {
+      console.error({ changePasswordAndLoginError: error })
+      return null
+    }
+  }
+
+  /**
+   * Authenticates a user via SSO credentials (email + password).
+   */
+  ssoLogin = async (payload: SSOLoginPayload) => {
+    try {
+      return await apiPostgres.post<SSOLoginResponse>(
+        '/auth/sso/login',
+        payload
+      )
+    } catch (error) {
+      console.error({ ssoLoginError: error })
+      return null
+    }
+  }
+
+  /**
+   * Logs out the current SSO user session.
+   */
+  ssoLogout = async (payload: SSOLogoutPayload) => {
+    try {
+      return await apiPostgres.post('/auth/sso/logout', payload)
+    } catch (error) {
+      console.error({ ssoLogoutError: error })
       return null
     }
   }

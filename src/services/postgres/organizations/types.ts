@@ -2,7 +2,7 @@ import type { PostgresOrganization } from '@/types/postgres/postgres-organizatio
 import type { PostgresOrganizationProfile } from '@/types/postgres/postgres-organization-profile'
 
 export interface CreateOrganizationData {
-  payload: Omit<PostgresOrganization, 'id'>
+  payload: Omit<PostgresOrganization, 'id' | 'created_at'>
   token: string
 }
 

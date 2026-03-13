@@ -22,18 +22,12 @@ export class OrganizationProfiles {
    * A promise that resolves to the API response, or a fallback object containing the error status and an empty profile on failure.
    */
   createOrganizationProfile = async ({
-    payload,
-    token
+    payload
   }: CreateOrganizationProfileData) => {
     try {
       return await apiPostgres.post<CreateOrganizationProfileResponse>(
         '/organizations-profiles',
-        payload,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+        payload
       )
     } catch (error) {
       console.error({ createOrganizationProfileErrorMessage: error.message })

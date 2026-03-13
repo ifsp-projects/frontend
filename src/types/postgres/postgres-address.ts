@@ -3,6 +3,7 @@ export interface PostgresAddress {
   complement?: string
   created_at: string
   id: string
+  is_primary: boolean
   number?: string
   organization_profile_id?: string
   postal_code?: string

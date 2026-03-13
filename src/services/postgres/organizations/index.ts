@@ -1,5 +1,6 @@
 import { apiPostgres } from '@/instances/postgres'
 import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
+import type { ServiceRequestResponse } from '@/types/services/service-request-response'
 
 import type {
   CreateOrganizationData,
@@ -8,7 +9,6 @@ import type {
   DeleteOrganizationResponse,
   GetAllOrganizationsResponse,
   GetOrganizationByEmailData,
-  GetOrganizationByEmailResponse,
   GetOrganizationByIdData,
   GetOrganizationByIdResponse,
   GetOrganizationBySlugData,
@@ -86,11 +86,15 @@ export class Organizations {
    * @returns {Promise<GetOrganizationByEmailResponse | undefined>}
    * A promise that resolves to the organization data, or undefined if an error occurs.
    */
-  getOrganizationByEmail = async ({ email }: GetOrganizationByEmailData) => {
+  getOrganizationByEmail = async ({
+    email
+  }: GetOrganizationByEmailData): Promise<
+    ServiceRequestResponse<{
+      organization: PostgresOrganization
+    }>
+  > => {
     try {
-      return await apiPostgres.get<GetOrganizationByEmailResponse>(
-        `/organizations/email/${email.toString()}`
-      )
+      return await apiPostgres.get(`/organizations/email/${email.toString()}`)
     } catch (error) {
       console.error({
         getOrganizationByEmailErrorMessage: error.message

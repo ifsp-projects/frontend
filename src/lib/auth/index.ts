@@ -1,16 +1,19 @@
 import type { AuthOptions, JWT } from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
 import { ACCESS_TOKEN_EXPIRES_MILLISECONDS } from '@/constants/auth/access-token-expires-milliseconds'
 import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 import { refreshAccessToken } from '@/utils/auth/refresh-access-token'
 
+import { credentialsOptions } from './credentials-options'
 import { googleOptions } from './google-options'
 
 export const authOptions: AuthOptions = {
   providers: [
     //@ts-ignore
-    GoogleProvider(googleOptions)
+    GoogleProvider(googleOptions),
+    CredentialsProvider(credentialsOptions)
   ],
   callbacks: {
     async jwt(props) {
@@ -28,6 +31,10 @@ export const authOptions: AuthOptions = {
         token.accessTokenExpires =
           Date.now() + ACCESS_TOKEN_EXPIRES_MILLISECONDS
         token = { ...token, ...user }
+        return token
+      }
+
+      if (account?.provider === 'credentials') {
         return token
       }
 

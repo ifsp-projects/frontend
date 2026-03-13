@@ -26,16 +26,11 @@ export class Addresses {
    * @param {string} params.token - The authorization bearer token.
    * @returns {Promise<CreateAddressResponse | { status: number }>} A promise that resolves to the API response, or an object with a 500 status code if an error occurs.
    */
-  createAddress = async ({ payload, token }: CreateAddressData) => {
+  createAddress = async ({ payload }: CreateAddressData) => {
     try {
       return await apiPostgres.post<CreateAddressResponse>(
         '/addresses',
-        payload,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+        payload
       )
     } catch (error) {
       console.error({
