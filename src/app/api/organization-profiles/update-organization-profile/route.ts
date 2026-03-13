@@ -80,6 +80,7 @@ export const PATCH = async (req: NextRequest) => {
           postal_code,
           state,
           street,
+          is_primary: false,
           organization_profile_id: response?.data?.organization?.id
         },
         token

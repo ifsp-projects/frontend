@@ -51,7 +51,7 @@ export const Header: FC = () => {
           </figure>
           <p className="text-sm">Entrar com o Google</p>
         </button>
-        <div className="relative w-full">
+        {/* <div className="relative w-full">
           <div className="h-px w-full border-b border-neutral-200" />
           <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neutral-50 px-2 py-1 text-xs text-neutral-600! lg:bg-neutral-100">
             Ou continuar com
@@ -85,11 +85,11 @@ export const Header: FC = () => {
           </div>
           <button
             className="mt-4 min-w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-900 px-6 py-2.5 text-center text-sm text-white! transition-all duration-150 hover:bg-neutral-800 sm:py-2 sm:text-base"
-            onClick={() => { }}
+            onClick={() => {}}
           >
             Entrar
           </button>
-        </form>
+        </form> */}
         <p className="mx-auto text-sm">
           Ou entre em contato com nosso{' '}
           <Link

@@ -17,7 +17,6 @@ export const POST = async (req: NextRequest) => {
       postal_code,
       complement,
       design_template,
-      token,
       logo,
       description
     } = await req.json()
@@ -42,9 +41,9 @@ export const POST = async (req: NextRequest) => {
           name: ong_name,
           design_template,
           ong_description: description,
-          slug: generateSlug({ text: ong_name })
-        },
-        token
+          slug: generateSlug({ text: ong_name }),
+          inviteToken: ''
+        }
       })
 
     if (response.status === 500) {
@@ -80,9 +79,9 @@ export const POST = async (req: NextRequest) => {
           postal_code,
           state,
           street,
+          is_primary: false,
           organization_profile_id: response?.data?.organizationProfile?.id
-        },
-        token
+        }
       })
 
       if (createdAddress.status === 500) {
