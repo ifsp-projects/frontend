@@ -6,7 +6,7 @@ import { apiPostgres } from '@/instances/postgres'
 export async function refreshAccessToken(token: JWT) {
   try {
     const response = await apiPostgres.post(
-      '/refresh-token',
+      '/auth/social/refresh-token',
       {},
       {
         headers: {
