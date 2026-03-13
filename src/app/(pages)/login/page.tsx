@@ -2,7 +2,6 @@ import type { Metadata, NextPage } from 'next'
 import { redirect } from 'next/navigation'
 
 import Beams from '@/components/ui/beams'
-import { getUserSession } from '@/utils/auth/get-user-session'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { Header } from './sections/header'
@@ -24,11 +23,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Page: NextPage = async () => {
-  const user = await getUserSession()
-
-  if (user) {
-    await redirect('/minha-ong')
-  }
+  await redirect('/')
 
   return (
     <main className="flex min-h-screen w-full flex-col lg:h-screen lg:flex-row lg:justify-between">

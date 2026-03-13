@@ -138,15 +138,15 @@ export const Navbar = () => {
       </div>
 
       <div
-        className="overflow-hidden transition-all duration-300 ease-in-out lg:hidden"
         style={{
           maxHeight: menuOpen ? `${menuHeight}px` : '0px',
-          opacity: menuOpen ? 1 : 0,
+          opacity: menuOpen ? 1 : 0
         }}
+        className="overflow-hidden transition-all duration-300 ease-in-out lg:hidden"
       >
         <div
-          ref={menuRef}
           className="flex w-full flex-col gap-1 bg-white px-4 py-3 text-neutral-700 shadow-md"
+          ref={menuRef}
         >
           <Link
             className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/' ? 'bg-neutral-50 text-rose-500' : ''}`}
@@ -196,33 +196,24 @@ export const Navbar = () => {
                 Minha ONG
               </Link>
               <button
-                className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
                 onClick={() => {
                   setMenuOpen(false)
                   signOut()
                 }}
+                className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
                 type="button"
               >
                 Sair
               </button>
             </div>
           ) : (
-            <div className="flex flex-col gap-2 px-3 py-2">
-              <Link
-                className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
-                href="/login"
-                onClick={() => setMenuOpen(false)}
-              >
-                Entrar
-              </Link>
-              <Link
-                className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
-                href="/contato"
-                onClick={() => setMenuOpen(false)}
-              >
-                Contato
-              </Link>
-            </div>
+            <Link
+              className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+              href="/contato"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contato
+            </Link>
           )}
         </div>
       </div>
