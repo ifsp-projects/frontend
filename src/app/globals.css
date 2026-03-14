@@ -642,3 +642,20 @@ html {
 .cta:active {
   transform: scale(0.95);
 }
+
+.path-underline {
+  stroke-dasharray: 450;
+  animation: draw-underline 3s ease-in-out infinite;
+}
+
+@keyframes draw-underline {
+  0%,
+  70% {
+    stroke-dashoffset: 450;
+  }
+
+  30%,
+  70% {
+    stroke-dashoffset: 0;
+  }
+}

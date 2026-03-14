@@ -24,9 +24,9 @@ const Page: NextPage = async () => {
   return (
     <main>
       <Header />
-      <MoreInfoAbout />
       <Details />
       <Benefits />
+      <MoreInfoAbout />
       <HowItWorks />
       <Contact />
     </main>

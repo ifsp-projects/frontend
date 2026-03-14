@@ -39,13 +39,13 @@ export const Navbar = () => {
   if (pathname === '/login') return null
 
   return (
-    <nav className="sticky top-0 left-0 z-40 w-full border-b border-neutral-100 bg-white">
+    <nav className="sticky top-0 left-0 z-40 w-full border-b border-neutral-50 bg-neutral-50 py-1">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 lg:px-6 xl:px-0">
         <Link href="/">
           <Image
             alt="Project Logo"
-            className="aspect-video max-h-10 max-w-28 object-cover"
-            height={180}
+            className="aspect-video max-h-12 max-w-28 object-cover"
+            height={220}
             src="/capivara-solidaria-logo.png"
             width={360}
           />
@@ -97,13 +97,13 @@ export const Navbar = () => {
           {organization ? (
             <div className="flex items-center gap-3">
               <Link
-                className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
+                className="cursor-pointer rounded-full bg-neutral-700 px-5 py-2 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
                 href="/minha-ong"
               >
                 Minha ONG
               </Link>
               <button
-                className="cursor-pointer rounded-sm border border-neutral-700 px-4 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                className="cursor-pointer rounded-full border border-neutral-700 px-5 py-2 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
                 onClick={() => signOut()}
                 type="button"
               >
@@ -113,16 +113,10 @@ export const Navbar = () => {
           ) : (
             <div className="flex items-center gap-3">
               <Link
-                className="cursor-pointer rounded-sm border border-neutral-700 px-4 py-1.5 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                className="cursor-pointer rounded-full border border-neutral-700 px-5 py-2 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
                 href="/contato"
               >
                 Contato
-              </Link>
-              <Link
-                className="cursor-pointer rounded-sm bg-neutral-700 px-4 py-1.5 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
-                href="/login"
-              >
-                Entrar
               </Link>
             </div>
           )}

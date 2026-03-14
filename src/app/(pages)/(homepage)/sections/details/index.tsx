@@ -28,10 +28,13 @@ export const Details = async () => {
           </article>
         </div>
         <div className="flex h-auto w-full flex-col gap-8 lg:flex-row lg:justify-between">
-          <div className="flex w-full flex-col items-center gap-6 rounded-sm bg-[#e3dacc] px-8 py-12">
+          <a
+            className="group flex w-full flex-col items-center gap-6 rounded-sm bg-[#e3dacc] px-8 py-12"
+            href="/criador-de-paginas"
+          >
             <Image
               alt="Card Image"
-              className="h-full max-h-[205px] w-full max-w-[205px] object-cover"
+              className="h-full max-h-[205px] w-full max-w-[205px] object-cover transition-all duration-300 group-hover:scale-[1.02]"
               height={400}
               src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7bd686b6d20bb1cd568c_Hands-Build.svg"
               width={400}
@@ -39,11 +42,14 @@ export const Details = async () => {
             <p className="text-base font-bold lg:text-xl xl:text-2xl">
               Tecnologia a serviço das causas sociais
             </p>
-          </div>
-          <div className="flex w-full flex-col items-center gap-6 rounded-sm bg-[#bcd1ca] px-8 py-12">
+          </a>
+          <a
+            className="group flex w-full flex-col items-center gap-6 rounded-sm bg-[#bcd1ca] px-8 py-12"
+            href="/gerador-de-conteudo-com-i"
+          >
             <Image
               alt="Card Image"
-              className="h-full max-h-[205px] w-full max-w-[205px] object-cover"
+              className="h-full max-h-[205px] w-full max-w-[205px] object-cover transition-all duration-300 group-hover:scale-[1.02]"
               height={400}
               src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7bd72914c76f710d86fc_Hands-Stack.svg"
               width={400}
@@ -51,11 +57,14 @@ export const Details = async () => {
             <p className="text-base font-bold lg:text-xl xl:text-2xl">
               Conectando pessoas, ideias e impacto real
             </p>
-          </div>
-          <div className="flex w-full flex-col items-center gap-6 rounded-sm bg-[#cbcadb] px-8 py-12">
+          </a>
+          <a
+            className="group flex w-full flex-col items-center gap-6 rounded-sm bg-[#cbcadb] px-8 py-12"
+            href="/criador-de-paginas"
+          >
             <Image
               alt="Card Image"
-              className="h-full max-h-[205px] w-full max-w-[205px] object-cover"
+              className="h-full max-h-[205px] w-full max-w-[205px] object-cover transition-all duration-300 group-hover:scale-[1.02]"
               height={400}
               src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7b8d86b6d20bb1cd1292_Objects-Puzzle.svg"
               width={400}
@@ -63,7 +72,7 @@ export const Details = async () => {
             <p className="text-base font-bold lg:text-xl xl:text-2xl">
               Soluções simples para desafios reais
             </p>
-          </div>
+          </a>
         </div>
         <div className="flex w-full justify-end">
           <CircleButton href="/ongs" label="Ver todos projetos" />
