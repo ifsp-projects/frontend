@@ -206,7 +206,7 @@ export const Navbar = () => {
               href="/contato"
               onClick={() => setMenuOpen(false)}
             >
-              Contato
+              Quero fazer parte da iniciativa
             </Link>
           )}
         </div>
