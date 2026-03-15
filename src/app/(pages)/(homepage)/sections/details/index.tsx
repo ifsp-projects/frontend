@@ -74,7 +74,7 @@ export const Details = async () => {
             </p>
           </a>
         </div>
-        <div className="flex w-full justify-end">
+        <div className="flex w-full lg:justify-end">
           <CircleButton href="/ongs" label="Ver todos projetos" />
         </div>
       </div>

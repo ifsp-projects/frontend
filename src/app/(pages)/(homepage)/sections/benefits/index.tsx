@@ -15,10 +15,12 @@ export const Benefits: FC = () => {
               className="flex w-full flex-col gap-4 border-r border-neutral-500 px-4 py-1 last:border-transparent"
               key={`benefit-card-${index}`}
             >
-              <h3 className="text-xl font-bold text-neutral-200">
+              <h3 className="text-base font-bold text-neutral-200 md:text-lg lg:text-xl">
                 {benefit.name}
               </h3>
-              <p className="text-sm text-neutral-300">{benefit.description}</p>
+              <p className="text-xs text-neutral-300 md:text-sm">
+                {benefit.description}
+              </p>
             </li>
           ))}
         </ul>

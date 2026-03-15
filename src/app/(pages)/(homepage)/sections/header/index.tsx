@@ -15,7 +15,7 @@ export const Header: FC = () => {
       <header className="relative z-30 mx-auto flex w-full max-w-2xl flex-col items-center gap-4 py-12 lg:max-w-7xl lg:flex-row lg:justify-between lg:gap-6 lg:py-20">
         <div className="flex w-full flex-col gap-6 lg:gap-8">
           <article className="flex flex-col gap-4">
-            <span className="g-[#f5f5f7c2] bg-opacity-10 w-fit rounded-md border border-neutral-400 bg-clip-padding px-2 py-1.5 text-xs font-semibold uppercase backdrop-blur-sm backdrop-filter">
+            <span className="g-[#f5f5f7c2] bg-opacity-10 w-fit rounded-full border border-neutral-400 bg-clip-padding px-2 py-1.5 text-[10px] font-semibold uppercase backdrop-blur-sm backdrop-filter">
               Projeto de Extensão
             </span>
             <h1 className="text-2xl font-bold lg:text-4xl xl:text-5xl">
