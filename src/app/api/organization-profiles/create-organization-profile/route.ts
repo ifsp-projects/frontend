@@ -84,7 +84,7 @@ export const POST = async (req: NextRequest) => {
         }
       })
 
-      if (createdAddress.status === 500) {
+      if (createdAddress.error) {
         return NextResponse.json(
           { message: 'Erro! Não foi possível adicionar um novo endereço.' },
           { status: 500 }
