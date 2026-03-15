@@ -4,7 +4,6 @@ const directives: Record<string, string[]> = {
   'default-src': ["'self'"],
   'base-uri': ["'self'"],
   'object-src': ["'none'"],
-  'frame-ancestors': ["'self'", 'https://builder.io'],
   'form-action': ["'self'"],
   'img-src': ["'self'", 'data:', 'https:'],
   'font-src': ["'self'", 'data:', 'https:'],
