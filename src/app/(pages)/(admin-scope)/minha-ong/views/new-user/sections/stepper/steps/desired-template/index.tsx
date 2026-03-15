@@ -23,7 +23,6 @@ export const DesiredTemplate: FC<ChildrenProps> = ({ prevStep }) => {
       id="complement-form"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <>{JSON.stringify(errors)}</>
       <h2 className="text-2xl font-bold lg:text-3xl">
         Escolha o template inicial da sua página
       </h2>

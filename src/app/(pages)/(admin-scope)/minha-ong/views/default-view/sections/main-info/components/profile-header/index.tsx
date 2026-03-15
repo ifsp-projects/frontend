@@ -24,10 +24,13 @@ export const ProfileHeader = ({ organization }: ProfileHeaderProps) => {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="flex items-end gap-4">
               <Image
-                alt={profile?.name}
+                src={
+                  profile?.logo ||
+                  'https://static.vecteezy.com/ti/vetor-gratis/p1/19869277-ong-carta-logotipo-projeto-em-branco-fundo-ong-criativo-circulo-carta-logotipo-conceito-ong-carta-projeto-vetor.jpg'
+                }
+                alt={profile?.name || ''}
                 className="h-24 w-24 rounded-sm border-4 border-white bg-neutral-50 object-cover shadow-sm lg:h-28 lg:w-28"
                 height={120}
-                src={profile?.logo}
                 width={120}
               />
               <div className="flex flex-col gap-1 pb-1">

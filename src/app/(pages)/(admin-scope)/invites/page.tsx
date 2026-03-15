@@ -1,7 +1,26 @@
+import type { Metadata } from 'next'
+
 import { admin } from '@/instances/admin'
+import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { InviteList } from './components/invite-list'
 import { SendInviteForm } from './components/send-invite-form'
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    ...getMetaData({
+      title: 'Invites | Capivara Solidária',
+      description:
+        'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade — sem precisar de programador.',
+      image: '',
+      url: '/invites'
+    }),
+    robots: {
+      index: false,
+      follow: false
+    }
+  }
+}
 
 export default async function AdminInvitesPage() {
   const { data } = await admin.listAllInvites()

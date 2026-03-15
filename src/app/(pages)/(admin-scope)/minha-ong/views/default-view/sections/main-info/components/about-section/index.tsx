@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/select'
 import { Spin } from '@/components/ui/spin'
 import { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
+import { formatOngType } from '@/utils/helpers/format-ong-type'
 
 import { SectionCard } from '../section-card'
 import type { AboutSectionProps } from './types'
@@ -20,7 +21,8 @@ export const AboutSection = ({
   control,
   register,
   defaultDescription,
-  isSubmitting
+  isSubmitting,
+  organization
 }: AboutSectionProps) => (
   <SectionCard title="Sobre a organização">
     <div className="w-full">
@@ -44,26 +46,30 @@ export const AboutSection = ({
       </label>
       <Controller
         render={({ field }) => (
-          <Select onValueChange={field.onChange} value={field.value ?? ''}>
+          <Select
+            defaultValue={organization.organization_profile?.design_template}
+            onValueChange={field.onChange}
+            value={field.value ?? ''}
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Escolha o template do layout da sua página." />
             </SelectTrigger>
             <SelectContent>
               {[
                 {
-                  label: 'Primary',
+                  label: 'Template Aurora',
                   value: 'primary'
                 },
                 {
-                  label: 'Secondary',
+                  label: 'Template Atlas',
                   value: 'secondary'
                 },
                 {
-                  label: 'Tertiary',
+                  label: 'Template Hélios',
                   value: 'tertiary'
                 },
                 {
-                  label: 'Quarternary',
+                  label: 'Template Vulcan',
                   value: 'quarternary'
                 }
               ].map((option, index: number) => (
@@ -86,7 +92,10 @@ export const AboutSection = ({
       </label>
       <Controller
         render={({ field }) => (
-          <Select onValueChange={field.onChange} value={field.value ?? ''}>
+          <Select
+            onValueChange={field.onChange}
+            value={formatOngType({ ong_type: field.value }) ?? ''}
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Qual a área de atuação da sua ONG?" />
             </SelectTrigger>

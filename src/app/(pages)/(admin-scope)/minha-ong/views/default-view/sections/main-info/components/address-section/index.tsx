@@ -17,7 +17,8 @@ export const AddressSection = ({
   setValue,
   organizationProfileId,
   token,
-  onAddressCreated
+  onAddressCreated,
+  organization
 }: AddressSectionProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -60,6 +61,7 @@ export const AddressSection = ({
     <SectionCard title="Informações de Contato">
       <AddressFormFields
         control={control}
+        organization={organization}
         register={register}
         setValue={setValue}
         showPhone

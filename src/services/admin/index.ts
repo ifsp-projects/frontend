@@ -40,8 +40,6 @@ export class Admin {
     try {
       return await apiPostgres.get(`/admin/invites`)
     } catch (error) {
-      console.log(error)
-
       console.error({
         listAllInvitesError: error.message
       })

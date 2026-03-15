@@ -32,7 +32,17 @@ export interface SSOLoginPayload {
   password: string
 }
 
-export interface SSOLoginResponse extends SocialLoginResponse {}
+export interface SSOLoginResponse {
+  access_token: string
+  access_token_expires_at: Date
+  organization: {
+    name: string
+    email: string
+  }
+  refresh_token: string
+  refresh_token_expires_at: Date
+  session_id: string
+}
 
 export interface SSOLogoutPayload {
   session_id: string

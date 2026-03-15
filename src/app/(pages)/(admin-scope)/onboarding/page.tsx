@@ -14,7 +14,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     ...getMetaData({
       title: 'Onboarding | Capivara Solidária',
       description:
-        'Gerencie as informações, imagens e campanhas da sua ONG em um só lugar. Edite seu perfil e mostre o impacto do seu trabalho.',
+        'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade — sem precisar de programador.',
       image: '',
       url: '/onboarding'
     }),

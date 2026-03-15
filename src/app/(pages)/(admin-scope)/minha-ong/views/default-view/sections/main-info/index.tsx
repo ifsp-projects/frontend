@@ -1,6 +1,7 @@
 'use client'
 
 import axios from 'axios'
+import React from 'react'
 import type { Resolver } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -11,10 +12,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { AboutSection } from './components/about-section'
 import { AddressSection } from './components/address-section'
 import { ProfileHeader } from './components/profile-header'
-import { type ProfileFormSchemaType, profileFormSchema } from './types'
+import { type ProfileFormSchemaType, profileFormSchema } from './schema'
+import type { MainInfoProps } from './types'
 
-export const MainInfo = () => {
-  const { organization, update, token } = useUserSession()
+export const MainInfo: React.FC<MainInfoProps> = ({ organization }) => {
+  const { update, token } = useUserSession()
 
   if (!organization) return null
 
@@ -37,7 +39,8 @@ export const MainInfo = () => {
       city: profile?.addresses?.city || '',
       street: profile?.addresses?.street || '',
       number: Number(profile?.addresses?.number) || 0,
-      complement: profile?.addresses?.complement || ''
+      complement: profile?.addresses?.complement || '',
+      design_template: profile?.design_template
     }
   })
 
@@ -88,6 +91,7 @@ export const MainInfo = () => {
           control={control}
           defaultDescription={profile?.ong_description}
           isSubmitting={isSubmitting}
+          organization={organization}
           register={register}
         />
 
@@ -102,6 +106,7 @@ export const MainInfo = () => {
           }
           address={profile?.addresses}
           control={control}
+          organization={organization}
           organizationProfileId={profile?.id}
           register={register}
           setValue={setValue}

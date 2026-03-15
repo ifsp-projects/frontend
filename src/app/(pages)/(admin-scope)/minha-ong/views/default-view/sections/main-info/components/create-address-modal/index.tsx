@@ -39,14 +39,11 @@ export const CreateAddressModal = ({
 
   const onSubmit = async values => {
     try {
-      const response = await axios.post(
-        '/api/organization-profiles/create-address',
-        {
-          ...values,
-          organization_profile_id: organizationProfileId,
-          token
-        }
-      )
+      const response = await axios.post('/api/addresses/create-address', {
+        ...values,
+        organization_profile_id: organizationProfileId,
+        token
+      })
 
       if (response.status !== 201) {
         toast.error(response.data.message, { position: 'top-center' })

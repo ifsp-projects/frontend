@@ -1,57 +1,60 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useActionState, useEffect } from 'react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { Spin } from '@/components/ui/spin'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import { resetPasswordAction } from '../../../actions'
+import { PASSWORD_RULES } from './data'
+import type { ResetPasswordFormData } from './schema'
+import { resetPasswordSchema } from './schema'
+import type { ResetPasswordFormProps } from './types'
 
-interface Props {
-  email: string
-  token: string
-}
-
-const initialState = { success: false as const, errors: {} }
-
-const PASSWORD_RULES = [
-  'At least 8 characters',
-  'One uppercase letter (A-Z)',
-  'One number (0-9)',
-  'One special character (!@#...)'
-]
-
-export function ResetPasswordForm({ token, email }: Props) {
+export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
   const router = useRouter()
-  const action = resetPasswordAction.bind(null, token)
-  const [state, formAction, isPending] = useActionState(action, initialState)
+  const [rootError, setRootError] = useState<string | null>(null)
 
-  const errors =
-    !state.success && state.errors && !('_root' in state.errors)
-      ? (state.errors as Record<string, string[]>)
-      : {}
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting }
+  } = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(resetPasswordSchema)
+  })
 
-  const rootError =
-    !state.success && state.errors && '_root' in state.errors
-      ? (state.errors as { _root: string })._root
-      : null
+  const onSubmit = async (data: ResetPasswordFormData) => {
+    setRootError(null)
 
-  useEffect(() => {
-    if (!state.success) return
+    const result = await resetPasswordAction(token, {
+      email,
+      password: data.password,
+      confirmPassword: data.confirmPassword
+    })
 
-    const passwordInput = document.getElementById(
-      'password'
-    ) as HTMLInputElement
-    const password = passwordInput?.value
+    if (!result.success) {
+      const failResult = result as {
+        success: false
+        errors: Record<string, unknown>
+      }
 
-    if (email && password) {
-      sessionStorage.setItem('onboarding_email', email)
-      sessionStorage.setItem('onboarding_password', password)
+      if ('_root' in (failResult.errors ?? {})) {
+        setRootError((failResult.errors as { _root: string })._root)
+      }
+
+      return
     }
 
+    sessionStorage.setItem('onboarding_email', email)
+    sessionStorage.setItem('onboarding_password', data.password)
+
     router.push(`/onboarding?token=${token}`)
-  }, [state.success])
+  }
 
   return (
-    <form action={formAction} className="flex flex-col gap-5">
+    <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
       {rootError && (
         <div className="rounded-sm border border-rose-100 bg-rose-50 px-4 py-3">
           <p className="text-xs text-rose-600">{rootError}</p>
@@ -71,6 +74,7 @@ export function ResetPasswordForm({ token, email }: Props) {
               ? 'border-rose-300 ring-2 ring-rose-100'
               : 'border-neutral-200'
           }`}
+          {...register('password')}
           autoComplete="new-password"
           id="password"
           name="password"
@@ -95,6 +99,7 @@ export function ResetPasswordForm({ token, email }: Props) {
               ? 'border-rose-300 ring-2 ring-rose-100'
               : 'border-neutral-200'
           }`}
+          {...register('confirmPassword')}
           autoComplete="new-password"
           id="confirmPassword"
           name="confirmPassword"
@@ -125,28 +130,10 @@ export function ResetPasswordForm({ token, email }: Props) {
 
       <button
         className="mt-1 flex h-10 w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-800 text-sm font-semibold text-white transition-colors hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-50"
-        disabled={isPending}
+        disabled={isSubmitting}
         type="submit"
       >
-        {isPending ? (
-          <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="3"
-            />
-            <path
-              className="opacity-75"
-              d="M4 12a8 8 0 018-8v8H4z"
-              fill="currentColor"
-            />
-          </svg>
-        ) : (
-          'Continue →'
-        )}
+        {isSubmitting ? <Spin /> : 'Continue'}
       </button>
     </form>
   )

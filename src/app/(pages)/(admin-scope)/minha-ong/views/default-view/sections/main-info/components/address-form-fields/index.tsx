@@ -14,7 +14,8 @@ export const AddressFormFields = <T extends FieldValues>({
   register,
   setValue,
   showPhone = false,
-  defaultPhone = ''
+  defaultPhone = '',
+  organization
 }: AddressFormFieldsProps<T>) => {
   const { lookupCep } = useCepLookup()
 
@@ -46,6 +47,7 @@ export const AddressFormFields = <T extends FieldValues>({
               <input
                 {...field}
                 className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500"
+                defaultValue={field.value}
                 maxLength={15}
                 onChange={e => field.onChange(formatPhone(e.target.value))}
                 placeholder="Seu telefone"

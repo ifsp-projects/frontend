@@ -13,6 +13,7 @@ export const authOptions: AuthOptions = {
   providers: [
     //@ts-ignore
     GoogleProvider(googleOptions),
+    //@ts-ignore
     CredentialsProvider(credentialsOptions)
   ],
   callbacks: {
@@ -30,8 +31,8 @@ export const authOptions: AuthOptions = {
         token.refreshToken = user.refreshToken
         token.accessTokenExpires =
           Date.now() + ACCESS_TOKEN_EXPIRES_MILLISECONDS
+        token.provider = account.provider
         token = { ...token, ...user }
-        return token
       }
 
       if (account?.provider === 'credentials') {

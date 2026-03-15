@@ -1,8 +1,9 @@
 import { apiPostgres } from '@/instances/postgres'
+import type { PostgresAddress } from '@/types/postgres/postgres-address'
+import type { ServiceRequestResponse } from '@/types/services/service-request-response'
 
 import type {
   CreateAddressData,
-  CreateAddressResponse,
   DeleteAddressData,
   DeleteAddressResponse,
   GetAddressByIdData,
@@ -26,19 +27,22 @@ export class Addresses {
    * @param {string} params.token - The authorization bearer token.
    * @returns {Promise<CreateAddressResponse | { status: number }>} A promise that resolves to the API response, or an object with a 500 status code if an error occurs.
    */
-  createAddress = async ({ payload }: CreateAddressData) => {
+  createAddress = async ({
+    payload
+  }: CreateAddressData): Promise<
+    ServiceRequestResponse<{
+      address: PostgresAddress
+    }>
+  > => {
     try {
-      return await apiPostgres.post<CreateAddressResponse>(
-        '/addresses',
-        payload
-      )
+      return await apiPostgres.post('/addresses', payload)
     } catch (error) {
       console.error({
         createAddressErrorMessage: error.message
       })
 
       return {
-        status: 500
+        error: error.message
       }
     }
   }

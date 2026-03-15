@@ -21,8 +21,8 @@ export const credentialsOptions = {
 
     return {
       ...data.organization,
-      accessToken: data.token,
-      refreshToken: data.refreshToken,
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token,
       expiresIn: ACCESS_TOKEN_EXPIRES_SECONDS
     }
   }

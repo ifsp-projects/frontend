@@ -1,11 +1,18 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
-import { useActionState, useEffect } from 'react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { Spin } from '@/components/ui/spin'
+import { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import { completeOnboardingAction } from '../../actions'
-import { DESIGN_TEMPLATES, INITIAL_STATE, ONG_CATEGORIES } from './data'
+import { DESIGN_TEMPLATES } from './data'
 import { Field } from './field'
+import type { OnboardingProfileData } from './schema'
+import { onboardingProfileSchema } from './schema'
 import type { OnboardingProfileFormProps } from './types'
 
 const inputClass = (hasError?: boolean) =>
@@ -16,21 +23,33 @@ const inputClass = (hasError?: boolean) =>
 export const OnboardingProfileForm = ({
   token
 }: OnboardingProfileFormProps) => {
-  const action = completeOnboardingAction.bind(null, token)
-  const [state, formAction, isPending] = useActionState(action, INITIAL_STATE)
+  const [rootError, setRootError] = useState<string | null>(null)
 
-  const errors =
-    !state.success && state.errors && !('_root' in state.errors)
-      ? (state.errors as Record<string, string[]>)
-      : {}
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting }
+  } = useForm<OnboardingProfileData>({
+    resolver: zodResolver(onboardingProfileSchema)
+  })
 
-  const rootError =
-    !state.success && state.errors && '_root' in state.errors
-      ? (state.errors as { _root: string })._root
-      : null
+  const onSubmit = async (data: OnboardingProfileData) => {
+    setRootError(null)
 
-  useEffect(() => {
-    if (!state.success) return
+    const result = await completeOnboardingAction(token, data)
+
+    if (!result.success) {
+      const failResult = result as {
+        success: false
+        errors: Record<string, unknown>
+      }
+
+      if ('_root' in (failResult.errors ?? {})) {
+        setRootError((failResult.errors as { _root: string })._root)
+      }
+
+      return
+    }
 
     const email = sessionStorage.getItem('onboarding_email')
     const password = sessionStorage.getItem('onboarding_password')
@@ -43,10 +62,10 @@ export const OnboardingProfileForm = ({
     } else {
       window.location.href = '/minha-ong'
     }
-  }, [state.success])
+  }
 
   return (
-    <form action={formAction} className="flex flex-col gap-8">
+    <form className="flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
       {rootError && (
         <div className="rounded-sm border border-rose-100 bg-rose-50 px-4 py-3">
           <p className="text-xs text-rose-600">{rootError}</p>
@@ -63,6 +82,7 @@ export const OnboardingProfileForm = ({
 
         <Field error={errors.name?.[0]} label="Organization name" required>
           <input
+            {...register('name')}
             className={inputClass(!!errors.name)}
             id="name"
             name="name"
@@ -74,6 +94,7 @@ export const OnboardingProfileForm = ({
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Field error={errors.phone?.[0]} label="Phone" required>
             <input
+              {...register('phone')}
               className={inputClass(!!errors.phone)}
               id="phone"
               name="phone"
@@ -84,14 +105,15 @@ export const OnboardingProfileForm = ({
 
           <Field error={errors.ong_type?.[0]} label="Category">
             <select
+              {...register('ong_type')}
               className={`${inputClass(!!errors.ong_type)} bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a3a3a3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")] cursor-pointer appearance-none bg-position-[right_14px_center] bg-no-repeat pr-9`}
               id="ong_type"
               name="ong_type"
             >
               <option value="">Select a category</option>
-              {ONG_CATEGORIES.map(c => (
-                <option key={c.value} value={c.value}>
-                  {c.label}
+              {HUBSPOT_ONG_VALUES.map((value, index: number) => (
+                <option key={index} value={value}>
+                  {value}
                 </option>
               ))}
             </select>
@@ -100,6 +122,7 @@ export const OnboardingProfileForm = ({
 
         <Field error={errors.design_template?.[0]} label="Category">
           <select
+            {...register('design_template')}
             className={`${inputClass(!!errors.design_template)} bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a3a3a3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")] cursor-pointer appearance-none bg-position-[right_14px_center] bg-no-repeat pr-9`}
             id="design_template"
             name="design_template"
@@ -120,6 +143,7 @@ export const OnboardingProfileForm = ({
           optional
         >
           <textarea
+            {...register('description')}
             className={`${inputClass(!!errors.description)} resize-none`}
             id="description"
             name="description"
@@ -141,6 +165,7 @@ export const OnboardingProfileForm = ({
           <div className="md:col-span-2">
             <Field error={errors.street?.[0]} label="Street" required>
               <input
+                {...register('street')}
                 className={inputClass(!!errors.street)}
                 id="street"
                 name="street"
@@ -151,6 +176,7 @@ export const OnboardingProfileForm = ({
           </div>
           <Field error={errors.number?.[0]} label="Number">
             <input
+              {...register('number')}
               className={inputClass(!!errors.number)}
               id="number"
               name="number"
@@ -164,6 +190,7 @@ export const OnboardingProfileForm = ({
           <div className="md:col-span-1">
             <Field error={errors.city?.[0]} label="City" required>
               <input
+                {...register('city')}
                 className={inputClass(!!errors.city)}
                 id="city"
                 name="city"
@@ -174,6 +201,7 @@ export const OnboardingProfileForm = ({
           </div>
           <Field error={errors.state?.[0]} label="State" required>
             <input
+              {...register('state')}
               className={`${inputClass(!!errors.state)} uppercase`}
               id="state"
               maxLength={2}
@@ -184,6 +212,7 @@ export const OnboardingProfileForm = ({
           </Field>
           <Field error={errors.postal_code?.[0]} label="Postal code" required>
             <input
+              {...register('postal_code')}
               className={inputClass(!!errors.postal_code)}
               id="postal_code"
               name="postal_code"
@@ -196,28 +225,10 @@ export const OnboardingProfileForm = ({
 
       <button
         className="flex h-10 w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-800 text-sm font-semibold text-white transition-colors hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-50"
-        disabled={isPending}
+        disabled={isSubmitting}
         type="submit"
       >
-        {isPending ? (
-          <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="3"
-            />
-            <path
-              className="opacity-75"
-              d="M4 12a8 8 0 018-8v8H4z"
-              fill="currentColor"
-            />
-          </svg>
-        ) : (
-          'Complete setup →'
-        )}
+        {isSubmitting ? <Spin /> : 'Complete setup'}
       </button>
     </form>
   )

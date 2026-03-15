@@ -1,3 +1,6 @@
+import { account } from '@/instances/account'
+import { getUserSession } from '@/utils/auth/get-user-session'
+
 import { MainInfo } from './sections/main-info'
 
 /**
@@ -5,9 +8,13 @@ import { MainInfo } from './sections/main-info'
  * TODO: Implement the default view content.
  */
 export const DefaultView = async () => {
+  const organization = await getUserSession()
+
+  const { data } = await account.me({ email: organization.email })
+
   return (
     <main className="bg-neutral-50">
-      <MainInfo />
+      <MainInfo organization={data.organization} />
     </main>
   )
 }
