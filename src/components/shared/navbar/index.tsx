@@ -50,7 +50,7 @@ export const Navbar = () => {
             width={360}
           />
         </Link>
-        <div className="hidden items-center gap-8 lg:flex xl:gap-12">
+        <div className="hidden w-full items-center justify-end gap-8 lg:flex xl:gap-12">
           <ul className="flex items-center gap-4">
             <li>
               <Link
@@ -95,7 +95,7 @@ export const Navbar = () => {
           </ul>
 
           {organization ? (
-            <div className="flex items-center gap-3">
+            <div className="flex w-full max-w-[320px] items-center gap-3">
               <Link
                 className="cursor-pointer rounded-full bg-neutral-700 px-5 py-2 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
                 href="/minha-ong"
@@ -111,12 +111,20 @@ export const Navbar = () => {
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-3">
+            <div className="flex w-full max-w-[320px] items-center gap-3">
               <Link
-                className="cursor-pointer rounded-full border border-neutral-700 px-5 py-2 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
-                href="/contato"
+                className="w-full cursor-pointer rounded-full bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
+                href="/login"
+                onClick={() => setMenuOpen(false)}
               >
-                Contato
+                Entrar
+              </Link>
+              <Link
+                className="w-full cursor-pointer rounded-full border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                href="/contato"
+                onClick={() => setMenuOpen(false)}
+              >
+                Quero fazer parte
               </Link>
             </div>
           )}
@@ -201,13 +209,22 @@ export const Navbar = () => {
               </button>
             </div>
           ) : (
-            <Link
-              className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
-              href="/contato"
-              onClick={() => setMenuOpen(false)}
-            >
-              Quero fazer parte da iniciativa
-            </Link>
+            <div className="flex flex-col gap-2 px-3 py-2">
+              <Link
+                className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
+                href="/login"
+                onClick={() => setMenuOpen(false)}
+              >
+                Já tenho uma conta
+              </Link>
+              <Link
+                className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                href="/contato"
+                onClick={() => setMenuOpen(false)}
+              >
+                Quero fazer parte da iniciativa
+              </Link>
+            </div>
           )}
         </div>
       </div>

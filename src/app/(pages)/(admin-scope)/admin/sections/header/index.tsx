@@ -4,43 +4,21 @@ import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { type FC, useState } from 'react'
-import { useForm } from 'react-hook-form'
 
-import { Spin } from '@/components/ui/spin'
-import { zodResolver } from '@hookform/resolvers/zod'
-
-import type { SignInFormData } from './schema'
-import { signInSchema } from './schema'
+import { Google } from '@/assets/socials/google'
 
 export const Header: FC = () => {
-  const [serverError, setServerError] = useState<string | null>(null)
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting }
-  } = useForm<SignInFormData>({
-    resolver: zodResolver(signInSchema)
+  const [isLoadingSubmit, setIsLoadingSubmit] = useState({
+    google: false
   })
 
-  const onSubmit = async (data: SignInFormData) => {
-    setServerError(null)
+  const handleSignInWithGoogle = async () => {
+    setIsLoadingSubmit(prev => ({
+      ...prev,
+      google: true
+    }))
 
-    const result = await signIn('credentials', {
-      email: data.email,
-      password: data.password,
-      callbackUrl: '/minha-ong',
-      redirect: false
-    })
-
-    if (result?.error) {
-      setServerError('E-mail ou senha inválidos.')
-      return
-    }
-
-    if (result?.url) {
-      window.location.href = result.url
-    }
+    await signIn('google', { callbackUrl: '/minha-ong' })
   }
 
   return (
@@ -63,55 +41,55 @@ export const Header: FC = () => {
             <br className="hidden xl:block" /> comentando ou curtindo artigos
           </p>
         </article>
-        <form
-          className="flex w-full flex-col gap-3 sm:gap-2"
-          onSubmit={handleSubmit(onSubmit)}
+        <button
+          className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-sm border border-neutral-200 bg-white px-4 py-2.5 transition-all duration-300 hover:bg-neutral-50 sm:py-2"
+          disabled={isLoadingSubmit.google}
+          onClick={() => handleSignInWithGoogle()}
         >
-          {serverError && (
-            <p className="rounded-sm bg-rose-50 px-4 py-2 text-sm text-rose-500">
-              {serverError}
-            </p>
-          )}
+          <figure className="w-auto">
+            <Google className="h-5 w-5" />
+          </figure>
+          <p className="text-sm">Entrar com o Google</p>
+        </button>
+        {/* <div className="relative w-full">
+          <div className="h-px w-full border-b border-neutral-200" />
+          <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neutral-50 px-2 py-1 text-xs text-neutral-600! lg:bg-neutral-100">
+            Ou continuar com
+          </span>
+        </div>
+        <form className="flex w-full flex-col gap-3 sm:gap-2">
           <div className="w-full">
             <label className="mb-2 block text-sm font-medium text-neutral-700 sm:text-base">
               E-mail
             </label>
             <input
-              {...register('email')}
               className="w-full rounded-sm border border-neutral-300 px-4 py-2.5 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none sm:py-2 sm:text-base"
+              name="email"
               placeholder="seuemail@exemplo.com"
               type="email"
+              required
             />
-            {errors.email && (
-              <p className="mt-1 text-xs text-rose-500">
-                {errors.email.message}
-              </p>
-            )}
           </div>
           <div className="w-full">
             <label className="mb-2 block text-sm font-medium text-neutral-700 sm:text-base">
               Senha
             </label>
             <input
-              {...register('password')}
               className="w-full rounded-sm border border-neutral-300 px-4 py-2.5 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none sm:py-2 sm:text-base"
+              defaultValue=""
+              name="password"
               placeholder="Digite aqui sua senha"
               type="password"
+              required
             />
-            {errors.password && (
-              <p className="mt-1 text-xs text-rose-500">
-                {errors.password.message}
-              </p>
-            )}
           </div>
           <button
-            className="mt-4 flex min-w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-900 px-6 py-2.5 text-center text-sm text-white! transition-all duration-150 hover:bg-neutral-800 disabled:opacity-60 sm:py-2 sm:text-base"
-            disabled={isSubmitting}
-            type="submit"
+            className="mt-4 min-w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-900 px-6 py-2.5 text-center text-sm text-white! transition-all duration-150 hover:bg-neutral-800 sm:py-2 sm:text-base"
+            onClick={() => {}}
           >
-            {isSubmitting ? <Spin /> : 'Entrar'}
+            Entrar
           </button>
-        </form>
+        </form> */}
         <p className="mx-auto text-sm">
           Ou entre em contato com nosso{' '}
           <Link
