@@ -5,7 +5,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     name: 'Gabriel Ortona',
     job_title: 'Analista de Dados',
     description:
-      "description: 'Analista de Dados apaixonado por transformar informações em insights estratégicos, com experiência em análise e visualização de dados para apoiar decisões de negócios.'",
+      'Analista de Dados apaixonado por transformar informações em insights estratégicos, com experiência em análise e visualização de dados para apoiar decisões de negócios.',
     thumb: 'https://avatars.githubusercontent.com/u/111311744?v=4',
     urls: {
       linkedin:
