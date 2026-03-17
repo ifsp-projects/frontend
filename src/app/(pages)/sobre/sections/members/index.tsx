@@ -23,7 +23,7 @@ export const Members: FC = async () => {
         <ul className="grid h-auto grid-cols-1 items-stretch gap-6 rounded-sm sm:grid-cols-2 lg:grid-cols-3">
           {TEAM_MEMBERS.map((member, index: number) => (
             <li
-              className="flex h-auto w-full flex-col gap-4 rounded-sm bg-white p-4"
+              className="flex h-auto w-full flex-col gap-4 rounded-sm bg-white py-4 lg:px-4"
               key={`${member.name}-${index}`}
             >
               <div className="flex w-full items-center gap-4">
