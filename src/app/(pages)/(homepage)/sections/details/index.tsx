@@ -6,11 +6,7 @@ export const Details = async () => {
   return (
     <section className="bg-neutral-100 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-12">
-        <div className="flex w-full flex-col items-start gap-4 lg:flex-row lg:gap-8">
-          <h2 className="text-2xl font-bold lg:text-3xl">
-            No Capivara Solidária, acreditamos que toda causa merece ser vista e
-            apoiada.
-          </h2>
+        <div className="flex w-full flex-col items-start gap-4 lg:flex-row lg:items-center lg:gap-8">
           <article className="flex flex-col gap-4">
             <p className="text-sm text-neutral-700 lg:text-base">
               Nosso propósito é fortalecer ONGs e projetos sociais que muitas
@@ -26,6 +22,10 @@ export const Details = async () => {
               transparente e inspiradora.
             </p>
           </article>
+          <h2 className="text-2xl font-bold lg:text-right lg:text-3xl">
+            No Capivara Solidária, acreditamos que toda causa merece ser vista e
+            apoiada.
+          </h2>
         </div>
         <div className="flex h-auto w-full flex-col gap-8 lg:flex-row lg:justify-between">
           <a
@@ -39,7 +39,7 @@ export const Details = async () => {
               src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7bd686b6d20bb1cd568c_Hands-Build.svg"
               width={400}
             />
-            <p className="text-base font-bold lg:text-xl xl:text-2xl">
+            <p className="text-center text-base font-medium lg:text-xl xl:text-2xl">
               Tecnologia a serviço das causas sociais
             </p>
           </a>
@@ -54,7 +54,7 @@ export const Details = async () => {
               src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7bd72914c76f710d86fc_Hands-Stack.svg"
               width={400}
             />
-            <p className="text-base font-bold lg:text-xl xl:text-2xl">
+            <p className="text-center text-base font-medium lg:text-xl xl:text-2xl">
               Conectando pessoas, ideias e impacto real
             </p>
           </a>
@@ -69,7 +69,7 @@ export const Details = async () => {
               src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7b8d86b6d20bb1cd1292_Objects-Puzzle.svg"
               width={400}
             />
-            <p className="text-base font-bold lg:text-xl xl:text-2xl">
+            <p className="text-center text-base font-medium lg:text-xl xl:text-2xl">
               Soluções simples para desafios reais
             </p>
           </a>

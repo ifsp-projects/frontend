@@ -8,7 +8,7 @@ import { STEP_CARDS_ICONS } from './data'
 
 export const Steps: FC = () => {
   return (
-    <div className="mx-auto grid w-full grid-cols-2 gap-4 lg:flex lg:flex-row lg:justify-between lg:gap-8">
+    <div className="relative z-30 mx-auto grid w-full grid-cols-2 gap-4 lg:flex lg:flex-row lg:justify-between lg:gap-8">
       {HOW_IT_WORKS_CARDS.map((card, index: number) => (
         <motion.div
           className="flex w-full flex-col items-center gap-2 rounded-sm border border-neutral-200 bg-white px-4 py-8"
@@ -17,7 +17,7 @@ export const Steps: FC = () => {
           transition={{ duration: 0.6, delay: index * 0.2 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <figure className="flex items-center justify-center rounded-sm bg-rose-100 p-2">
+          <figure className="flex items-center justify-center rounded-md bg-rose-50 p-2">
             {STEP_CARDS_ICONS[index]}
           </figure>
           <h3 className="mt-1 text-center font-bold lg:text-xl">

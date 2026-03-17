@@ -1,0 +1,22 @@
+export const GLOBE_CONFIG = {
+  pointSize: 4,
+  globeColor: '#fff',
+  showAtmosphere: true,
+  atmosphereColor: '#fff',
+  atmosphereAltitude: 0.15,
+  emissive: '#fff',
+  emissiveIntensity: 1.5,
+  shininess: 0.3,
+  polygonColor: 'rgba(100,116,139,1)',
+  ambientLight: '#fff',
+  directionalLeftLight: '#ffffff',
+  directionalTopLight: '#ffffff',
+  pointLight: '#fff',
+  arcTime: 1000,
+  arcLength: 0.9,
+  rings: 1,
+  maxRings: 3,
+  initialPosition: { lat: 22.3193, lng: 114.1694 },
+  autoRotate: true,
+  autoRotateSpeed: 0.5
+} as const

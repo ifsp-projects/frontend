@@ -6,19 +6,19 @@ export const Benefits: FC = () => {
   return (
     <section className="bg-neutral-800 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-12">
-        <h2 className="text-2xl font-bold text-white lg:text-4xl">
+        {/* <h2 className="text-2xl font-bold text-white lg:text-4xl">
           Benefícios de ter sua página
-        </h2>
+        </h2> */}
         <ul className="hidden w-full gap-4 lg:flex lg:justify-between">
           {BENEFITS_CARDS.map((benefit, index: number) => (
             <li
-              className="flex w-full flex-col gap-4 border-r border-neutral-500 px-4 py-1 last:border-transparent"
+              className="flex w-full flex-col gap-4 border-r border-[#30302e] px-4 py-1 last:border-transparent"
               key={`benefit-card-${index}`}
             >
-              <h3 className="text-base font-bold text-neutral-200 md:text-lg lg:text-xl">
+              <h3 className="text-base font-bold text-[#faf9f5] md:text-lg lg:text-xl">
                 {benefit.name}
               </h3>
-              <p className="text-xs text-neutral-300 md:text-sm">
+              <p className="text-xs text-[#b0aea5] md:text-sm">
                 {benefit.description}
               </p>
             </li>
@@ -30,10 +30,10 @@ export const Benefits: FC = () => {
               className="flex w-full flex-col gap-2 rounded-sm border border-neutral-400 p-4"
               key={`benefit-card-${index}`}
             >
-              <h3 className="text-xl font-bold text-neutral-200">
+              <h3 className="text-xl font-bold text-[#faf9f5]">
                 {benefit.name}
               </h3>
-              <p className="text-sm text-neutral-300">{benefit.description}</p>
+              <p className="text-sm text-[#b0aea5]">{benefit.description}</p>
             </li>
           ))}
         </ul>

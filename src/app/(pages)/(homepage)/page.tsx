@@ -2,11 +2,11 @@ import type { Metadata, NextPage } from 'next'
 
 import { getMetaData } from '@/utils/seo/get-metadata'
 
-import { HowItWorks } from '../sobre/sections/how-it-works'
 import { Benefits } from './sections/benefits'
 import { Contact } from './sections/contact'
 import { Details } from './sections/details'
 import { Header } from './sections/header'
+import { HowItWorks } from './sections/how-it-works'
 import { MoreInfoAbout } from './sections/more-info-about'
 
 export const generateMetadata = async (): Promise<Metadata> => {
