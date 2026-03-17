@@ -1,6 +1,6 @@
 'use client'
 
-import { signOut } from 'next-auth/react'
+// import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -94,7 +94,7 @@ export const Navbar = () => {
             </li>
           </ul>
 
-          {organization ? (
+          {/* {organization ? (
             <div className="flex w-full max-w-[320px] items-center gap-3">
               <Link
                 className="cursor-pointer rounded-full bg-neutral-700 px-5 py-2 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
@@ -127,7 +127,7 @@ export const Navbar = () => {
                 Quero fazer parte
               </Link>
             </div>
-          )}
+          )} */}
         </div>
 
         <div className="flex items-center lg:hidden">
@@ -188,7 +188,7 @@ export const Navbar = () => {
 
           <div className="my-1 h-px w-full bg-neutral-100" />
 
-          {organization ? (
+          {/* {organization ? (
             <div className="flex flex-col gap-2 px-3 py-2">
               <Link
                 className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
@@ -225,7 +225,7 @@ export const Navbar = () => {
                 Quero fazer parte da iniciativa
               </Link>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </nav>
