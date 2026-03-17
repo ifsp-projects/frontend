@@ -60,14 +60,14 @@ export const Navbar = () => {
                 Home
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
                 href="/ongs"
               >
                 Projetos
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
@@ -157,13 +157,13 @@ export const Navbar = () => {
           >
             Home
           </Link>
-          <Link
+          {/* <Link
             className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/ongs' ? 'bg-neutral-50 text-rose-500' : ''}`}
             href="/ongs"
             onClick={() => setMenuOpen(false)}
           >
             Projetos
-          </Link>
+          </Link> */}
           <Link
             className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/sobre' ? 'bg-neutral-50 text-rose-500' : ''}`}
             href="/sobre"

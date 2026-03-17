@@ -3,9 +3,9 @@ import type { FC } from 'react'
 
 import { GithubIcon } from '@/assets/socials/github'
 import { LinkedinIcon } from '@/assets/socials/linkedin'
+import { Paperclip } from '@vectoricons/atlas-icons-react'
 
 import { TEAM_MEMBERS } from './data'
-import { Paperclip } from '@vectoricons/atlas-icons-react'
 
 export const Members: FC = async () => {
   return (
@@ -45,10 +45,7 @@ export const Members: FC = async () => {
                   <p className="text-sm">{member.job_title}</p>
                 </article>
               </div>
-              <p className="text-sm text-neutral-500">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard
-              </p>
+              <p className="text-sm text-neutral-500">{member.description} </p>
               <div className="flex w-full items-center gap-3">
                 <a
                   aria-label="Linkedin Profile"

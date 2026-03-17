@@ -1,7 +1,7 @@
+import Link from 'next/link'
 import type { FC } from 'react'
 
 import { ShinyTextDecoration } from './shiny-text-decoration'
-import Link from 'next/link'
 
 export const Header: FC = () => {
   return (

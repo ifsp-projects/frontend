@@ -4,6 +4,8 @@ export const TEAM_MEMBERS: MemberData[] = [
   {
     name: 'Gabriel Ortona',
     job_title: 'Analista de Dados',
+    description:
+      "description: 'Analista de Dados apaixonado por transformar informações em insights estratégicos, com experiência em análise e visualização de dados para apoiar decisões de negócios.'",
     thumb: 'https://avatars.githubusercontent.com/u/111311744?v=4',
     urls: {
       linkedin:
@@ -14,7 +16,10 @@ export const TEAM_MEMBERS: MemberData[] = [
   {
     name: 'Higor Figueiredo',
     job_title: 'Desenvolvedor de Controles Internos',
-    thumb: 'https://avatars.githubusercontent.com/u/166459334?v=4',
+    thumb:
+      'https://media.licdn.com/dms/image/v2/D4E03AQFx96IPby1uQQ/profile-displayphoto-scale_200_200/B4EZszFU8lJ0AY-/0/1766088596430?e=1775088000&v=beta&t=cLYzUoAeQ6Al-tYNIYP8k1bdDt3VntyU5RsE8xJ44oU',
+    description:
+      'Desenvolvedor de Controles Internos dedicado a criar sistemas seguros e eficientes, focado em otimizar processos internos e garantir conformidade corporativa.',
     urls: {
       linkedin: 'https://www.linkedin.com/in/higor-matias-7905262aa/',
       github: 'https://github.com/higorx019'
@@ -24,6 +29,8 @@ export const TEAM_MEMBERS: MemberData[] = [
     name: 'Luis Gustavo',
     job_title: 'Desenvolvedor Mobile',
     thumb: 'https://avatars.githubusercontent.com/u/111447471?v=4',
+    description:
+      'Desenvolvedor Mobile especializado em criar aplicativos intuitivos e performáticos, com foco em experiências móveis envolventes para usuários finais.',
     urls: {
       linkedin:
         'https://www.linkedin.com/in/lu%C3%ADs-gustavo-barbosa-27b0601b2/',
@@ -33,7 +40,10 @@ export const TEAM_MEMBERS: MemberData[] = [
   {
     name: 'Matheus Rocha',
     job_title: 'Desenvolvedor Backend',
-    thumb: 'https://avatars.githubusercontent.com/u/159070076?v=4',
+    thumb:
+      'https://media.licdn.com/dms/image/v2/D4D03AQGHNKgUqHEa4A/profile-displayphoto-shrink_200_200/B4DZbpHR5nIEAY-/0/1747667722332?e=1775088000&v=beta&t=aaKJylZps_6s0CSzoXN10a-tE2uo4ZRAEjO_6JcFhIs',
+    description:
+      'Desenvolvedor Backend experiente em arquiteturas escaláveis e soluções robustas, garantindo que sistemas funcionem de forma eficiente e confiável.',
     urls: {
       linkedin: 'https://www.linkedin.com/in/matheus-rocha-45a077300/',
       github: 'https://github.com/rocha985'
@@ -43,6 +53,8 @@ export const TEAM_MEMBERS: MemberData[] = [
     name: 'Murilo Medina',
     job_title: 'Engenheiro de Software',
     thumb: 'https://avatars.githubusercontent.com/u/143241534?v=4',
+    description:
+      'Engenheiro de Software versátil, combinando habilidades de desenvolvimento e engenharia para construir soluções tecnológicas complexas e de alta qualidade.',
     urls: {
       linkedin: 'https://www.linkedin.com/in/murilo-medina-47ba002a9/',
       github: 'https://github.com/medinavs'
@@ -52,6 +64,8 @@ export const TEAM_MEMBERS: MemberData[] = [
     name: 'Vitor Gabriel',
     job_title: 'Desenvolvedor Frontend',
     thumb: 'https://avatars.githubusercontent.com/u/102386982?v=4',
+    description:
+      'Desenvolvedor Frontend detalhista, especializado em interfaces modernas e responsivas, transformando ideias em experiências digitais.',
     urls: {
       linkedin: 'https://avatars.githubusercontent.com/u/102386982?v=4',
       github: 'https://github.com/vitingr',
