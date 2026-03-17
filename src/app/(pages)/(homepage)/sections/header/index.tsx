@@ -92,16 +92,16 @@ export const Header: FC = () => {
         <div className="mt-4 flex w-fit items-center gap-4 lg:mt-0 lg:hidden">
           <Link
             className="cursor-pointer rounded-full border border-neutral-700 bg-neutral-700 px-6 py-2 text-sm font-medium text-white backdrop-blur-[10px] transition-all duration-300 hover:bg-neutral-800"
-            href="/minha-ong"
+            href="/contato"
           >
             Quero participar
           </Link>
-          <Link
+          {/* <Link
             className="cursor-pointer rounded-full border border-neutral-700 px-6 py-2 text-sm font-medium backdrop-blur-[10px] transition-all duration-300 hover:bg-white"
             href="/ongs"
           >
             Ver projetos
-          </Link>
+          </Link> */}
         </div>
       </header>
     </section>
