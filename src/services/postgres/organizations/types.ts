@@ -32,6 +32,11 @@ export interface CreateOrganizationResponse {
   organization: PostgresOrganization
 }
 
+export interface GetAllOrganizationsData {
+  name?: string
+  ong_type?: string
+}
+
 export interface GetAllOrganizationsResponse {
   organizations: (PostgresOrganization & {
     organization_profile: PostgresOrganizationProfile

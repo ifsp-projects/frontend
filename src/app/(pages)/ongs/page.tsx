@@ -17,8 +17,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
   })
 }
 
-const Page: NextPage = async () => {
-  const { data } = await instanceMotor.organizations.getAllOrganizations()
+interface PageProps {
+  searchParams: Promise<{ name?: string; ong_type?: string }>
+}
+
+const Page: NextPage<PageProps> = async ({ searchParams }) => {
+  const { name, ong_type } = await searchParams
+  const { data } = await instanceMotor.organizations.getAllOrganizations({ name, ong_type })
 
   return (
     <main>
