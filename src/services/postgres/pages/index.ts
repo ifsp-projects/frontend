@@ -1,5 +1,5 @@
 import { apiPostgres } from '@/instances/postgres'
-import type { PostgresPage } from '@/types/postgres/page/postgres-page'
+import type { PostgresPage } from '@/types/postgres/postgres-page'
 
 import type {
   GetPageBySlugData,

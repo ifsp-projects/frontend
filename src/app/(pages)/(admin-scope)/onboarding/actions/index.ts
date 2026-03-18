@@ -3,6 +3,8 @@
 import { account } from '@/instances/account'
 import { admin } from '@/instances/admin'
 import { instanceMotor } from '@/instances/motor'
+import type { PostgresDesignTemplates } from '@/types/postgres/enums/postgres-design-template'
+import type { PostgresOngType } from '@/types/postgres/enums/postgres-ong-types'
 import { generateSlug } from '@/utils/helpers/generate-slug'
 
 import type { OnboardingProfileData } from '../components/form/schema'
@@ -68,9 +70,9 @@ export async function completeOnboardingAction(
         slug: generateSlug({ text: formData.name }),
         name: formData.name,
         ong_id: data.inviteToken.organization_id,
-        ong_type: formData.ong_type,
+        ong_type: formData.ong_type as PostgresOngType,
         phone: formData.phone,
-        design_template: formData.design_template,
+        design_template: formData.design_template as PostgresDesignTemplates,
         inviteToken: token,
         ong_description: formData.description,
         logo: 'https://static.vecteezy.com/ti/vetor-gratis/p1/19869277-ong-carta-logotipo-projeto-em-branco-fundo-ong-criativo-circulo-carta-logotipo-conceito-ong-carta-projeto-vetor.jpg'

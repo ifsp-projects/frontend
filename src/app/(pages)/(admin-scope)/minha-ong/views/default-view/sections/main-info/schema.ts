@@ -15,7 +15,8 @@ export const profileFormSchema = z.object({
   postal_code: z.string().optional(),
   complement: z.string().optional(),
   design_template: z.string().optional(),
-  description: z.string().max(280, 'Descrição muito longa!').optional()
+  description: z.string().max(500, 'Descrição muito longa!').optional(),
+  logo: z.string().optional()
 })
 
 export type ProfileFormSchemaType = z.infer<typeof profileFormSchema>

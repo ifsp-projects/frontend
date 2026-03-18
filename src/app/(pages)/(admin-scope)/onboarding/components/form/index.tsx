@@ -2,10 +2,13 @@
 
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 import { Spin } from '@/components/ui/spin'
 import { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
+import type { PostgresDesignTemplates } from '@/types/postgres/enums/postgres-design-template'
+import { formatPhone } from '@/utils/helpers/format-phone'
+import { formatPostalCode } from '@/utils/helpers/format-postal-code'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { completeOnboardingAction } from '../../actions'
@@ -13,6 +16,7 @@ import { DESIGN_TEMPLATES } from './data'
 import { Field } from './field'
 import type { OnboardingProfileData } from './schema'
 import { onboardingProfileSchema } from './schema'
+import { TemplatePreviewModal } from './template-preview-modal'
 import type { OnboardingProfileFormProps } from './types'
 
 const inputClass = (hasError?: boolean) =>
@@ -24,8 +28,13 @@ export const OnboardingProfileForm = ({
   token
 }: OnboardingProfileFormProps) => {
   const [rootError, setRootError] = useState<string | null>(null)
+  const [previewTemplate, setPreviewTemplate] =
+    useState<PostgresDesignTemplates | null>(null)
+  const [isPreviewDesignTemplateOpen, setIsPreviewDesignTemplateOpen] =
+    useState<boolean>(false)
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors, isSubmitting }
@@ -75,35 +84,42 @@ export const OnboardingProfileForm = ({
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">
-            Organization
+            Finalizar cadastro
           </span>
           <div className="h-px flex-1 bg-neutral-100" />
         </div>
 
-        <Field error={errors.name?.[0]} label="Organization name" required>
+        <Field error={errors.name?.[0]} label="Nome do projeto social" required>
           <input
             {...register('name')}
             className={inputClass(!!errors.name)}
             id="name"
             name="name"
-            placeholder="Instituto Esperança"
+            placeholder="Ex.: Capivara Solidária"
             type="text"
           />
         </Field>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <Field error={errors.phone?.[0]} label="Phone" required>
-            <input
-              {...register('phone')}
-              className={inputClass(!!errors.phone)}
-              id="phone"
+          <Field error={errors.phone?.[0]} label="Telefone" required>
+            <Controller
+              render={({ field }) => (
+                <input
+                  {...field}
+                  className={inputClass(!!errors.phone)}
+                  id="phone"
+                  onChange={e => field.onChange(formatPhone(e.target.value))}
+                  placeholder="(11) 99999-9999"
+                  type="tel"
+                  value={field.value || ''}
+                />
+              )}
+              control={control}
               name="phone"
-              placeholder="+55 11 99999-9999"
-              type="tel"
             />
           </Field>
 
-          <Field error={errors.ong_type?.[0]} label="Category">
+          <Field error={errors.ong_type?.[0]} label="Área de atuação">
             <select
               {...register('ong_type')}
               className={`${inputClass(!!errors.ong_type)} bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a3a3a3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")] cursor-pointer appearance-none bg-position-[right_14px_center] bg-no-repeat pr-9`}
@@ -121,25 +137,50 @@ export const OnboardingProfileForm = ({
         </div>
 
         <Field error={errors.design_template?.[0]} label="Category">
-          <select
-            {...register('design_template')}
-            className={`${inputClass(!!errors.design_template)} bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a3a3a3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")] cursor-pointer appearance-none bg-position-[right_14px_center] bg-no-repeat pr-9`}
-            id="design_template"
+          <Controller
+            render={({ field }) => (
+              <>
+                <select
+                  onChange={e => {
+                    setPreviewTemplate(
+                      e.target.value as PostgresDesignTemplates
+                    )
+                    setIsPreviewDesignTemplateOpen(true)
+                  }}
+                  className={`${inputClass(!!errors.design_template)} bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a3a3a3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")] cursor-pointer appearance-none bg-position-[right_14px_center] bg-no-repeat pr-9`}
+                  value={field.value || ''}
+                >
+                  <option value="">Selecione um template</option>
+                  {DESIGN_TEMPLATES.map(c => (
+                    <option key={c.value} value={c.value}>
+                      {c.label}
+                    </option>
+                  ))}
+                </select>
+
+                {previewTemplate ? (
+                  <TemplatePreviewModal
+                    onConfirm={() => {
+                      field.onChange(previewTemplate)
+                      setPreviewTemplate(null)
+                    }}
+                    isOpen={isPreviewDesignTemplateOpen}
+                    onCancel={() => setPreviewTemplate(null)}
+                    setIsOpen={setIsPreviewDesignTemplateOpen}
+                    template={previewTemplate}
+                  />
+                ) : null}
+              </>
+            )}
+            control={control}
             name="design_template"
-          >
-            <option value="">Design Template</option>
-            {DESIGN_TEMPLATES.map(c => (
-              <option key={c.value} value={c.value}>
-                {c.label}
-              </option>
-            ))}
-          </select>
+          />
         </Field>
 
         <Field
           error={errors.description?.[0]}
-          hint="Max 500 characters. This appears on your public page."
-          label="Description"
+          hint="Máx. 500 caracteres. Isso vai aparecer na sua página pública."
+          label="Descrição"
           optional
         >
           <textarea
@@ -147,7 +188,7 @@ export const OnboardingProfileForm = ({
             className={`${inputClass(!!errors.description)} resize-none`}
             id="description"
             name="description"
-            placeholder="Briefly describe your organization's mission..."
+            placeholder="Descreva brevemente a missão do seu projeto."
             rows={3}
           />
         </Field>
@@ -156,31 +197,31 @@ export const OnboardingProfileForm = ({
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">
-            Address
+            Endereço
           </span>
           <div className="h-px flex-1 bg-neutral-100" />
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <div className="md:col-span-2">
-            <Field error={errors.street?.[0]} label="Street" required>
+            <Field error={errors.street?.[0]} label="Rua" required>
               <input
                 {...register('street')}
                 className={inputClass(!!errors.street)}
                 id="street"
                 name="street"
-                placeholder="Rua das Flores"
+                placeholder="Ex.: Rua das Flores"
                 type="text"
               />
             </Field>
           </div>
-          <Field error={errors.number?.[0]} label="Number">
+          <Field error={errors.number?.[0]} label="Número">
             <input
               {...register('number')}
               className={inputClass(!!errors.number)}
               id="number"
               name="number"
-              placeholder="123"
+              placeholder="Ex.: 123"
               type="text"
             />
           </Field>
@@ -188,36 +229,46 @@ export const OnboardingProfileForm = ({
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <div className="md:col-span-1">
-            <Field error={errors.city?.[0]} label="City" required>
+            <Field error={errors.city?.[0]} label="Cidade" required>
               <input
                 {...register('city')}
                 className={inputClass(!!errors.city)}
                 id="city"
                 name="city"
-                placeholder="São Paulo"
+                placeholder="Ex.: São Paulo"
                 type="text"
               />
             </Field>
           </div>
-          <Field error={errors.state?.[0]} label="State" required>
+          <Field error={errors.state?.[0]} label="Estado" required>
             <input
               {...register('state')}
               className={`${inputClass(!!errors.state)} uppercase`}
               id="state"
               maxLength={2}
               name="state"
-              placeholder="SP"
+              placeholder="Ex.: SP"
               type="text"
             />
           </Field>
-          <Field error={errors.postal_code?.[0]} label="Postal code" required>
-            <input
-              {...register('postal_code')}
-              className={inputClass(!!errors.postal_code)}
-              id="postal_code"
+          <Field error={errors.postal_code?.[0]} label="CEP" required>
+            <Controller
+              render={({ field }) => (
+                <input
+                  {...field}
+                  onChange={e =>
+                    field.onChange(formatPostalCode(e.target.value))
+                  }
+                  className={inputClass(!!errors.postal_code)}
+                  id="postal_code"
+                  maxLength={9}
+                  placeholder="Ex.: 00000-000"
+                  type="text"
+                  value={field.value || ''}
+                />
+              )}
+              control={control}
               name="postal_code"
-              placeholder="00000-000"
-              type="text"
             />
           </Field>
         </div>
@@ -228,7 +279,7 @@ export const OnboardingProfileForm = ({
         disabled={isSubmitting}
         type="submit"
       >
-        {isSubmitting ? <Spin /> : 'Complete setup'}
+        {isSubmitting ? <Spin /> : 'Finalizar cadastro'}
       </button>
     </form>
   )

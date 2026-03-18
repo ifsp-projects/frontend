@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import React from 'react'
-import type { Resolver } from 'react-hook-form'
+import type { FieldErrors, Resolver } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -32,17 +32,22 @@ export const MainInfo: React.FC<MainInfoProps> = ({ organization }) => {
     resolver: zodResolver(profileFormSchema) as Resolver<ProfileFormSchemaType>,
     defaultValues: {
       phone: profile?.phone || '',
-      postal_code: profile?.addresses?.postal_code || '',
+      postal_code: profile?.addresses[0]?.postal_code || '',
       ong_type: profile?.ong_type || '',
       description: profile?.ong_description || '',
-      state: profile?.addresses?.state || '',
-      city: profile?.addresses?.city || '',
-      street: profile?.addresses?.street || '',
-      number: Number(profile?.addresses?.number) || 0,
-      complement: profile?.addresses?.complement || '',
-      design_template: profile?.design_template
+      state: profile?.addresses[0]?.state || '',
+      city: profile?.addresses[0]?.city || '',
+      street: profile?.addresses[0]?.street || '',
+      number: Number(profile?.addresses[0]?.number) || 0,
+      complement: profile?.addresses[0]?.complement || '',
+      design_template: profile?.design_template,
+      logo: profile?.logo || ''
     }
   })
+
+  const onError = (errors: FieldErrors<ProfileFormSchemaType>) => {
+    console.log('Form errors:', errors)
+  }
 
   const onSubmit = async (values: ProfileFormSchemaType) => {
     if (!organization?.id) return null
@@ -54,7 +59,7 @@ export const MainInfo: React.FC<MainInfoProps> = ({ organization }) => {
           ...values,
           slug: organization.organization_profile?.slug,
           ong_id: organization.organization_profile?.id,
-          address_id: profile?.addresses?.id,
+          addressId: profile?.addresses[0]?.id,
           token
         }
       )
@@ -83,9 +88,9 @@ export const MainInfo: React.FC<MainInfoProps> = ({ organization }) => {
     <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <form
         className="mx-auto flex w-full max-w-3xl flex-col gap-6 lg:max-w-6xl lg:gap-8 xl:max-w-7xl"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit, onError)}
       >
-        <ProfileHeader organization={organization} />
+        <ProfileHeader organization={organization} setValue={setValue} />
 
         <AboutSection
           control={control}

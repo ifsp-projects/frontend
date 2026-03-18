@@ -32,6 +32,8 @@ export const PATCH = async (req: NextRequest) => {
       )
     }
 
+    console.log(logo)
+
     const response =
       await instanceMotor.organizationProfiles.updateOrganizationProfile({
         payload: {

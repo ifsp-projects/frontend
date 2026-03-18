@@ -52,14 +52,14 @@ const Page = async ({ searchParams }: PageProps) => {
 
         <section className="mb-8">
           <h1 className="mb-1.5 text-2xl font-black tracking-tight text-neutral-800">
-            Set your password
+            Defina sua senha
           </h1>
           <p className="text-sm leading-relaxed text-neutral-500">
-            Welcome,{' '}
+            Bem-vindo,{' '}
             <span className="font-medium text-neutral-700">
               {validation.email}
             </span>
-            . Create a secure password to get started.
+            . Crie uma senha segura para começar.
           </p>
         </section>
 

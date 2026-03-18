@@ -47,11 +47,11 @@ export const AddressFormFields = <T extends FieldValues>({
               <input
                 {...field}
                 className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500"
-                defaultValue={field.value}
                 maxLength={15}
                 onChange={e => field.onChange(formatPhone(e.target.value))}
                 placeholder="Seu telefone"
                 type="text"
+                value={field.value ?? ''}
               />
             )}
             control={control}
@@ -77,7 +77,7 @@ export const AddressFormFields = <T extends FieldValues>({
               }
               className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500"
               maxLength={9}
-              placeholder="Ex: 15041-050"
+              placeholder="Ex.: 15041-050"
               type="text"
               value={field.value || ''}
               required
@@ -98,7 +98,7 @@ export const AddressFormFields = <T extends FieldValues>({
               <input
                 {...field}
                 className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500"
-                placeholder="Ex: São Paulo"
+                placeholder="Ex.: SP"
                 type="text"
                 value={field.value || ''}
                 required
@@ -117,7 +117,7 @@ export const AddressFormFields = <T extends FieldValues>({
               <input
                 {...field}
                 className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500"
-                placeholder="Ex: Capivari"
+                placeholder="Ex.: Capivari"
                 type="text"
                 value={field.value || ''}
                 required
@@ -139,7 +139,7 @@ export const AddressFormFields = <T extends FieldValues>({
               <input
                 {...field}
                 className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500"
-                placeholder="Ex: Rua dos Sashimis"
+                placeholder="Ex.: Rua das Flores"
                 type="text"
                 value={field.value || ''}
                 required
@@ -158,10 +158,9 @@ export const AddressFormFields = <T extends FieldValues>({
               <input
                 {...field}
                 className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500"
-                placeholder="Ex: 1230"
+                placeholder="Ex.: 123"
                 type="number"
-                value={field.value || ''}
-                required
+                value={field?.value || ''}
               />
             )}
             control={control}
@@ -177,7 +176,7 @@ export const AddressFormFields = <T extends FieldValues>({
         <input
           className="w-full rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500"
           maxLength={999}
-          placeholder="Ex: Perto do pé de Jambo"
+          placeholder="Ex.: Perto do pé de Jambo"
           type="text"
           {...register('complement' as Parameters<typeof register>[0])}
         />

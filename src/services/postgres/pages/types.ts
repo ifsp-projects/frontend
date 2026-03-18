@@ -1,4 +1,4 @@
-import type { PostgresPage } from '@/types/postgres/page/postgres-page'
+import type { PostgresPage } from '@/types/postgres/postgres-page'
 
 export interface GetPageBySlugData {
   slug: string

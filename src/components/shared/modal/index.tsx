@@ -47,7 +47,7 @@ export const Modal: React.FC<ModalProps> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="relative w-full shadow-xl transition-all md:w-auto">
+              <Dialog.Panel className="relative w-full shadow-xl transition-all">
                 {dismissible && (
                   <div className="absolute top-3 right-3">
                     <button

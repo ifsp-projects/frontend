@@ -66,7 +66,7 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
           className="text-xs font-semibold tracking-wide text-neutral-600 uppercase"
           htmlFor="password"
         >
-          New password
+          Nova senha
         </label>
         <input
           className={`w-full rounded-sm border bg-white px-3.5 py-2.5 text-sm text-neutral-800 placeholder-neutral-300 transition-colors outline-none focus:border-rose-300 focus:ring-2 focus:ring-rose-100 ${
@@ -91,7 +91,7 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
           className="text-xs font-semibold tracking-wide text-neutral-600 uppercase"
           htmlFor="confirmPassword"
         >
-          Confirm password
+          Confirmar senha
         </label>
         <input
           className={`w-full rounded-sm border bg-white px-3.5 py-2.5 text-sm text-neutral-800 placeholder-neutral-300 transition-colors outline-none focus:border-rose-300 focus:ring-2 focus:ring-rose-100 ${
@@ -113,7 +113,7 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
 
       <div className="rounded-sm border border-neutral-100 bg-neutral-50 px-4 py-3">
         <p className="mb-2 text-[10px] font-bold tracking-widest text-neutral-400 uppercase">
-          Requirements
+          Requisitos
         </p>
         <ul className="flex flex-col gap-1.5">
           {PASSWORD_RULES.map(rule => (
@@ -133,7 +133,7 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
         disabled={isSubmitting}
         type="submit"
       >
-        {isSubmitting ? <Spin /> : 'Continue'}
+        {isSubmitting ? <Spin /> : 'Continuar'}
       </button>
     </form>
   )
