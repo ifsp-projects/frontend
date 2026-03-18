@@ -3,7 +3,7 @@ import type { FC } from 'react'
 
 export const Header: FC = async () => {
   return (
-    <section className="bg-linear-to-br from-rose-50 via-neutral-50 to-rose-100 px-4 py-12 text-center lg:py-16">
+    <section className="bg-linear-to-b from-neutral-50 via-neutral-100 to-rose-100 px-4 py-12 text-center lg:py-16">
       <header className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:items-center lg:gap-16">
         <article className="flex w-full flex-col gap-4">
           <span className="border-b-2 border-b-rose-300 pb-0.5 text-sm font-semibold text-neutral-600 text-center lg:text-left w-fit mx-auto lg:mx-0">
