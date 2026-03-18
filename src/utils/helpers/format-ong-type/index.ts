@@ -1,6 +1,19 @@
 import type { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
 import type { ExtractArrayType } from '@/types/utils/extract-array-type'
 
+/**
+ * A mapping of internal Prisma ONG category keys to their corresponding
+ * HubSpot ONG category values.
+ *
+ * This record is used to translate database category identifiers (used in
+ * Prisma models) into the exact string values expected by HubSpot forms.
+ *
+ * Example usage:
+ * ```ts
+ * console.log(PRISMA_TO_HUBSPOT_ONG_CATEGORY['animais']);
+ * // 'Animais'
+ * ```
+ */
 export const PRISMA_TO_HUBSPOT_ONG_CATEGORY: Record<
   string,
   ExtractArrayType<typeof HUBSPOT_ONG_VALUES>
