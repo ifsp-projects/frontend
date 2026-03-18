@@ -4,23 +4,23 @@ export const FOOTER_LINKS = [
     links: [
       {
         label: 'Quem somos',
-        href: '#'
+        href: '/sobre'
       },
       {
         label: 'Nosso propósito',
-        href: '#'
+        href: '/sobre'
       },
       {
         label: 'Como ajudamos as ONGs',
-        href: '#'
+        href: '/'
       },
       {
         label: 'Equipe e colaboradores',
-        href: '#'
+        href: '/sobre'
       },
       {
         label: 'Fale conosco',
-        href: '#'
+        href: '/contato'
       }
     ]
   },
@@ -28,12 +28,13 @@ export const FOOTER_LINKS = [
     title: 'Ajuda e Suporte',
     links: [
       {
+        type: 'whatsapp',
         label: 'Entre em contato com o suporte',
         href: '#'
       },
       {
         label: 'Perguntas frequentes (FAQ)',
-        href: '#'
+        href: '/faq'
       },
       {
         label: 'Reportar um problema',
@@ -41,11 +42,11 @@ export const FOOTER_LINKS = [
       },
       {
         label: 'Política de Privacidade',
-        href: '#'
+        href: '/politica-de-privacidade'
       },
       {
         label: 'Termos de uso',
-        href: '#'
+        href: '/termos-de-uso'
       }
     ]
   },
@@ -54,23 +55,24 @@ export const FOOTER_LINKS = [
     links: [
       {
         label: 'ONGs em destaque',
-        href: '#'
+        href: '/ongs'
       },
       {
         label: 'Histórias que inspiram',
-        href: '#'
+        href: '/ongs'
       },
       {
         label: 'Projetos apoiados',
-        href: '#'
+        href: '/ongs'
       },
       {
+        type: 'whatsapp',
         label: 'Como participar',
         href: '#'
       },
       {
         label: 'Depoimentos da comunidade',
-        href: '#'
+        href: '/ongs'
       }
     ]
   },

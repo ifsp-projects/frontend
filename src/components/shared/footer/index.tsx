@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import type { FC } from 'react'
+import React from 'react'
+
+import { generateWhatsappLink } from '@/utils/helpers/generate-whatsapp-link'
 
 import { FOOTER_LINKS } from './data'
 import type { FooterLinkProps } from './types'
@@ -17,14 +20,28 @@ export const Footer: FC = () => {
             <div className="flex w-full flex-col gap-2">
               {footerSection.links.map(
                 (footerLink: FooterLinkProps, index: number) => (
-                  <Link
-                    className="w-fit border-b border-transparent text-xs transition-all duration-300 hover:text-rose-400 sm:text-xs lg:text-sm"
-                    href={footerLink.href}
-                    key={`${footerLink.label}-${index}`}
-                    target={sectionIndex === 2 ? '_blank' : '_self'}
-                  >
-                    {footerLink.label}
-                  </Link>
+                  <React.Fragment key={`${footerLink.label}-${index}`}>
+                    {footerLink?.type === 'whatsapp' ? (
+                      <React.Fragment>
+                        {generateWhatsappLink({
+                          phone: '5519999101607',
+                          message:
+                            'Olá! tudo bem? Como posso estar participando da iniciativa Capivara Solidária?',
+                          label: footerLink.label,
+                          className:
+                            'w-fit border-b border-transparent text-xs transition-all duration-300 hover:text-rose-400 sm:text-xs lg:text-sm'
+                        })}
+                      </React.Fragment>
+                    ) : (
+                      <Link
+                        className="w-fit border-b border-transparent text-xs transition-all duration-300 hover:text-rose-400 sm:text-xs lg:text-sm"
+                        href={footerLink.href}
+                        target={sectionIndex === 2 ? '_blank' : '_self'}
+                      >
+                        {footerLink.label}
+                      </Link>
+                    )}
+                  </React.Fragment>
                 )
               )}
             </div>

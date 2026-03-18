@@ -6,17 +6,30 @@ import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 
 import { EmptyBox } from '@/assets/icons/empty-box'
+import { formatOngType } from '@/utils/helpers/format-ong-type'
 
 import { categories } from './data'
 import type { ListProps } from './types'
 
 const categoryColors: Record<string, { bg: string; dot: string }> = {
   Animais: { bg: 'bg-yellow-50 text-yellow-700', dot: 'bg-yellow-400' },
-  'Direitos Humanos': { bg: 'bg-purple-50 text-purple-700', dot: 'bg-purple-400' },
-  'Combate à Fome': { bg: 'bg-orange-50 text-orange-700', dot: 'bg-orange-400' },
-  'Crianças e Adolescentes': { bg: 'bg-sky-50 text-sky-700', dot: 'bg-sky-400' },
+  'Direitos Humanos': {
+    bg: 'bg-purple-50 text-purple-700',
+    dot: 'bg-purple-400'
+  },
+  'Combate à Fome': {
+    bg: 'bg-orange-50 text-orange-700',
+    dot: 'bg-orange-400'
+  },
+  'Crianças e Adolescentes': {
+    bg: 'bg-sky-50 text-sky-700',
+    dot: 'bg-sky-400'
+  },
   Idosos: { bg: 'bg-blue-50 text-blue-700', dot: 'bg-blue-400' },
-  'Pessoas com Deficiência': { bg: 'bg-indigo-50 text-indigo-700', dot: 'bg-indigo-400' },
+  'Pessoas com Deficiência': {
+    bg: 'bg-indigo-50 text-indigo-700',
+    dot: 'bg-indigo-400'
+  }
 }
 
 const getCategoryColor = (category: string) =>
@@ -58,13 +71,12 @@ export const List: FC<ListProps> = ({ data }) => {
   const orgs = data?.organizations ?? []
 
   return (
-    <section className="bg-neutral-50 px-4 py-8 xl:px-0">
+    <section className="bg-neutral-50 px-4 py-8 lg:py-12 xl:px-0">
       <div className="mx-auto w-full max-w-2xl lg:max-w-7xl">
-
-        <div className="mb-6 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="scrollbar-hide mb-6 flex items-center gap-2 overflow-x-auto pb-2">
           <div className="shrink-0">
             <input
-              className="h-9 rounded-full border border-neutral-200 bg-white px-4 text-[13px] text-neutral-700 placeholder:text-neutral-400 transition duration-150 hover:border-rose-300 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-100 w-[200px]"
+              className="h-9 w-[200px] rounded-full border border-neutral-200 bg-white px-4 text-[13px] text-neutral-700 transition duration-150 placeholder:text-neutral-400 hover:border-rose-300 focus:border-rose-400 focus:ring-2 focus:ring-rose-100 focus:outline-none"
               onChange={e => setSearchInput(e.target.value)}
               placeholder="Buscar organização..."
               type="text"
@@ -76,10 +88,11 @@ export const List: FC<ListProps> = ({ data }) => {
 
           {categories.map(({ key, label }) => (
             <button
-              className={`flex h-9 shrink-0 cursor-pointer items-center gap-1.5 rounded-full border px-4 text-[13px] font-medium transition-all duration-150 focus:outline-none ${selectedCategory === key
-                ? 'border-rose-400 bg-rose-400 text-white shadow-sm'
-                : 'border-neutral-200 bg-white text-neutral-700 hover:border-rose-300 hover:text-rose-500'
-                }`}
+              className={`flex h-9 shrink-0 cursor-pointer items-center gap-1.5 rounded-full border px-4 text-[13px] font-medium transition-all duration-150 focus:outline-none ${
+                selectedCategory === key
+                  ? 'border-rose-400 bg-rose-400 text-white shadow-sm'
+                  : 'border-neutral-200 bg-white text-neutral-700 hover:border-rose-300 hover:text-rose-500'
+              }`}
               key={key}
               onClick={() => handleSelectCategory(key)}
             >
@@ -105,9 +118,12 @@ export const List: FC<ListProps> = ({ data }) => {
               const initial = profile?.name?.charAt(0) ?? '?'
 
               return (
-                <Link href={`/ongs/${ong.id}`} key={ong.id} className="group flex flex-col">
+                <Link
+                  className="group flex flex-col"
+                  href={`/ongs/${ong.id}`}
+                  key={ong.id}
+                >
                   <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-neutral-100 transition-all duration-200 hover:shadow-md hover:ring-neutral-200">
-
                     <div className="relative aspect-square w-full overflow-hidden bg-neutral-100">
                       {profile?.logo ? (
                         <img
@@ -124,28 +140,31 @@ export const List: FC<ListProps> = ({ data }) => {
                       )}
 
                       <span
-                        className={`absolute left-2 top-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold shadow-sm backdrop-blur-sm ${colors.bg}`}
+                        className={`absolute top-2 left-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold shadow-sm backdrop-blur-sm ${colors.bg}`}
                       >
-                        <span className={`h-1.5 w-1.5 rounded-full ${colors.dot}`} />
-                        {profile?.ong_type}
+                        <span
+                          className={`h-1.5 w-1.5 rounded-full ${colors.dot}`}
+                        />
+                        {formatOngType({ ong_type: profile?.ong_type })}
                       </span>
                     </div>
 
-                    <div className="flex flex-1 flex-col p-3">
-                      <p className="truncate text-sm font-semibold text-neutral-900 group-hover:text-rose-500 transition-colors duration-150">
+                    <article className="flex flex-1 flex-col p-3">
+                      <p className="truncate text-sm font-semibold text-neutral-900 transition-colors duration-150 group-hover:text-rose-500">
                         {profile?.name}
                       </p>
                       <p className="mt-0.5 line-clamp-2 text-[12px] leading-relaxed text-neutral-500">
-                        {profile?.ong_description ?? 'Organização sem fins lucrativos dedicada a causas sociais.'}
+                        {profile?.ong_description ??
+                          'Organização sem fins lucrativos dedicada a causas sociais.'}
                       </p>
-                    </div>
+                    </article>
                   </div>
                 </Link>
               )
             })}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-20 text-center">
+          <article className="flex flex-col items-center justify-center py-20 text-center">
             <figure className="mb-4">
               <EmptyBox />
             </figure>
@@ -155,7 +174,7 @@ export const List: FC<ListProps> = ({ data }) => {
             <p className="text-sm text-neutral-500">
               Tente alterar a categoria ou o termo de busca.
             </p>
-          </div>
+          </article>
         )}
       </div>
     </section>

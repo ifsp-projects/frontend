@@ -6,4 +6,5 @@ export interface FooterSectionProps {
 export interface FooterLinkProps {
   href: string
   label: string
+  type?: string
 }

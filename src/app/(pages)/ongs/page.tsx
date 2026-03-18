@@ -23,7 +23,10 @@ interface PageProps {
 
 const Page: NextPage<PageProps> = async ({ searchParams }) => {
   const { name, ong_type } = await searchParams
-  const { data } = await instanceMotor.organizations.getAllOrganizations({ name, ong_type })
+  const { data } = await instanceMotor.organizations.getAllOrganizations({
+    name,
+    ong_type
+  })
 
   return (
     <main>

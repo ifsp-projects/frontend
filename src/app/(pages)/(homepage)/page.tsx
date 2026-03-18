@@ -1,7 +1,9 @@
 import type { Metadata, NextPage } from 'next'
+import Script from 'next/script'
 
 import { getMetaData } from '@/utils/seo/get-metadata'
 
+import { getHomepageJsonLd } from './json-ld'
 import { Benefits } from './sections/benefits'
 import { Contact } from './sections/contact'
 import { Details } from './sections/details'
@@ -22,14 +24,20 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const Page: NextPage = async () => {
   return (
-    <main>
-      <Header />
-      <Details />
-      <Benefits />
-      <MoreInfoAbout />
-      <HowItWorks />
-      <Contact />
-    </main>
+    <>
+      <Script
+        dangerouslySetInnerHTML={{ __html: getHomepageJsonLd() }}
+        type="application/ld+json"
+      />
+      <main id="website">
+        <Header />
+        <Details />
+        <Benefits />
+        <MoreInfoAbout />
+        <HowItWorks />
+        <Contact />
+      </main>
+    </>
   )
 }
 

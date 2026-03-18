@@ -6,7 +6,7 @@ export const Header: FC = async () => {
     <section className="bg-linear-to-b from-neutral-50 via-neutral-100 to-rose-100 px-4 py-12 text-center lg:py-16">
       <header className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:items-center lg:gap-16">
         <article className="flex w-full flex-col gap-4">
-          <span className="border-b-2 border-b-rose-300 pb-0.5 text-sm font-semibold text-neutral-600 text-center lg:text-left w-fit mx-auto lg:mx-0">
+          <span className="mx-auto w-fit border-b-2 border-b-rose-300 pb-0.5 text-center text-sm font-semibold text-neutral-600 lg:mx-0 lg:text-left">
             Catálogo de ONGs
           </span>
           <h1 className="text-center text-2xl font-bold lg:text-left lg:text-4xl xl:text-5xl">
@@ -22,7 +22,7 @@ export const Header: FC = async () => {
         <figure className="flex h-56 w-full shrink-0 items-center justify-center overflow-hidden rounded-sm lg:h-80 lg:max-w-[380px]">
           <Image
             alt="ONGs Banner"
-            className="h-50 w-50 lg:h-86 lg:w-86 object-cover"
+            className="h-50 w-50 object-cover lg:h-86 lg:w-86"
             fetchPriority="high"
             height={1080}
             loading="eager"

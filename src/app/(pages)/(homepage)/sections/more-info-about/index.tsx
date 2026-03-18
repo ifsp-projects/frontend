@@ -49,7 +49,7 @@ export const MoreInfoAbout: FC = () => {
               </p>
             </div>
             <div className="mt-4 flex w-fit justify-start lg:mt-0">
-              <CircleButton href="/login" label="Quero criar minha conta" />
+              <CircleButton href="/contato" label="Quero fazer parte" />
             </div>
           </article>
         </div>

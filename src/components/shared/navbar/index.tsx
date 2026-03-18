@@ -39,7 +39,7 @@ export const Navbar = () => {
   if (pathname === '/login') return null
 
   return (
-    <nav className="sticky top-0 left-0 z-40 w-full border-b border-neutral-50 bg-neutral-50 py-1">
+    <nav className="sticky top-0 left-0 z-9999999 w-full border-b border-neutral-50 bg-neutral-50 py-1">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 lg:px-6 xl:px-0">
         <Link href="/">
           <Image
