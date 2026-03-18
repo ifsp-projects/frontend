@@ -1,29 +1,35 @@
+import Image from 'next/image'
 import type { FC } from 'react'
-
-import FloatingLines from '@/components/shared/floating-lines'
 
 export const Header: FC = async () => {
   return (
-    <section className="relative min-h-[500px] px-4 xl:px-0 2xl:min-h-[580px]">
-      <div className="absolute top-0 left-0 z-20 h-full min-h-[500px] w-full 2xl:min-h-[580px]">
-        <FloatingLines
-          bendRadius={5.0}
-          bendStrength={-0.5}
-          enabledWaves={['top', 'middle', 'bottom']}
-          interactive={true}
-          lineCount={[5]}
-          lineDistance={[5]}
-          parallax={true}
-        />
-      </div>
-      <header className="relative z-30 mx-auto flex min-h-[600px] w-full max-w-2xl flex-col items-center justify-center gap-4 lg:max-w-6xl lg:gap-6 2xl:min-h-[780px]">
-        <span className="mx-auto rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[13px] font-medium text-white backdrop-blur-[10px] transition duration-200">
-          Catálogo de ONGs
-        </span>
-        <h1 className="text-center text-2xl font-bold text-white lg:text-4xl xl:text-5xl">
-          Descubra organizações que fazem a diferença
-          <br /> e apoie causas importantes.
-        </h1>
+    <section className="bg-linear-to-br from-rose-50 via-neutral-50 to-rose-100 px-4 py-12 text-center lg:py-16">
+      <header className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:items-center lg:gap-16">
+        <article className="flex w-full flex-col gap-4">
+          <span className="border-b-2 border-b-rose-300 pb-0.5 text-sm font-semibold text-neutral-600 text-center lg:text-left w-fit mx-auto lg:mx-0">
+            Catálogo de ONGs
+          </span>
+          <h1 className="text-center text-2xl font-bold lg:text-left lg:text-4xl xl:text-5xl">
+            Descubra organizações que fazem a diferença no Brasil.
+          </h1>
+          <p className="text-center text-sm text-neutral-500 lg:text-left lg:text-base xl:text-lg">
+            Apoie causas importantes e conecte-se com organizações que
+            transformam comunidades em todo o Brasil. Explore o catálogo e
+            encontre uma causa que toca o seu coração.
+          </p>
+        </article>
+
+        <figure className="flex h-56 w-full shrink-0 items-center justify-center overflow-hidden rounded-sm lg:h-80 lg:max-w-[380px]">
+          <Image
+            alt="ONGs Banner"
+            className="h-50 w-50 lg:h-86 lg:w-86 object-cover"
+            fetchPriority="high"
+            height={1080}
+            loading="eager"
+            src="/images/globo.svg"
+            width={1920}
+          />
+        </figure>
       </header>
     </section>
   )

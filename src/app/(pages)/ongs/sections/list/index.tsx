@@ -1,158 +1,159 @@
 'use client'
 
 import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
 import type { FC } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { EmptyBox } from '@/assets/icons/empty-box'
-import SpotlightCard from '@/components/shared/spotlight-card'
 
 import { categories } from './data'
 import type { ListProps } from './types'
 
-const categoryColors = {
-  'Assistência Social': 'bg-blue-100 text-blue-800',
-  Educação: 'bg-green-100 text-green-800',
-  Saúde: 'bg-red-100 text-red-800',
-  'Meio Ambiente': 'bg-green-100 text-green-800'
+const categoryColors: Record<string, { bg: string; dot: string }> = {
+  Animais: { bg: 'bg-yellow-50 text-yellow-700', dot: 'bg-yellow-400' },
+  'Direitos Humanos': { bg: 'bg-purple-50 text-purple-700', dot: 'bg-purple-400' },
+  'Combate à Fome': { bg: 'bg-orange-50 text-orange-700', dot: 'bg-orange-400' },
+  'Crianças e Adolescentes': { bg: 'bg-sky-50 text-sky-700', dot: 'bg-sky-400' },
+  Idosos: { bg: 'bg-blue-50 text-blue-700', dot: 'bg-blue-400' },
+  'Pessoas com Deficiência': { bg: 'bg-indigo-50 text-indigo-700', dot: 'bg-indigo-400' },
 }
 
-const getCategoryColor = (category: string) => {
-  return (
-    categoryColors[category as keyof typeof categoryColors] ||
-    'bg-gray-100 text-gray-800'
-  )
-}
+const getCategoryColor = (category: string) =>
+  categoryColors[category] ?? {
+    bg: 'bg-neutral-100 text-neutral-600',
+    dot: 'bg-neutral-400'
+  }
 
 export const List: FC<ListProps> = ({ data }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('')
-  const [searchTerm, setSearchTerm] = useState<string>('')
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
-  const filteredOngs = data?.organizations.filter(ong => {
-    const matchesCategory =
-      !selectedCategory ||
-      ong.organization_profile?.ong_type === selectedCategory
-    const matchesSearch =
-      !searchTerm ||
-      ong.organization_profile?.name
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase())
+  const selectedCategory = searchParams.get('ong_type') ?? ''
+  const currentSearch = searchParams.get('name') ?? ''
 
-    return matchesCategory && matchesSearch
-  })
+  const [searchInput, setSearchInput] = useState(currentSearch)
 
-  const handleSelectCategory = (category: string) => {
-    if (selectedCategory === category) {
-      setSelectedCategory('')
-      return
-    }
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const params = new URLSearchParams(Array.from(searchParams.entries()))
+      if (searchInput) params.set('name', searchInput)
+      else params.delete('name')
+      router.replace(`/ongs?${params.toString()}`)
+    }, 400)
+    return () => clearTimeout(timeout)
+  }, [searchInput])
 
-    setSelectedCategory(category)
+  useEffect(() => {
+    setSearchInput(currentSearch)
+  }, [currentSearch])
+
+  const handleSelectCategory = (key: string) => {
+    const params = new URLSearchParams(Array.from(searchParams.entries()))
+    if (selectedCategory === key) params.delete('ong_type')
+    else params.set('ong_type', key)
+    router.replace(`/ongs?${params.toString()}`)
   }
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value)
-  }
+  const orgs = data?.organizations ?? []
 
   return (
-    <section className="px-4 py-12 lg:py-16 xl:px-0">
+    <section className="bg-neutral-50 px-4 py-8 xl:px-0">
       <div className="mx-auto w-full max-w-2xl lg:max-w-7xl">
-        <article className="mb-8 flex w-full flex-col gap-2 lg:mb-12">
-          <h2 className="text-2xl font-bold lg:text-4xl">Catálogo de ONGs</h2>
-          <p className="text-sm text-neutral-500 lg:text-base">
-            Descubra organizações que fazem a diferença e apoie causas
-            importantes.
-          </p>
-        </article>
 
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-3">
-            {categories.map(category => (
-              <button
-                className={`cursor-pointer rounded-sm border px-4 py-2 text-[13px] font-medium backdrop-blur-[10px] transition-all duration-75 focus:outline-none ${
-                  selectedCategory === category
-                    ? 'border-rose-400 bg-rose-400 text-white focus:ring-rose-400'
-                    : 'border-neutral-300 bg-white/80 text-neutral-700 hover:border-rose-400 hover:bg-white hover:text-rose-400 focus:ring-neutral-300'
-                }`}
-                key={category}
-                onClick={handleSelectCategory.bind(null, category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          <div className="mb-0.5 w-[350px] max-w-full">
+        <div className="mb-6 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="shrink-0">
             <input
-              className="w-full max-w-md rounded-sm border border-gray-300 px-4 py-3 text-sm transition duration-75 hover:border-rose-400 focus:border-rose-400 focus:outline-none"
-              onChange={handleSearchChange}
-              placeholder="Pesquisar ONGs por nome ou descrição..."
+              className="h-9 rounded-full border border-neutral-200 bg-white px-4 text-[13px] text-neutral-700 placeholder:text-neutral-400 transition duration-150 hover:border-rose-300 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-100 w-[200px]"
+              onChange={e => setSearchInput(e.target.value)}
+              placeholder="Buscar organização..."
               type="text"
-              value={searchTerm}
+              value={searchInput}
             />
           </div>
+
+          <div className="h-5 w-px shrink-0 bg-neutral-200" />
+
+          {categories.map(({ key, label }) => (
+            <button
+              className={`flex h-9 shrink-0 cursor-pointer items-center gap-1.5 rounded-full border px-4 text-[13px] font-medium transition-all duration-150 focus:outline-none ${selectedCategory === key
+                ? 'border-rose-400 bg-rose-400 text-white shadow-sm'
+                : 'border-neutral-200 bg-white text-neutral-700 hover:border-rose-300 hover:text-rose-500'
+                }`}
+              key={key}
+              onClick={() => handleSelectCategory(key)}
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
-        {filteredOngs.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredOngs.map(ong => (
-              <Link href={`/ongs/${ong.id}`} key={ong.id}>
-                <SpotlightCard
-                  className="custom-spotlight-card cursor-pointer bg-white"
-                  spotlightColor="rgba(212, 212, 212, 0.3)"
-                >
-                  <div className="rounded-lg bg-white">
-                    <div className="mb-4 flex items-center gap-3">
-                      {ong.organization_profile?.logo ? (
+        <h2 className="mb-4 text-lg font-bold text-neutral-900">
+          Organizações
+          {orgs.length > 0 && (
+            <span className="ml-2 text-sm font-normal text-neutral-400">
+              ({orgs.length})
+            </span>
+          )}
+        </h2>
+
+        {orgs.length > 0 ? (
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+            {orgs.map(ong => {
+              const profile = ong.organization_profile
+              const colors = getCategoryColor(profile?.ong_type ?? '')
+              const initial = profile?.name?.charAt(0) ?? '?'
+
+              return (
+                <Link href={`/ongs/${ong.id}`} key={ong.id} className="group flex flex-col">
+                  <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-neutral-100 transition-all duration-200 hover:shadow-md hover:ring-neutral-200">
+
+                    <div className="relative aspect-square w-full overflow-hidden bg-neutral-100">
+                      {profile?.logo ? (
                         <img
-                          alt={ong.organization_profile?.name}
-                          className="h-12 w-12 rounded-lg object-contain"
-                          src={ong.organization_profile?.logo}
+                          alt={profile.name ?? ''}
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          src={profile.logo}
                         />
                       ) : (
-                        <div
-                          className={`flex h-12 w-12 items-center justify-center rounded-lg text-white`}
-                        >
-                          <span className="text-lg font-bold">
-                            {ong.organization_profile?.name.charAt(0)}
+                        <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-rose-100 to-rose-200">
+                          <span className="text-4xl font-bold text-rose-400">
+                            {initial}
                           </span>
                         </div>
                       )}
-                      <h3 className="text-lg font-semibold text-gray-900">
-                        {ong.organization_profile?.name}
-                      </h3>
-                    </div>
-                    <p className="mb-4 text-sm text-gray-600">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Et vitae nemo voluptatibus neque suscipit
-                    </p>
-                    <div className="flex items-center justify-between">
+
                       <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${getCategoryColor(ong.organization_profile?.ong_type)}`}
+                        className={`absolute left-2 top-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold shadow-sm backdrop-blur-sm ${colors.bg}`}
                       >
-                        {ong.organization_profile?.ong_type}
+                        <span className={`h-1.5 w-1.5 rounded-full ${colors.dot}`} />
+                        {profile?.ong_type}
                       </span>
-                      <button className="cursor-pointer text-sm font-medium text-rose-400 hover:underline">
-                        Ver detalhes
-                      </button>
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-3">
+                      <p className="truncate text-sm font-semibold text-neutral-900 group-hover:text-rose-500 transition-colors duration-150">
+                        {profile?.name}
+                      </p>
+                      <p className="mt-0.5 line-clamp-2 text-[12px] leading-relaxed text-neutral-500">
+                        {profile?.ong_description ?? 'Organização sem fins lucrativos dedicada a causas sociais.'}
+                      </p>
                     </div>
                   </div>
-                </SpotlightCard>
-              </Link>
-            ))}
+                </Link>
+              )
+            })}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-16 text-center">
-            <figure className="mb-4 rounded-full">
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <figure className="mb-4">
               <EmptyBox />
             </figure>
-            <h3 className="mb-2 text-lg font-semibold">
-              Não há ONGs disponíveis
+            <h3 className="mb-1 text-base font-semibold text-neutral-800">
+              Nenhuma organização encontrada
             </h3>
             <p className="text-sm text-neutral-500">
-              Nenhuma organização foi encontrada para os filtros selecionados.
-              <br />
-              Tente alterar a categoria ou termo de busca.
+              Tente alterar a categoria ou o termo de busca.
             </p>
           </div>
         )}

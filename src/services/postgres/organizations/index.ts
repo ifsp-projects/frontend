@@ -7,6 +7,7 @@ import type {
   CreateOrganizationResponse,
   DeleteOrganizationData,
   DeleteOrganizationResponse,
+  GetAllOrganizationsData,
   GetAllOrganizationsResponse,
   GetOrganizationByEmailData,
   GetOrganizationByIdData,
@@ -61,10 +62,11 @@ export class Organizations {
    * @returns {Promise<GetAllOrganizationsResponse | { status: string, data: { organizations: PostgresOrganization[] } }>}
    * A promise that resolves to the list of organizations, or a fallback object on failure.
    */
-  getAllOrganizations = async () => {
+  getAllOrganizations = async (params?: GetAllOrganizationsData) => {
     try {
       return await apiPostgres.get<GetAllOrganizationsResponse>(
-        '/organizations'
+        '/organizations',
+        { params }
       )
     } catch (error) {
       console.error({
