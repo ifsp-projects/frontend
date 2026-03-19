@@ -120,7 +120,7 @@ export const List: FC<ListProps> = ({ data }) => {
               return (
                 <Link
                   className="group flex flex-col"
-                  href={`/ongs/${ong.id}`}
+                  href={`/ongs/${ong.organization_profile?.slug}`}
                   key={ong.id}
                 >
                   <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-neutral-100 transition-all duration-200 hover:shadow-md hover:ring-neutral-200">
