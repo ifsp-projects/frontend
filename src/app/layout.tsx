@@ -3,8 +3,6 @@ import './globals.css'
 import { getServerSession } from 'next-auth'
 import { Toaster } from 'sonner'
 
-import { Footer } from '@/components/shared/footer'
-import { Navbar } from '@/components/shared/navbar'
 import ToastMessage from '@/components/shared/toast-message'
 import { font } from '@/constants/font'
 import NextAuthProvider from '@/context/next-auth-provider'
@@ -28,9 +26,7 @@ export default async function RootLayout({
         <PostHogProvider>
           <NextAuthProvider session={session}>
             <ToastMessage />
-            <Navbar />
-            <main className="overflow-x-hidden">{children}</main>
-            <Footer />
+            {children}
             <Toaster />
           </NextAuthProvider>
         </PostHogProvider>
