@@ -11,6 +11,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^2.0.71",
     "@ai-sdk/react": "^2.0.100",
+    "@babel/runtime": "^7.29.2",
     "@cloudinary/react": "^1.14.3",
     "@dotlottie/player-component": "^2.7.12",
     "@headlessui/react": "^2.2.9",

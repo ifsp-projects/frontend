@@ -14,6 +14,9 @@ importers:
       '@ai-sdk/react':
         specifier: ^2.0.100
         version: 2.0.158(react@19.1.0)(zod@4.3.6)
+      '@babel/runtime':
+        specifier: ^7.29.2
+        version: 7.29.2
       '@cloudinary/react':
         specifier: ^1.14.3
         version: 1.14.4(react@19.1.0)
