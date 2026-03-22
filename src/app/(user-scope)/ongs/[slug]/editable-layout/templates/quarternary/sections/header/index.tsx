@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import type { FC } from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
 
 import type { HeaderProps } from './types'
 
@@ -80,11 +80,12 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
         </div>
 
         <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
-          <Image
+          <EditableImageField
             alt="Hero Image"
             className="w-full object-cover"
+            defaultValue={copy.heroImage}
             height={800}
-            src="/templates/undraw_different-love_58hd.svg"
+            path="header.heroImage"
             width={800}
           />
         </figure>

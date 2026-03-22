@@ -18,14 +18,14 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
           <div className="h-px flex-1 bg-neutral-100" />
         </div>
 
-        <div className="mb-14 flex flex-col items-center gap-4 text-center">
+        <article className="mb-14 flex flex-col items-center gap-4 text-center">
           <h2 className="max-w-xl text-3xl font-black text-neutral-700 lg:text-4xl">
             {copy.title}
           </h2>
           <p className="max-w-lg text-sm leading-relaxed text-neutral-500 lg:text-base">
             {copy.description}
           </p>
-        </div>
+        </article>
 
         <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-0">
           <div className="absolute top-10 left-[12.5%] hidden h-px w-3/4 bg-amber-100 lg:block" />
@@ -33,7 +33,7 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
           {copy.cards.map(({ icon, title, description }, i) => (
             <div className="relative flex flex-col gap-5 lg:px-6" key={i}>
               <div className="relative flex items-start gap-4 lg:flex-col lg:gap-5">
-                <div className="relative z-10 flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-md border-4 border-white bg-amber-400 ring ring-amber-400">
+                <figure className="relative z-10 flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-md border-4 border-white bg-amber-400 ring ring-amber-400">
                   {React.cloneElement(
                     EDITABLE_ICON_FIELD_ICONS[icon] as React.ReactElement<{
                       className?: string
@@ -47,7 +47,7 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
                   <span className="text-[10px] font-black text-amber-800/70">
                     {i + 1}
                   </span>
-                </div>
+                </figure>
                 <article className="flex flex-col gap-1.5 lg:mt-6">
                   <h3 className="text-base font-black text-neutral-700">
                     {title}

@@ -3,6 +3,7 @@ export interface PostgresPageQuarternaryTemplate {
     label: string
     title: string
     description: string
+    heroImage: string
     cards: {
       icon: string
       title: string

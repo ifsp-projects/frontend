@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import type { FC } from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
 
 import type { InitiativesProps } from './types'
 
@@ -36,11 +36,12 @@ export const Initiatives: FC<InitiativesProps> = ({ copy }) => {
                 key={title}
               >
                 <div className="relative h-48 w-full overflow-hidden bg-neutral-100">
-                  <Image
+                  <EditableImageField
                     alt={title}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+                    defaultValue={image}
                     height={400}
-                    src={image}
+                    path={`initiatives.cards[${i}].image`}
                     width={600}
                   />
                   <EditableCopyField

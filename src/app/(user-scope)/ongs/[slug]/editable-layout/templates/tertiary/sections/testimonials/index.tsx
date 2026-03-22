@@ -1,8 +1,8 @@
 import { Quote } from 'lucide-react'
-import Image from 'next/image'
 import type { FC } from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
 
 import type { TestimonialsProps } from './types'
 
@@ -53,11 +53,12 @@ export const Testimonials: FC<TestimonialsProps> = ({ copy }) => {
                 path="testimonials.testimonial.content"
               />
               <div className="flex items-center gap-4">
-                <Image
+                <EditableImageField
                   alt={copy.testimonial.author.name}
                   className="h-12 w-12 rounded-full border-2 border-amber-950/20 object-cover"
+                  defaultValue={copy.testimonial.author.image}
                   height={48}
-                  src={copy.testimonial.author.image}
+                  path="testimonials.testimonial.author.image"
                   width={48}
                 />
                 <div>
@@ -97,11 +98,12 @@ export const Testimonials: FC<TestimonialsProps> = ({ copy }) => {
                 />
               </div>
               <div className="flex items-center gap-3">
-                <Image
-                  alt={author.name}
+                <EditableImageField
+                  alt={copy.testimonial.author.name}
                   className="h-10 w-10 rounded-full border-2 border-white object-cover shadow-sm"
+                  defaultValue={author.image}
                   height={40}
-                  src={author.image}
+                  path={`testimonials.cards[${index}].image`}
                   width={40}
                 />
                 <div>

@@ -59,14 +59,14 @@ export const Testimonials: FC<TestimonialsProps> = ({ copy }) => {
                   src={copy.testimonial.author.image}
                   width={48}
                 />
-                <div>
+                <article>
                   <p className="text-sm font-black text-amber-950">
                     {copy.testimonial.author.name}
                   </p>
                   <p className="text-xs text-amber-800">
                     {copy.testimonial.author.role}
                   </p>
-                </div>
+                </article>
               </div>
             </div>
           </div>

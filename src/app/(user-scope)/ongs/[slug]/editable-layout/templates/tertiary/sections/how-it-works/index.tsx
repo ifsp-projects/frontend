@@ -22,7 +22,7 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
           <div className="h-px flex-1 bg-neutral-100" />
         </div>
 
-        <div className="mb-14 flex flex-col items-center gap-4 text-center">
+        <article className="mb-14 flex flex-col items-center gap-4 text-center">
           <EditableCopyField
             as="h2"
             className="max-w-xl text-3xl font-black text-neutral-700 lg:text-4xl"
@@ -35,7 +35,7 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
             defaultValue={copy.description}
             path="howItWorks.description"
           />
-        </div>
+        </article>
 
         <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-0">
           <div className="absolute top-10 left-[12.5%] hidden h-px w-3/4 bg-amber-100 lg:block" />

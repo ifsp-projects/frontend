@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import type { FC } from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
 
 import type { HeaderProps } from './types'
 
@@ -59,7 +59,7 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
             />
           </article>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <article className="flex flex-wrap items-center gap-3">
             <EditableCopyField
               as="div"
               className="cursor-pointer rounded-full bg-amber-950 px-5 py-2 text-sm font-bold text-amber-400 shadow-amber-900/30 transition-all duration-300 hover:brightness-110"
@@ -72,29 +72,16 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
               defaultValue={copy.anchor}
               path="header.anchor"
             />
-          </div>
-
-          {/* <div className="flex items-center gap-2">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map(i => (
-                <div
-                  className="h-8 w-8 rounded-full border-2 border-amber-400 bg-amber-700/40"
-                  key={i}
-                />
-              ))}
-            </div>
-            <p className="text-xs font-medium text-amber-900/70">
-              +500 pessoas já foram impactadas
-            </p>
-          </div> */}
+          </article>
         </div>
 
         <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
-          <Image
+          <EditableImageField
             alt="Hero Image"
             className="w-full object-cover"
+            defaultValue={copy.image}
             height={800}
-            src="/templates/undraw_different-love_58hd.svg"
+            path="header.heroImage"
             width={800}
           />
         </figure>

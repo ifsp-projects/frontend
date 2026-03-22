@@ -68,9 +68,12 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy }) => {
         <div className="mt-px flex flex-col gap-4 border border-t-0 border-neutral-100 bg-neutral-50 px-8 py-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-4">
             <div className="h-2 w-2 animate-pulse rounded-full bg-rose-600" />
-            <p className="text-sm font-bold text-neutral-700">
-              {copy.anchorText}
-            </p>
+            <EditableCopyField
+              as="p"
+              className="text-sm font-bold text-neutral-700"
+              defaultValue={copy.anchorText}
+              path="getInvolved.anchorText"
+            />
           </div>
           <Link
             className="shrink-0 rounded-none bg-rose-600 px-7 py-3 text-xs font-black tracking-wider text-white uppercase"

@@ -41,16 +41,16 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
             defaultValue={copy.anchor}
             path="header.anchor"
           />
-          <div className="flex items-center gap-1">
+          <article className="flex items-center gap-1">
             <p className="text-xs text-neutral-500">Com apoio de</p>
             <p className="text-sm font-semibold text-neutral-600">
               Capivara Solidária
             </p>
-          </div>
+          </article>
         </div>
         <figure className="relative z-30 w-full rounded-sm lg:max-w-[500px] lg:pr-24">
           <EditableImageField
-            alt="Hero Background"
+            alt="Hero Image"
             className="h-full w-full"
             defaultValue={copy.heroImage}
             height={800}

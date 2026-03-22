@@ -18,12 +18,10 @@ export const MoreInfoAbout: FC<MoreInfoAboutProps> = ({ copy }) => {
               <h2 className="text-2xl font-bold lg:text-3xl">
                 {section.title}
               </h2>
-              <div className="flex flex-col gap-4">
-                <p
-                  className="text-sm text-neutral-600 lg:text-base"
-                  dangerouslySetInnerHTML={{ __html: section.description }}
-                />
-              </div>
+              <p
+                className="text-sm text-neutral-600 lg:text-base"
+                dangerouslySetInnerHTML={{ __html: section.description }}
+              />
             </article>
             <figure
               className={`h-[320px] w-full rounded-sm ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}

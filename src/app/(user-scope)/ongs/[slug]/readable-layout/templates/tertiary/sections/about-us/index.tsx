@@ -32,7 +32,7 @@ export const AboutUs: FC<AboutUsProps> = ({ copy }) => {
 
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
           <div className="flex flex-col justify-between gap-10">
-            <div className="flex flex-col gap-6">
+            <article className="flex flex-col gap-6">
               <h2 className="text-3xl leading-tight font-black text-neutral-700 lg:text-4xl xl:text-5xl">
                 {highlightLastWord(copy.title)}
               </h2>
@@ -42,7 +42,7 @@ export const AboutUs: FC<AboutUsProps> = ({ copy }) => {
               <p className="text-sm leading-relaxed text-neutral-500 lg:text-base">
                 {copy.secondDescriptionParagraph}
               </p>
-            </div>
+            </article>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -51,7 +51,7 @@ export const AboutUs: FC<AboutUsProps> = ({ copy }) => {
                 className="group flex flex-col gap-4 rounded-sm border border-neutral-300 bg-white p-6"
                 key={label}
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-amber-400/20">
+                <figure className="flex h-10 w-10 items-center justify-center rounded-md bg-amber-400/20">
                   {React.cloneElement(
                     EDITABLE_ICON_FIELD_ICONS[icon] as React.ReactElement<{
                       className?: string
@@ -62,15 +62,15 @@ export const AboutUs: FC<AboutUsProps> = ({ copy }) => {
                       strokeWidth: 2
                     }
                   )}
-                </div>
-                <div className="flex flex-col gap-1">
+                </figure>
+                <article className="flex flex-col gap-1">
                   <span className="text-3xl font-black text-neutral-700">
                     {value}
                   </span>
                   <span className="text-xs font-medium text-neutral-400">
                     {label}
                   </span>
-                </div>
+                </article>
               </div>
             ))}
           </div>

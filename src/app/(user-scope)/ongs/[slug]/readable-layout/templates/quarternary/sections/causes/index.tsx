@@ -10,22 +10,22 @@ export const Causes: FC<CausesProps> = ({ copy }) => {
     <section className="bg-white px-4 py-24 xl:px-0">
       <div className="mx-auto w-full max-w-2xl lg:max-w-7xl">
         <div className="mb-16 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div className="flex flex-col gap-3">
+          <article className="flex flex-col gap-3">
             <span className="w-fit border-l-4 border-rose-600 pl-3 text-xs font-bold tracking-widest text-rose-600 uppercase">
               {copy.label}
             </span>
             <h2 className="max-w-lg text-3xl leading-tight font-black text-neutral-800 lg:text-4xl xl:text-5xl">
               {copy.title}
             </h2>
-          </div>
+          </article>
           <p className="max-w-sm text-sm leading-relaxed text-neutral-400 lg:text-right">
             {copy.description}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-px border border-neutral-100 bg-neutral-100 md:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid grid-cols-1 gap-px border border-neutral-100 bg-neutral-100 md:grid-cols-2 lg:grid-cols-4">
           {copy.cards.map(({ icon, title, description, label }, index) => (
-            <div
+            <li
               className="group relative flex flex-col gap-6 bg-white p-8"
               key={title}
             >
@@ -33,7 +33,7 @@ export const Causes: FC<CausesProps> = ({ copy }) => {
                 {index + 1}
               </span>
 
-              <div className="flex h-12 w-12 items-center justify-center border-2 border-rose-100 bg-rose-50">
+              <figure className="flex h-12 w-12 items-center justify-center border-2 border-rose-100 bg-rose-50">
                 {React.cloneElement(
                   EDITABLE_ICON_FIELD_ICONS[icon] as React.ReactElement<{
                     className?: string
@@ -44,25 +44,25 @@ export const Causes: FC<CausesProps> = ({ copy }) => {
                     strokeWidth: 2
                   }
                 )}
-              </div>
+              </figure>
 
-              <div className="flex flex-col gap-2">
+              <article className="flex flex-col gap-2">
                 <h3 className="text-base font-black text-neutral-800">
                   {title}
                 </h3>
                 <p className="text-xs leading-relaxed text-neutral-500">
                   {description}
                 </p>
-              </div>
+              </article>
 
               <div className="mt-auto border-t border-neutral-100 pt-4">
                 <span className="text-xs font-bold tracking-widest text-rose-600 uppercase">
                   {label}
                 </span>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

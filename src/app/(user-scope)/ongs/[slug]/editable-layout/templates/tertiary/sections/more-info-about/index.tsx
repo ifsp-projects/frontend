@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import type { FC } from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
 
 import type { MoreInfoAboutProps } from './types'
 
@@ -35,11 +35,12 @@ export const MoreInfoAbout: FC<MoreInfoAboutProps> = ({ copy }) => {
             <figure
               className={`h-[320px] w-full rounded-sm ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}
             >
-              <Image
+              <EditableImageField
                 alt="Section Image"
                 className="h-[320px] w-full rounded-sm object-cover"
+                defaultValue={section.image}
                 height={1080}
-                src="https://images.ctfassets.net/kftzwdyauwt9/4pZ1y9pOSiiyrm99zhBAzH/6bc57658ced65b6e97b4744b539703e7/oai_GA_Stories_1.1.png?w=3840&q=90&fm=webp"
+                path={`moreInfoAbout.cards[${index}].image`}
                 width={1920}
               />
             </figure>

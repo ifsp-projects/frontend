@@ -55,14 +55,14 @@ export const Initiatives: FC<InitiativesProps> = ({ copy }) => {
                 </div>
 
                 <div className="flex flex-1 flex-col gap-4 p-6">
-                  <div className="flex flex-col gap-2">
+                  <article className="flex flex-col gap-2">
                     <h3 className="text-lg font-black text-neutral-700">
                       {title}
                     </h3>
                     <p className="text-xs leading-relaxed text-neutral-400">
                       {description}
                     </p>
-                  </div>
+                  </article>
 
                   <div className="h-px w-full bg-neutral-200" />
 
