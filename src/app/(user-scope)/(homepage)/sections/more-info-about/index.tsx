@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import type { FC } from 'react'
 
 import { CircleButton } from '@/components/ui/circle-button'
@@ -6,6 +5,7 @@ import { GLOBE_CONFIG } from '@/constants/components/globe/globe-config'
 import { SAMPLE_ARCS } from '@/constants/components/globe/sample-arc'
 
 import { DrawEffect } from '../../icons/draw-effect'
+import { AnimatedImage } from './animated-image'
 import { World } from './world'
 
 export const MoreInfoAbout: FC = () => {
@@ -21,17 +21,7 @@ export const MoreInfoAbout: FC = () => {
           </div>
         </div>
         <div className="mx-auto flex w-full max-w-2xl flex-col-reverse gap-10 border-b border-neutral-200 pb-4 last:border-transparent md:gap-8 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:py-8 2xl:gap-12">
-          <figure className="h-auto max-h-full w-full max-w-full rounded-sm bg-[#fdd7d9] lg:aspect-square lg:max-h-[520px] lg:max-w-[400px]">
-            <Image
-              alt="Section Image"
-              className="h-auto max-h-full rounded-sm object-cover lg:aspect-square lg:max-h-[520px]"
-              fetchPriority="high"
-              height={1080}
-              loading="eager"
-              src="https://www-cdn.anthropic.com/images/4zrzovbb/website/1576ae23eaf481f33bd36ab468171cc69d12361a-1000x1000.svg"
-              width={1920}
-            />
-          </figure>
+          <AnimatedImage />
           <article className={`flex w-full flex-col gap-2 md:gap-4 lg:gap-6`}>
             <h2 className="text-xl font-bold md:text-3xl lg:text-4xl">
               Se increva no nosso <br className="hidden xl:block" /> formulário

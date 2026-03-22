@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 3001",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint"
@@ -50,6 +50,7 @@
     "ogl": "^1.0.11",
     "openai": "^6.9.1",
     "posthog-js": "^1.281.0",
+    "posthog-node": "^5.28.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.65.0",

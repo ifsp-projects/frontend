@@ -27,14 +27,14 @@ export const Header = async () => {
         <div className="flex flex-col items-center gap-3 sm:flex-row">
           <Link
             className="flex items-center gap-2 rounded-sm bg-neutral-800 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-neutral-700"
-            href="#"
+            href="/contato"
           >
             Criar minha página agora
             <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             className="flex items-center gap-2 rounded-sm border border-neutral-200 px-6 py-3 text-sm font-semibold text-neutral-600 transition-all hover:border-neutral-300"
-            href="#"
+            href="/projetos"
           >
             Ver exemplos
           </Link>

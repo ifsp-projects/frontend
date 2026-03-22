@@ -1,6 +1,7 @@
 'use client'
 
 // import { signOut } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -39,7 +40,7 @@ export const Navbar = () => {
   if (pathname === '/login') return null
 
   return (
-    <nav className="sticky top-0 left-0 z-9999999 w-full border-b border-neutral-50 bg-neutral-50 py-1">
+    <nav className="sticky top-0 left-0 z-999 w-full border-b border-neutral-50 bg-neutral-50 py-1">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 lg:px-6 xl:px-0">
         <Link href="/">
           <Image
@@ -60,14 +61,14 @@ export const Navbar = () => {
                 Home
               </Link>
             </li>
-            {/* <li>
+            <li>
               <Link
                 className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
                 href="/ongs"
               >
                 Projetos
               </Link>
-            </li> */}
+            </li>
             <li>
               <Link
                 className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
@@ -94,7 +95,7 @@ export const Navbar = () => {
             </li>
           </ul>
 
-          {/* {organization ? (
+          {organization ? (
             <div className="flex w-full max-w-[320px] items-center gap-3">
               <Link
                 className="cursor-pointer rounded-full bg-neutral-700 px-5 py-2 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
@@ -127,7 +128,7 @@ export const Navbar = () => {
                 Quero fazer parte
               </Link>
             </div>
-          )} */}
+          )}
         </div>
 
         <div className="flex items-center lg:hidden">
@@ -157,13 +158,13 @@ export const Navbar = () => {
           >
             Home
           </Link>
-          {/* <Link
+          <Link
             className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/ongs' ? 'bg-neutral-50 text-rose-500' : ''}`}
             href="/ongs"
             onClick={() => setMenuOpen(false)}
           >
             Projetos
-          </Link> */}
+          </Link>
           <Link
             className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/sobre' ? 'bg-neutral-50 text-rose-500' : ''}`}
             href="/sobre"
@@ -188,7 +189,7 @@ export const Navbar = () => {
 
           <div className="my-1 h-px w-full bg-neutral-100" />
 
-          {/* {organization ? (
+          {organization ? (
             <div className="flex flex-col gap-2 px-3 py-2">
               <Link
                 className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
@@ -225,7 +226,7 @@ export const Navbar = () => {
                 Quero fazer parte da iniciativa
               </Link>
             </div>
-          )} */}
+          )}
         </div>
       </div>
     </nav>

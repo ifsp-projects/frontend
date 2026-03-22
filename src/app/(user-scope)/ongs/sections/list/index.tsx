@@ -6,6 +6,7 @@ import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 
 import { EmptyBox } from '@/assets/icons/empty-box'
+import { posthogEventDispatch } from '@/instances/posthog/dispatch'
 import { formatOngType } from '@/utils/helpers/format-ong-type'
 
 import { categories } from './data'
@@ -93,32 +94,48 @@ export const List: FC<ListProps> = ({ data }) => {
                   ? 'border-rose-400 bg-rose-400 text-white shadow-sm'
                   : 'border-neutral-200 bg-white text-neutral-700 hover:border-rose-300 hover:text-rose-500'
               }`}
+              onClick={() => {
+                handleSelectCategory(key)
+                posthogEventDispatch.ongsHub.filterCategory({
+                  category: label,
+                  resultsCount: orgs.length
+                })
+              }}
+              aria-label="Select Ong Category"
               key={key}
-              onClick={() => handleSelectCategory(key)}
             >
               {label}
             </button>
           ))}
         </div>
 
-        <h2 className="mb-4 text-lg font-bold text-neutral-900">
+        <p className="mb-4 text-lg font-bold text-neutral-900">
           Organizações
           {orgs.length > 0 && (
             <span className="ml-2 text-sm font-normal text-neutral-400">
               ({orgs.length})
             </span>
           )}
-        </h2>
+        </p>
 
         {orgs.length > 0 ? (
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-            {orgs.map(ong => {
+            {orgs.map((ong, index: number) => {
               const profile = ong.organization_profile
               const colors = getCategoryColor(profile?.ong_type ?? '')
               const initial = profile?.name?.charAt(0) ?? '?'
 
               return (
                 <Link
+                  onClick={() => {
+                    posthogEventDispatch.ongsHub.clickOrgCard({
+                      ongType: formatOngType({
+                        ong_type: ong?.organization_profile?.ong_type
+                      }),
+                      position: index,
+                      orgId: ong.id
+                    })
+                  }}
                   className="group flex flex-col"
                   href={`/ongs/${ong.organization_profile?.slug}`}
                   key={ong.id}
@@ -126,17 +143,19 @@ export const List: FC<ListProps> = ({ data }) => {
                   <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-neutral-100 transition-all duration-200 hover:shadow-md hover:ring-neutral-200">
                     <div className="relative aspect-square w-full overflow-hidden bg-neutral-100">
                       {profile?.logo ? (
-                        <img
-                          alt={profile.name ?? ''}
-                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          src={profile.logo}
-                        />
+                        <figure>
+                          <img
+                            alt={profile.name ?? ''}
+                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            src={profile.logo}
+                          />
+                        </figure>
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-rose-100 to-rose-200">
+                        <figure className="flex h-full w-full items-center justify-center bg-linear-to-br from-rose-100 to-rose-200">
                           <span className="text-4xl font-bold text-rose-400">
                             {initial}
                           </span>
-                        </div>
+                        </figure>
                       )}
 
                       <span

@@ -1,15 +1,19 @@
 'use client'
 
+import posthog from 'posthog-js'
 import { type FC, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { toast } from 'sonner'
+
+import { posthogEventDispatch } from '@/instances/posthog/dispatch'
 
 import { Check } from '../../icons/check'
 import { Copy } from '../../icons/copy'
 import type { AssistantMessageProps } from './types'
 
 export const AssistantMessage: FC<AssistantMessageProps> = ({ message }) => {
+  const posthogSessionId = posthog.get_session_id()
   const [isCopied, setIsCopied] = useState<boolean>(false)
 
   const processedMessage = message
@@ -19,6 +23,10 @@ export const AssistantMessage: FC<AssistantMessageProps> = ({ message }) => {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(processedMessage)
+
+      posthogEventDispatch.aiChat.copyResponse({
+        sessionId: posthogSessionId
+      })
 
       setTimeout(() => {
         setIsCopied(false)
@@ -42,7 +50,7 @@ export const AssistantMessage: FC<AssistantMessageProps> = ({ message }) => {
           width={80}
         />
       </figure> */}
-      <div className="flex flex-col gap-3 !text-sm !text-neutral-600">
+      <div className="flex flex-col gap-3 text-sm! text-neutral-600!">
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>
           {message.replace(/\\n/g, '\n').replace(/<p>(\|.*?\|<\/p>)/g, '$1')}
         </ReactMarkdown>

@@ -45,7 +45,7 @@ export const Details = async () => {
           </a>
           <a
             className="group flex w-full flex-col items-center gap-6 rounded-sm bg-[#bcd1ca] px-8 py-12"
-            href="/gerador-de-conteudo-com-i"
+            href="/gerador-de-conteudo-com-ia"
           >
             <Image
               alt="Card Image"

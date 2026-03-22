@@ -14,7 +14,7 @@ export const TryNow = async () => {
         </p>
         <Link
           className="flex items-center gap-2 rounded-sm bg-neutral-800 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-neutral-700"
-          href="#"
+          href="/contato"
         >
           Criar minha página agora
           <ArrowRight className="h-4 w-4" />
