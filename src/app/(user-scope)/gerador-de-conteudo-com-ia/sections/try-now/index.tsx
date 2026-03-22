@@ -17,7 +17,7 @@ export const TryNow = async () => {
         </p>
         <Link
           className="flex items-center gap-2 rounded-sm bg-neutral-800 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-neutral-700"
-          href="#"
+          href="/contato"
         >
           Gerar meu primeiro texto
           <ArrowRight className="h-4 w-4" />

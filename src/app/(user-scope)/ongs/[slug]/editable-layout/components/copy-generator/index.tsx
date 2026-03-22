@@ -169,7 +169,7 @@ export const CopyGenerator: FC = () => {
   }
 
   return (
-    <div className="fixed right-11 bottom-24 z-30 lg:right-8 lg:bottom-8">
+    <div className="fixed right-11 bottom-24 z-9999 lg:right-8 lg:bottom-8">
       <Drawer direction="right">
         <DrawerTrigger asChild>
           <button
