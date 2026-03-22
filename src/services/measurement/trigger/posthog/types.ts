@@ -23,7 +23,6 @@ interface BasePageProperties {
   trafficSource?: MeasurementTrafficSource
 }
 
-// Onboarding (account)
 interface SignupStartedProperties extends BaseUserProperties {
   referralSource?: MeasurementTrafficSource | 'invite'
 }
@@ -40,7 +39,6 @@ interface FirstPagePublishedProperties extends BaseUserProperties {
   timeToPublishSeconds: number
 }
 
-// Page Builder (Editor)
 interface EditorSessionBaseProperties {
   orgId: string
   pageId: string
@@ -57,8 +55,6 @@ interface TemplateSelectedProperties extends EditorSessionBaseProperties {
   templateId: string
   templateType: PostgresDesignTemplates
 }
-
-// Hub de ongs (/ongs estilo ifood)
 
 interface CategoryFilteredProperties {
   category: MeasurementOngTypes | 'all'
@@ -107,8 +103,6 @@ interface LeadFormSubmittedProperties extends ConversionActionProperties {
   lpId: string
 }
 
-// Chat de IA do Editor
-
 interface AiChatBaseProperties {
   orgId?: string
   pageId?: string
@@ -149,7 +143,6 @@ export type PostHogEventsNames = keyof PostHogEvents
 
 export interface PostHogEvents {
   ai_chat_feedback_submitted: AiFeedbackProperties & { feedbackText: string }
-  // Chat de IA
   ai_chat_opened: AiChatBaseProperties
   ai_chat_session_ended: AiChatSessionEndedProperties
   ai_message_sent: AiMessageSentProperties
@@ -166,20 +159,17 @@ export interface PostHogEvents {
   editor_session_ended: EditorSessionEndedProperties
   editor_session_started: EditorSessionBaseProperties
   first_page_published: FirstPagePublishedProperties
-  // Hub de Ongs
   lead_form_submitted: LeadFormSubmittedProperties
   org_card_clicked: OrgCardClickedProperties
   org_lp_visited: OrgLpVisitedProperties
   org_profile_viewed: OrgProfileViewedProperties
   org_saved_to_favorites: ConversionActionProperties
   org_shared: OrgSharedProperties
-  // Page Builder — Editor
   page_created: EditorSessionBaseProperties
   page_preview_opened: EditorSessionBaseProperties
   page_unpublished: EditorSessionBaseProperties
   search_performed: SearchPerformedProperties
   signup_completed: SignupCompletedProperties
-  // Onboarding (account)
   signup_started: SignupStartedProperties
   template_selected: TemplateSelectedProperties
 }
