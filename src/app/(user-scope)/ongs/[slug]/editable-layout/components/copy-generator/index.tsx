@@ -1,5 +1,6 @@
 'use client'
 
+import posthog from 'posthog-js'
 import { type FC, useEffect, useRef, useState } from 'react'
 
 import { EmptyBox } from '@/assets/icons/empty-box'
@@ -12,6 +13,8 @@ import {
   DrawerTitle,
   DrawerTrigger
 } from '@/components/ui/drawer'
+import { useUserSession } from '@/hooks/use-user-session'
+import { posthogEventDispatch } from '@/instances/posthog/dispatch'
 import { useUserStore } from '@/stores/user-store'
 import { ArrowLeft, StarLightbulb } from '@vectoricons/atlas-icons-react'
 
@@ -27,6 +30,10 @@ type Message = {
 }
 
 export const CopyGenerator: FC = () => {
+  const { organization } = useUserSession()
+
+  const posthogSessionId = posthog.get_session_id()
+
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -166,6 +173,12 @@ export const CopyGenerator: FC = () => {
       <Drawer direction="right">
         <DrawerTrigger asChild>
           <button
+            onClick={() => {
+              posthogEventDispatch.aiChat.openChat({
+                sessionId: posthogSessionId,
+                orgId: organization.id
+              })
+            }}
             className="flex cursor-pointer items-center gap-2 rounded-full bg-linear-to-r from-rose-700 to-rose-500 px-4 py-2 shadow transition-all duration-200 hover:brightness-110"
             id="copy-generator"
           >
@@ -234,11 +247,16 @@ export const CopyGenerator: FC = () => {
                 {messages.length === 0 && (
                   <div className="grid grid-cols-2 gap-2 lg:grid-cols-2 lg:gap-4">
                     <button
-                      onClick={() =>
+                      onClick={() => {
+                        posthogEventDispatch.aiChat.applySuggestion({
+                          sessionId: posthogSessionId,
+                          intentType: 'copy_suggestion',
+                          orgId: organization.id
+                        })
                         handleSuggestionClick(
                           'Crie uma legenda para foto de produto'
                         )
-                      }
+                      }}
                       className="flex cursor-pointer flex-col gap-2 rounded-sm border border-neutral-300 p-2 hover:bg-neutral-50"
                     >
                       <StarLightbulb className="h-3 w-3 text-emerald-600" />
@@ -248,9 +266,14 @@ export const CopyGenerator: FC = () => {
                       </p>
                     </button>
                     <button
-                      onClick={() =>
+                      onClick={() => {
+                        posthogEventDispatch.aiChat.applySuggestion({
+                          sessionId: posthogSessionId,
+                          intentType: 'copy_suggestion',
+                          orgId: organization.id
+                        })
                         handleSuggestionClick('Escreva um post para Instagram')
-                      }
+                      }}
                       className="flex cursor-pointer flex-col gap-2 rounded-sm border border-neutral-300 p-2 hover:bg-neutral-50"
                     >
                       <StarLightbulb className="h-3 w-3 text-purple-800" />
@@ -260,9 +283,14 @@ export const CopyGenerator: FC = () => {
                       </p>
                     </button>
                     <button
-                      onClick={() =>
+                      onClick={() => {
+                        posthogEventDispatch.aiChat.applySuggestion({
+                          sessionId: posthogSessionId,
+                          intentType: 'copy_suggestion',
+                          orgId: organization.id
+                        })
                         handleSuggestionClick('Crie um slogan criativo')
-                      }
+                      }}
                       className="flex cursor-pointer flex-col gap-2 rounded-sm border border-neutral-300 p-2 hover:bg-neutral-50"
                     >
                       <StarLightbulb className="h-3 w-3 text-blue-600" />
@@ -272,9 +300,14 @@ export const CopyGenerator: FC = () => {
                       </p>
                     </button>
                     <button
-                      onClick={() =>
+                      onClick={() => {
+                        posthogEventDispatch.aiChat.applySuggestion({
+                          sessionId: posthogSessionId,
+                          intentType: 'copy_suggestion',
+                          orgId: organization.id
+                        })
                         handleSuggestionClick('Gere ideias de conteúdo')
-                      }
+                      }}
                       className="flex cursor-pointer flex-col gap-2 rounded-sm border border-neutral-300 p-2 hover:bg-neutral-50"
                     >
                       <StarLightbulb className="h-3 w-3 text-rose-600" />
@@ -298,6 +331,13 @@ export const CopyGenerator: FC = () => {
                     autoFocus
                   />
                   <button
+                    onClick={() => {
+                      posthogEventDispatch.aiChat.sendMessage({
+                        sessionId: posthogSessionId,
+                        intentType: 'write_content',
+                        orgId: organization.id
+                      })
+                    }}
                     className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-sm bg-neutral-500 transition-all duration-300 hover:bg-neutral-600 disabled:cursor-not-allowed disabled:opacity-50"
                     disabled={isLoading || !input.trim()}
                     type="submit"

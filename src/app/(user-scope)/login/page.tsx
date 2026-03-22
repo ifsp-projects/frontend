@@ -1,7 +1,7 @@
 import type { Metadata, NextPage } from 'next'
+import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
-import Beams from '@/components/ui/beams'
 import { getUserSession } from '@/utils/auth/get-user-session'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
@@ -33,16 +33,13 @@ const Page: NextPage = async () => {
   return (
     <main className="flex min-h-screen w-full flex-col lg:h-screen lg:flex-row lg:justify-between">
       <Header />
-      <figure className="relative hidden w-full lg:block lg:max-w-1/2">
-        <Beams
-          beamHeight={15}
-          beamNumber={12}
-          beamWidth={2}
-          lightColor="#ffffff"
-          noiseIntensity={1.75}
-          rotation={30}
-          scale={0.2}
-          speed={2}
+      <figure className="relative hidden h-full w-full lg:block lg:max-w-1/2">
+        <Image
+          alt="Login Background Image"
+          className="h-full w-full object-cover"
+          height={1414}
+          src="https://cdn.prod.website-files.com/6618114bae6895cc12d3dc1d/665f1765f1432b0533fb7524_iStock-1498170916.webp"
+          width={2120}
         />
       </figure>
     </main>

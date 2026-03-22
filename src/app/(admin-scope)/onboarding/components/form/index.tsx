@@ -6,6 +6,7 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { Spin } from '@/components/ui/spin'
 import { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
+import { posthogEventDispatch } from '@/instances/posthog/dispatch'
 import type { PostgresDesignTemplates } from '@/types/postgres/enums/postgres-design-template'
 import { formatPhone } from '@/utils/helpers/format-phone'
 import { formatPostalCode } from '@/utils/helpers/format-postal-code'
@@ -62,6 +63,12 @@ export const OnboardingProfileForm = ({
 
     const email = sessionStorage.getItem('onboarding_email')
     const password = sessionStorage.getItem('onboarding_password')
+
+    posthogEventDispatch.account.completeSignup({
+      ongType: data.ong_type,
+      city: data?.city || '',
+      email: email || ''
+    })
 
     sessionStorage.removeItem('onboarding_email')
     sessionStorage.removeItem('onboarding_password')

@@ -49,11 +49,11 @@ export const Header: FC = () => {
         <figure className="mx-auto flex w-full items-center justify-center">
           <Image
             alt="Project Logo"
-            className="ml-2 aspect-video max-h-16 max-w-52 object-cover sm:max-h-20 sm:max-w-64"
+            className="ml-2 aspect-video max-h-20 max-w-52 object-cover sm:max-h-24 sm:max-w-64"
             fetchPriority="high"
-            height={180}
+            height={210}
             loading="eager"
-            src="/brands/company-logo.png"
+            src="/capivara-solidaria-logo.png"
             width={360}
           />
         </figure>

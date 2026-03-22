@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Spin } from '@/components/ui/spin'
+import { posthogEventDispatch } from '@/instances/posthog/dispatch'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { resetPasswordAction } from '../../../actions'
@@ -46,6 +47,10 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
 
       return
     }
+
+    posthogEventDispatch.account.startSignup({
+      referralSource: 'invite'
+    })
 
     sessionStorage.setItem('onboarding_email', email)
     sessionStorage.setItem('onboarding_password', data.password)
