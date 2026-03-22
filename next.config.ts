@@ -27,13 +27,27 @@ const nextConfig: NextConfig = {
   compress: true,
   swcMinify: true,
   optimizeFonts: true,
+  output: 'standalone',
   experimental: {
     optimizePackageImports: [
+      '@vectopus/atlas-icons-react',
       'posthog-js',
       'zod',
       'framer-motion',
+      'react-hook-form',
       'immer',
-      'swiper'
+      'swiper',
+      'react-markdown'
+    ]
+  },
+  async redirects() {
+    return [
+      {
+        source: '/ongs/57e88f6a-e2bf-4a14-baa5-53b488f7fec5',
+        destination: '/ongs',
+        permanent: true,
+        locale: false
+      }
     ]
   },
   webpack(config) {
