@@ -47,6 +47,18 @@ const nextConfig: NextConfig = {
         destination: '/ongs',
         permanent: true,
         locale: false
+      },
+      {
+        source: '/ongs/973bebe8-d29e-4abb-8347-906a0299c9c0',
+        destination: '/ongs/lar-dos-velhinhos',
+        permanent: true,
+        locale: false
+      },
+      {
+        source: '/ongs/ead3cbeb-4c93-4d75-8de4-566bce6b7beb',
+        destination: '/ongs/lar-dos-velhinhos',
+        permanent: true,
+        locale: false
       }
     ]
   },
