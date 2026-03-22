@@ -8,5 +8,5 @@ export interface PageBuilderState {
   getSections: () => PageSections
   sections: PageSections
   setInitialSections: (sections: PageSections) => void
-  updateField: (path: string, value: string) => void
+  updateField: (path: string, value: unknown) => void
 }

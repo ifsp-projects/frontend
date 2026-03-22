@@ -45,6 +45,7 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
               <div className="relative flex items-start gap-4 lg:flex-col lg:gap-5">
                 <div className="relative z-10 flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-md border-4 border-white bg-amber-400 ring ring-amber-400">
                   <EditableIconField
+                    className="h-5 w-5 text-amber-800"
                     defaultValue={icon}
                     path={`howItWorks.cards[${i}].icon`}
                   />

@@ -2,6 +2,7 @@ import type { FC } from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
 import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
+import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
 
 import type { HeaderProps } from './types'
 
@@ -60,16 +61,16 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
           </article>
 
           <article className="flex flex-wrap items-center gap-3">
-            <EditableCopyField
-              as="div"
+            <EditableLinkField
               className="cursor-pointer rounded-full bg-amber-950 px-5 py-2 text-sm font-bold text-amber-400 shadow-amber-900/30 transition-all duration-300 hover:brightness-110"
-              defaultValue={copy.button}
+              defaultValue={{ href: '#', label: copy.button }}
+              iconClassName="w-4 h-4 text-white"
               path="header.button"
             />
-            <EditableCopyField
-              as="div"
-              className="cursor-pointer rounded-full border-2 border-amber-900/30 bg-transparent px-5 py-2 text-sm font-bold text-amber-950 transition-all duration-300 hover:bg-amber-900/10"
-              defaultValue={copy.anchor}
+            <EditableLinkField
+              className="cursor-pointer rounded-full border-2 border-amber-950 bg-transparent px-5 py-2 text-sm font-bold text-amber-950 transition-all duration-300 hover:bg-amber-900/10"
+              defaultValue={{ href: '#', label: copy.anchor }}
+              iconClassName="w-4 h-4 text-amber-950"
               path="header.anchor"
             />
           </article>
