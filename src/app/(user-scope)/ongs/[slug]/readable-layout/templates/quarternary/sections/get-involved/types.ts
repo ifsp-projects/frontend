@@ -1,14 +1,5 @@
+import type { PostgresPageQuarternaryTemplate } from '@/types/postgres/page/postgres-page-quarternary-template'
+
 export interface GetInvolvedProps {
-  copy: {
-    title: string
-    label: string
-    description: string
-    cards: {
-      icon: string
-      title: string
-      description: string
-    }[]
-    anchorText: string
-    anchor: string
-  }
+  copy: PostgresPageQuarternaryTemplate['getInvolved']
 }

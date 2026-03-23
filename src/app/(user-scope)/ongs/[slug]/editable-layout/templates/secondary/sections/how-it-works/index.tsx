@@ -1,5 +1,6 @@
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
 import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
+import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
 
 import type { HowItWorksProps } from './types'
 
@@ -38,10 +39,12 @@ export const HowItWorks: React.FC<HowItWorksProps> = async ({ copy }) => {
               path="howItWorks.description"
             />
           </article>
-          <EditableCopyField
-            as="div"
+          <EditableLinkField
+            defaultValue={{
+              href: copy.anchor?.href || '#',
+              label: copy.anchor?.label || 'Texto do link'
+            }}
             className="flex max-w-fit items-center justify-center rounded-md bg-blue-500 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
-            defaultValue={copy.anchor}
             path="howItWorks.anchor"
           />
         </div>

@@ -1,9 +1,9 @@
-import Link from 'next/link'
 import type { FC } from 'react'
 import React from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
 import { EditableIconField } from '@/components/shared/template-fields/editable-icon-field'
+import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
 
 import type { HowItWorksProps } from './types'
 
@@ -73,12 +73,14 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
         </div>
 
         <div className="mt-14 flex justify-center">
-          <Link
+          <EditableLinkField
+            defaultValue={{
+              href: copy.anchor?.href || '#',
+              label: copy.anchor?.label || 'Texto do link'
+            }}
             className="rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-600 transition-all duration-300 hover:border-amber-400 hover:text-amber-600"
-            href="#"
-          >
-            {copy.anchor}
-          </Link>
+            path="howItWorks.anchor"
+          />
         </div>
       </div>
     </section>

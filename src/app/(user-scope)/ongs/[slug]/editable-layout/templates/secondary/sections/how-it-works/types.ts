@@ -1,9 +1,5 @@
+import type { PostgresPageSecondaryTemplate } from '@/types/postgres/page/postgres-page-secondary-template'
+
 export interface HowItWorksProps {
-  copy: {
-    span: string
-    title: string
-    description: string
-    heroImage: string
-    anchor: string
-  }
+  copy: PostgresPageSecondaryTemplate['howItWorks']
 }

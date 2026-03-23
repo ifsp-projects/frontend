@@ -11,7 +11,10 @@ export interface PostgresPageTertiaryTemplate {
     }[]
   }
   faq: {
-    anchor: string
+    anchor: {
+      label: string
+      href: string
+    }
     questions: {
       title: string
       description: string
@@ -22,7 +25,10 @@ export interface PostgresPageTertiaryTemplate {
     title: string
     decoratedText: string
     description: string
-    anchor: string
+    anchor: {
+      label: string
+      href: string
+    }
     button: string
     image: string
   }
@@ -35,7 +41,10 @@ export interface PostgresPageTertiaryTemplate {
       title: string
       description: string
     }[]
-    anchor: string
+    anchor: {
+      label: string
+      href: string
+    }
   }
   initiatives: {
     label: string

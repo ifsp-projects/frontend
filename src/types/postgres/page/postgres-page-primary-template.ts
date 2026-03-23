@@ -32,7 +32,10 @@ export interface PostgresPagePrimaryTemplate {
     span: string
     title: string
     description: string
-    anchor: string
+    anchor: {
+      label: string
+      href: string
+    }
     heroImage: string
   }
   imagesGrid: {

@@ -5,7 +5,6 @@ import { getMetaData } from '@/utils/seo/get-metadata'
 import { Features } from './sections/features'
 import { Header } from './sections/header'
 import { OutputTypes } from './sections/output-types'
-import { SocialProof } from './sections/social-proof'
 import { Testimonials } from './sections/testimonials'
 import { TryNow } from './sections/try-now'
 import { UseCases } from './sections/use-cases'
@@ -24,7 +23,7 @@ const Page: NextPage = async () => {
   return (
     <main>
       <Header />
-      <SocialProof />
+      {/* <SocialProof /> */}
       <OutputTypes />
       <UseCases />
       <Features />

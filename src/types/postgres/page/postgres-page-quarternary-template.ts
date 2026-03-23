@@ -28,15 +28,25 @@ export interface PostgresPageQuarternaryTemplate {
       description: string
     }[]
     anchorText: string
-    anchor: string
+    anchor: {
+      label: string
+      href: string
+    }
   }
   header: {
     label: string
     title: string
     decoratedTitle: string
     description: string
-    anchor: string
-    button: string
+    primaryAnchor: {
+      label: string
+      href: string
+    }
+    secondaryAnchor: {
+      label: string
+      href: string
+    }
+    heroImage: string
     stats: {
       title: string
       description: string
@@ -51,7 +61,10 @@ export interface PostgresPageQuarternaryTemplate {
       description: string
       span: string
     }[]
-    anchor: string
+    anchor: {
+      label: string
+      href: string
+    }
     anchorTitle: string
   }
 }

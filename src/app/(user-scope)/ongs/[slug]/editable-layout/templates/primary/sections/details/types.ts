@@ -1,11 +1,5 @@
+import type { PostgresPagePrimaryTemplate } from '@/types/postgres/page/postgres-page-primary-template'
+
 export interface DetailsProps {
-  copy: {
-    feature: string
-    title: string
-    tabs: {
-      icon: string
-      title: string
-      description: string
-    }[]
-  }
+  copy: PostgresPagePrimaryTemplate['details']
 }

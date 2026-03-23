@@ -1,9 +1,9 @@
-import Link from 'next/link'
 import type { FC } from 'react'
 import React from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
 import { EditableIconField } from '@/components/shared/template-fields/editable-icon-field'
+import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
 
 import type { GetInvolvedProps } from './types'
 
@@ -75,12 +75,14 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy }) => {
               path="getInvolved.anchorText"
             />
           </div>
-          <Link
+          <EditableLinkField
+            defaultValue={{
+              href: copy.anchor?.href || '#',
+              label: copy.anchor?.label || 'Texto do link'
+            }}
             className="shrink-0 rounded-none bg-rose-600 px-7 py-3 text-xs font-black tracking-wider text-white uppercase"
-            href="#"
-          >
-            {copy.anchor}
-          </Link>
+            path="getInvolved.anchor"
+          />
         </div>
       </div>
     </section>

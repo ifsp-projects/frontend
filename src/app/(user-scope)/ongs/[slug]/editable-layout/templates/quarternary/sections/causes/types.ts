@@ -1,13 +1,5 @@
+import type { PostgresPageQuarternaryTemplate } from '@/types/postgres/page/postgres-page-quarternary-template'
+
 export interface CausesProps {
-  copy: {
-    label: string
-    title: string
-    description: string
-    cards: {
-      icon: string
-      title: string
-      description: string
-      label: string
-    }[]
-  }
+  copy: PostgresPageQuarternaryTemplate['causes']
 }

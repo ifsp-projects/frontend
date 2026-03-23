@@ -1,9 +1,5 @@
+import type { PostgresPagePrimaryTemplate } from '@/types/postgres/page/postgres-page-primary-template'
+
 export interface HeaderProps {
-  copy: {
-    span: string
-    title: string
-    description: string
-    anchor: string
-    heroImage: string
-  }
+  copy: PostgresPagePrimaryTemplate['header']
 }

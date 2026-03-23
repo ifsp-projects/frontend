@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
 
 import type { TimelineProps } from './types'
 
@@ -74,10 +75,12 @@ export const Timeline: FC<TimelineProps> = ({ copy }) => {
             defaultValue={copy.anchorTitle}
             path="timeline.anchorTitle"
           />
-          <EditableCopyField
-            as="p"
+          <EditableLinkField
+            defaultValue={{
+              href: copy.anchor?.href || '#',
+              label: copy.anchor?.label || 'Texto do link'
+            }}
             className="rounded-none bg-rose-600 px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:bg-rose-700"
-            defaultValue={copy.anchor}
             path="timeline.anchor"
           />
         </div>

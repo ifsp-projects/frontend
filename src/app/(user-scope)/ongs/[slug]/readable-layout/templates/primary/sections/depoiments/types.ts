@@ -1,14 +1,5 @@
+import type { PostgresPagePrimaryTemplate } from '@/types/postgres/page/postgres-page-primary-template'
+
 export interface DepoimentProps {
-  copy: {
-    cards: {
-      content: string
-      author: {
-        image: string
-        name: string
-        city: string
-      }
-    }[]
-    description: string
-    title: string
-  }
+  copy: PostgresPagePrimaryTemplate['depoiments']
 }

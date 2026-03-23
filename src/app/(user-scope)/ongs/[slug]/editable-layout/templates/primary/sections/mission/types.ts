@@ -1,11 +1,5 @@
+import type { PostgresPagePrimaryTemplate } from '@/types/postgres/page/postgres-page-primary-template'
+
 export interface MissionProps {
-  copy: {
-    title: string
-    subtitle: string
-    description: string
-    tabs: {
-      title: string
-      description: string
-    }[]
-  }
+  copy: PostgresPagePrimaryTemplate['ourMission']
 }

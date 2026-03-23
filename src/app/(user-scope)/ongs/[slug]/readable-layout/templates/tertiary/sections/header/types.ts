@@ -1,11 +1,5 @@
+import type { PostgresPageTertiaryTemplate } from '@/types/postgres/page/postgres-page-tertiary-template'
+
 export interface HeaderProps {
-  copy: {
-    anchor: string
-    button: string
-    decoratedText: string
-    description: string
-    image: string
-    span: string
-    title: string
-  }
+  copy: PostgresPageTertiaryTemplate['header']
 }

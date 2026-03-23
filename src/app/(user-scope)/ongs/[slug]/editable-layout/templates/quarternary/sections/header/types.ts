@@ -1,15 +1,5 @@
+import type { PostgresPageQuarternaryTemplate } from '@/types/postgres/page/postgres-page-quarternary-template'
+
 export interface HeaderProps {
-  copy: {
-    anchor: string
-    button: string
-    decoratedTitle: string
-    description: string
-    label: string
-    heroImage: string
-    stats: {
-      title: string
-      description: string
-    }[]
-    title: string
-  }
+  copy: PostgresPageQuarternaryTemplate['header']
 }

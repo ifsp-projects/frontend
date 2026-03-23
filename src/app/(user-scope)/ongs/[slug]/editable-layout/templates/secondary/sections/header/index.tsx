@@ -1,4 +1,5 @@
 import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
 import DarkVeil from '@/components/ui/dark-veil'
 
 import type { HeaderProps } from './types'
@@ -35,10 +36,12 @@ export const Header: React.FC<HeaderProps> = async ({ copy }) => {
             defaultValue={copy.button}
             path="header.button"
           />
-          <EditableCopyField
-            as="div"
+          <EditableLinkField
+            defaultValue={{
+              href: copy.anchor?.href || '#',
+              label: copy.anchor?.label || 'Texto do link'
+            }}
             className="rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm font-medium text-white backdrop-blur-[10px] transition-all duration-300 hover:brightness-110"
-            defaultValue={copy.anchor}
             path="header.anchor"
           />
         </div>

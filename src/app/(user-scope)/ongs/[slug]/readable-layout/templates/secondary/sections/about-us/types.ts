@@ -1,10 +1,5 @@
+import type { PostgresPageSecondaryTemplate } from '@/types/postgres/page/postgres-page-secondary-template'
+
 export interface AboutUsProps {
-  copy: {
-    title: string
-    cards: {
-      title: string
-      description: string
-      icon: string
-    }[]
-  }
+  copy: PostgresPageSecondaryTemplate['aboutUs']
 }

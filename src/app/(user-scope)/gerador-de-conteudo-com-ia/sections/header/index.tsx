@@ -1,6 +1,3 @@
-import { ArrowRight, Sparkles } from 'lucide-react'
-import Link from 'next/link'
-
 import { MockTerminal } from './mock-terminal'
 
 export const Header = async () => {
@@ -8,10 +5,9 @@ export const Header = async () => {
     <section className="flex flex-col items-center px-6 py-24 text-center xl:px-12 xl:py-32">
       <div className="flex flex-col items-center gap-6 xl:gap-8">
         <div className="flex items-center gap-2 rounded-sm border border-rose-100 bg-rose-50 px-3 py-1.5">
-          <Sparkles className="h-3 w-3 text-rose-400" />
-          <span className="text-xs font-semibold text-rose-500">
+          <p className="text-xs font-semibold text-rose-500">
             Funcionalidade — Gerador de Copy com IA
-          </span>
+          </p>
         </div>
 
         <h1 className="max-w-3xl text-4xl leading-[1.08] font-black tracking-tight text-neutral-800 lg:text-6xl xl:text-7xl">
@@ -23,26 +19,6 @@ export const Header = async () => {
           IA treinada para o universo das ONGs. Gere textos para site, redes
           sociais, e-mails e campanhas em segundos — com o tom certo para cada
           momento.
-        </p>
-
-        <div className="flex flex-col items-center gap-3 sm:flex-row">
-          <Link
-            className="flex items-center gap-2 rounded-sm bg-neutral-800 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-neutral-700"
-            href="/contato"
-          >
-            Gerar meu primeiro texto
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link
-            className="flex items-center gap-2 rounded-sm border border-neutral-200 px-6 py-3 text-sm font-semibold text-neutral-600 transition-all hover:border-neutral-300"
-            href="/projetos"
-          >
-            Ver exemplos de output
-          </Link>
-        </div>
-
-        <p className="text-xs text-neutral-400">
-          50 gerações grátis por mês. Sem cartão de crédito.
         </p>
       </div>
 

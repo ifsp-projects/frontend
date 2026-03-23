@@ -68,8 +68,11 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
               path="header.button"
             />
             <EditableLinkField
+              defaultValue={{
+                href: copy.anchor?.href || '#',
+                label: copy.anchor?.label || 'Texto do link'
+              }}
               className="cursor-pointer rounded-full border-2 border-amber-950 bg-transparent px-5 py-2 text-sm font-bold text-amber-950 transition-all duration-300 hover:bg-amber-900/10"
-              defaultValue={{ href: '#', label: copy.anchor }}
               iconClassName="w-4 h-4 text-amber-950"
               path="header.anchor"
             />

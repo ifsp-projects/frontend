@@ -5,9 +5,9 @@ export const TryNow = async () => {
   return (
     <section className="flex flex-col items-center border-t border-neutral-100 bg-white px-6 py-24 xl:px-12">
       <div className="flex w-full max-w-2xl flex-col items-center gap-6 text-center">
-        <div className="flex h-14 w-14 items-center justify-center rounded-sm bg-rose-50">
+        <figure className="flex h-14 w-14 items-center justify-center rounded-sm bg-rose-50">
           <Sparkles className="h-6 w-6 text-rose-400" />
-        </div>
+        </figure>
         <h2 className="text-3xl font-black tracking-tight text-neutral-800 lg:text-4xl">
           Seu próximo texto está a um clique.
         </h2>

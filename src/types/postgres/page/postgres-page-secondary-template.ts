@@ -18,7 +18,10 @@ export interface PostgresPageSecondaryTemplate {
     span: string
     title: string
     description: string
-    anchor: string
+    anchor: {
+      label: string
+      href: string
+    }
     button: string
   }
   howItWorks: {
@@ -26,7 +29,10 @@ export interface PostgresPageSecondaryTemplate {
     title: string
     description: string
     heroImage: string
-    anchor: string
+    anchor: {
+      label: string
+      href: string
+    }
   }
   imagesGrid: {
     title: string

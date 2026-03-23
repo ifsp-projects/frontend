@@ -1,14 +1,5 @@
+import type { PostgresPageQuarternaryTemplate } from '@/types/postgres/page/postgres-page-quarternary-template'
+
 export interface TimelineProps {
-  copy: {
-    label: string
-    title: string
-    cards: {
-      label: string
-      title: string
-      description: string
-      span: string
-    }[]
-    anchor: string
-    anchorTitle: string
-  }
+  copy: PostgresPageQuarternaryTemplate['timeline']
 }

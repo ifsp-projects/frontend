@@ -8,7 +8,6 @@ export const Header = async () => {
     <section className="flex flex-col items-center px-6 py-24 text-center xl:px-12 xl:py-32">
       <header className="flex flex-col items-center gap-6 xl:gap-8">
         <div className="flex items-center gap-2 rounded-sm border border-rose-100 bg-rose-50 px-3 py-1.5">
-          <div className="h-1.5 w-1.5 rounded-full bg-rose-400" />
           <span className="text-xs font-semibold text-rose-500">
             Funcionalidade — Páginas Interativas
           </span>
@@ -39,10 +38,6 @@ export const Header = async () => {
             Ver exemplos
           </Link>
         </div>
-
-        <p className="text-xs text-neutral-400">
-          Grátis para sempre no plano básico. Sem cartão de crédito.
-        </p>
       </header>
 
       <div className="relative mt-16 w-full max-w-5xl xl:mt-20">
@@ -57,7 +52,7 @@ export const Header = async () => {
             <div className="mx-auto flex items-center gap-2 rounded-sm border border-neutral-100 bg-neutral-50 px-3 py-1">
               <div className="h-2 w-2 rounded-full bg-rose-300" />
               <span className="text-[10px] text-neutral-400">
-                instituto-raizes.capivara.com.br
+                empresa-feliz.capivara-solidaria.com.br
               </span>
             </div>
           </div>
@@ -97,7 +92,7 @@ export const Header = async () => {
                 key={label}
               >
                 <Icon className="h-3.5 w-3.5 text-neutral-400" />
-                <span className="text-xs text-neutral-500">{label}</span>
+                <p className="text-xs text-neutral-500">{label}</p>
               </div>
             ))}
           </div>
