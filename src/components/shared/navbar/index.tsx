@@ -66,7 +66,7 @@ export const Navbar = () => {
                 className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
                 href="/ongs"
               >
-                Projetos
+                Ongs
               </Link>
             </li>
             <li>
