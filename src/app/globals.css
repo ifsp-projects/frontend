@@ -774,3 +774,49 @@ g > path:nth-of-type(2) {
     transform: translateX(-20px);
   }
 }
+
+.article-content {
+  h2 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  h3 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  h4 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  p {
+    color: #737373;
+    margin-bottom: 8px;
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: 16px;
+  }
+
+  li {
+    color: #737373;
+  }
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.invisible-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
