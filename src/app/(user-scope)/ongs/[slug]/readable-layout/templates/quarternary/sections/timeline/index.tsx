@@ -54,9 +54,9 @@ export const Timeline: FC<TimelineProps> = ({ copy }) => {
           </p>
           <Link
             className="rounded-none bg-rose-600 px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:bg-rose-700"
-            href="#"
+            href={copy.anchor?.href || '#'}
           >
-            {copy.anchor}
+            {copy.anchor?.label || 'Texto do botão'}
           </Link>
         </div>
       </div>

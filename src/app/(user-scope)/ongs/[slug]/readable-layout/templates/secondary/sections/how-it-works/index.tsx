@@ -27,9 +27,9 @@ export const HowItWorks: FC<HowItWorksProps> = async ({ copy }) => {
           </article>
           <Link
             className="flex max-w-fit cursor-pointer items-center justify-center rounded-md bg-blue-500 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
-            href="#"
+            href={copy.anchor?.href || '#'}
           >
-            {copy.anchor}
+            {copy.anchor?.label || 'Texto do botão'}
           </Link>
         </div>
       </div>

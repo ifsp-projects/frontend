@@ -64,9 +64,9 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
         <div className="mt-14 flex justify-center">
           <Link
             className="rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-600 transition-all duration-300 hover:border-amber-400 hover:text-amber-600"
-            href="#"
+            href={copy.anchor?.href || '#'}
           >
-            {copy.anchor}
+            {copy.anchor?.label || 'Texto do botão'}
           </Link>
         </div>
       </div>

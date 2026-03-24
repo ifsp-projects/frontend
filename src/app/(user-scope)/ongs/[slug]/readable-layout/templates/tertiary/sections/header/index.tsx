@@ -51,25 +51,11 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
             </Link>
             <Link
               className="cursor-pointer rounded-full border-2 border-amber-900/30 bg-transparent px-5 py-2 text-sm font-bold text-amber-950 transition-all duration-300 hover:bg-amber-900/10"
-              href="#"
+              href={copy.anchor?.href || '#'}
             >
-              {copy.anchor}
+              {copy.anchor?.label || 'Texto do botão'}
             </Link>
           </div>
-
-          {/* <div className="flex items-center gap-2">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map(i => (
-                <div
-                  className="h-8 w-8 rounded-full border-2 border-amber-400 bg-amber-700/40"
-                  key={i}
-                />
-              ))}
-            </div>
-            <p className="text-xs font-medium text-amber-900/70">
-              +500 pessoas já foram impactadas
-            </p>
-          </div> */}
         </div>
 
         <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">

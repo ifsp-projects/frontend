@@ -30,9 +30,9 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
           </Link>
           <Link
             className="cursor-pointer rounded-full border border-white/20 bg-white/5 px-6 py-2 text-sm font-medium text-white backdrop-blur-[10px] transition-all duration-300 hover:brightness-110"
-            href="#"
+            href={copy.anchor?.href || '#'}
           >
-            {copy.anchor}
+            {copy.anchor?.label || 'Texto do botão'}
           </Link>
         </div>
       </header>

@@ -64,9 +64,9 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy }) => {
           </div>
           <Link
             className="shrink-0 rounded-none bg-rose-600 px-7 py-3 text-xs font-black tracking-wider text-white uppercase"
-            href="#"
+            href={copy.anchor?.href || '#'}
           >
-            {copy.anchor}
+            {copy.anchor?.label || 'Texto do botão'}
           </Link>
         </div>
       </div>

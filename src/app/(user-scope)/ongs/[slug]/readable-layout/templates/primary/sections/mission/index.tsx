@@ -23,7 +23,7 @@ export const Mission: FC<MissionProps> = async ({ copy }) => {
               className="flex w-full flex-col items-center gap-3"
               key={`tab-${index}`}
             >
-              <span className="bg-gradient-to-r from-emerald-400 to-emerald-700 bg-clip-text text-2xl font-semibold text-transparent lg:text-5xl">
+              <span className="bg-linear-to-r from-emerald-400 to-emerald-700 bg-clip-text text-2xl font-semibold text-transparent lg:text-5xl">
                 {tab.title}
               </span>
               <p className="text-sm lg:text-base">{tab.description}</p>

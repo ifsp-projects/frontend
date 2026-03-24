@@ -31,15 +31,15 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 className="rounded-none bg-rose-600 px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:bg-rose-700"
-                href="#"
+                href={copy?.primaryAnchor?.href || '#'}
               >
-                {copy.button}
+                {copy.primaryAnchor?.label || 'Texto do botão'}
               </Link>
               <Link
                 className="rounded-none border-2 border-neutral-200 px-8 py-3.5 text-sm font-black tracking-wider text-neutral-600 uppercase transition-all duration-300 hover:border-rose-600 hover:text-rose-600"
-                href="#"
+                href={copy?.secondaryAnchor?.href || '#'}
               >
-                {copy.anchor}
+                {copy.secondaryAnchor?.label || 'Texto do botão'}
               </Link>
             </div>
           </div>
