@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 
+import { blog } from '@/instances/blog'
 import { instanceMotor } from '@/instances/motor'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -13,7 +14,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/ongs',
     '/gerador-de-conteudo-com-ia',
     '/criador-de-paginas',
-    '/termos-de-uso'
+    '/termos-de-uso',
+    '/blog'
   ].map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -22,13 +24,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   let ongsRoutes: MetadataRoute.Sitemap = []
+  let blogArticleRoutes: MetadataRoute.Sitemap = []
 
   try {
-    const { data } = await instanceMotor.organizations.getAllOrganizations()
+    const { data: organizations } =
+      await instanceMotor.organizations.getAllOrganizations()
 
-    if (data?.organizations) {
-      ongsRoutes = data.organizations.map(organization => ({
+    if (organizations?.organizations) {
+      ongsRoutes = organizations.organizations.map(organization => ({
         url: `${baseUrl}/ongs/${organization.organization_profile.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8
+      }))
+    }
+
+    const { data: blogArticles } = await blog.articles.getAllArticles({
+      shouldRemoveFeaturedArticles: true
+    })
+
+    if (blogArticles?.length) {
+      blogArticleRoutes = blogArticles.map(article => ({
+        url: `${baseUrl}/blog/${article.slug}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.8
@@ -38,5 +55,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Falha ao gerar sitemap das ONGs:', error)
   }
 
-  return [...staticRoutes, ...ongsRoutes]
+  return [...staticRoutes, ...ongsRoutes, ...blogArticleRoutes]
 }
