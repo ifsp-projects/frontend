@@ -31,16 +31,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       await instanceMotor.organizations.getAllOrganizations()
 
     if (organizations?.organizations) {
-      ongsRoutes = organizations.organizations.map(organization => ({
-        url: `${baseUrl}/ongs/${organization.organization_profile.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.8
-      }))
+      ongsRoutes = organizations.organizations
+        .filter(org => org.organization_profile?.slug != null)
+        .map(organization => ({
+          url: `${baseUrl}/ongs/${organization.organization_profile.slug}`,
+          lastModified: new Date(),
+          changeFrequency: 'weekly' as const,
+          priority: 0.8
+        }))
     }
 
     const { data: blogArticles } = await blog.articles.getAllArticles({
-      shouldRemoveFeaturedArticles: true
+      shouldRemoveFeaturedArticles: false
     })
 
     if (blogArticles?.length) {
