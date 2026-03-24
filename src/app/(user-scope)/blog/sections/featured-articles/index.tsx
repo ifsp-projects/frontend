@@ -16,10 +16,10 @@ export const FeaturedArticles = async () => {
         className="group mx-auto flex w-full max-w-2xl cursor-pointer flex-col gap-8 lg:max-w-6xl lg:flex-row lg:items-center lg:justify-between"
         href={`/blog/${featuredArticle.slug}`}
       >
-        <figure className="flex w-full max-w-full items-center justify-center overflow-hidden rounded-sm bg-[#fdd7d9] lg:aspect-video lg:max-w-[480px]">
+        <figure className="flex aspect-video w-full max-w-full items-center justify-center overflow-hidden rounded-sm bg-[#fdd7d9] lg:max-w-[480px]">
           <Image
             alt="Section Image"
-            className="max-w-[480px] rounded-sm object-contain transition-all duration-300 group-hover:scale-[1.01] lg:aspect-video"
+            className="aspect-video max-w-[480px] rounded-sm object-contain transition-all duration-300 group-hover:scale-[1.01]"
             fetchPriority="high"
             height={1080}
             loading="eager"

@@ -93,6 +93,14 @@ export const Navbar = () => {
                 FAQ
               </Link>
             </li>
+            <li>
+              <Link
+                className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
+                href="/blog"
+              >
+                Blog
+              </Link>
+            </li>
           </ul>
 
           {organization ? (
@@ -185,6 +193,13 @@ export const Navbar = () => {
             onClick={() => setMenuOpen(false)}
           >
             FAQ
+          </Link>
+          <Link
+            className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === '/faq' ? 'bg-neutral-50 text-rose-500' : ''}`}
+            href="/blog"
+            onClick={() => setMenuOpen(false)}
+          >
+            Blog
           </Link>
 
           <div className="my-1 h-px w-full bg-neutral-100" />
