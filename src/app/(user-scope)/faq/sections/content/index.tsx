@@ -39,7 +39,7 @@ export const Questions: FC = () => {
   }, [q])
 
   return (
-    <section className="bg-white px-0 py-12 lg:py-16 xl:px-4">
+    <section className="bg-white px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 lg:max-w-3xl lg:gap-6">
         <Label className="mb-2 block" htmlFor="faqSearch">
           Pesquise por palavras-chave (ex.: doação, voluntário, contato)
