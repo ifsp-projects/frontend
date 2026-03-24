@@ -4,6 +4,7 @@ import Script from 'next/script'
 
 import { blog } from '@/instances/blog'
 import { blogArticleStructuredData } from '@/utils/seo/dts-schemas/blog-article'
+import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { Article } from './sections/article'
 import { Contact } from './sections/contact'
@@ -36,15 +37,12 @@ export const generateMetadata = async ({ params }: BlogArticlePageProps) => {
 
   const { data: article } = await blog.articles.getArticleBySlug({ slug })
 
-  return {
+  return getMetaData({
     title: he.decode(article.title?.rendered),
     description: he.decode(article.excerpt?.rendered),
-    opengraph: {
-      siteName: 'Capivara Solidária',
-      images: [article.jetpack_featured_media_url],
-      type: 'website'
-    }
-  }
+    image: article.jetpack_featured_media_url,
+    url: `/blog/${article.slug}`
+  })
 }
 
 const Page: NextPage<BlogArticlePageProps> = async ({ params }) => {

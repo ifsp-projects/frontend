@@ -28,7 +28,7 @@ export const FeaturedArticles = async () => {
           />
         </figure>
         <article className="flex w-full flex-col gap-3">
-          <h2
+          <h1
             dangerouslySetInnerHTML={{
               __html: featuredArticle?.title?.rendered
             }}

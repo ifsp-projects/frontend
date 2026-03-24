@@ -8,9 +8,9 @@ import { FeaturedArticles } from './sections/featured-articles'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
-    title: 'Blog | Capivara Solidária',
+    title: 'Capivara Solidária | Blog de Impacto Social',
     description:
-      'Conheça o Blog Capivara Solidária, uma plataforma feita para fortalecer ONGs com páginas profissionais, acessíveis e prontas para captar mais apoio.',
+      'Descubra conteúdos, histórias e estratégias para ajudar ONGs a crescer, aumentar sua visibilidade e gerar mais impacto social.',
     image: '',
     url: '/blog'
   })
