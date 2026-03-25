@@ -53,7 +53,7 @@ export const Navbar = () => {
           />
         </Link>
         <div className="hidden w-full items-center justify-end gap-8 lg:flex xl:gap-12">
-          <ul className="flex items-center gap-4">
+          <ul className="ml-8 flex w-full items-center justify-start gap-4">
             <li>
               <Link
                 className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
@@ -105,7 +105,7 @@ export const Navbar = () => {
           </ul>
 
           {organization ? (
-            <div className="flex w-full max-w-[320px] items-center gap-3">
+            <div className="flex w-full items-center justify-end gap-3 lg:justify-end">
               <Link
                 className="cursor-pointer rounded-full bg-neutral-700 px-5 py-2 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
                 href="/minha-ong"
@@ -121,16 +121,16 @@ export const Navbar = () => {
               </button> */}
             </div>
           ) : (
-            <div className="flex w-full max-w-[320px] items-center gap-3">
+            <div className="flex w-full items-center justify-end gap-3">
               <Link
-                className="w-full cursor-pointer rounded-full bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
+                className="w-full cursor-pointer rounded-full bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800 lg:max-w-[115px]"
                 href="/login"
                 onClick={() => setMenuOpen(false)}
               >
                 Entrar
               </Link>
               <Link
-                className="w-full cursor-pointer rounded-full border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                className="w-full max-w-[150px] cursor-pointer rounded-full border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
                 href="/contato"
                 onClick={() => setMenuOpen(false)}
               >
