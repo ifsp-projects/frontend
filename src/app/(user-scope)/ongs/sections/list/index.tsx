@@ -72,7 +72,7 @@ export const List: FC<ListProps> = ({ data }) => {
   const orgs = data?.organizations ?? []
 
   return (
-    <section className="bg-neutral-50 px-4 py-8 lg:py-12 xl:px-0">
+    <section className="bg-white px-4 py-8 lg:py-12 xl:px-0">
       <div className="mx-auto w-full max-w-2xl lg:max-w-7xl">
         <div className="scrollbar-hide mb-6 flex items-center gap-2 overflow-x-auto pb-2">
           <div className="shrink-0">
@@ -85,7 +85,7 @@ export const List: FC<ListProps> = ({ data }) => {
             />
           </div>
 
-          <div className="h-5 w-px shrink-0 bg-neutral-200" />
+          <div className="mx-2 h-5 w-px shrink-0 bg-neutral-200" />
 
           {categories.map(({ key, label }) => (
             <button

@@ -48,7 +48,7 @@ const Page: NextPage<OnboardingPageProps> = async ({ searchParams }) => {
   if (!data.organization?.is_user_new) redirect('/minha-ong')
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-white px-4 py-16">
+    <main className="flex min-h-screen items-center justify-center overflow-hidden bg-white px-4 py-16">
       <section className="w-full max-w-lg">
         <div className="mb-10 h-6 w-6 rounded-sm bg-rose-400" />
 

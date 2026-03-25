@@ -46,7 +46,9 @@ export const Navbar = () => {
           <Image
             alt="Project Logo"
             className="aspect-video max-h-12 max-w-28 object-cover"
+            fetchPriority="high"
             height={220}
+            loading="eager"
             src="/capivara-solidaria-logo.png"
             width={360}
           />

@@ -31,7 +31,7 @@ const Page: NextPage = async () => {
   }
 
   return (
-    <main className="flex min-h-screen w-full flex-col lg:h-screen lg:flex-row lg:justify-between">
+    <main className="flex min-h-screen w-full flex-col overflow-hidden lg:h-screen lg:flex-row lg:justify-between">
       <Header />
       <figure className="relative hidden h-full w-full lg:block lg:max-w-1/2">
         <Image

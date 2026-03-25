@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
@@ -7,7 +8,6 @@ import type { SubmitHandler } from 'react-hook-form'
 import { Controller } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import Beams from '@/components/ui/beams'
 import {
   Select,
   SelectContent,
@@ -61,7 +61,7 @@ export const ContactForm: FC = () => {
   }
 
   return (
-    <section className="w-full px-4 py-12 lg:py-16">
+    <section className="w-full bg-white px-4 py-12 lg:py-16">
       <div className="mx-auto flex h-auto w-full max-w-2xl flex-col items-stretch lg:max-w-7xl lg:flex-row">
         <figure className="hidden h-auto w-full flex-1 lg:flex">
           {/* <Image
@@ -71,20 +71,17 @@ export const ContactForm: FC = () => {
             src="https://images.ctfassets.net/kftzwdyauwt9/7Ip6gGvJygc8OYFijNvKUX/53a1dfc167449ef3aeafa19becb9edd6/people-first-ai-fund-grantees-1_1.png?w=3840&q=90&fm=webp"
             width={800}
           /> */}
-          <Beams
-            beamHeight={15}
-            beamNumber={12}
-            beamWidth={2}
-            lightColor="#fff"
-            noiseIntensity={1.75}
-            rotation={30}
-            scale={0.2}
-            speed={2}
+          <Image
+            alt="Login Background Image"
+            className="h-full w-full object-cover"
+            height={1414}
+            src="https://cdn.prod.website-files.com/6618114bae6895cc12d3dc1d/665f1765f1432b0533fb7524_iStock-1498170916.webp"
+            width={2120}
           />
         </figure>
         <div className="h-auto w-full max-w-2xl">
           <form
-            className="flex h-full flex-col justify-center space-y-6 rounded-sm border border-neutral-200 bg-white p-4 lg:p-8"
+            className="flex h-full flex-col justify-center space-y-6 rounded-r-sm border border-neutral-200 bg-neutral-50 p-4 lg:p-8"
             onSubmit={handleSubmit(onSubmit)}
           >
             <div className="w-full">
@@ -92,7 +89,7 @@ export const ContactForm: FC = () => {
                 Nome
               </label>
               <input
-                className="w-full rounded-sm border border-neutral-300 px-4 py-2 text-sm transition-all duration-300 focus:ring-1 focus:ring-neutral-500 focus:outline-none lg:text-base"
+                className="w-full rounded-sm border border-neutral-300 bg-white px-4 py-2 text-sm transition-all duration-300 focus:ring-1 focus:ring-neutral-500 focus:outline-none lg:text-base"
                 name="nome"
                 placeholder="Seu nome"
                 type="text"
@@ -106,7 +103,7 @@ export const ContactForm: FC = () => {
                 E-mail
               </label>
               <input
-                className="w-full rounded-sm border border-neutral-300 px-4 py-2 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none lg:text-base"
+                className="w-full rounded-sm border border-neutral-300 bg-white px-4 py-2 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none lg:text-base"
                 name="email"
                 placeholder="seuemail@exemplo.com"
                 type="email"
@@ -123,7 +120,7 @@ export const ContactForm: FC = () => {
                 render={({ field }) => (
                   <input
                     {...field}
-                    className="w-full rounded-sm border border-neutral-300 px-4 py-2 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none lg:text-base"
+                    className="w-full rounded-sm border border-neutral-300 bg-white px-4 py-2 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none lg:text-base"
                     maxLength={15}
                     onChange={e => field.onChange(formatPhone(e.target.value))}
                     placeholder="Seu telefone"
@@ -140,7 +137,7 @@ export const ContactForm: FC = () => {
                 Nome da ONG
               </label>
               <input
-                className="w-full rounded-sm border border-neutral-300 px-4 py-2 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none lg:text-base"
+                className="w-full rounded-sm border border-neutral-300 bg-white px-4 py-2 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none lg:text-base"
                 name="nome"
                 placeholder="Nome da sua ONG"
                 type="text"
@@ -163,7 +160,11 @@ export const ContactForm: FC = () => {
                     <SelectContent>
                       {HUBSPOT_ONG_VALUES.map(
                         (value: string, index: number) => (
-                          <SelectItem key={`option-${index}`} value={value}>
+                          <SelectItem
+                            className="bg-white"
+                            key={`option-${index}`}
+                            value={value}
+                          >
                             {value}
                           </SelectItem>
                         )
@@ -176,21 +177,8 @@ export const ContactForm: FC = () => {
               />
             </div>
 
-            {/*<div>
-          <label className="mb-2 block font-medium text-neutral-700">
-            Sugestão de projeto ou ONG
-          </label>
-          <textarea
-            className="w-full rounded-lg border border-neutral-300 px-4 py-2 focus:ring-2 focus:ring-neutral-500 focus:outline-none"
-            name="mensagem"
-            placeholder="Conte um pouco sobre o projeto, o nome da ONG e onde ela atua"
-            rows={5}
-            required
-          ></textarea>
-        </div>*/}
-
             <button
-              className="mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-neutral-800 py-2.5 text-sm font-semibold text-white transition lg:text-base"
+              className="mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-neutral-800 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-neutral-700 lg:text-base"
               type="submit"
             >
               Enviar

@@ -3,7 +3,7 @@ import type { FC } from 'react'
 
 export const Header: FC = () => {
   return (
-    <section className="bg-neutral-200 px-4 py-12 text-center lg:py-16">
+    <section className="bg-neutral-50 px-4 py-12 text-center lg:py-16">
       {/* <h1 className="mb-2 text-2xl font-bold lg:text-4xl">
         Quer conversar com a gente?
       </h1>
@@ -27,7 +27,7 @@ export const Header: FC = () => {
             e-mail com os próximos passos para entrar no projeto.
           </p>
         </article>
-        <figure className="flex h-40 w-full max-w-[400px] items-center justify-center lg:h-auto">
+        <figure className="hidden h-40 w-full max-w-[400px] items-center justify-center lg:flex lg:h-auto">
           <Image
             alt="Header Image"
             className="h-40 w-auto object-contain lg:h-auto"

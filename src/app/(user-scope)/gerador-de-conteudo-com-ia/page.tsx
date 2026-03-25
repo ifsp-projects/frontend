@@ -21,7 +21,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const Page: NextPage = async () => {
   return (
-    <main>
+    <main className="overflow-hidden">
       <Header />
       {/* <SocialProof /> */}
       <OutputTypes />

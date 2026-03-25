@@ -29,7 +29,7 @@ const Page: NextPage = async () => {
         dangerouslySetInnerHTML={{ __html: getHomepageJsonLd() }}
         type="application/ld+json"
       />
-      <main id="website">
+      <main className="overflow-hidden" id="website">
         <Header />
         <Details />
         <Benefits />

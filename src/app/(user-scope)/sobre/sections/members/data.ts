@@ -2,6 +2,7 @@ import type { MemberData } from './types'
 
 export const TEAM_MEMBERS: MemberData[] = [
   {
+    id: 'gabrielortona',
     name: 'Gabriel Ortona',
     job_title: 'Analista de Dados',
     description:
@@ -14,6 +15,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     }
   },
   {
+    id: 'higormathias',
     name: 'Higor Figueiredo',
     job_title: 'Desenvolvedor de Controles Internos',
     thumb:
@@ -26,6 +28,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     }
   },
   {
+    id: 'luisgustavo',
     name: 'Luis Gustavo',
     job_title: 'Desenvolvedor Mobile',
     thumb: 'https://avatars.githubusercontent.com/u/111447471?v=4',
@@ -38,6 +41,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     }
   },
   {
+    id: 'matheusrocha',
     name: 'Matheus Rocha',
     job_title: 'Desenvolvedor Backend',
     thumb:
@@ -50,6 +54,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     }
   },
   {
+    id: 'murilomedina',
     name: 'Murilo Medina',
     job_title: 'Engenheiro de Software',
     thumb: 'https://avatars.githubusercontent.com/u/143241534?v=4',
@@ -61,13 +66,14 @@ export const TEAM_MEMBERS: MemberData[] = [
     }
   },
   {
+    id: 'vitorgabriel',
     name: 'Vitor Gabriel',
     job_title: 'Desenvolvedor Frontend',
     thumb: 'https://avatars.githubusercontent.com/u/102386982?v=4',
     description:
       'Desenvolvedor Frontend detalhista, especializado em interfaces modernas e responsivas, transformando ideias em experiências digitais.',
     urls: {
-      linkedin: 'https://avatars.githubusercontent.com/u/102386982?v=4',
+      linkedin: 'https://www.linkedin.com/in/vitor-silva-0ab38a261/',
       github: 'https://github.com/vitingr',
       portfolio: 'https://vitor-silva.com'
     }

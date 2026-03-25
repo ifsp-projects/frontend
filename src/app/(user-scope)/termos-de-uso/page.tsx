@@ -26,7 +26,7 @@ const Page: NextPage = async () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         type="application/ld+json"
       />
-      <main className="min-h-screen">
+      <main className="min-h-screen overflow-hidden">
         <ScrollProgressProvider>
           <ScrollProgress />
           <Header />

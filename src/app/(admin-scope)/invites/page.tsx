@@ -26,7 +26,7 @@ export default async function AdminInvitesPage() {
   const { data } = await admin.listAllInvites()
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-10">
+    <main className="mx-auto max-w-5xl overflow-hidden px-6 py-10">
       <div className="mb-10 flex flex-col gap-1">
         <span className="text-xs font-semibold tracking-widest text-rose-400 uppercase">
           Admin
@@ -59,6 +59,6 @@ export default async function AdminInvitesPage() {
           <InviteList invites={data.invites} />
         </div>
       </div>
-    </div>
+    </main>
   )
 }

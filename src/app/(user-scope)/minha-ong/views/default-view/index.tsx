@@ -13,7 +13,7 @@ export const DefaultView = async () => {
   const { data } = await account.me({ email: organization.email })
 
   return (
-    <main className="bg-neutral-50">
+    <main className="overflow-hidden bg-neutral-50">
       <MainInfo organization={data.organization} />
     </main>
   )
