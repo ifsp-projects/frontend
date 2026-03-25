@@ -8,9 +8,9 @@ import { Divider } from './sections/try-now'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
-    title: 'Fale Conosco | Capivara Solidária',
+    title: 'Changelog | Capivara Solidária',
     description:
-      'Entre em contato com a equipe Capivara Solidária. Tire dúvidas, envie sugestões ou saiba como potencializar sua ONG com nossas soluções.',
+      'Acompanhe a evolução da Capivara Solidária. Novas funcionalidades, melhorias e atualizações pensadas para ajudar sua ONG a crescer, engajar e gerar mais impacto.',
     image: '',
     url: '/changelog'
   })

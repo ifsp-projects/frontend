@@ -37,8 +37,8 @@ export const FOOTER_LINKS = [
         href: '/faq'
       },
       {
-        label: 'Reportar um problema',
-        href: '#'
+        label: 'Changelog',
+        href: '/changelog'
       },
       {
         label: 'Política de Privacidade',
@@ -81,23 +81,23 @@ export const FOOTER_LINKS = [
     links: [
       {
         label: 'Últimas publicações',
-        href: '#'
+        href: '/blog'
       },
       {
-        label: 'Notícias sobre o terceiro setor',
-        href: '#'
+        label: 'Artigos',
+        href: '/blog'
       },
       {
-        label: 'Artigos e insights sociais',
-        href: '#'
+        label: 'Insights sociais',
+        href: '/blog'
       },
       {
         label: 'Guias para ONGs e voluntários',
-        href: '#'
+        href: '/blog'
       },
       {
         label: 'Boletim de impacto',
-        href: '#'
+        href: '/blog'
       }
     ]
   },
@@ -106,23 +106,23 @@ export const FOOTER_LINKS = [
     links: [
       {
         label: 'Cadastre sua ONG',
-        href: '#'
+        href: '/contato'
       },
       {
         label: 'Encontre uma causa para apoiar',
-        href: '#'
+        href: '/ongs'
       },
       {
         label: 'Divulgue uma campanha',
-        href: '#'
+        href: '/ongs'
       },
       {
         label: 'Parceiros e apoiadores',
         href: '#'
       },
       {
-        label: 'Central de transparência',
-        href: '#'
+        label: 'Alterações de produto',
+        href: '/changelog'
       }
     ]
   }
