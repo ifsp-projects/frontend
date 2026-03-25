@@ -1,7 +1,6 @@
 'use client'
 
 // import { signOut } from 'next-auth/react'
-import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -113,13 +112,13 @@ export const Navbar = () => {
               >
                 Minha ONG
               </Link>
-              <button
+              {/* <button
                 className="cursor-pointer rounded-full border border-neutral-700 px-5 py-2 text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
                 onClick={() => signOut()}
                 type="button"
               >
                 Sair
-              </button>
+              </button> */}
             </div>
           ) : (
             <div className="flex w-full max-w-[320px] items-center gap-3">
@@ -215,7 +214,7 @@ export const Navbar = () => {
               >
                 Minha ONG
               </Link>
-              <button
+              {/* <button
                 onClick={() => {
                   setMenuOpen(false)
                   signOut()
@@ -224,7 +223,7 @@ export const Navbar = () => {
                 type="button"
               >
                 Sair
-              </button>
+              </button> */}
             </div>
           ) : (
             <div className="flex flex-col gap-2 px-3 py-2">
