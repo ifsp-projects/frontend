@@ -46,7 +46,7 @@ export const FeaturedArticles = async () => {
                 alt="Gabriel Ortona"
                 className="h-6 w-6 rounded-full object-cover"
                 height={40}
-                src="https://avatars.githubusercontent.com/u/111311744?v=4"
+                src="/images/ortona.png"
                 width={40}
               />
               <p className="text-xs text-neutral-500">por Gabriel Ortona</p>

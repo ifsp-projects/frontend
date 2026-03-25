@@ -7,7 +7,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     job_title: 'Analista de Dados',
     description:
       'Analista de Dados apaixonado por transformar informações em insights estratégicos, com experiência em análise e visualização de dados para apoiar decisões de negócios.',
-    thumb: 'https://avatars.githubusercontent.com/u/111311744?v=4',
+    thumb: '/images/ortona.png',
     urls: {
       linkedin:
         'https://www.linkedin.com/in/gabriel-gardeazabal-ortona-8332511ab/',
