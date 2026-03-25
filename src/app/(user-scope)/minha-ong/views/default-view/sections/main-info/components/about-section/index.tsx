@@ -41,7 +41,10 @@ export const AboutSection = ({
     <div className="w-full">
       <label className="mb-2 block font-medium text-neutral-700">
         Template de Design da minha page
-        <span className="ml-2 text-rose-500">*</span>
+        <span className="ml-1 text-xs font-normal text-neutral-500 italic">
+          (ao trocar, as edições atuais serão perdidas — estamos ajustando)
+        </span>
+        <span className="ml-1 text-rose-500">*</span>
       </label>
       <Controller
         render={({ field }) => (
