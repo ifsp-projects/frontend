@@ -1,10 +1,14 @@
 import type { Metadata } from 'next'
 
+import { getServerSession } from 'next-auth'
+
 import { admin } from '@/instances/admin'
+import { authOptions } from '@/lib/auth'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { InviteList } from './components/invite-list'
 import { SendInviteForm } from './components/send-invite-form'
+import { redirect } from 'next/navigation'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
@@ -23,10 +27,16 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 export default async function AdminInvitesPage() {
-  const { data } = await admin.listAllInvites()
+  const session = await getServerSession(authOptions)
+
+  if (!session?.organization) redirect('/')
+
+  if (session.organization.role !== 'admin') redirect('/minha-ong')
+
+  const { data } = await admin.listAllInvites({ token: session.accessToken })
 
   return (
-    <main className="mx-auto max-w-5xl overflow-hidden px-6 py-10">
+    <div className="mx-auto max-w-5xl px-6 py-10">
       <div className="mb-10 flex flex-col gap-1">
         <span className="text-xs font-semibold tracking-widest text-rose-400 uppercase">
           Admin
@@ -59,6 +69,6 @@ export default async function AdminInvitesPage() {
           <InviteList invites={data.invites} />
         </div>
       </div>
-    </main>
+    </div>
   )
 }
