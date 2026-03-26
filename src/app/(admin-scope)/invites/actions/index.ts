@@ -51,7 +51,8 @@ export async function sendInviteAction(
           account_status: 'inactive',
           email: parsed.data.email,
           is_user_new: true,
-          password: String(generateRandomNumber(1000, 9999))
+          password: String(generateRandomNumber(1000, 9999)),
+          role: 'member'
         },
         token: user.accessToken
       })

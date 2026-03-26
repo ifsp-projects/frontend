@@ -7,6 +7,7 @@ import type {
   CreateInviteTokenPayload,
   GetInviteByTokenPayload,
   InviteTokenValidationResponse,
+  ListAllInvitesPayload,
   RegenerateInviteTokenPayload,
   UseInviteTokenPayload,
   ValidateInviteTokenPayload
@@ -32,13 +33,19 @@ export class Admin {
     }
   }
 
-  listAllInvites = async (): Promise<
+  listAllInvites = async ({
+    token
+  }: ListAllInvitesPayload): Promise<
     ServiceRequestResponse<{
       invites: PostgresInviteToken[]
     }>
   > => {
     try {
-      return await apiPostgres.get(`/admin/invites`)
+      return await apiPostgres.get(`/admin/invites`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
     } catch (error) {
       console.error({
         listAllInvitesError: error.message
