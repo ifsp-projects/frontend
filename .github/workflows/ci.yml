@@ -25,6 +25,7 @@ jobs:
       OPENAI_API_TOKEN_BASE_URL: "dummy"
       OPENAI_ORGANIZATION_ID: "dummy"
       OPENAI_PROJECT_ID: "dummy"
+      WORDPRESS_BASE_URL: "https://public-api.wordpress.com/wp/v2/sites/frontendl2429yyi8vitingrsprojectsvercel.wordpress.com"
 
     steps:
       - name: Checkout
