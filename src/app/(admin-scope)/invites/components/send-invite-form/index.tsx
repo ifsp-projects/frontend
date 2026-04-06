@@ -80,10 +80,10 @@ export function SendInviteForm() {
         {isPending ? (
           <>
             <Spin />
-            Sending…
+            Enviando...
           </>
         ) : (
-          'Send invite'
+          'Enviar convite'
         )}
       </button>
     </form>

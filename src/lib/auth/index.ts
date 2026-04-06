@@ -3,9 +3,11 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
 import { ACCESS_TOKEN_EXPIRES_MILLISECONDS } from '@/constants/auth/access-token-expires-milliseconds'
+import { instanceMotor } from '@/instances/motor'
 import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 import { refreshAccessToken } from '@/utils/auth/refresh-access-token'
 
+import { ALLOWED_EMAILS_FOR_ADMIN_LOGIN } from './constants/allowed-admin-emails'
 import { credentialsOptions } from './credentials-options'
 import { googleOptions } from './google-options'
 
@@ -17,12 +19,27 @@ export const authOptions: AuthOptions = {
     CredentialsProvider(credentialsOptions)
   ],
   callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider === 'google') {
+        return ALLOWED_EMAILS_FOR_ADMIN_LOGIN.includes(user.email ?? '')
+      }
+      return true
+    },
     async jwt(props) {
-      let { token, user, account, trigger, session } = props
+      let { token, user, account, trigger } = props
 
       if (trigger === 'update') {
-        token = { ...token, ...session }
-
+        try {
+          const response =
+            await instanceMotor.organizations.getOrganizationByEmail({
+              email: token.email as string
+            })
+          if (response?.data?.organization) {
+            token = { ...token, ...response.data.organization }
+          }
+        } catch (error) {
+          console.error({ jwtUpdateError: error })
+        }
         return token
       }
 

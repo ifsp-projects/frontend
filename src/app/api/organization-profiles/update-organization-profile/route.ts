@@ -1,9 +1,20 @@
 import { type NextRequest, NextResponse } from 'next/server'
+import { RateLimiterMemory } from 'rate-limiter-flexible'
 
 import { instanceMotor } from '@/instances/motor'
+import { getIpAdress } from '@/utils/helpers/get-ip-address'
+
+const rateLimiter = new RateLimiterMemory({
+  points: 10,
+  duration: 60
+})
 
 export const PATCH = async (req: NextRequest) => {
+  const ip = getIpAdress(req)
+
   try {
+    await rateLimiter.consume(ip)
+
     const {
       ong_id,
       ong_type,

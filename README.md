@@ -48,7 +48,7 @@ Inicie o servidor de desenvolvimento:
 ```bash
 npm run dev
 ```
-Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+Abra [http://localhost:3001](http://localhost:3001) no seu navegador para ver o resultado.
 
 ### 3. Estrutura do Projeto
 

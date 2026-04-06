@@ -133,7 +133,7 @@ export const OnboardingProfileForm = ({
               id="ong_type"
               name="ong_type"
             >
-              <option value="">Select a category</option>
+              <option value="">Selecione uma categoria</option>
               {HUBSPOT_ONG_VALUES.map((value, index: number) => (
                 <option key={index} value={value}>
                   {value}
