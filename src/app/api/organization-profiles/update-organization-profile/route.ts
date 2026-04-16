@@ -30,7 +30,10 @@ export const PATCH = async (req: NextRequest) => {
       logo,
       description,
       addressId,
-      slug
+      slug,
+      twitter_url,
+      instagram_url,
+      facebook_url
     } = await req.json()
 
     if (!ong_id || !slug) {
@@ -43,8 +46,6 @@ export const PATCH = async (req: NextRequest) => {
       )
     }
 
-    console.log(logo)
-
     const response =
       await instanceMotor.organizationProfiles.updateOrganizationProfile({
         payload: {
@@ -54,7 +55,10 @@ export const PATCH = async (req: NextRequest) => {
           ong_type,
           phone,
           design_template,
-          ong_description: description
+          ong_description: description,
+          twitter_url,
+          instagram_url,
+          facebook_url
         },
         token
       })

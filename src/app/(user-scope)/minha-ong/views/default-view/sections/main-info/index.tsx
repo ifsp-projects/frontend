@@ -12,6 +12,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { AboutSection } from './components/about-section'
 import { AddressSection } from './components/address-section'
 import { ProfileHeader } from './components/profile-header'
+import { SocialSection } from './components/social-section'
 import { type ProfileFormSchemaType, profileFormSchema } from './schema'
 import type { MainInfoProps } from './types'
 
@@ -41,7 +42,10 @@ export const MainInfo: React.FC<MainInfoProps> = ({ organization }) => {
       number: Number(profile?.addresses[0]?.number) || 0,
       complement: profile?.addresses[0]?.complement || '',
       design_template: profile?.design_template,
-      logo: profile?.logo || ''
+      logo: profile?.logo || '',
+      facebook_url: profile?.facebook_url || '',
+      instagram_url: profile?.instagram_url || '',
+      twitter_url: profile?.twitter_url || ''
     }
   })
 
@@ -100,6 +104,13 @@ export const MainInfo: React.FC<MainInfoProps> = ({ organization }) => {
           register={register}
         />
 
+        <SocialSection
+          control={control}
+          isSubmitting={isSubmitting}
+          organization={organization}
+          register={register}
+        />
+
         <AddressSection
           onAddressCreated={address =>
             update({
@@ -111,6 +122,7 @@ export const MainInfo: React.FC<MainInfoProps> = ({ organization }) => {
           }
           address={profile?.addresses}
           control={control}
+          isSubmitting={isSubmitting}
           organization={organization}
           organizationProfileId={profile?.id}
           register={register}

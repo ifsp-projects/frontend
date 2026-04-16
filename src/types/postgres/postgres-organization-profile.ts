@@ -6,8 +6,10 @@ export interface PostgresOrganizationProfile {
   addresses?: PostgresAddress
   created_at: string
   design_template?: PostgresDesignTemplates
+  facebook_url?: string
   google_id?: string
   id: string
+  instagram_url?: string
   logo?: string
   name?: string
   ong_description?: string
@@ -16,5 +18,6 @@ export interface PostgresOrganizationProfile {
   phone?: string
   slug?: string
   token?: string
+  twitter_url?: string
   updated_at?: string
 }

@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { EmptyBox } from '@/assets/icons/empty-box'
 import { Button } from '@/components/ui/button'
+import { Spin } from '@/components/ui/spin'
 
 import { AddressFormFields } from '../address-form-fields'
 import { CreateAddressModal } from '../create-address-modal'
@@ -18,7 +19,8 @@ export const AddressSection = ({
   organizationProfileId,
   token,
   onAddressCreated,
-  organization
+  organization,
+  isSubmitting
 }: AddressSectionProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -67,12 +69,15 @@ export const AddressSection = ({
         showPhone
       />
 
-      <button
-        className="mt-2 cursor-pointer self-start rounded-sm bg-neutral-700 px-4 py-2 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800 lg:px-6 lg:text-base"
-        type="submit"
-      >
-        Salvar alterações
-      </button>
+      <div className="flex w-full items-center md:justify-end">
+        <Button
+          className="mt-4 flex cursor-pointer items-center gap-3 text-sm"
+          type="submit"
+        >
+          Salvar alterações
+          {isSubmitting ? <Spin /> : null}
+        </Button>
+      </div>
     </SectionCard>
   )
 }

@@ -16,7 +16,10 @@ export const profileFormSchema = z.object({
   complement: z.string().optional(),
   design_template: z.string().optional(),
   description: z.string().max(500, 'Descrição muito longa!').optional(),
-  logo: z.string().optional()
+  logo: z.string().optional(),
+  instagram_url: z.string().optional(),
+  facebook_url: z.string().optional(),
+  twitter_url: z.string().optional()
 })
 
 export type ProfileFormSchemaType = z.infer<typeof profileFormSchema>

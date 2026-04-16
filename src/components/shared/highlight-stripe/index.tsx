@@ -1,7 +1,22 @@
+'use client'
+
 import { ArrowRight } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export const HighlightStripe = () => {
-  return (
+  const pathname = usePathname()
+
+  const ALLOWED_PATHS: string[] = [
+    '/',
+    'faq',
+    '/sobre',
+    '/contato',
+    '/ongs',
+    '/blog',
+    '/changelog'
+  ] as const
+
+  return ALLOWED_PATHS.includes(pathname) ? (
     <div className="relative z-30 bg-linear-to-r from-rose-500 to-rose-400 px-4 py-2">
       <div className="mx-auto flex max-w-7xl items-center justify-center gap-2.5">
         <p className="text-xs text-white">Cadastre sua ONG agora</p>
@@ -15,5 +30,5 @@ export const HighlightStripe = () => {
         </a>
       </div>
     </div>
-  )
+  ) : null
 }

@@ -2,6 +2,23 @@ export type CHANGELOG_TYPE = 'page-builder' | 'copy-generator' | 'ongs-hub'
 
 export const CHANGELOG = [
   {
+    month: 'Abr',
+    year: '2026',
+    version: 'Versão 0.1.5',
+    features: [
+      {
+        type: 'copy-generator',
+        description:
+          'Melhorias no criador de copies, aprimorando o contexto que é passado para a IA para a geração do conteúdo.'
+      },
+      {
+        type: 'ongs-hub',
+        description:
+          'Agora é possível adicionar as redes sociais do projeto social através do painel de edição de perfil.'
+      }
+    ]
+  },
+  {
     month: 'Mar',
     year: '2026',
     version: 'Versão 0.1.4',

@@ -29,7 +29,7 @@ const Page: NextPage<OnboardingPageProps> = async ({ searchParams }) => {
   const { token } = await searchParams
 
   if (!token) {
-    await redirect('/')
+    redirect('/')
   }
 
   const { data: inviteTokenData } = await admin.getInviteByToken({
@@ -37,7 +37,7 @@ const Page: NextPage<OnboardingPageProps> = async ({ searchParams }) => {
   })
 
   if (!inviteTokenData) {
-    await redirect('/')
+    redirect('/')
   }
 
   const { data } = await instanceMotor.organizations.getOrganizationByEmail({

@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import type { FC } from 'react'
 import { useEffect, useState } from 'react'
@@ -9,9 +8,11 @@ import { EmptyBox } from '@/assets/icons/empty-box'
 import { FacebookIcon } from '@/assets/icons/facebook'
 import { InstagramIcon } from '@/assets/socials/instagram'
 import { posthogEventDispatch } from '@/instances/posthog/dispatch'
+import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 import { formatOngType } from '@/utils/helpers/format-ong-type'
 
 import { categories } from './data'
+import { OngDrawer } from './drawer'
 import type { ListProps } from './types'
 
 const categoryColors: Record<string, { bg: string; dot: string }> = {
@@ -42,6 +43,10 @@ const getCategoryColor = (category: string) =>
   }
 
 export const List: FC<ListProps> = ({ data }) => {
+  const [selectedOng, setSelectedOng] = useState<PostgresOrganization | null>(
+    null
+  )
+
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -169,8 +174,9 @@ export const List: FC<ListProps> = ({ data }) => {
               const initial = profile?.name?.charAt(0) ?? '?'
 
               return profile?.name ? (
-                <Link
+                <button
                   onClick={() => {
+                    setSelectedOng(ong)
                     posthogEventDispatch.ongsHub.clickOrgCard({
                       ongType: formatOngType({
                         ong_type: ong?.organization_profile?.ong_type
@@ -179,8 +185,7 @@ export const List: FC<ListProps> = ({ data }) => {
                       orgId: ong.id
                     })
                   }}
-                  className="group flex flex-col"
-                  href={`/ongs/${ong.organization_profile?.slug}`}
+                  className="group flex cursor-pointer flex-col text-left"
                   key={ong.id}
                 >
                   <div className="flex h-full flex-col overflow-hidden rounded-md border border-neutral-200 bg-white transition-all">
@@ -210,8 +215,12 @@ export const List: FC<ListProps> = ({ data }) => {
 
                     <div className="flex flex-1 flex-col gap-3 p-4">
                       <div className="flex w-full flex-wrap items-center gap-1">
-                        <FacebookIcon className="h-[22px] w-[22px] text-neutral-600" />
-                        <InstagramIcon className="h-8 w-8" />
+                        {profile?.facebook_url ? (
+                          <FacebookIcon className="h-[22px] w-[22px] text-neutral-600" />
+                        ) : null}
+                        {profile?.instagram_url ? (
+                          <InstagramIcon className="h-8 w-8" />
+                        ) : null}
                       </div>
                       <article className="-mt-1.5 flex h-full flex-col border-b border-neutral-200 pb-3">
                         <p className="truncate text-base font-bold">
@@ -222,12 +231,12 @@ export const List: FC<ListProps> = ({ data }) => {
                             'Organização sem fins lucrativos dedicada a causas sociais.'}
                         </p>
                       </article>
-                      <div className="mt-0 flex w-full items-center justify-center rounded-full bg-rose-400 px-4 py-1.5 text-[13px] font-medium text-white lg:mt-2">
+                      <div className="mt-0 flex w-full items-center justify-center rounded-full bg-rose-400 px-4 py-1.5 text-[13px] font-medium text-white transition-all duration-300 group-hover:bg-rose-500 lg:mt-2">
                         Conhecer o projeto
                       </div>
                     </div>
                   </div>
-                </Link>
+                </button>
               ) : null
             })}
           </div>
@@ -245,6 +254,11 @@ export const List: FC<ListProps> = ({ data }) => {
           </article>
         )}
       </div>
+      <OngDrawer
+        onClose={() => setSelectedOng(null)}
+        ong={selectedOng}
+        open={!!selectedOng}
+      />
     </section>
   )
 }
