@@ -8,12 +8,13 @@ export const HighlightStripe = () => {
 
   const ALLOWED_PATHS: string[] = [
     '/',
-    'faq',
+    '/faq',
     '/sobre',
     '/contato',
     '/ongs',
     '/blog',
-    '/changelog'
+    '/changelog',
+    '/termos-de-uso'
   ] as const
 
   return ALLOWED_PATHS.includes(pathname) ? (

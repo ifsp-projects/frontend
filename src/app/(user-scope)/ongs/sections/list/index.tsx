@@ -1,11 +1,13 @@
 'use client'
 
+import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 
 import { EmptyBox } from '@/assets/icons/empty-box'
 import { FacebookIcon } from '@/assets/icons/facebook'
+import { TwitterIcon } from '@/assets/icons/twitter'
 import { InstagramIcon } from '@/assets/socials/instagram'
 import { posthogEventDispatch } from '@/instances/posthog/dispatch'
 import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
@@ -161,7 +163,7 @@ export const List: FC<ListProps> = ({ data }) => {
           Organizações
           {orgs.length > 0 && (
             <span className="ml-2 text-sm font-normal text-neutral-400">
-              ({orgs.length})
+              ({orgs.filter(org => org.account_status === 'active').length})
             </span>
           )}
         </p>
@@ -173,7 +175,7 @@ export const List: FC<ListProps> = ({ data }) => {
               const colors = getCategoryColor(profile?.ong_type ?? '')
               const initial = profile?.name?.charAt(0) ?? '?'
 
-              return profile?.name ? (
+              return profile?.name && ong.account_status === 'active' ? (
                 <button
                   onClick={() => {
                     setSelectedOng(ong)
@@ -192,10 +194,12 @@ export const List: FC<ListProps> = ({ data }) => {
                     <div className="relative flex w-full items-center justify-center overflow-hidden bg-white pt-4 lg:pt-6">
                       {profile?.logo ? (
                         <figure>
-                          <img
+                          <Image
                             alt={profile.name ?? ''}
-                            className="h-[150px] w-full object-contain p-2"
+                            className="h-[150px] w-full rounded-sm object-contain p-2"
+                            height={1080}
                             src={profile.logo}
+                            width={1080}
                           />
                         </figure>
                       ) : (
@@ -215,11 +219,14 @@ export const List: FC<ListProps> = ({ data }) => {
 
                     <div className="flex flex-1 flex-col gap-3 p-4">
                       <div className="flex w-full flex-wrap items-center gap-1">
+                        {profile?.instagram_url ? (
+                          <InstagramIcon className="-ml-2 h-8 w-8" />
+                        ) : null}
                         {profile?.facebook_url ? (
                           <FacebookIcon className="h-[22px] w-[22px] text-neutral-600" />
                         ) : null}
-                        {profile?.instagram_url ? (
-                          <InstagramIcon className="h-8 w-8" />
+                        {profile?.twitter_url ? (
+                          <TwitterIcon className="ml-[5.1px] h-[22px] w-[22px] text-neutral-600" />
                         ) : null}
                       </div>
                       <article className="-mt-1.5 flex h-full flex-col border-b border-neutral-200 pb-3">

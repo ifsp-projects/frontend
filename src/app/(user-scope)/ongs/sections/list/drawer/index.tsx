@@ -113,7 +113,7 @@ export const OngDrawer: React.FC<OngDrawerProps> = ({ ong, open, onClose }) => {
             {formatOngType({ ong_type: profile.ong_type })}
           </span>
 
-          <div className="absolute bottom-2 left-1/2 z-50 -translate-x-1/2">
+          <div className="absolute bottom-4 left-1/2 z-50 -translate-x-1/2">
             <div className="h-32 w-32 overflow-hidden rounded-2xl border-2 border-white bg-white shadow-lg">
               {profile.logo ? (
                 <img

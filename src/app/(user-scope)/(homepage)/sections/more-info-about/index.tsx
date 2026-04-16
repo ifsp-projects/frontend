@@ -1,11 +1,11 @@
 import type { FC } from 'react'
 
-import { CircleButton } from '@/components/ui/circle-button'
 import { GLOBE_CONFIG } from '@/constants/components/globe/globe-config'
 import { SAMPLE_ARCS } from '@/constants/components/globe/sample-arc'
 
 import { DrawEffect } from '../../icons/draw-effect'
 import { AnimatedImage } from './animated-image'
+import { CustomAnchor } from './custom-anchor'
 import { World } from './world'
 
 export const MoreInfoAbout: FC = () => {
@@ -39,7 +39,7 @@ export const MoreInfoAbout: FC = () => {
               </p>
             </div>
             <div className="mt-4 flex w-fit justify-start lg:mt-0">
-              <CircleButton href="/contato" label="Quero fazer parte" />
+              <CustomAnchor />
             </div>
           </article>
         </div>
