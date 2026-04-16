@@ -1,6 +1,8 @@
+import Link from 'next/link'
+
 export const CustomAnchor = () => {
   return (
-    <div className="btn-wrapper">
+    <Link className="btn-wrapper" href="/contato">
       <div className="line horizontal top"></div>
       <div className="line vertical right"></div>
       <div className="line horizontal bottom"></div>
@@ -24,6 +26,6 @@ export const CustomAnchor = () => {
           <path d="M11.7814 12.1163C11.1956 11.5305 10.2458 11.5305 9.66004 12.1163C9.07426 12.7021 9.07426 13.6519 9.66004 14.2376C10.2458 14.8234 11.1956 14.8234 11.7814 14.2376C12.3671 13.6519 12.3671 12.7021 11.7814 12.1163Z"></path>
         </svg>
       </button>
-    </div>
+    </Link>
   )
 }
