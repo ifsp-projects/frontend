@@ -31,7 +31,7 @@ importers:
         version: 5.2.2(react-hook-form@7.72.1(react@19.2.5))
       '@langfuse/client':
         specifier: ^5.0.1
-        version: 5.0.2(@opentelemetry/api@1.9.1)
+        version: 5.2.0(@opentelemetry/api@1.9.1)
       '@nanostores/react':
         specifier: git+https://github.com/ai/react.git
         version: git+https://github.com/ai/react.git#9ff3cac2225d4c9ead4c6186f253f791c01f590a(nanostores@1.2.0)(react@19.2.5)
@@ -923,18 +923,18 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@langfuse/client@5.0.2':
-    resolution: {integrity: sha512-kKlCxtX/q9CLDhzlFuUne+rR4fy0dO25fuqbFsVTRtGly4sJkvhr5+Flu7Az2YpGFLNL0PESBxZtumESjjpYEA==}
+  '@langfuse/client@5.2.0':
+    resolution: {integrity: sha512-QauEfkwkg0zyfVVg4GxQWLnTVZxb81R45U4CCLf3F6NQwYpv9ZJneHGNSKmmNHLkXGw8VfkJoUw0DwQQ/AEIOw==}
     peerDependencies:
       '@opentelemetry/api': ^1.9.0
 
-  '@langfuse/core@5.0.2':
-    resolution: {integrity: sha512-KUFaaxWqZbTfZ2Uh2jNDh6gQfsL7Kxc/4/C4XbwZ/Ip7wZ+CuwuIrs5DupmzC+xWQTNlRWuTzm4OWLO5xvkz8Q==}
+  '@langfuse/core@5.2.0':
+    resolution: {integrity: sha512-zUD0vdrFN/LsufBfR6oPWCT4KIb4zeH8sZtF1YjKVTrPjR+WPWJJb9TI20PFByHo4XFJoLUXdTJNfMWtUx0iEg==}
     peerDependencies:
       '@opentelemetry/api': ^1.9.0
 
-  '@langfuse/tracing@5.0.2':
-    resolution: {integrity: sha512-m+R0ifDY9eICR3Z7fD+peRlpQoYYeAYpKQzWCkTHKiNyCLNi1Bq/RUjufOMoSE/XEHsgBA+LkWX/ErHSpKQNyw==}
+  '@langfuse/tracing@5.2.0':
+    resolution: {integrity: sha512-lMNkcwujfsEAHFiw9uJSTGd+90BwdeR1BVP3c/bANujkIfZ/nWhkTSO9IlRU5Gs4dMLAFqaPGEMVZaIgEPLquw==}
     engines: {node: '>=20'}
     peerDependencies:
       '@opentelemetry/api': ^1.9.0
@@ -5181,20 +5181,20 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@langfuse/client@5.0.2(@opentelemetry/api@1.9.1)':
+  '@langfuse/client@5.2.0(@opentelemetry/api@1.9.1)':
     dependencies:
-      '@langfuse/core': 5.0.2(@opentelemetry/api@1.9.1)
-      '@langfuse/tracing': 5.0.2(@opentelemetry/api@1.9.1)
+      '@langfuse/core': 5.2.0(@opentelemetry/api@1.9.1)
+      '@langfuse/tracing': 5.2.0(@opentelemetry/api@1.9.1)
       '@opentelemetry/api': 1.9.1
       mustache: 4.2.0
 
-  '@langfuse/core@5.0.2(@opentelemetry/api@1.9.1)':
+  '@langfuse/core@5.2.0(@opentelemetry/api@1.9.1)':
     dependencies:
       '@opentelemetry/api': 1.9.1
 
-  '@langfuse/tracing@5.0.2(@opentelemetry/api@1.9.1)':
+  '@langfuse/tracing@5.2.0(@opentelemetry/api@1.9.1)':
     dependencies:
-      '@langfuse/core': 5.0.2(@opentelemetry/api@1.9.1)
+      '@langfuse/core': 5.2.0(@opentelemetry/api@1.9.1)
       '@opentelemetry/api': 1.9.1
 
   '@lit-labs/ssr-dom-shim@1.5.1': {}
