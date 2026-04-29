@@ -62,10 +62,17 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    const formattedMessages = messages.map((msg: any) => ({
-      role: msg.role,
-      content: msg.content
-    }))
+    const formattedMessages = [
+      {
+        role: 'system',
+        content: `Você é um assistente que responde baseado nesse contexto:
+        
+        ${context}
+        
+        Use esse contexto quando relevante.`
+      },
+      ...messages
+    ]
 
     const streamResult = await streamText({
       model: openaiProvider('gpt-4o-mini'),

@@ -32,8 +32,10 @@ export const AboutSection = ({
       <textarea
         className="w-full resize-none rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none placeholder:text-sm focus:ring-1 focus:ring-neutral-500 focus:outline-none"
         defaultValue={defaultDescription}
+        minLength={1}
         placeholder="Ex.: Somos uma ONG dedicada a apoiar crianças em situação de vulnerabilidade por meio de educação, alimentação e atividades culturais."
         rows={5}
+        required
         {...register('description')}
       />
     </div>
