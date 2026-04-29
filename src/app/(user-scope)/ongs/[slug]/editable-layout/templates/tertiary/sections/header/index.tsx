@@ -1,8 +1,8 @@
 import type { FC } from 'react'
 
-import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
-import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
-import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
+import { EditableCopyField } from '@/components/page-builder/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/page-builder/template-fields/editable-image-field'
+import { EditableLinkField } from '@/components/page-builder/template-fields/editable-link-field'
 
 import type { HeaderProps } from './types'
 

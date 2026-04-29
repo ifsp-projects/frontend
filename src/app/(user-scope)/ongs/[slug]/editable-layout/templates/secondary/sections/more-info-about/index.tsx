@@ -1,5 +1,5 @@
-import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
-import { EditableImageField } from '@/components/shared/template-fields/editable-image-field'
+import { EditableCopyField } from '@/components/page-builder/template-fields/editable-copy-field'
+import { EditableImageField } from '@/components/page-builder/template-fields/editable-image-field'
 
 import type { MoreInfoAboutProps } from './types'
 

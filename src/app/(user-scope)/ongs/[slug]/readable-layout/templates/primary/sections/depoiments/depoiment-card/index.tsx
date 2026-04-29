@@ -3,7 +3,7 @@ import type { FC } from 'react'
 
 import type { DepoimentCardProps } from './types'
 
-export const DepoimentCard: FC<DepoimentCardProps> = async ({ copy }) => {
+export const DepoimentCard: FC<DepoimentCardProps> = ({ copy }) => {
   return (
     <article className="card">
       <section className="card__hero">

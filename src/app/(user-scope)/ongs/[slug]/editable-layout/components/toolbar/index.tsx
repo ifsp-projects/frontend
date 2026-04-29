@@ -19,15 +19,18 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
   const { token } = useUserSession()
 
   const getSections = usePageBuilderStore(state => state.getSections)
+  const getOrder = usePageBuilderStore(state => state.getCurrentOrder)
 
   const handleSave = async () => {
     const currentSections = getSections()
+    const currentOrder = getOrder()
 
     try {
       await axios.post('/api/pages/update-copies', {
         slug,
         id,
         sections: currentSections,
+        order: currentOrder,
         token
       })
       toast.success('Página salva com sucesso!', {

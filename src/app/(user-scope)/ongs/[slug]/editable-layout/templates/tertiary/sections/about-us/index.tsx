@@ -1,8 +1,8 @@
 import type { FC } from 'react'
 import React from 'react'
 
-import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
-import { EditableIconField } from '@/components/shared/template-fields/editable-icon-field'
+import { EditableCopyField } from '@/components/page-builder/template-fields/editable-copy-field'
+import { EditableIconField } from '@/components/page-builder/template-fields/editable-icon-field'
 
 import type { AboutUsProps } from './types'
 

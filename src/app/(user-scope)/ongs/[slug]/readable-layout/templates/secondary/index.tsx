@@ -1,14 +1,9 @@
 import type { FC } from 'react'
 
+import { SortableSectionsHydrated } from '@/components/page-builder/sortable-sections/hydrated'
 import { instanceMotor } from '@/instances/motor'
 
-import { FAQ } from '../common/sections/faq'
-import { ImagesGrid } from '../common/sections/images-grid'
 import type { LandingPageTemplateProps } from '../types'
-import { AboutUs } from './sections/about-us'
-import { Header } from './sections/header'
-import { HowItWorks } from './sections/how-it-works'
-import { MoreInfoAbout } from './sections/more-info-about'
 
 export const ReadableSecondaryLandingPageLayout: FC<
   LandingPageTemplateProps
@@ -17,12 +12,11 @@ export const ReadableSecondaryLandingPageLayout: FC<
 
   return (
     <main className="text-neutral-700 selection:bg-blue-50! selection:text-blue-600">
-      <Header copy={data?.page?.sections?.header} />
-      <ImagesGrid copy={{ description: '', title: '' }} />
-      <HowItWorks copy={data?.page?.sections?.howItWorks} />
-      <MoreInfoAbout copy={data?.page?.sections?.moreInfoAbout} />
-      <AboutUs copy={data?.page?.sections?.aboutUs} />
-      <FAQ color="blue" copy={data?.page?.sections?.faq} />
+      <SortableSectionsHydrated
+        order={data?.page?.order}
+        sections={data?.page?.sections}
+        template="secondary"
+      />
     </main>
   )
 }

@@ -5,6 +5,7 @@ import type { PostgresPageTertiaryTemplate } from './page/postgres-page-tertiary
 
 export interface PostgresPage {
   id: string
+  order: string[]
   organization_id: string
   sections: PostgresPagePrimaryTemplate &
     PostgresPageSecondaryTemplate &

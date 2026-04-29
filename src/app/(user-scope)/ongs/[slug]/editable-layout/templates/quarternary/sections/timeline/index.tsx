@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
-import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
-import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
+import { EditableCopyField } from '@/components/page-builder/template-fields/editable-copy-field'
+import { EditableLinkField } from '@/components/page-builder/template-fields/editable-link-field'
 
 import type { TimelineProps } from './types'
 
@@ -32,7 +32,7 @@ export const Timeline: FC<TimelineProps> = ({ copy }) => {
               className="relative flex gap-6 pb-12 last:pb-0 lg:flex-1 lg:flex-col lg:gap-6 lg:pt-12 lg:pr-8 lg:pb-0 last:lg:pr-0"
               key={`${card.title}-${index}`}
             >
-              <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center bg-rose-600 lg:absolute lg:-top-[19px] lg:left-0">
+              <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center bg-rose-600 lg:absolute lg:top-[-19px] lg:left-0">
                 <span className="text-[10px] font-black text-white">
                   {index + 1}
                 </span>

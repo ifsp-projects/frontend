@@ -32,8 +32,6 @@ export default async function AdminInvitesPage() {
 
   if (session.organization.role !== 'admin') redirect('/minha-ong')
 
-  console.log('ACCESS TOKEN:', session.accessToken)
-
   const { data } = await admin.listAllInvites({ token: session.accessToken })
 
   return (

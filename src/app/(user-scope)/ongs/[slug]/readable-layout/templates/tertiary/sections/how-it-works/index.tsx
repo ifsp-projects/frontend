@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { FC } from 'react'
 import React from 'react'
 
-import { EDITABLE_ICON_FIELD_ICONS } from '@/components/shared/template-fields/editable-icon-field/data'
+import { EDITABLE_ICON_FIELD_ICONS } from '@/components/page-builder/template-fields/editable-icon-field/data'
 
 import type { HowItWorksProps } from './types'
 

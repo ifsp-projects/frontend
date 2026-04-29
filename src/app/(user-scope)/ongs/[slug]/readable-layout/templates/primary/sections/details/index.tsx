@@ -4,7 +4,7 @@ import { PeopleGroup } from '@/app/(user-scope)/sobre/icons/people-group'
 
 import type { DetailsProps } from './types'
 
-export const Details: FC<DetailsProps> = async ({ copy }) => {
+export const Details: FC<DetailsProps> = ({ copy }) => {
   return (
     <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">

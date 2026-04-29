@@ -2,7 +2,7 @@
 
 import type { FC } from 'react'
 
-import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableCopyField } from '@/components/page-builder/template-fields/editable-copy-field'
 import Masonry from '@/components/ui/mansory'
 
 import { IMAGES_DATA } from './data'

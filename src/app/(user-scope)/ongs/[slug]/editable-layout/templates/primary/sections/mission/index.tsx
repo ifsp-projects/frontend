@@ -1,10 +1,10 @@
 import type { FC } from 'react'
 
-import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableCopyField } from '@/components/page-builder/template-fields/editable-copy-field'
 
 import type { MissionProps } from './types'
 
-export const Mission: FC<MissionProps> = async ({ copy }) => {
+export const Mission: FC<MissionProps> = ({ copy }) => {
   return (
     <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-6xl lg:gap-12">

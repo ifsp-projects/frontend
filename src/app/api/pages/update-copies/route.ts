@@ -16,12 +16,13 @@ export const POST = async (req: NextRequest) => {
   try {
     await rateLimiter.consume(ip)
 
-    const { id, token, sections } = await req.json()
+    const { id, token, sections, order } = await req.json()
 
     const { status } = await instanceMotor.pages.updatePage({
       payload: {
         id,
-        sections
+        sections,
+        order
       },
       token
     })

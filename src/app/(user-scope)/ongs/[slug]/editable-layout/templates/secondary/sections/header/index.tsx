@@ -1,5 +1,5 @@
-import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
-import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
+import { EditableCopyField } from '@/components/page-builder/template-fields/editable-copy-field'
+import { EditableLinkField } from '@/components/page-builder/template-fields/editable-link-field'
 import DarkVeil from '@/components/ui/dark-veil'
 
 import type { HeaderProps } from './types'

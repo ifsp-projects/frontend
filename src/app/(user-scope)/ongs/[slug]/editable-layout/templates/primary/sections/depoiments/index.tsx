@@ -2,7 +2,7 @@
 
 import type { FC } from 'react'
 
-import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableCopyField } from '@/components/page-builder/template-fields/editable-copy-field'
 
 import { DepoimentCard } from './depoiment-card'
 import type { DepoimentProps } from './types'

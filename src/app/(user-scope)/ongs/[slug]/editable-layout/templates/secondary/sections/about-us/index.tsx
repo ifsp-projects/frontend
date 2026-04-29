@@ -1,4 +1,4 @@
-import { EditableCopyField } from '@/components/shared/template-fields/editable-copy-field'
+import { EditableCopyField } from '@/components/page-builder/template-fields/editable-copy-field'
 
 import { Steps } from './steps'
 import type { AboutUsProps } from './types'

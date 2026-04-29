@@ -22,7 +22,10 @@ export interface PostgresPagePrimaryTemplate {
     }[]
   }
   faq: {
-    anchor: string
+    anchor: {
+      label: string
+      href: string
+    }
     questions: {
       title: string
       description: string

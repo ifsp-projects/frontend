@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import { QuestionItem } from './question-item'
 import type { FaqProps } from './types'
 
-export const FAQ: FC<FaqProps> = async ({ color, copy }) => {
+export const FAQ: FC<FaqProps> = ({ color, copy }) => {
   return (
     <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col lg:max-w-7xl lg:flex-row lg:justify-between">
@@ -22,9 +22,9 @@ export const FAQ: FC<FaqProps> = async ({ color, copy }) => {
           </p>
           <Link
             className={`mt-2 flex max-w-fit cursor-pointer items-center justify-center rounded-md border px-6 py-2 text-center text-sm transition-all duration-300 hover:brightness-105 text-${color}-500 border-${color}-500`}
-            href="#"
+            href={copy.anchor.href}
           >
-            {copy.anchor}
+            {copy.anchor.label}
           </Link>
         </article>
         <div className="flex w-full flex-col gap-y-6">

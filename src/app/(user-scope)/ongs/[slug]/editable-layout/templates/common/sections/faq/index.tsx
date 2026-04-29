@@ -2,7 +2,7 @@
 
 import type { FC } from 'react'
 
-import { EditableLinkField } from '@/components/shared/template-fields/editable-link-field'
+import { EditableLinkField } from '@/components/page-builder/template-fields/editable-link-field'
 
 import { QuestionItem } from './question-item'
 import type { FaqProps } from './types'
