@@ -19,7 +19,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     name: 'Higor Figueiredo',
     job_title: 'Desenvolvedor de Controles Internos',
     thumb:
-      'https://media.licdn.com/dms/image/v2/D4E03AQFx96IPby1uQQ/profile-displayphoto-scale_200_200/B4EZszFU8lJ0AY-/0/1766088596430?e=1776902400&v=beta&t=iRgf_nTBDF8t-MObTgBnHkuAGrsXNcLF7tMWuyFLebU',
+      'https://media.licdn.com/dms/image/v2/D4E03AQFx96IPby1uQQ/profile-displayphoto-crop_800_800/B4EZszFU8lJ0AI-/0/1766088596312?e=1779926400&v=beta&t=lfmM8WiSIt6o6MbCSxFInOewFaGJX0hRs_P8SGx4OyQ',
     description:
       'Desenvolvedor de Controles Internos dedicado a criar sistemas seguros e eficientes, focado em otimizar processos internos e garantir conformidade corporativa.',
     urls: {
@@ -45,7 +45,7 @@ export const TEAM_MEMBERS: MemberData[] = [
     name: 'Matheus Rocha',
     job_title: 'Desenvolvedor Backend',
     thumb:
-      'https://media.licdn.com/dms/image/v2/D4D03AQGHNKgUqHEa4A/profile-displayphoto-shrink_200_200/B4DZbpHR5nIEAY-/0/1747667722332?e=1776902400&v=beta&t=gyQA2dafkIZ387AY5kNenCj6oXP9psBjT07tH9hFrf0',
+      'https://media.licdn.com/dms/image/v2/D4D03AQGHNKgUqHEa4A/profile-displayphoto-shrink_800_800/B4DZbpHR5nIEAc-/0/1747667722332?e=1779926400&v=beta&t=JoCdWFeq1e9W3peHa2FWd4j6jmd-YnvwehUtl5H1miQ',
     description:
       'Desenvolvedor Backend experiente em arquiteturas escaláveis, microserviços e soluções robustas, garantindo que sistemas funcionem de forma eficiente e confiável.',
     urls: {

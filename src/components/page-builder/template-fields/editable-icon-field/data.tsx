@@ -1,5 +1,7 @@
+import { GraduationCap } from 'lucide-react'
 import type { ReactNode } from 'react'
 
+import { PeopleGroup } from '@/app/(user-scope)/(homepage)/icons/people-group'
 import {
   AlarmClock,
   AlignDown,
@@ -49,9 +51,11 @@ import {
   Graduate,
   GreenWater,
   GroupTeamCollective,
+  HandHoldingGlobe,
   HandHoldingSeedling,
   HandHoldingWater,
   HeadGear,
+  Heart,
   HeartBook,
   HeartPlant,
   HeartWater,
@@ -138,9 +142,12 @@ export const EDITABLE_ICON_FIELD_ICONS: Record<string, ReactNode> = {
   'liquid-bottle': <LiquidBottle />,
   'hand-holding-seedling': <HandHoldingSeedling />,
   'hand-holding-water': <HandHoldingWater />,
+  heart: <Heart />,
   'heart-book': <HeartBook />,
   'heart-plant': <HeartPlant />,
   'heart-water': <HeartWater />,
+  'hand-holding-globe': <HandHoldingGlobe />,
+  'graduation-cap': <GraduationCap />,
   'round-arrows': <RoundArrows />,
   oxygen: <Oxygen />,
   'movement-arrows-left-right': <MovementArrowsLeftRight />,
@@ -245,7 +252,8 @@ export const EDITABLE_ICON_FIELD_ICONS: Record<string, ReactNode> = {
   'magnifying-glass': <MagnifyingGlass />,
   share: <Share />,
   'wifi-internet': <WifiInternet />,
-  'pencil-edit': <PencilEdit />
+  'pencil-edit': <PencilEdit />,
+  'people-group': <PeopleGroup />
 } as const
 
 export type IconKey = keyof typeof EDITABLE_ICON_FIELD_ICONS

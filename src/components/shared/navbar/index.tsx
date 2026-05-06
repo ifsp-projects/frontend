@@ -53,7 +53,7 @@ export const Navbar = () => {
           />
         </Link>
         <div className="hidden w-full items-center justify-end gap-8 lg:flex xl:gap-12">
-          <ul className="ml-8 flex w-full items-center justify-start gap-4">
+          <ul className="ml-8 flex w-full items-center justify-start gap-4.5">
             <li>
               <Link
                 className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"

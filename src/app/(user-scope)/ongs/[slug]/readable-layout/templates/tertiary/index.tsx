@@ -10,6 +10,8 @@ export const ReadableTertiaryLandingPageLayout: FC<
 > = async ({ slug }) => {
   const { data } = await instanceMotor.pages.getPageBySlug({ slug })
 
+  console.log(data?.page?.sections)
+
   return (
     <main className="text-neutral-700 selection:bg-yellow-50! selection:text-yellow-600">
       <SortableSectionsHydrated

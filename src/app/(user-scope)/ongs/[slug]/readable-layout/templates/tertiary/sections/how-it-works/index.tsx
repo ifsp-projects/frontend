@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import type { FC } from 'react'
 import React from 'react'
 
@@ -13,7 +12,7 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
         <div className="mb-8 flex items-center gap-4 lg:mb-16">
           <div className="h-px flex-1 bg-neutral-100" />
           <span className="rounded-full border border-amber-200 bg-amber-50 px-5 py-1.5 text-[10px] font-bold tracking-widest text-amber-600 uppercase">
-            {copy.span}
+            {copy?.span || ''}
           </span>
           <div className="h-px flex-1 bg-neutral-100" />
         </div>
@@ -40,11 +39,11 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
                       strokeWidth?: number
                     }>,
                     {
-                      className: 'h-6 w-6 text-blue-400 lg:h-7 lg:w-7',
+                      className: 'h-6 w-6 text-neutral-700 lg:h-7 lg:w-7',
                       strokeWidth: 1.8
                     }
                   )}
-                  <span className="text-[10px] font-black text-amber-800/70">
+                  <span className="text-[10px] font-black text-neutral-700">
                     {i + 1}
                   </span>
                 </figure>
@@ -61,14 +60,14 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
           ))}
         </div>
 
-        <div className="mt-14 flex justify-center">
+        {/* <div className="mt-14 flex justify-center">
           <Link
             className="rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-600 transition-all duration-300 hover:border-amber-400 hover:text-amber-600"
             href={copy.anchor?.href || '#'}
           >
             {copy.anchor?.label || 'Texto do botão'}
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   )

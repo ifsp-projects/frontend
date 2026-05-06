@@ -16,7 +16,7 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
           <EditableCopyField
             as="span"
             className="rounded-full border border-amber-200 bg-amber-50 px-5 py-1.5 text-[10px] font-bold tracking-widest text-amber-600 uppercase"
-            defaultValue={copy.span}
+            defaultValue={copy?.span || ''}
             path="howItWorks.span"
           />
           <div className="h-px flex-1 bg-neutral-100" />

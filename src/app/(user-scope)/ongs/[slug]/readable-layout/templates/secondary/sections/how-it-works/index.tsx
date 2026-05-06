@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 import type { HowItWorksProps } from './types'
 
-export const HowItWorks: FC<HowItWorksProps> = async ({ copy }) => {
+export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
   return (
     <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12">

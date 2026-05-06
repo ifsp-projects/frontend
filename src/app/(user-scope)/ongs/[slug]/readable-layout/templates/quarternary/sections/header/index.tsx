@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 import type { HeaderProps } from './types'
 
-export const Header: FC<HeaderProps> = async ({ copy }) => {
+export const Header: FC<HeaderProps> = ({ copy }) => {
   return (
     <section className="relative overflow-hidden bg-white px-4 xl:px-0">
       <header className="mx-auto flex w-full max-w-2xl flex-col lg:min-h-[700px] lg:max-w-7xl lg:flex-row lg:items-center">
@@ -16,7 +16,7 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
           </div>
 
           <div className="flex flex-col gap-8">
-            <article className="-mt-8 flex flex-col gap-6 lg:-mt-12">
+            <article className="-mt-4 flex flex-col gap-6 lg:-mt-8">
               <h1 className="max-w-xl text-4xl leading-[1.1] font-black text-neutral-800 lg:text-5xl xl:text-6xl">
                 {copy.title}{' '}
                 <em className="text-rose-600 not-italic">
@@ -58,12 +58,12 @@ export const Header: FC<HeaderProps> = async ({ copy }) => {
           </div>
         </div>
 
-        <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
+        <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24 xl:max-w-[600px]">
           <Image
             alt="Hero Image"
-            className="w-full object-cover"
+            className="w-full rounded-sm object-cover"
             height={800}
-            src="/templates/undraw_different-love_58hd.svg"
+            src={copy?.heroImage || '/templates/undraw_different-love_58hd.svg'}
             width={800}
           />
         </figure>
