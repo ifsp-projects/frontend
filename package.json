@@ -43,6 +43,7 @@
     "he": "^1.2.0",
     "immer": "^10.2.0",
     "jsonwebtoken": "^9.0.2",
+    "lenis": "^1.3.23",
     "lodash.set": "^4.3.2",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.577.0",

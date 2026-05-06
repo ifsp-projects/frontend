@@ -5,7 +5,7 @@ import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { getHomepageJsonLd } from './json-ld'
 import { Benefits } from './sections/benefits'
-import { Contact } from './sections/contact'
+import { Skiper } from './sections/contact'
 import { Details } from './sections/details'
 import { Header } from './sections/header'
 import { HowItWorks } from './sections/how-it-works'
@@ -29,13 +29,13 @@ const Page: NextPage = async () => {
         dangerouslySetInnerHTML={{ __html: getHomepageJsonLd() }}
         type="application/ld+json"
       />
-      <main className="overflow-hidden" id="website">
+      <main className="overflow-x-hidden" id="website">
         <Header />
         <Details />
         <Benefits />
         <MoreInfoAbout />
         <HowItWorks />
-        <Contact />
+        <Skiper />
       </main>
     </>
   )

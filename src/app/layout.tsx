@@ -10,6 +10,8 @@ import { authOptions } from '@/lib/auth'
 import { PostHogProvider } from '@/providers/PosthogProvider'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
+import 'lenis/dist/lenis.css'
+
 export default async function RootLayout({
   children
 }: {

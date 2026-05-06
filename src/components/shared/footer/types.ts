@@ -8,3 +8,7 @@ export interface FooterLinkProps {
   label: string
   type?: string
 }
+
+export interface FooterProps {
+  className?: string
+}
