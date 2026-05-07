@@ -176,7 +176,7 @@ const Stack = () => {
 
   return (
     <ReactLenis root>
-      <section className="mb-[-45vh] hidden w-full bg-white lg:flex">
+      <section className="mb-[-45vh] hidden w-full bg-white lg:block">
         <div
           className="relative box-border flex h-[210vh] items-center justify-center gap-[2vw] overflow-hidden bg-[#f5f4f3] p-[2vw]"
           ref={targetRef}
