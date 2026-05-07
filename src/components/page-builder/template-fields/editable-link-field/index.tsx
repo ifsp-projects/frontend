@@ -84,7 +84,7 @@ export const EditableLinkField: FC<EditableLinkFieldProps> = ({
   return (
     <Dialog onOpenChange={handleOpen} open={isOpen}>
       <DialogTrigger asChild>
-        <div className={`group relative inline-flex`}>
+        <div className={`group relative inline-flex w-fit`}>
           <a
             className={`flex items-center justify-center gap-2 ${className}`}
             href={state.href}

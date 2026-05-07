@@ -7,7 +7,7 @@ import { instanceMotor } from '@/instances/motor'
 import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 import { refreshAccessToken } from '@/utils/auth/refresh-access-token'
 
-import { ALLOWED_EMAILS_FOR_ADMIN_LOGIN } from './constants/allowed-admin-emails'
+import { ALLOWED_EMAILS_FOR_ADMIN_LOGIN } from './authorized-emails'
 import { credentialsOptions } from './credentials-options'
 import { googleOptions } from './google-options'
 

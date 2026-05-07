@@ -4,7 +4,7 @@ import Iridescence from '@/components/ui/iridescence'
 
 import type { HeaderProps } from './types'
 
-export const Header: React.FC<HeaderProps> = async ({ copy }) => {
+export const Header: React.FC<HeaderProps> = ({ copy }) => {
   return (
     <section className="relative min-h-[732px] px-4 xl:px-0 2xl:min-h-[780px]">
       <div className="absolute top-0 left-0 z-20 h-full min-h-[732px] w-full 2xl:min-h-[780px]">

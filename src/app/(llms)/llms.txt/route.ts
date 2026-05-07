@@ -11,6 +11,8 @@ Capivara Solidária é uma plataforma digital sem fins lucrativos que facilita a
 - [Perfil de ONG](https://capivara-solidaria.com.br/ongs/:id): Página individual de cada organização com missão, projetos, localização e formas de apoio.
 - [Cadastro de Apoiador](https://capivara-solidaria.com.br/contato): Criação de conta gratuita para apoiadores acompanharem ONGs favoritas.
 - [Cadastro de ONG](https://capivara-solidaria.com.br/contato): Processo de verificação e onboarding para organizações sem fins lucrativos.
+- [Criador de Páginas](https://capivara-solidaria.com.br/criador-de-paginas): Demonstração da feature de gerar páginas ricas para o projeto social.
+- [Gerador de conteúdo com IA](https://capivara-solidaria.com.br/gerador-de-conteudo-com-ia): Demonstração da feature de gerar copies automaticamente para a sua página com ajuda de IA.
 
 ## Categorias atendidas
 
@@ -23,6 +25,7 @@ Capivara Solidária é uma plataforma digital sem fins lucrativos que facilita a
 
 - [Termos de Uso](https://capivara-solidaria.com.br/termos-de-uso)
 - [Política de Privacidade](https://capivara-solidaria.com.br/politica-de-privacidade)
+- [Perguntas Frequentes](https://capivara-solidaria.com.br/faq)
 - Contato: +55 (19) 99910-1607
 
 ## Sobre

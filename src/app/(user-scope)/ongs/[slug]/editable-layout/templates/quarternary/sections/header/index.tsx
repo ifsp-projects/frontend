@@ -6,7 +6,7 @@ import { EditableLinkField } from '@/components/page-builder/template-fields/edi
 
 import type { HeaderProps } from './types'
 
-export const Header: FC<HeaderProps> = async ({ copy }) => {
+export const Header: FC<HeaderProps> = ({ copy }) => {
   return (
     <section className="relative overflow-hidden bg-white px-4 xl:px-0">
       <header className="mx-auto flex w-full max-w-2xl flex-col lg:min-h-[700px] lg:max-w-7xl lg:flex-row lg:items-center">

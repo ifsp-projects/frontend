@@ -6,12 +6,12 @@ import type { MissionProps } from './types'
 
 export const Mission: FC<MissionProps> = ({ copy }) => {
   return (
-    <section className="px-4 py-12 lg:py-16 xl:px-0">
+    <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-6xl lg:gap-12">
-        <article className="flex flex-col gap-4 lg:items-center">
+        <article className="flex flex-col items-center gap-4">
           <EditableCopyField
             as="span"
-            className="text-sm text-emerald-600 uppercase lg:text-center"
+            className="text-center text-sm text-emerald-600 uppercase lg:text-center"
             defaultValue={copy.subtitle}
             path="ourMission.subtitle"
           />
@@ -23,7 +23,7 @@ export const Mission: FC<MissionProps> = ({ copy }) => {
           />
           <EditableCopyField
             as="p"
-            className="max-w-[360px] text-sm text-neutral-500 lg:text-center lg:text-base"
+            className="max-w-[360px] text-center text-sm text-neutral-500 lg:text-center lg:text-base"
             defaultValue={copy.description}
             path="ourMission.description"
           />

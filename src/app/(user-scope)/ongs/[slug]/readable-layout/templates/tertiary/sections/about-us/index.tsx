@@ -45,9 +45,9 @@ export const AboutUs: FC<AboutUsProps> = ({ copy }) => {
             </article>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <ul className="grid grid-cols-2 gap-4">
             {copy.stats.map(({ icon, value, label }) => (
-              <div
+              <li
                 className="group flex flex-col gap-4 rounded-sm border border-neutral-300 bg-white p-6"
                 key={label}
               >
@@ -71,9 +71,9 @@ export const AboutUs: FC<AboutUsProps> = ({ copy }) => {
                     {label}
                   </span>
                 </article>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

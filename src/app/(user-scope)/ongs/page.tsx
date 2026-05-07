@@ -5,7 +5,7 @@ import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { Header } from './sections/header'
 import { List } from './sections/list'
-// import { TopDonatedOngs } from './sections/top-donated-ongs'
+import type { OngsPageProps } from './types'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -17,21 +17,17 @@ export const generateMetadata = async (): Promise<Metadata> => {
   })
 }
 
-interface PageProps {
-  searchParams: Promise<{ name?: string; ong_type?: string }>
-}
-
-const Page: NextPage<PageProps> = async ({ searchParams }) => {
+const Page: NextPage<OngsPageProps> = async ({ searchParams }) => {
   const { name, ong_type } = await searchParams
+
   const { data } = await instanceMotor.organizations.getAllOrganizations({
     name,
     ong_type
   })
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Header />
-      {/* <TopDonatedOngs /> */}
       <List data={data} />
     </main>
   )

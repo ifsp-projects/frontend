@@ -12,7 +12,7 @@ export const Header: FC = async () => {
           <h1 className="text-center text-2xl font-bold lg:text-left lg:text-4xl xl:text-5xl">
             Descubra organizações que fazem a diferença no Brasil.
           </h1>
-          <p className="text-center text-sm text-neutral-500 lg:text-left lg:text-base xl:text-lg">
+          <p className="text-center text-sm text-neutral-500 lg:text-left lg:text-base">
             Apoie causas importantes e conecte-se com organizações que
             transformam comunidades em todo o Brasil. Explore o catálogo e
             encontre uma causa que toca o seu coração.

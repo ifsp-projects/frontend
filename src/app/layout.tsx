@@ -1,5 +1,6 @@
 import './globals.css'
 
+import type { Metadata, Viewport } from 'next'
 import { getServerSession } from 'next-auth'
 import { Toaster } from 'sonner'
 
@@ -11,6 +12,22 @@ import { PostHogProvider } from '@/providers/PosthogProvider'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import 'lenis/dist/lenis.css'
+
+export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'
+  ),
+  title: {
+    default: 'Capivara Solidária',
+    template: '%s · Capivara Solidária'
+  },
+  description:
+    'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade — sem precisar de programador.'
+}
+
+export const viewport: Viewport = {
+  viewportFit: 'cover'
+}
 
 export default async function RootLayout({
   children

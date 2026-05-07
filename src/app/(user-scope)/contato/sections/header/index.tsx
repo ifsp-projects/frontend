@@ -20,7 +20,7 @@ export const Header: FC = () => {
             formulário abaixo.
           </h1>
 
-          <p className="text-center text-sm text-neutral-500 lg:text-left lg:text-base xl:text-lg">
+          <p className="text-center text-sm text-neutral-500 lg:text-left lg:text-base">
             Este formulário é para organizações que desejam participar da
             plataforma. Após o envio, nossa equipe irá analisar as informações
             da sua ONG. Se estiver tudo certo, enviaremos um convite no seu

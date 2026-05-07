@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
 
+import { formatPhoneToWhatsappLink } from '@/utils/helpers/format-phone-to-whatsapp-link'
+
 import type { HeaderProps } from './types'
 
 export const Header: FC<HeaderProps> = ({ copy }) => {
@@ -23,8 +25,11 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
             </p>
           </article>
           <Link
+            href={
+              formatPhoneToWhatsappLink({ phone: copy?.anchor?.href }) || '#'
+            }
             className="flex max-w-fit cursor-pointer items-center justify-center rounded-md bg-emerald-600 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
-            href={copy.anchor.href || '#'}
+            target="_blank"
           >
             {copy.anchor.label}
           </Link>
@@ -35,10 +40,10 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
             </p>
           </article>
         </div>
-        <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
+        <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24 xl:max-w-[700px]">
           <Image
             alt="Hero Image"
-            className="w-full object-cover"
+            className="w-full rounded-sm object-cover"
             height={800}
             src={copy?.heroImage || '/templates/undraw_different-love_58hd.svg'}
             width={800}

@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
 
+import { formatPhoneToWhatsappLink } from '@/utils/helpers/format-phone-to-whatsapp-link'
+
 import type { HeaderProps } from './types'
 
 export const Header: FC<HeaderProps> = ({ copy }) => {
@@ -30,32 +32,40 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
 
             <div className="flex flex-wrap items-center gap-3">
               <Link
+                href={
+                  formatPhoneToWhatsappLink({
+                    phone: copy?.primaryAnchor?.href
+                  }) || '#'
+                }
                 className="rounded-none bg-rose-600 px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:bg-rose-700"
-                href={copy?.primaryAnchor?.href || '#'}
               >
                 {copy.primaryAnchor?.label || 'Texto do botão'}
               </Link>
               <Link
+                href={
+                  formatPhoneToWhatsappLink({
+                    phone: copy?.secondaryAnchor?.href
+                  }) || '#'
+                }
                 className="rounded-none border-2 border-neutral-200 px-8 py-3.5 text-sm font-black tracking-wider text-neutral-600 uppercase transition-all duration-300 hover:border-rose-600 hover:text-rose-600"
-                href={copy?.secondaryAnchor?.href || '#'}
               >
                 {copy.secondaryAnchor?.label || 'Texto do botão'}
               </Link>
             </div>
           </div>
 
-          <div className="flex items-center gap-8 border-t border-neutral-100 pt-8">
+          <ul className="flex items-center gap-8 border-t border-neutral-100 pt-8">
             {copy.stats.map((stat, index: number) => (
-              <div className="flex flex-col gap-0.5" key={`stat-${index}`}>
-                <span className="text-2xl font-black text-rose-600">
+              <li className="flex flex-col gap-0.5" key={`stat-${index}`}>
+                <p className="text-2xl font-black text-rose-600">
                   {stat.title}
-                </span>
-                <span className="text-xs font-medium tracking-widest text-neutral-400 uppercase">
+                </p>
+                <p className="text-xs font-medium tracking-widest text-neutral-400 uppercase">
                   {stat.description}
-                </span>
-              </div>
+                </p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24 xl:max-w-[600px]">

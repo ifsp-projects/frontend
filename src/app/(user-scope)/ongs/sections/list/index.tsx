@@ -196,8 +196,10 @@ export const List: FC<ListProps> = ({ data }) => {
                         <figure>
                           <Image
                             alt={profile.name ?? ''}
-                            className="h-[150px] w-full rounded-sm object-contain p-2"
+                            className="h-[150px] w-full rounded-lg object-contain p-2"
+                            fetchPriority={index <= 8 ? 'high' : 'auto'}
                             height={1080}
+                            loading={index <= 8 ? 'eager' : 'lazy'}
                             src={profile.logo}
                             width={1080}
                           />
@@ -210,30 +212,31 @@ export const List: FC<ListProps> = ({ data }) => {
                         </figure>
                       )}
 
-                      <span
-                        className={`absolute top-2 left-2 flex items-center gap-1 rounded-full bg-rose-400 px-3 py-px text-[11px] font-semibold text-white backdrop-blur-sm ${colors.bg}`}
+                      <p
+                        aria-label="Ong Type"
+                        className={`absolute top-2 left-2 line-clamp-1 flex items-center gap-1 rounded-full bg-rose-400 px-3 py-px text-[11px] font-semibold text-white backdrop-blur-sm ${colors.bg}`}
                       >
                         {formatOngType({ ong_type: profile?.ong_type })}
-                      </span>
+                      </p>
                     </div>
 
                     <div className="flex flex-1 flex-col gap-3 p-4">
                       <div className="flex w-full flex-wrap items-center gap-1">
                         {profile?.instagram_url ? (
-                          <InstagramIcon className="-ml-2 h-8 w-8" />
+                          <InstagramIcon className="-ml-2 h-8 w-8 transition-all duration-300 group-hover:text-neutral-700" />
                         ) : null}
                         {profile?.facebook_url ? (
-                          <FacebookIcon className="h-[22px] w-[22px] text-neutral-600" />
+                          <FacebookIcon className="h-[22px] w-[22px] text-neutral-600 transition-all duration-300 group-hover:text-neutral-700" />
                         ) : null}
                         {profile?.twitter_url ? (
-                          <TwitterIcon className="ml-[5.1px] h-[22px] w-[22px] text-neutral-600" />
+                          <TwitterIcon className="ml-[5.1px] h-[22px] w-[22px] text-neutral-600 transition-all duration-300 group-hover:text-neutral-700" />
                         ) : null}
                       </div>
                       <article className="-mt-1.5 flex h-full flex-col border-b border-neutral-200 pb-3">
                         <p className="truncate text-base font-bold">
                           {profile?.name}
                         </p>
-                        <p className="mt-0.5 line-clamp-2 text-sm text-neutral-500">
+                        <p className="mt-0.5 line-clamp-3 text-sm text-neutral-500">
                           {profile?.ong_description ??
                             'Organização sem fins lucrativos dedicada a causas sociais.'}
                         </p>

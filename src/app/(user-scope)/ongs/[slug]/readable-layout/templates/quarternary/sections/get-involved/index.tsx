@@ -3,6 +3,7 @@ import type { FC } from 'react'
 import React from 'react'
 
 import { EDITABLE_ICON_FIELD_ICONS } from '@/components/page-builder/template-fields/editable-icon-field/data'
+import { formatPhoneToWhatsappLink } from '@/utils/helpers/format-phone-to-whatsapp-link'
 
 import type { GetInvolvedProps } from './types'
 
@@ -63,8 +64,11 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy }) => {
             </p>
           </div>
           <Link
+            href={
+              formatPhoneToWhatsappLink({ phone: copy?.anchor?.href }) || '#'
+            }
             className="shrink-0 rounded-none bg-rose-600 px-7 py-3 text-xs font-black tracking-wider text-white uppercase"
-            href={copy.anchor?.href || '#'}
+            target="_blank"
           >
             {copy.anchor?.label || 'Texto do botão'}
           </Link>

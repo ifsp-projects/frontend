@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
 
+import { formatPhoneToWhatsappLink } from '@/utils/helpers/format-phone-to-whatsapp-link'
+
 import type { HeaderProps } from './types'
 
 export const Header: FC<HeaderProps> = ({ copy }) => {
@@ -44,14 +46,20 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
 
           <div className="flex flex-wrap items-center gap-3">
             <Link
+              href={
+                formatPhoneToWhatsappLink({ phone: copy?.anchor?.href }) || '#'
+              }
               className="cursor-pointer rounded-full bg-amber-950 px-5 py-2 text-sm font-bold text-amber-400 shadow-amber-900/30 transition-all duration-300 hover:brightness-110"
-              href="#"
+              target="_blank"
             >
               {copy.button}
             </Link>
             <Link
+              href={
+                formatPhoneToWhatsappLink({ phone: copy?.anchor?.href }) || '#'
+              }
               className="cursor-pointer rounded-full border-2 border-amber-900/30 bg-transparent px-5 py-2 text-sm font-bold text-amber-950 transition-all duration-300 hover:bg-amber-900/10"
-              href={copy.anchor?.href || '#'}
+              target="_blank"
             >
               {copy.anchor?.label || 'Texto do botão'}
             </Link>

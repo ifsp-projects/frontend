@@ -2,6 +2,7 @@ import type { Metadata, NextPage } from 'next'
 import { notFound } from 'next/navigation'
 
 import { instanceMotor } from '@/instances/motor'
+import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 import { getUserSession } from '@/utils/auth/get-user-session'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
@@ -35,6 +36,14 @@ export const generateMetadata = async ({
     image: data?.page?.sections?.header?.heroImage || '',
     url: `/ongs/${slug}`
   })
+}
+
+export async function generateStaticParams() {
+  const { data } = await instanceMotor.organizations.getAllOrganizations()
+
+  return data.organizations.map((org: PostgresOrganization) => ({
+    slug: org?.organization_profile?.slug
+  }))
 }
 
 const Page: NextPage<OngPageProps> = async ({ params }) => {

@@ -51,10 +51,10 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
             </p>
           </article>
         </div>
-        <figure className="relative z-30 w-full rounded-sm lg:max-w-[500px] lg:pr-24">
+        <figure className="relative z-30 w-full rounded-sm lg:max-w-[500px] lg:pr-24 xl:max-w-[700px]">
           <EditableImageField
             alt="Hero Image"
-            className="h-full w-full"
+            className="h-full w-full rounded-sm"
             defaultValue={copy.heroImage}
             height={800}
             path="header.heroImage"
