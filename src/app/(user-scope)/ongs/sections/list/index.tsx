@@ -124,7 +124,7 @@ export const List: FC<ListProps> = ({ data }) => {
         </div>
       </div>
       <div className="relative z-50 mx-auto w-full max-w-2xl lg:max-w-7xl">
-        <div className="scrollbar-hide mb-6 flex items-center gap-2 overflow-x-auto pb-2">
+        <div className="invisible-scrollbar mb-6 flex items-center gap-2 overflow-x-auto pb-2">
           <div className="shrink-0">
             <input
               className="h-9 w-[200px] rounded-full border border-neutral-200 bg-white px-4 text-[13px] text-neutral-700 transition duration-150 placeholder:text-neutral-400 hover:border-rose-300 focus:border-rose-400 focus:ring-2 focus:ring-rose-100 focus:outline-none"
@@ -197,9 +197,9 @@ export const List: FC<ListProps> = ({ data }) => {
                           <Image
                             alt={profile.name ?? ''}
                             className="h-[150px] w-full rounded-lg object-contain p-2"
-                            fetchPriority={index <= 8 ? 'high' : 'auto'}
+                            fetchPriority={index <= 10 ? 'high' : 'auto'}
                             height={1080}
-                            loading={index <= 8 ? 'eager' : 'lazy'}
+                            loading={index <= 10 ? 'eager' : 'lazy'}
                             src={profile.logo}
                             width={1080}
                           />
