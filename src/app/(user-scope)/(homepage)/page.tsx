@@ -6,6 +6,7 @@ import { getMetaData } from '@/utils/seo/get-metadata'
 import { getHomepageJsonLd } from './json-ld'
 import { Benefits } from './sections/benefits'
 import { Skiper } from './sections/contact'
+import { ContactSimplified } from './sections/contact-simplified'
 import { Details } from './sections/details'
 import { Header } from './sections/header'
 import { HowItWorks } from './sections/how-it-works'
@@ -36,6 +37,7 @@ const Page: NextPage = async () => {
         <MoreInfoAbout />
         <HowItWorks />
         <Skiper />
+        <ContactSimplified />
       </main>
     </>
   )

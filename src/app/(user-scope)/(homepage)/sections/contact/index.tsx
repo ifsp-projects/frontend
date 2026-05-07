@@ -13,7 +13,7 @@ const Skiper = () => {
 
   return (
     <section
-      className="mx-auto flex h-[1560px] w-screen flex-col items-center overflow-hidden bg-white px-4"
+      className="mx-auto hidden h-[1560px] w-screen flex-col items-center overflow-hidden bg-white px-4 lg:flex"
       ref={ref}
     >
       <article className="relative mt-42 flex w-fit flex-col items-center justify-center gap-5 text-center">
