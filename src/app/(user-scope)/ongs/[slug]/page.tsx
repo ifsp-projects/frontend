@@ -41,7 +41,11 @@ export const generateMetadata = async ({
 export async function generateStaticParams() {
   const { data } = await instanceMotor.organizations.getAllOrganizations()
 
-  return data.organizations.map((org: PostgresOrganization) => ({
+  const filteredOngs = data?.organizations?.filter(
+    org => org?.organization_profile?.slug !== null
+  )
+
+  return filteredOngs.map((org: PostgresOrganization) => ({
     slug: org?.organization_profile?.slug
   }))
 }
