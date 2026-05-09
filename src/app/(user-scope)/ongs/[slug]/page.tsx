@@ -41,13 +41,21 @@ export const generateMetadata = async ({
 export async function generateStaticParams() {
   const { data } = await instanceMotor.organizations.getAllOrganizations()
 
-  const filteredOngs = data?.organizations?.filter(
-    org => org?.organization_profile?.slug !== null
+  return (
+    data?.organizations
+      ?.filter(
+        (
+          org
+        ): org is PostgresOrganization & {
+          organization_profile: { slug: string }
+        } =>
+          typeof org?.organization_profile?.slug === 'string' &&
+          org.organization_profile.slug.trim().length > 0
+      )
+      .map(org => ({
+        slug: org.organization_profile.slug
+      })) ?? []
   )
-
-  return filteredOngs.map((org: PostgresOrganization) => ({
-    slug: org?.organization_profile?.slug
-  }))
 }
 
 const Page: NextPage<OngPageProps> = async ({ params }) => {
