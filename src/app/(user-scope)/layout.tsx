@@ -1,3 +1,4 @@
+import { CookiesConsent } from '@/components/shared/cookies-consent'
 import { Footer } from '@/components/shared/footer'
 import { HighlightStripe } from '@/components/shared/highlight-stripe'
 import { Navbar } from '@/components/shared/navbar'
@@ -11,6 +12,7 @@ const UserScopePagesLayout: React.FC<NextLayoutDefaultProps> = async ({
       <Navbar />
       <HighlightStripe />
       {children}
+      <CookiesConsent />
       <Footer />
     </>
   )
