@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import type { FC } from 'react'
 
 import { GithubIcon } from '@/assets/socials/github'
@@ -27,21 +28,29 @@ export const Members: FC = async () => {
               key={`${member.name}-${index}`}
             >
               <div className="flex w-full items-center gap-4">
-                <figure className="aspect-square max-h-20 w-full max-w-20 rounded-sm">
+                <Link
+                  className="group aspect-square max-h-20 w-full max-w-20 cursor-pointer rounded-sm"
+                  href={member.urls.linkedin}
+                  target="_blank"
+                >
                   <Image
                     alt={member.name}
-                    className="aspect-square h-full max-h-20 w-full max-w-20 rounded-sm object-cover"
+                    className="aspect-square h-full max-h-20 w-full max-w-20 rounded-sm object-cover transition-all duration-300 hover:brightness-90"
                     fetchPriority="low"
                     height={200}
                     loading="lazy"
                     src={member.thumb}
                     width={200}
                   />
-                </figure>
+                </Link>
                 <article className="flex flex-col">
-                  <p className="text-sm font-bold lg:text-base">
+                  <Link
+                    className="cursor-pointer text-sm font-bold transition-all duration-300 hover:text-rose-400 lg:text-base"
+                    href={member.urls.linkedin}
+                    target="_blank"
+                  >
                     {member.name}
-                  </p>
+                  </Link>
                   <p className="text-sm">{member.job_title}</p>
                 </article>
               </div>

@@ -18,7 +18,7 @@ export const CookiesConsent = () => {
   if (!visible) return null
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-52 flex flex-col gap-4 px-4 pt-4 pb-6 backdrop-blur-3xl md:flex-row md:items-center md:justify-between lg:pt-8 lg:pb-8">
+    <div className="fixed inset-x-0 bottom-0 z-52 flex flex-col gap-4 bg-white/50 px-4 pt-4 pb-6 backdrop-blur-3xl md:flex-row md:items-center md:justify-between lg:pt-8 lg:pb-8">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 lg:max-w-7xl lg:flex-row lg:gap-6">
         <div className="flex max-w-[840px] flex-col gap-2.5">
           <p

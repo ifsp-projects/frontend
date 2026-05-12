@@ -13,7 +13,7 @@ const Skiper = () => {
 
   return (
     <section
-      className="mx-auto hidden h-[1560px] w-screen flex-col items-center overflow-hidden bg-white px-4 lg:flex"
+      className="mx-auto hidden h-[2060px] w-screen flex-col items-center overflow-hidden bg-white px-4 lg:flex"
       ref={ref}
     >
       <article className="relative mt-42 flex w-fit flex-col items-center justify-center gap-5 text-center">
@@ -32,7 +32,7 @@ const Skiper = () => {
         />
       </article>
 
-      <div className="mx-auto flex w-full max-w-xl translate-y-[625px] flex-col items-center gap-4 rounded-2xl border border-neutral-200 bg-neutral-700 px-4 py-8">
+      <div className="mx-auto flex w-full max-w-xl translate-y-[1075px] flex-col items-center gap-4 rounded-2xl border border-neutral-200 bg-neutral-700 px-4 py-8">
         <h2 className="text-2xl font-bold text-white lg:text-4xl">
           Tem alguma sugestão?
         </h2>
@@ -70,7 +70,7 @@ const LinePath = ({
     <svg
       className={className}
       fill="none"
-      height="1519"
+      height="2019"
       overflow="visible"
       viewBox="0 0 1278 2319"
       width="1278"
