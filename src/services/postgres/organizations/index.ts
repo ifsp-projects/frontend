@@ -14,8 +14,7 @@ import type {
   GetOrganizationByIdResponse,
   GetOrganizationBySlugData,
   GetOrganizationBySlugResponse,
-  UpdateOrganizationData,
-  UpdateOrganizationResponse
+  UpdateOrganizationData
 } from './types'
 
 /**
@@ -165,7 +164,7 @@ export class Organizations {
    */
   updateOrganization = async ({ payload, token }: UpdateOrganizationData) => {
     try {
-      return await apiPostgres.patch<UpdateOrganizationResponse>(
+      return await apiPostgres.patch(
         `/organizations/${payload?.id?.toString()}`,
         payload,
         {

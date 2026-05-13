@@ -7,15 +7,19 @@ import { EditableLinkField } from '@/components/page-builder/template-fields/edi
 
 import type { GetInvolvedProps } from './types'
 
-export const GetInvolved: FC<GetInvolvedProps> = ({ copy }) => {
+export const GetInvolved: FC<GetInvolvedProps> = ({ copy, palette }) => {
   return (
     <section className="bg-white px-4 py-24 xl:px-0">
       <div className="mx-auto w-full max-w-2xl lg:max-w-7xl">
         <div className="mb-16 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-end">
           <div className="flex flex-col gap-4">
             <EditableCopyField
+              style={{
+                borderLeft: `4px solid ${palette.original}`,
+                color: palette.original
+              }}
               as="span"
-              className="w-fit border-l-4 border-rose-600 pl-3 text-xs font-bold tracking-widest text-rose-600 uppercase"
+              className="w-fit pl-3 text-xs font-bold tracking-widest uppercase"
               defaultValue={copy.label}
               path="getInvolved.label"
             />
@@ -37,13 +41,21 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy }) => {
         <div className="grid grid-cols-1 gap-px border border-neutral-100 bg-neutral-100 md:grid-cols-2">
           {copy.cards.map(({ icon, title, description }, index: number) => (
             <div
-              className="group relative flex flex-col gap-6 bg-white p-8"
+              className="group relative flex flex-col gap-6 p-8"
               key={title}
+              style={{ backgroundColor: palette.tint }}
             >
-              <div className="flex h-12 w-12 items-center justify-center border-2 border-rose-100 bg-rose-50 transition-all duration-300">
+              <div
+                style={{
+                  borderColor: palette.tint,
+                  backgroundColor: palette.ultra_light
+                }}
+                className="flex h-12 w-12 items-center justify-center border-2 transition-all duration-300"
+              >
                 <EditableIconField
                   defaultValue={icon}
                   path={`getInvolved.cards[${index}].icon`}
+                  style={{ color: palette.original }}
                 />
               </div>
 
@@ -67,7 +79,10 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy }) => {
 
         <div className="mt-px flex flex-col gap-4 border border-t-0 border-neutral-100 bg-neutral-50 px-8 py-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-4">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-rose-600" />
+            <div
+              className="h-2 w-2 animate-pulse rounded-full"
+              style={{ backgroundColor: palette.original }}
+            />
             <EditableCopyField
               as="p"
               className="text-sm font-bold text-neutral-700"
@@ -80,8 +95,9 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy }) => {
               href: copy.anchor?.href || '#',
               label: copy.anchor?.label || 'Texto do link'
             }}
-            className="shrink-0 rounded-none bg-rose-600 px-7 py-3 text-xs font-black tracking-wider text-white uppercase"
+            className="shrink-0 rounded-none px-7 py-3 text-xs font-black tracking-wider text-white uppercase"
             path="getInvolved.anchor"
+            style={{ backgroundColor: palette.original }}
           />
         </div>
       </div>

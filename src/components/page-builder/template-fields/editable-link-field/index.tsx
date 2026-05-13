@@ -35,7 +35,8 @@ export const EditableLinkField: FC<EditableLinkFieldProps> = ({
   path,
   defaultValue = {},
   className = '',
-  iconClassName = 'h-4 w-4'
+  iconClassName = 'h-4 w-4',
+  style = {}
 }) => {
   const updateField = usePageBuilderStore(state => state.updateField)
   const [isOpen, setIsOpen] = useState(false)
@@ -90,6 +91,7 @@ export const EditableLinkField: FC<EditableLinkFieldProps> = ({
             href={state.href}
             onClick={e => e.preventDefault()}
             rel="noreferrer"
+            style={style}
             target="_blank"
           >
             {state.label}

@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import { QuestionItem } from './question-item'
 import type { FaqProps } from './types'
 
-export const FAQ: FC<FaqProps> = ({ color, copy }) => {
+export const FAQ: FC<FaqProps> = ({ palette, copy }) => {
   return (
     <section className="px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:justify-between lg:gap-0">
@@ -21,8 +21,9 @@ export const FAQ: FC<FaqProps> = ({ color, copy }) => {
             gente:
           </p>
           <Link
-            className={`mt-2 flex max-w-fit cursor-pointer items-center justify-center rounded-md border px-6 py-2 text-center text-sm transition-all duration-300 hover:brightness-105 text-${color}-500 border-${color}-500`}
+            className={`mt-2 mb-7 flex max-w-fit items-center justify-center rounded-md border px-6 py-2 text-center text-sm transition-all duration-300 hover:brightness-105 lg:mb-0`}
             href={copy.anchor.href}
+            style={{ color: palette.shade, borderColor: palette.shade }}
           >
             {copy.anchor.label}
           </Link>

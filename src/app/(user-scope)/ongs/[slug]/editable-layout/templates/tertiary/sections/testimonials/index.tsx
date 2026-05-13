@@ -6,17 +6,21 @@ import { EditableImageField } from '@/components/page-builder/template-fields/ed
 
 import type { TestimonialsProps } from './types'
 
-export const Testimonials: FC<TestimonialsProps> = ({ copy }) => {
+export const Testimonials: FC<TestimonialsProps> = ({ copy, palette }) => {
   return (
-    <section className="bg-white px-4 pb-28 xl:px-0">
+    <section className="px-4 pb-28 xl:px-0">
       <div className="mx-auto w-full max-w-2xl lg:max-w-7xl">
         <article className="mb-12 flex items-center gap-3">
-          <span className="h-px w-8 bg-amber-400" />
+          <span
+            className="h-px w-8"
+            style={{ backgroundColor: palette.original }}
+          />
           <EditableCopyField
             as="span"
-            className="text-xs font-bold tracking-widest text-amber-500 uppercase"
+            className="text-xs font-bold tracking-widest uppercase"
             defaultValue={copy.label}
             path="testimonials.label"
+            style={{ color: palette.original }}
           />
         </article>
 
@@ -27,7 +31,6 @@ export const Testimonials: FC<TestimonialsProps> = ({ copy }) => {
             defaultValue={copy.title}
             path="testimonials.title"
           />
-
           <EditableCopyField
             as="p"
             className="max-w-sm text-sm leading-relaxed text-neutral-500 lg:text-right"
@@ -36,43 +39,57 @@ export const Testimonials: FC<TestimonialsProps> = ({ copy }) => {
           />
         </article>
 
-        <div className="relative mb-6 overflow-hidden rounded-3xl bg-amber-400 p-8 lg:p-12">
-          <div className="absolute -top-6 -right-6 h-40 w-40 rounded-full bg-amber-300/40" />
-          <div className="absolute -bottom-10 -left-6 h-52 w-52 rounded-full bg-amber-500/30" />
+        <div
+          className="relative mb-6 overflow-hidden rounded-3xl p-8 lg:p-12"
+          style={{ backgroundColor: palette.original }}
+        >
+          <div
+            className="absolute -top-6 -right-6 h-40 w-40 rounded-full"
+            style={{ backgroundColor: `${palette.tint}66` }}
+          />
+          <div
+            className="absolute -bottom-10 -left-6 h-52 w-52 rounded-full"
+            style={{ backgroundColor: `${palette.shade}4D` }}
+          />
 
           <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:gap-16">
             <Quote
-              className="hidden h-16 w-16 shrink-0 text-amber-900 lg:block"
+              className="hidden h-16 w-16 shrink-0 lg:block"
               strokeWidth={1}
+              style={{ color: palette.deep }}
             />
             <div className="flex flex-col gap-6">
               <EditableCopyField
                 as="p"
-                className="text-xl leading-relaxed font-semibold text-amber-950 lg:text-2xl"
+                className="text-xl leading-relaxed font-semibold lg:text-2xl"
                 defaultValue={`"${copy.testimonial.content}"`}
                 path="testimonials.testimonial.content"
+                style={{ color: palette.deep }}
               />
               <div className="flex items-center gap-4">
                 <EditableImageField
                   alt={copy.testimonial.author.name}
-                  className="h-12 w-12 rounded-full border-2 border-amber-950/20 object-cover"
+                  className="h-12 w-12 rounded-full object-cover"
                   defaultValue={copy.testimonial.author.image}
                   height={48}
                   path="testimonials.testimonial.author.image"
+                  style={{ border: `2px solid ${palette.deep}33` }}
                   width={48}
                 />
                 <div>
                   <EditableCopyField
                     as="p"
-                    className="text-sm font-black text-amber-950"
+                    className="text-sm font-black"
                     defaultValue={copy.testimonial.author.name}
                     path="testimonials.testimonial.string"
+                    style={{ color: palette.deep }}
                   />
                   <EditableCopyField
                     as="p"
-                    className="text-xs text-amber-800"
+                    className="text-xs"
                     defaultValue={copy.testimonial.author.role}
                     path="testimonials.testimonial.role"
+                    style={{ color: `${palette.deep}CC` }}
                   />
                 </div>
               </div>
@@ -87,8 +104,15 @@ export const Testimonials: FC<TestimonialsProps> = ({ copy }) => {
               key={author.name}
             >
               <div className="flex flex-col gap-4">
-                <figure className="flex w-fit items-center justify-center rounded-md bg-amber-100 p-2">
-                  <Quote className="h-5 w-5 text-amber-900" strokeWidth={1.5} />
+                <figure
+                  className="flex w-fit items-center justify-center rounded-md p-2"
+                  style={{ backgroundColor: palette.ultra_light }}
+                >
+                  <Quote
+                    className="h-5 w-5"
+                    strokeWidth={1.5}
+                    style={{ color: palette.deep }}
+                  />
                 </figure>
                 <EditableCopyField
                   as="p"
@@ -100,7 +124,7 @@ export const Testimonials: FC<TestimonialsProps> = ({ copy }) => {
               <div className="flex items-center gap-3">
                 <EditableImageField
                   alt={copy.testimonial.author.name}
-                  className="h-10 w-10 rounded-full border-2 border-white object-cover shadow-sm"
+                  className="h-10 w-10 rounded-full border-2 border-white object-cover"
                   defaultValue={author.image}
                   height={40}
                   path={`testimonials.cards[${index}].image`}

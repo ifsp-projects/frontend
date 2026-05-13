@@ -10,19 +10,23 @@ const rateLimiter = new RateLimiterMemory({
   duration: 60
 })
 
-export const POST = async (req: NextRequest) => {
+export const PATCH = async (
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) => {
+  const { id } = await params
+
   const ip = getIpAdress(req)
 
   try {
     await rateLimiter.consume(ip)
 
-    const { id, token, sections, order } = await req.json()
+    const { token, ...rest } = await req.json()
 
-    const { status } = await instanceMotor.pages.updatePage({
+    const { data, status } = await instanceMotor.pages.updatePage({
       payload: {
         id,
-        sections,
-        order
+        ...rest
       },
       token
     })
@@ -34,10 +38,10 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    return NextResponse.json({ status: 200 })
+    return NextResponse.json({ ...data, status: 200 })
   } catch (error) {
     console.error({
-      'PUT/api/pages/update-copies': error.message
+      'PATCH/api/pages/update-copies': error.message
     })
 
     return NextResponse.json(

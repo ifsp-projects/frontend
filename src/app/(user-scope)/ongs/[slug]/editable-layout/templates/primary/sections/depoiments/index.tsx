@@ -7,7 +7,7 @@ import { EditableCopyField } from '@/components/page-builder/template-fields/edi
 import { DepoimentCard } from './depoiment-card'
 import type { DepoimentProps } from './types'
 
-export const Depoiments: FC<DepoimentProps> = ({ copy }) => {
+export const Depoiments: FC<DepoimentProps> = ({ copy, palette }) => {
   return (
     <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">
@@ -18,7 +18,6 @@ export const Depoiments: FC<DepoimentProps> = ({ copy }) => {
             defaultValue={copy.title}
             path="depoiments.title"
           />
-
           <EditableCopyField
             as="p"
             className="text-sm text-neutral-500 lg:text-center lg:text-base"
@@ -32,6 +31,7 @@ export const Depoiments: FC<DepoimentProps> = ({ copy }) => {
               copy={card}
               index={index}
               key={`depoiment-card-${index}`}
+              palette={palette}
             />
           ))}
         </div>

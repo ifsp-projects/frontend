@@ -3,9 +3,17 @@ import type { FC } from 'react'
 
 import type { DepoimentCardProps } from './types'
 
-export const DepoimentCard: FC<DepoimentCardProps> = ({ copy }) => {
+export const DepoimentCard: FC<DepoimentCardProps> = ({ copy, palette }) => {
   return (
-    <article className="card">
+    <article
+      style={
+        {
+          '--card-bg': palette.tint,
+          '--card-hero-bg': palette.ultra_light
+        } as React.CSSProperties
+      }
+      className="card"
+    >
       <section className="card__hero">
         <header className="card__hero-header">
           <span>Depoimento</span>

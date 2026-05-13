@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react'
+
 export interface EditableLinkFieldProps {
   className?: string
   defaultValue?: {
@@ -8,4 +10,5 @@ export interface EditableLinkFieldProps {
   }
   iconClassName?: string
   path: string
+  style?: CSSProperties
 }

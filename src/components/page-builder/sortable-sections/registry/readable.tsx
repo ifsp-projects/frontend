@@ -19,13 +19,21 @@ import { Initiatives as TertiaryTemplateInitiatives } from '@/app/(user-scope)/o
 import { MoreInfoAbout as TertiaryTemplateMoreInfoAbout } from '@/app/(user-scope)/ongs/[slug]/readable-layout/templates/tertiary/sections/more-info-about'
 import { Testimonials as TertiaryTemplateTestimonials } from '@/app/(user-scope)/ongs/[slug]/readable-layout/templates/tertiary/sections/testimonials'
 import type { DEFAULT_TEMPLATES_ORDER } from '@/constants/page-templates/default-templates-order'
+import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
 import type { TemplateType } from '@/types/postgres/page/psotgres-page-template-types'
 
 type SectionKeys<T extends TemplateType> =
   (typeof DEFAULT_TEMPLATES_ORDER)[T][number]
 
 type SectionRegistry = {
-  [T in TemplateType]: Record<SectionKeys<T>, React.FC<{ copy: any }>>
+  [T in TemplateType]: Record<
+    SectionKeys<T>,
+    React.FC<{
+      copy: any
+      mainColor: string
+      palette: PostgresColorPalette
+    }>
+  >
 }
 
 export const READABLE_TEMPLATE_SECTION_REGISTRY: SectionRegistry = {
@@ -35,14 +43,14 @@ export const READABLE_TEMPLATE_SECTION_REGISTRY: SectionRegistry = {
     moreInfoAbout: props => <MoreInfoAbout {...props} />,
     ourMission: props => <PrimaryTemplateMission {...props} />,
     depoiments: props => <PrimaryTemplateDepoiments {...props} />,
-    faq: props => <FAQ color="emerald" {...props} />
+    faq: props => <FAQ {...props} />
   },
   secondary: {
     header: props => <SecondaryTemplateHeader {...props} />,
     howItWorks: props => <SecondaryTemplateHowItWorks {...props} />,
     moreInfoAbout: props => <SecondaryTemplateMoreInfoAbout {...props} />,
     aboutUs: props => <SecondaryTemplateAboutUs {...props} />,
-    faq: props => <FAQ color="blue" {...props} />
+    faq: props => <FAQ {...props} />
   },
   tertiary: {
     header: props => <TertiaryTemplateHeader {...props} />,
@@ -51,13 +59,13 @@ export const READABLE_TEMPLATE_SECTION_REGISTRY: SectionRegistry = {
     moreInfoAbout: props => <TertiaryTemplateMoreInfoAbout {...props} />,
     initiatives: props => <TertiaryTemplateInitiatives {...props} />,
     aboutUs: props => <TertiaryTemplateAboutUs {...props} />,
-    faq: props => <FAQ color="yellow" {...props} />
+    faq: props => <FAQ {...props} />
   },
   quarternary: {
     header: props => <QuarternaryTemplateHeader {...props} />,
     causes: props => <QuarternaryTemplateCauses {...props} />,
     timeline: props => <QuarternaryTemplateTimeline {...props} />,
     getInvolved: props => <QuarternaryTemplateGetInvolved {...props} />,
-    faq: props => <FAQ color="rose" {...props} />
+    faq: props => <FAQ {...props} />
   }
 }

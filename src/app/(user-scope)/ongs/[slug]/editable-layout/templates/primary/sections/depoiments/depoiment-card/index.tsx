@@ -5,14 +5,25 @@ import { EditableImageField } from '@/components/page-builder/template-fields/ed
 
 import type { DepoimentCardProps } from './types'
 
-export const DepoimentCard: FC<DepoimentCardProps> = ({ copy, index }) => {
+export const DepoimentCard: FC<DepoimentCardProps> = ({
+  copy,
+  index,
+  palette
+}) => {
   return (
-    <article className="card">
+    <article
+      style={
+        {
+          '--card-bg': palette.tint,
+          '--card-hero-bg': palette.ultra_light
+        } as React.CSSProperties
+      }
+      className="card"
+    >
       <section className="card__hero">
         <header className="card__hero-header">
           <span>Depoimento</span>
         </header>
-
         <EditableCopyField
           as="p"
           className="card__job-title"
@@ -20,7 +31,6 @@ export const DepoimentCard: FC<DepoimentCardProps> = ({ copy, index }) => {
           path={`depoiments.cards[${index}].content`}
         />
       </section>
-
       <div className="card__footer">
         <div className="card__job-summary">
           <figure className="card__job-icon">

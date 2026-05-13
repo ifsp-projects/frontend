@@ -19,7 +19,7 @@ export interface GetOrganizationBySlugData {
 }
 
 export interface UpdateOrganizationData {
-  payload: PostgresOrganization
+  payload: Partial<PostgresOrganization>
   token: string
 }
 

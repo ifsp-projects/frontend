@@ -120,7 +120,7 @@ export const PATCH = async (req: NextRequest) => {
     )
   } catch (error) {
     console.error({
-      'POST/api/organization-profiles/update-organization-profile':
+      'PATCH/api/organization-profiles/update-organization-profile':
         error.message
     })
 

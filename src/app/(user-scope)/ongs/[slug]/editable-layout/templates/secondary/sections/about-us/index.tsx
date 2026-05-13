@@ -3,7 +3,7 @@ import { EditableCopyField } from '@/components/page-builder/template-fields/edi
 import { Steps } from './steps'
 import type { AboutUsProps } from './types'
 
-export const AboutUs: React.FC<AboutUsProps> = ({ copy }) => {
+export const AboutUs: React.FC<AboutUsProps> = ({ copy, palette }) => {
   return (
     <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-12">
@@ -13,7 +13,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ copy }) => {
           defaultValue={copy.title}
           path="aboutUs.title"
         />
-        <Steps cards={copy.cards} />
+        <Steps cards={copy.cards} palette={palette} />
       </div>
     </section>
   )

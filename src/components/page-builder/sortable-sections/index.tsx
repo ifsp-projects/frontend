@@ -1,8 +1,12 @@
 // features/page-builder/components/sortable-sections.tsx
 'use client'
 
-import { DEFAULT_TEMPLATES_ORDER } from '@/constants/page-templates/default-templates-order'
+import {
+  DEFAULT_TEMPLATES_ORDER,
+  DEFAULT_TEMPLATE_COLORS
+} from '@/constants/page-templates/default-templates-order'
 import { usePageBuilderStore } from '@/stores/page-builder-store'
+import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
 import type { TemplateType } from '@/types/postgres/page/psotgres-page-template-types'
 import type { DragEndEvent } from '@dnd-kit/core'
 import {
@@ -26,12 +30,16 @@ function SortableSection({
   id,
   copy,
   template,
-  isEditable
+  isEditable,
+  mainColor,
+  colorPalette
 }: {
   id: string
   copy: any
   template: TemplateType
   isEditable: boolean
+  mainColor: string
+  colorPalette: PostgresColorPalette
 }) {
   const {
     attributes,
@@ -67,7 +75,7 @@ function SortableSection({
           ⠿
         </button>
       ) : null}
-      <Component copy={copy} />
+      <Component copy={copy} mainColor={mainColor} palette={colorPalette} />
     </div>
   )
 }
@@ -84,6 +92,12 @@ export function SortableSections({
   const order = usePageBuilderStore(s =>
     s.order.length ? s.order : DEFAULT_TEMPLATES_ORDER[template]
   )
+
+  const mainColor = usePageBuilderStore(
+    c => c.mainColor ?? DEFAULT_TEMPLATE_COLORS[template]
+  )
+
+  const colorPalette = usePageBuilderStore(p => p.colorPalette)
 
   const reorderSections = usePageBuilderStore(s => s.reorderSections)
 
@@ -109,10 +123,12 @@ export function SortableSections({
       <SortableContext items={order} strategy={verticalListSortingStrategy}>
         {order.map(key => (
           <SortableSection
+            colorPalette={colorPalette}
             copy={sections[key]}
             id={key}
             isEditable={isEditable}
             key={key}
+            mainColor={mainColor}
             template={template}
           />
         ))}

@@ -8,7 +8,7 @@ import { EditableIconField } from '@/components/page-builder/template-fields/edi
 
 import type { StepsProps } from './types'
 
-export const Steps: FC<StepsProps> = ({ cards }) => {
+export const Steps: FC<StepsProps> = ({ cards, palette }) => {
   return (
     <div className="mx-auto grid w-full grid-cols-2 gap-4 lg:flex lg:flex-row lg:justify-between lg:gap-8">
       {cards.map((card, index: number) => (
@@ -19,11 +19,15 @@ export const Steps: FC<StepsProps> = ({ cards }) => {
           transition={{ duration: 0.6, delay: index * 0.2 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <figure className="flex items-center justify-center rounded-sm bg-blue-100 p-2">
+          <figure
+            className="flex items-center justify-center rounded-sm p-2"
+            style={{ backgroundColor: palette.ultra_light }}
+          >
             <EditableIconField
               defaultValue={card.icon}
-              iconClassName="h-6 w-6 text-blue-400 lg:h-7 lg:w-7"
+              iconClassName="h-6 w-6 lg:h-7 lg:w-7"
               path={`aboutUs.cards[${index}].icon`}
+              style={{ color: palette.shade }}
             />
           </figure>
           <EditableCopyField

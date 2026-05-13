@@ -8,9 +8,14 @@ import { EditableLinkField } from '@/components/page-builder/template-fields/edi
 
 import type { HeaderProps } from './types'
 
-export const Header: FC<HeaderProps> = ({ copy }) => {
+export const Header: FC<HeaderProps> = ({ copy, palette }) => {
   return (
-    <section className="relative z-30 overflow-hidden bg-linear-to-r from-neutral-50/10 to-white px-4 xl:px-0">
+    <section
+      style={{
+        background: `linear-gradient(to right, ${palette.ultra_light}1a, ${palette.tint}33)`
+      }}
+      className="relative z-30 overflow-hidden px-4 xl:px-0"
+    >
       <header className="relative z-40 mx-auto flex w-full max-w-2xl flex-col gap-8 py-12 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:py-20">
         <div className="flex w-full flex-col gap-6 lg:gap-8">
           <article
@@ -18,8 +23,14 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
             id="header"
           >
             <EditableCopyField
+              style={{
+                backgroundColor: palette.ultra_light,
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: palette.tint
+              }}
               as="span"
-              className="w-fit rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-[11px] font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200 lg:px-4 lg:py-1.5 lg:text-xs"
+              className="w-fit rounded-full px-3 py-1 text-[11px] font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200 lg:px-4 lg:py-1.5 lg:text-xs"
               defaultValue={copy.span}
               path="header.span"
             />
@@ -41,8 +52,9 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
               href: copy.anchor?.href || '#',
               label: copy.anchor?.label || 'Texto do link'
             }}
-            className="flex max-w-fit items-center justify-center rounded-md bg-emerald-600 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
+            className="flex max-w-fit items-center justify-center rounded-md px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
             path="header.anchor"
+            style={{ backgroundColor: palette.original }}
           />
           <article className="flex items-center gap-1">
             <p className="text-xs text-neutral-500">Com apoio de</p>

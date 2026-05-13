@@ -18,11 +18,6 @@ import {
 import { PRESET_COLORS } from './data'
 import type { PerfScore, ToolbarProps } from './types'
 
-const applyMainColor = (hex: string) => {
-  document.documentElement.style.setProperty('--color-main', hex)
-  localStorage.setItem('page-builder-main-color', hex)
-}
-
 const isValidHex = (value: string) => {
   return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(value)
 }
@@ -32,11 +27,13 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
 
   const getSections = usePageBuilderStore(state => state.getSections)
   const getOrder = usePageBuilderStore(state => state.getCurrentOrder)
+  const setMainColor = usePageBuilderStore(state => state.setInitialMainColor)
+  const setColorPalette = usePageBuilderStore(
+    state => state.setInitialColorPalette
+  )
 
-  const [activeColor, setActiveColor] = useState<string>(() => {
-    if (typeof window === 'undefined') return '#2563eb'
-    return localStorage.getItem('page-builder-main-color') ?? '#2563eb'
-  })
+  const activeColor = usePageBuilderStore(s => s.mainColor)
+
   const [showPalette, setShowPalette] = useState<boolean>(false)
   const [customHex, setCustomHex] = useState<string>('')
   const [customError, setCustomError] = useState<boolean>(false)
@@ -61,9 +58,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
 
   const handleSave = async () => {
     try {
-      await axios.post('/api/pages/update-copies', {
-        slug,
-        id,
+      await axios.patch(`/api/pages/${id}`, {
         sections: getSections(),
         order: getOrder(),
         token
@@ -104,13 +99,31 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
     }
   }
 
-  const handleSelectColor = (hex: string) => {
-    setActiveColor(hex)
-    applyMainColor(hex)
+  const handleSelectColor = async (hex: string) => {
+    const previousColor = activeColor
+
+    setMainColor(hex)
+
     setShowPalette(false)
     setCustomHex('')
     setCustomError(false)
-    toast.success('Cor principal atualizada!', { position: 'top-center' })
+
+    try {
+      const updated_ong = await axios.patch(`/api/pages/${id}`, {
+        main_color: hex,
+        token
+      })
+
+      setColorPalette(updated_ong?.data?.page?.color_pallete)
+      toast.success('Cor principal atualizada!', { position: 'top-center' })
+    } catch (err) {
+      setMainColor(previousColor)
+      console.error(err)
+
+      toast.error('Não foi possível atualizar a cor', {
+        position: 'top-center'
+      })
+    }
   }
 
   const handleCustomHexChange = (value: string) => {

@@ -6,15 +6,19 @@ import { EditableLinkField } from '@/components/page-builder/template-fields/edi
 
 import type { HeaderProps } from './types'
 
-export const Header: FC<HeaderProps> = ({ copy }) => {
+export const Header: FC<HeaderProps> = ({ copy, palette }) => {
   return (
     <section className="relative overflow-hidden bg-white px-4 xl:px-0">
       <header className="mx-auto flex w-full max-w-2xl flex-col lg:min-h-[700px] lg:max-w-7xl lg:flex-row lg:items-center">
         <div className="flex flex-1 flex-col justify-between gap-10 py-16 pr-0 lg:py-20 lg:pr-16">
           <div className="flex flex-col gap-2">
             <EditableCopyField
+              style={{
+                borderLeft: `4px solid ${palette.original}`,
+                color: palette.original
+              }}
               as="span"
-              className="w-fit rounded-none border-l-4 border-rose-600 pl-3 text-xs font-bold tracking-widest text-rose-600 uppercase"
+              className="w-fit rounded-none pl-3 text-xs font-bold tracking-widest uppercase"
               defaultValue={copy.label}
               path="header.label"
             />
@@ -31,9 +35,10 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
                 />
                 <EditableCopyField
                   as="span"
-                  className="max-w-xl text-4xl leading-[1.1] font-black text-rose-600 not-italic lg:text-5xl xl:text-6xl"
+                  className="max-w-xl text-4xl leading-[1.1] font-black not-italic lg:text-5xl xl:text-6xl"
                   defaultValue={copy.decoratedTitle}
                   path="header.decoratedTitle"
+                  style={{ color: palette.original }}
                 />
               </div>
               <EditableCopyField
@@ -50,16 +55,18 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
                   href: copy.primaryAnchor?.href || '#',
                   label: copy.primaryAnchor?.label || 'Texto do link'
                 }}
-                className="rounded-none bg-rose-600 px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:bg-rose-700"
+                className="rounded-none px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:brightness-105"
                 path="header.primaryAnchor"
+                style={{ backgroundColor: palette.original }}
               />
               <EditableLinkField
                 defaultValue={{
                   href: copy.secondaryAnchor?.href || '#',
                   label: copy.secondaryAnchor?.label || 'Texto do link'
                 }}
-                className="rounded-none border-2 border-neutral-200 px-8 py-3.5 text-sm font-black tracking-wider text-neutral-600 uppercase transition-all duration-300 hover:border-rose-600 hover:text-rose-600"
+                className="rounded-none px-8 py-3.5 text-sm font-black tracking-wider text-neutral-600 uppercase transition-all duration-300"
                 path="header.secondaryAnchor"
+                style={{ border: `2px solid ${palette.shade}` }}
               />
             </div>
           </div>
@@ -69,9 +76,10 @@ export const Header: FC<HeaderProps> = ({ copy }) => {
               <div className="flex flex-col gap-0.5" key={`stat-${index}`}>
                 <EditableCopyField
                   as="p"
-                  className="text-2xl font-black text-rose-600"
+                  className="text-2xl font-black"
                   defaultValue={stat.title}
                   path={`header.stats[${index}].title`}
+                  style={{ color: palette.original }}
                 />
                 <EditableCopyField
                   as="p"

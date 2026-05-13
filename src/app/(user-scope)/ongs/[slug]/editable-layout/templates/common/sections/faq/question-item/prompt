@@ -1,0 +1,24 @@
+Hey! imagine that you're a senior frontend developer. You need to change the static details and backgrounds to dynamic ones:
+
+for example, I receive a json with this colors as "palette":
+
+```typescript
+{
+  deep: string
+  original: string
+  shade: string
+  tint: string
+  ultra_light: string
+}
+```
+
+
+I need to change for example the bg-amber to this dynamic colors:
+
+Adjust for me please, otimize  your response to save tokens. I dont want that you adjust anything else (keeps the text-neutral the same for example, rounded the same, etc...) just edit this background and details colors please, minimum changes as possible
+
+
+////
+
+adjust this one also, remember (dont change the border-radius, text-neutral colors and neither add shadows, doesnt add new hover effects, etc... just change the background colors and details)
+

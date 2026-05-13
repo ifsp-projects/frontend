@@ -5,17 +5,21 @@ import { EditableImageField } from '@/components/page-builder/template-fields/ed
 
 import type { InitiativesProps } from './types'
 
-export const Initiatives: FC<InitiativesProps> = ({ copy }) => {
+export const Initiatives: FC<InitiativesProps> = ({ copy, palette }) => {
   return (
     <section className="bg-neutral-100">
       <div className="mx-auto w-full max-w-2xl px-4 py-12 lg:max-w-7xl lg:py-16 xl:px-0">
         <div className="mb-12 flex items-center gap-3">
-          <span className="h-px w-8 bg-amber-400" />
+          <span
+            className="h-px w-8"
+            style={{ backgroundColor: palette.original }}
+          />
           <EditableCopyField
             as="span"
-            className="text-xs font-bold tracking-widest text-amber-500 uppercase"
+            className="text-xs font-bold tracking-widest uppercase"
             defaultValue={copy.label}
             path="initiatives.label"
+            style={{ color: palette.original }}
           />
         </div>
 
@@ -45,8 +49,12 @@ export const Initiatives: FC<InitiativesProps> = ({ copy }) => {
                     width={600}
                   />
                   <EditableCopyField
+                    style={{
+                      backgroundColor: palette.original,
+                      color: palette.deep
+                    }}
                     as="span"
-                    className="absolute top-3 left-3 rounded-full bg-amber-400 px-3 py-1 text-[10px] font-black tracking-widest text-amber-950 uppercase"
+                    className="absolute top-3 left-3 rounded-full px-3 py-1 text-[10px] font-black tracking-widest uppercase"
                     defaultValue={tag}
                     path={`initiatives.cards[${i}].tag`}
                   />
@@ -81,8 +89,12 @@ export const Initiatives: FC<InitiativesProps> = ({ copy }) => {
                       />
                     </div>
                     <EditableCopyField
+                      style={{
+                        border: `1px solid ${palette.tint}`,
+                        color: palette.shade
+                      }}
                       as="span"
-                      className={`rounded-sm border border-amber-200 px-3 py-1 text-[10px] font-bold text-amber-600`}
+                      className="rounded-sm px-3 py-1 text-[10px] font-bold"
                       defaultValue={status}
                       path={`initiatives.cards[${i}].status`}
                     />

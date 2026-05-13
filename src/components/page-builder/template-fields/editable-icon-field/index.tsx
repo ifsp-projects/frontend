@@ -1,6 +1,6 @@
 'use client'
 
-import type { ReactElement } from 'react'
+import type { CSSProperties, ReactElement } from 'react'
 import React, { type FC, useEffect, useState } from 'react'
 
 import {
@@ -22,6 +22,7 @@ export const EditableIconField: FC<EditableIconFieldProps> = ({
   defaultValue = 'star-lightbulb',
   className = '',
   iconClassName = 'w-4 h-4',
+  style = {},
   ...props
 }) => {
   const updateField = usePageBuilderStore(state => state.updateField)
@@ -53,8 +54,12 @@ export const EditableIconField: FC<EditableIconFieldProps> = ({
           <div className={iconClassName}>
             {React.isValidElement(CurrentIcon)
               ? React.cloneElement(
-                  CurrentIcon as ReactElement<{ className?: string }>,
+                  CurrentIcon as ReactElement<{
+                    className?: string
+                    style: CSSProperties
+                  }>,
                   {
+                    style: style,
                     className: iconClassName
                   }
                 )

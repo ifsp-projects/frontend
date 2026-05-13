@@ -1,17 +1,24 @@
-import type { FC } from 'react'
+import type { CSSProperties, FC } from 'react'
 import React from 'react'
 
 import { EDITABLE_ICON_FIELD_ICONS } from '@/components/page-builder/template-fields/editable-icon-field/data'
 
 import type { HowItWorksProps } from './types'
 
-export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
+export const HowItWorks: FC<HowItWorksProps> = ({ copy, palette }) => {
   return (
     <section className="bg-white">
       <div className="mx-auto w-full max-w-2xl px-4 py-12 lg:max-w-7xl lg:py-16 xl:px-0">
         <div className="mb-8 flex items-center gap-4 lg:mb-16">
           <div className="h-px flex-1 bg-neutral-100" />
-          <span className="rounded-full border border-amber-200 bg-amber-50 px-5 py-1.5 text-[10px] font-bold tracking-widest text-amber-600 uppercase">
+          <span
+            style={{
+              border: `1px solid ${palette.tint}`,
+              backgroundColor: palette.ultra_light,
+              color: palette.original
+            }}
+            className="rounded-full border px-5 py-1.5 text-[10px] font-bold tracking-widest uppercase"
+          >
             {copy?.span || ''}
           </span>
           <div className="h-px flex-1 bg-neutral-100" />
@@ -27,31 +34,45 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
         </article>
 
         <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-0">
-          <div className="absolute top-10 left-[12.5%] hidden h-px w-3/4 bg-amber-100 lg:block" />
+          <div
+            className="absolute top-10 left-[12.5%] hidden h-px w-3/4 lg:block"
+            style={{ backgroundColor: palette.tint }}
+          />
 
           {copy.cards.map(({ icon, title, description }, i) => (
             <div className="relative flex flex-col gap-5 lg:px-6" key={i}>
               <div className="relative flex items-start gap-4 lg:flex-col lg:gap-5">
-                <figure className="relative z-10 flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-md border-4 border-white bg-amber-400 ring ring-amber-400">
+                <figure
+                  style={{
+                    backgroundColor: palette.original,
+                    outline: `1px solid ${palette.original}`
+                  }}
+                  className="relative z-10 mx-auto flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-md border-4 border-white"
+                >
                   {React.cloneElement(
                     EDITABLE_ICON_FIELD_ICONS[icon] as React.ReactElement<{
                       className?: string
                       strokeWidth?: number
+                      style: CSSProperties
                     }>,
                     {
-                      className: 'h-6 w-6 text-neutral-700 lg:h-7 lg:w-7',
-                      strokeWidth: 1.8
+                      className: 'h-6 w-6 lg:h-7 lg:w-7',
+                      strokeWidth: 1.8,
+                      style: { color: palette.deep }
                     }
                   )}
-                  <span className="text-[10px] font-black text-neutral-700">
+                  <span
+                    className="text-[10px] font-black"
+                    style={{ color: `${palette.deep}B3` }}
+                  >
                     {i + 1}
                   </span>
                 </figure>
-                <article className="flex flex-col gap-1.5 lg:mt-6">
-                  <h3 className="text-base font-black text-neutral-700">
+                <article className="flex flex-col items-center gap-1.5 lg:mt-6">
+                  <h3 className="text-center text-base font-black text-neutral-700">
                     {title}
                   </h3>
-                  <p className="text-xs text-neutral-500 md:text-sm">
+                  <p className="text-center text-xs text-neutral-500 md:text-sm">
                     {description}
                   </p>
                 </article>

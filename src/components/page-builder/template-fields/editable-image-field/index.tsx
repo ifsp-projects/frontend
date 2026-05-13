@@ -19,6 +19,7 @@ export const EditableImageField: FC<EditableImageFieldProps> = ({
   alt = 'Editable image',
   height,
   width,
+  style = {},
   ...props
 }) => {
   const updateField = usePageBuilderStore(state => state.updateField)
@@ -61,6 +62,7 @@ export const EditableImageField: FC<EditableImageFieldProps> = ({
               className={`max-h-full max-w-full object-cover ${className}`}
               height={height}
               src={currentImage}
+              style={style}
               width={width}
               {...props}
             />

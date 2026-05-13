@@ -2,7 +2,10 @@ import lodashSet from 'lodash.set'
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
-import { DEFAULT_TEMPLATES_ORDER } from '@/constants/page-templates/default-templates-order'
+import {
+  DEFAULT_TEMPLATES_ORDER,
+  DEFAULT_TEMPLATE_COLORS
+} from '@/constants/page-templates/default-templates-order'
 
 import type { PageBuilderState } from './types'
 
@@ -17,12 +20,24 @@ export const usePageBuilderStore = create<PageBuilderState>()(
      */
     sections: {},
     order: [],
+    mainColor: '',
+    colorPalette: {
+      deep: '',
+      original: '',
+      shade: '',
+      tint: '',
+      ultra_light: ''
+    },
 
     /**
      * Initializes or replaces the entire sections state.
      * * @param {Object} sections - The complete sections object to populate the store.
      */
     setInitialSections: sections => set({ sections }),
+
+    setInitialMainColor: mainColor => set({ mainColor }),
+
+    setInitialColorPalette: colorPalette => set({ colorPalette }),
 
     /**
      * Updates a specific nested field within the sections state.
@@ -61,6 +76,18 @@ export const usePageBuilderStore = create<PageBuilderState>()(
     getCurrentOrder: () => get().order,
 
     getSectionOrder: (template: string) =>
-      get().order ?? DEFAULT_TEMPLATES_ORDER[template]
+      get().order ?? DEFAULT_TEMPLATES_ORDER[template],
+
+    getPageMainColor: (template: string) =>
+      get().mainColor ?? DEFAULT_TEMPLATE_COLORS[template],
+
+    getColorPalette: (template: string) =>
+      get().colorPalette ?? {
+        deep: '#fff',
+        original: '#fff',
+        shade: '#fff',
+        tint: '#fff',
+        ultra_light: '#fff'
+      }
   }))
 )

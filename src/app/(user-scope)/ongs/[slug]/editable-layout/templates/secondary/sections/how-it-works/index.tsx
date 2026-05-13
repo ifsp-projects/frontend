@@ -4,7 +4,7 @@ import { EditableLinkField } from '@/components/page-builder/template-fields/edi
 
 import type { HowItWorksProps } from './types'
 
-export const HowItWorks: React.FC<HowItWorksProps> = ({ copy }) => {
+export const HowItWorks: React.FC<HowItWorksProps> = ({ copy, palette }) => {
   return (
     <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12">
@@ -21,8 +21,14 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ copy }) => {
         <div className="flex w-full flex-col gap-8">
           <article className="flex w-full flex-col gap-2">
             <EditableCopyField
+              style={{
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: palette.original,
+                color: palette.original
+              }}
               as="span"
-              className="mb-2 w-fit rounded-full border border-blue-500 px-4 py-1 text-xs text-blue-500"
+              className="mb-2 w-fit rounded-full px-4 py-1 text-xs"
               defaultValue={copy.span}
               path="howItWorks.span"
             />
@@ -44,8 +50,9 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ copy }) => {
               href: copy.anchor?.href || '#',
               label: copy.anchor?.label || 'Texto do link'
             }}
-            className="flex max-w-fit items-center justify-center rounded-md bg-blue-500 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
+            className="flex max-w-fit items-center justify-center rounded-md px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
             path="howItWorks.anchor"
+            style={{ backgroundColor: palette.original }}
           />
         </div>
       </div>

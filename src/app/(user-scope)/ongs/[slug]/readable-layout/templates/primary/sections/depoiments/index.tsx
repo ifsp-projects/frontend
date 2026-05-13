@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { DepoimentCard } from './depoiment-card'
 import type { DepoimentProps } from './types'
 
-export const Depoiments: FC<DepoimentProps> = ({ copy }) => {
+export const Depoiments: FC<DepoimentProps> = ({ copy, palette }) => {
   return (
     <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl">
@@ -17,7 +17,11 @@ export const Depoiments: FC<DepoimentProps> = ({ copy }) => {
         </article>
         <div className="flex w-full flex-col gap-6 lg:flex-row lg:justify-between">
           {copy.cards.map((card, index: number) => (
-            <DepoimentCard copy={card} key={`depoiment-card-${index}`} />
+            <DepoimentCard
+              copy={card}
+              key={`depoiment-card-${index}`}
+              palette={palette}
+            />
           ))}
         </div>
       </div>

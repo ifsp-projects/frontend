@@ -6,7 +6,7 @@ import { formatPhoneToWhatsappLink } from '@/utils/helpers/format-phone-to-whats
 
 import type { HowItWorksProps } from './types'
 
-export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
+export const HowItWorks: FC<HowItWorksProps> = ({ copy, palette }) => {
   return (
     <section className="bg-neutral-50 px-4 py-12 lg:py-16 xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12">
@@ -21,7 +21,15 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
         </figure>
         <div className="flex w-full flex-col gap-8">
           <article className="flex w-full flex-col gap-2">
-            <p className="mb-2 w-fit rounded-full bg-blue-50 px-4 py-1 text-xs text-blue-500">
+            <p
+              style={{
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: palette.original,
+                color: palette.original
+              }}
+              className="mb-2 w-fit rounded-full px-4 py-1 text-xs"
+            >
               {copy.span}
             </p>
             <h2 className="text-2xl font-bold lg:text-5xl">{copy.title}</h2>
@@ -31,7 +39,8 @@ export const HowItWorks: FC<HowItWorksProps> = ({ copy }) => {
             href={
               formatPhoneToWhatsappLink({ phone: copy?.anchor?.href }) || '#'
             }
-            className="flex max-w-fit cursor-pointer items-center justify-center rounded-md bg-blue-500 px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
+            className="flex max-w-fit cursor-pointer items-center justify-center rounded-md px-6 py-2 text-center text-sm font-bold text-white transition-all duration-300 hover:brightness-105"
+            style={{ backgroundColor: palette.original }}
             target="_blank"
           >
             {copy.anchor?.label || 'Texto do botão'}

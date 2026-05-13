@@ -3,34 +3,26 @@ import type { FC } from 'react'
 
 import type { InitiativesProps } from './types'
 
-const highlightLastWord = (text: string) => {
-  const words = text.split(' ')
-  const last = words.pop()
-  return (
-    <>
-      {words.join(' ')}{' '}
-      <span className="relative inline-block">
-        <span className="relative z-10">{last}</span>
-        <span className="absolute bottom-1 left-0 z-0 h-3 w-full bg-amber-300/60" />
-      </span>
-    </>
-  )
-}
-
-export const Initiatives: FC<InitiativesProps> = ({ copy }) => {
+export const Initiatives: FC<InitiativesProps> = ({ copy, palette }) => {
   return (
     <section className="bg-neutral-100">
       <div className="mx-auto w-full max-w-2xl px-4 py-12 lg:max-w-7xl lg:py-16 xl:px-0">
         <div className="mb-12 flex items-center gap-3">
-          <span className="h-px w-8 bg-amber-400" />
-          <span className="text-xs font-bold tracking-widest text-amber-500 uppercase">
+          <span
+            className="h-px w-8"
+            style={{ backgroundColor: palette.original }}
+          />
+          <span
+            className="text-xs font-bold tracking-widest uppercase"
+            style={{ color: palette.original }}
+          >
             {copy.label}
           </span>
         </div>
 
         <div className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="max-w-lg text-3xl leading-tight font-black text-neutral-700 lg:text-4xl xl:text-5xl">
-            {highlightLastWord(copy.title)}
+            {copy.title}
           </h2>
         </div>
 
@@ -49,7 +41,13 @@ export const Initiatives: FC<InitiativesProps> = ({ copy }) => {
                     src={image}
                     width={600}
                   />
-                  <span className="absolute top-3 left-3 rounded-full bg-amber-400 px-3 py-1 text-[10px] font-black tracking-widest text-amber-950 uppercase">
+                  <span
+                    style={{
+                      backgroundColor: palette.original,
+                      color: palette.deep
+                    }}
+                    className="absolute top-3 left-3 rounded-full px-3 py-1 text-[10px] font-black tracking-widest uppercase"
+                  >
                     {tag}
                   </span>
                 </div>
@@ -74,7 +72,11 @@ export const Initiatives: FC<InitiativesProps> = ({ copy }) => {
                       </span>
                     </div>
                     <span
-                      className={`rounded-sm border border-amber-200 px-3 py-1 text-[10px] font-bold text-amber-600`}
+                      style={{
+                        border: `1px solid ${palette.tint}`,
+                        color: palette.shade
+                      }}
+                      className="rounded-sm px-3 py-1 text-[10px] font-bold"
                     >
                       {status}
                     </span>

@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 
 import { SortableSectionsHydrated } from '@/components/page-builder/sortable-sections/hydrated'
+import { DEFAULT_TEMPLATE_COLORS } from '@/constants/page-templates/default-templates-order'
 import { instanceMotor } from '@/instances/motor'
 
 import { CopyGenerator } from '../../components/copy-generator'
@@ -14,9 +15,19 @@ export const EditablePrimaryLandingPageLayout: FC<
   const { data } = await instanceMotor.pages.getPageBySlug({ slug })
 
   return (
-    <main className="text-neutral-700 selection:bg-emerald-50!">
+    <main className="text-neutral-700">
       <Driver />
       <SortableSectionsHydrated
+        colorPalette={
+          data?.page?.color_pallete || {
+            deep: '#fff',
+            original: '#fff',
+            shade: '#fff',
+            tint: '#fff',
+            ultra_light: '#fff'
+          }
+        }
+        mainColor={data?.page?.main_color || DEFAULT_TEMPLATE_COLORS.primary}
         order={data?.page?.order}
         sections={data?.page?.sections}
         template="primary"
