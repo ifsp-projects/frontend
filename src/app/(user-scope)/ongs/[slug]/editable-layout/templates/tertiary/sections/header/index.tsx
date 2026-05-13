@@ -109,7 +109,7 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
           <EditableImageField
             alt="Hero Image"
             className="w-full object-cover"
-            defaultValue={copy.image}
+            defaultValue={copy.heroImage}
             height={800}
             path="header.heroImage"
             width={800}

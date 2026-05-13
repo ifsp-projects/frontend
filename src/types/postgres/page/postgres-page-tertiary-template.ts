@@ -21,6 +21,7 @@ export interface PostgresPageTertiaryTemplate {
     }[]
   }
   header: {
+    heroImage: string
     span: string
     title: string
     decoratedText: string

@@ -100,10 +100,12 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
 
         <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:max-w-[650px] lg:pr-24 xl:max-w-[700px]">
           <Image
+            src={
+              copy?.heroImage || '"/templates/undraw_different-love_58hd.svg"'
+            }
             alt="Hero Image"
             className="w-full rounded-sm object-cover"
             height={800}
-            src={copy?.image || '"/templates/undraw_different-love_58hd.svg"'}
             width={800}
           />
         </figure>
