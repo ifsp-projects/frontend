@@ -41,9 +41,8 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy, palette }) => {
         <div className="grid grid-cols-1 gap-px border border-neutral-100 bg-neutral-100 md:grid-cols-2">
           {copy.cards.map(({ icon, title, description }, index: number) => (
             <div
-              className="group relative flex flex-col gap-6 p-8"
+              className="group relative flex flex-col gap-6 bg-neutral-50 p-8"
               key={title}
-              style={{ backgroundColor: palette.tint }}
             >
               <div
                 style={{
@@ -77,7 +76,7 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy, palette }) => {
           ))}
         </div>
 
-        <div className="mt-px flex flex-col gap-4 border border-t-0 border-neutral-100 bg-neutral-50 px-8 py-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-px flex flex-col gap-4 border border-t-0 border-neutral-100 bg-neutral-100 px-8 py-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-4">
             <div
               className="h-2 w-2 animate-pulse rounded-full"

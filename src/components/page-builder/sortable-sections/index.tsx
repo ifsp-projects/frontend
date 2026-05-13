@@ -3,7 +3,8 @@
 
 import {
   DEFAULT_TEMPLATES_ORDER,
-  DEFAULT_TEMPLATE_COLORS
+  DEFAULT_TEMPLATE_COLORS,
+  DEFAULT_TEMPLATE_COLOR_PALLETES
 } from '@/constants/page-templates/default-templates-order'
 import { usePageBuilderStore } from '@/stores/page-builder-store'
 import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
@@ -83,21 +84,31 @@ function SortableSection({
 export function SortableSections({
   sections,
   template,
-  isEditable
+  isEditable,
+  initialColorPalette,
+  initialMainColor
 }: {
   sections: Record<string, any>
   template: TemplateType
   isEditable: boolean
+  initialColorPalette?: PostgresColorPalette
+  initialMainColor?: string
 }) {
   const order = usePageBuilderStore(s =>
     s.order.length ? s.order : DEFAULT_TEMPLATES_ORDER[template]
   )
 
-  const mainColor = usePageBuilderStore(
-    c => c.mainColor ?? DEFAULT_TEMPLATE_COLORS[template]
-  )
+  const colorPalette =
+    usePageBuilderStore(p =>
+      p.colorPalette?.original ? p.colorPalette : null
+    ) ??
+    initialColorPalette ??
+    DEFAULT_TEMPLATE_COLOR_PALLETES[template]
 
-  const colorPalette = usePageBuilderStore(p => p.colorPalette)
+  const mainColor =
+    usePageBuilderStore(c => c.mainColor || null) ??
+    initialMainColor ??
+    DEFAULT_TEMPLATE_COLORS[template]
 
   const reorderSections = usePageBuilderStore(s => s.reorderSections)
 

@@ -4,8 +4,10 @@ import { immer } from 'zustand/middleware/immer'
 
 import {
   DEFAULT_TEMPLATES_ORDER,
-  DEFAULT_TEMPLATE_COLORS
+  DEFAULT_TEMPLATE_COLORS,
+  DEFAULT_TEMPLATE_COLOR_PALLETES
 } from '@/constants/page-templates/default-templates-order'
+import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
 
 import type { PageBuilderState } from './types'
 
@@ -20,14 +22,8 @@ export const usePageBuilderStore = create<PageBuilderState>()(
      */
     sections: {},
     order: [],
-    mainColor: '',
-    colorPalette: {
-      deep: '',
-      original: '',
-      shade: '',
-      tint: '',
-      ultra_light: ''
-    },
+    colorPalette: null as unknown as PostgresColorPalette,
+    mainColor: null as unknown as string,
 
     /**
      * Initializes or replaces the entire sections state.
@@ -82,12 +78,6 @@ export const usePageBuilderStore = create<PageBuilderState>()(
       get().mainColor ?? DEFAULT_TEMPLATE_COLORS[template],
 
     getColorPalette: (template: string) =>
-      get().colorPalette ?? {
-        deep: '#fff',
-        original: '#fff',
-        shade: '#fff',
-        tint: '#fff',
-        ultra_light: '#fff'
-      }
+      get().colorPalette ?? DEFAULT_TEMPLATE_COLOR_PALLETES[template]
   }))
 )

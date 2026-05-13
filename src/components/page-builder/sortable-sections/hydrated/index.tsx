@@ -43,6 +43,8 @@ export function SortableSectionsHydrated({
 
   return (
     <SortableSections
+      initialColorPalette={colorPalette}
+      initialMainColor={mainColor}
       isEditable={isEditable}
       sections={sections}
       template={template}
