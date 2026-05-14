@@ -73,6 +73,13 @@ export async function completeOnboardingAction(
 
   const { organizationId } = tokenValidation
 
+  console.log(JSON.stringify(formData))
+
+  console.log('[debug]', {
+    organizationId,
+    slug: generateSlug({ text: formData.name })
+  })
+
   const { data: created_organization_profile } =
     await instanceMotor.organizationProfiles.createOrganizationProfile({
       payload: {
