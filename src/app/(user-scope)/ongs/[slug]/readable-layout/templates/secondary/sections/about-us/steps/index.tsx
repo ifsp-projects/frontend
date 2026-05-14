@@ -15,6 +15,7 @@ export const Steps: FC<StepProps> = ({ cards, palette }) => {
         <motion.div
           className="flex w-full flex-col items-center gap-2 rounded-sm border border-neutral-200 bg-white px-4 py-8"
           initial={{ opacity: 0, y: 20 }}
+          key={`step-about-us-${index}`}
           transition={{ duration: 0.6, delay: index * 0.2 }}
           whileInView={{ opacity: 1, y: 0 }}
         >

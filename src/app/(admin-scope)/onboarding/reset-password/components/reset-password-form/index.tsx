@@ -1,5 +1,6 @@
 'use client'
 
+import { CheckCircle2, XCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -21,10 +22,15 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting }
   } = useForm<ResetPasswordFormData>({
-    resolver: zodResolver(resetPasswordSchema)
+    resolver: zodResolver(resetPasswordSchema),
+    mode: 'onChange'
   })
+
+  const passwordValue = watch('password', '')
+  const hasInteracted = passwordValue.length > 0
 
   const onSubmit = async (data: ResetPasswordFormData) => {
     setRootError(null)
@@ -40,21 +46,15 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
         success: false
         errors: Record<string, unknown>
       }
-
       if ('_root' in (failResult.errors ?? {})) {
         setRootError((failResult.errors as { _root: string })._root)
       }
-
       return
     }
 
-    posthogEventDispatch.account.startSignup({
-      referralSource: 'invite'
-    })
-
+    posthogEventDispatch.account.startSignup({ referralSource: 'invite' })
     sessionStorage.setItem('onboarding_email', email)
     sessionStorage.setItem('onboarding_password', data.password)
-
     router.push(`/onboarding?token=${token}`)
   }
 
@@ -82,12 +82,31 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
           {...register('password')}
           autoComplete="new-password"
           id="password"
-          name="password"
           placeholder="••••••••"
           type="password"
         />
-        {errors.password && (
-          <p className="text-xs text-rose-500">{errors.password[0]}</p>
+
+        {hasInteracted && (
+          <ul className="mt-1 flex flex-col gap-1">
+            {PASSWORD_RULES.map(({ label, test }) => {
+              const passed = test(passwordValue)
+              return (
+                <li
+                  className={`flex items-center gap-2 text-xs transition-colors ${
+                    passed ? 'text-emerald-600' : 'text-rose-500'
+                  }`}
+                  key={label}
+                >
+                  {passed ? (
+                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+                  ) : (
+                    <XCircle className="h-3.5 w-3.5 shrink-0" />
+                  )}
+                  {label}
+                </li>
+              )
+            })}
+          </ul>
         )}
       </div>
 
@@ -107,30 +126,14 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
           {...register('confirmPassword')}
           autoComplete="new-password"
           id="confirmPassword"
-          name="confirmPassword"
           placeholder="••••••••"
           type="password"
         />
         {errors.confirmPassword && (
-          <p className="text-xs text-rose-500">{errors.confirmPassword[0]}</p>
+          <p className="text-xs text-rose-500">
+            {errors.confirmPassword.message}
+          </p>
         )}
-      </div>
-
-      <div className="rounded-sm border border-neutral-100 bg-neutral-50 px-4 py-3">
-        <p className="mb-2 text-[10px] font-bold tracking-widest text-neutral-400 uppercase">
-          Requisitos
-        </p>
-        <ul className="flex flex-col gap-1.5">
-          {PASSWORD_RULES.map(rule => (
-            <li
-              className="flex items-center gap-2 text-xs text-neutral-500"
-              key={rule}
-            >
-              <span className="h-1 w-1 shrink-0 rounded-full bg-neutral-300" />
-              {rule}
-            </li>
-          ))}
-        </ul>
       </div>
 
       <button

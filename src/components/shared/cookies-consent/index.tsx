@@ -6,12 +6,12 @@ export const CookiesConsent = () => {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const consent = sessionStorage.getItem('cookieConsent')
+    const consent = localStorage.getItem('cookieConsent')
     if (!consent) setVisible(true)
   }, [])
 
   const handleConsent = (type: 'manage' | 'reject' | 'accept') => {
-    sessionStorage.setItem('cookieConsent', type)
+    localStorage.setItem('cookieConsent', type)
     setVisible(false)
   }
 
