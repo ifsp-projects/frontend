@@ -241,9 +241,9 @@ export const List: FC<ListProps> = ({ data }) => {
                             'Organização sem fins lucrativos dedicada a causas sociais.'}
                         </p>
                       </article>
-                      <div className="mt-0 flex w-full items-center justify-center rounded-full bg-rose-400 px-4 py-1.5 text-[13px] font-medium text-white transition-all duration-300 group-hover:bg-rose-500 lg:mt-2">
+                      <div className="mt-0 flex w-full items-center justify-center gap-1 rounded-full bg-rose-400 px-4 py-1.5 text-[13px] font-medium text-white transition-all duration-300 group-hover:bg-rose-500 lg:mt-2">
                         Conhecer{' '}
-                        <span className="hidden md:flex">o projeto</span>
+                        <span className="hidden md:flex"> o projeto</span>
                       </div>
                     </div>
                   </div>

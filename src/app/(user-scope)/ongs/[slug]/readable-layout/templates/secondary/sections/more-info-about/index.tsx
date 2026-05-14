@@ -9,11 +9,11 @@ export const MoreInfoAbout: FC<MoreInfoAboutProps> = ({ copy }) => {
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-8">
         {copy.cards.map((section, index: number) => (
           <div
-            className="mx-auto flex w-full max-w-2xl flex-col-reverse border-b border-neutral-200 py-8 last:border-transparent lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:py-8"
+            className="mx-auto flex w-full max-w-2xl flex-col-reverse border-b border-neutral-200 pb-6 last:border-transparent lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:pt-8 lg:pb-8"
             key={`${section.title}-${index}`}
           >
             <article
-              className={`flex w-full flex-col gap-4 lg:gap-6 ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
+              className={`flex w-full flex-col gap-1 pt-8 lg:gap-4 lg:pt-0 xl:gap-6 ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
             >
               <h2 className="text-2xl font-bold lg:text-3xl">
                 {section.title}

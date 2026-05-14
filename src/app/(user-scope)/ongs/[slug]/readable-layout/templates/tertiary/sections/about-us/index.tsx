@@ -55,10 +55,10 @@ export const AboutUs: FC<AboutUsProps> = ({ copy, palette }) => {
           </div>
 
           <ul className="grid grid-cols-2 gap-4">
-            {copy.stats.map(({ icon, value, label }) => (
+            {copy.stats.map(({ icon, value, label }, index: number) => (
               <li
                 className="group flex flex-col gap-4 rounded-sm border border-neutral-300 bg-white p-6"
-                key={label}
+                key={`how-it-works-stats-${index}`}
               >
                 <figure
                   className="flex h-10 w-10 items-center justify-center rounded-md"

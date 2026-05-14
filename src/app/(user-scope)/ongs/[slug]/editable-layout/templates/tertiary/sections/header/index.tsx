@@ -26,8 +26,8 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
       />
 
       <header className="relative z-10 mx-auto flex w-full max-w-2xl flex-col gap-8 py-12 lg:max-w-7xl lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:py-20">
-        <div className="flex w-full flex-col gap-6 lg:gap-8">
-          <article className="flex w-full max-w-[580px] flex-col gap-4">
+        <div className="flex w-full flex-col items-center gap-6 lg:items-start lg:gap-8">
+          <article className="flex w-full max-w-[580px] flex-col items-center gap-4 lg:items-start">
             <EditableCopyField
               style={{
                 border: `1px solid ${palette.deep}33`,
@@ -42,7 +42,7 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
             <div className="flex flex-col">
               <EditableCopyField
                 as="h1"
-                className="text-3xl leading-tight font-black lg:text-5xl xl:text-6xl"
+                className="text-center text-3xl leading-tight font-black lg:text-left lg:text-5xl xl:text-6xl"
                 defaultValue={copy.title}
                 path="header.title"
                 style={{ color: palette.deep }}
@@ -72,7 +72,7 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
             </div>
             <EditableCopyField
               as="p"
-              className="mt-6 text-sm leading-relaxed lg:text-base"
+              className="mt-6 text-center text-sm leading-relaxed lg:text-left lg:text-base"
               defaultValue={copy.description}
               path="header.description"
               style={{ color: palette.deep }}
@@ -105,7 +105,7 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
           </article>
         </div>
 
-        <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24">
+        <figure className="relative z-30 w-full rounded-sm lg:max-w-[500px] lg:pr-24 xl:max-w-[650px] 2xl:max-w-[700px]">
           <EditableImageField
             alt="Hero Image"
             className="w-full object-cover"

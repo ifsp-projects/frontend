@@ -17,7 +17,7 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
                 borderLeft: `4px solid ${palette.original}`,
                 color: palette.original
               }}
-              className="w-fit rounded-none pl-3 text-xs font-bold tracking-widest uppercase"
+              className="mx-auto w-fit rounded-none pl-3 text-xs font-bold tracking-widest uppercase md:mx-0"
             >
               {copy.label}
             </span>
@@ -25,25 +25,25 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
 
           <div className="flex flex-col gap-8">
             <article className="-mt-4 flex flex-col gap-6 lg:-mt-8">
-              <h1 className="max-w-xl text-4xl leading-[1.1] font-black text-neutral-800 lg:text-5xl xl:text-6xl">
+              <h1 className="max-w-xl text-center text-4xl leading-[1.1] font-black text-neutral-800 md:text-left lg:text-5xl xl:text-6xl">
                 {copy.title}{' '}
                 <em className="not-italic" style={{ color: palette.original }}>
                   {copy.decoratedTitle}
                 </em>
               </h1>
-              <p className="max-w-md text-sm leading-relaxed text-neutral-500 lg:text-base">
+              <p className="max-w-md text-center text-sm leading-relaxed text-neutral-500 md:text-left lg:text-base">
                 {copy.description}
               </p>
             </article>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-col flex-wrap items-center gap-3 md:flex-row">
               <Link
                 href={
                   formatPhoneToWhatsappLink({
                     phone: copy?.primaryAnchor?.href
                   }) || '#'
                 }
-                className="rounded-none px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:brightness-110"
+                className="flex min-w-full items-center justify-center rounded-none px-4 py-2 text-sm font-black text-white transition-all duration-300 hover:brightness-110 md:min-w-0 lg:px-8 lg:py-3.5 lg:tracking-wider lg:uppercase"
                 style={{ backgroundColor: palette.original }}
               >
                 {copy.primaryAnchor?.label || 'Texto do botão'}
@@ -54,14 +54,14 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
                     phone: copy?.secondaryAnchor?.href
                   }) || '#'
                 }
-                className="rounded-none border-2 border-neutral-200 px-8 py-3.5 text-sm font-black tracking-wider text-neutral-600 uppercase transition-all duration-300"
+                className="flex min-w-full items-center justify-center rounded-none border-2 border-neutral-200 px-4 py-2 text-sm font-black text-neutral-600 transition-all duration-300 md:min-w-0 lg:px-8 lg:py-3.5 lg:tracking-wider lg:uppercase"
               >
                 {copy.secondaryAnchor?.label || 'Texto do botão'}
               </Link>
             </div>
           </div>
 
-          <ul className="flex items-center gap-8 border-t border-neutral-100 pt-8">
+          <ul className="hidden items-center gap-8 border-t border-neutral-100 pt-8 md:flex">
             {copy.stats.map((stat, index: number) => (
               <li className="flex flex-col gap-0.5" key={`stat-${index}`}>
                 <p
@@ -78,7 +78,7 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
           </ul>
         </div>
 
-        <figure className="relative z-30 w-full max-w-[500px] rounded-sm lg:pr-24 xl:max-w-[600px]">
+        <figure className="relative z-30 w-full rounded-sm lg:max-w-[500px] lg:pr-24 xl:max-w-[600px]">
           <Image
             alt="Hero Image"
             className="w-full rounded-sm object-cover"

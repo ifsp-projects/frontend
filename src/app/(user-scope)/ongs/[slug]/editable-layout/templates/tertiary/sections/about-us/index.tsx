@@ -69,7 +69,7 @@ export const AboutUs: FC<AboutUsProps> = ({ copy, palette }) => {
             {copy.stats.map(({ icon }, index: number) => (
               <div
                 className="group flex flex-col gap-4 rounded-sm border border-neutral-300 bg-white p-6"
-                key={`about-us-item-${index}`}
+                key={`about-us-stat-${index}`}
               >
                 <figure
                   className="flex h-10 w-10 items-center justify-center rounded-md"

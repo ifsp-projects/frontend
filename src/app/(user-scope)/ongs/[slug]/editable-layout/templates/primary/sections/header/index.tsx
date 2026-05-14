@@ -30,19 +30,19 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
                 borderColor: palette.tint
               }}
               as="span"
-              className="w-fit rounded-full px-3 py-1 text-[11px] font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200 lg:px-4 lg:py-1.5 lg:text-xs"
+              className="w-fit rounded-full px-4 py-1.5 text-xs font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200"
               defaultValue={copy.span}
               path="header.span"
             />
             <EditableCopyField
               as="h1"
-              className="text-2xl font-bold text-neutral-700 lg:text-4xl xl:text-5xl"
+              className="text-center text-2xl font-bold text-neutral-700 lg:text-left lg:text-4xl xl:text-5xl"
               defaultValue={copy.title}
               path="header.title"
             />
             <EditableCopyField
               as="p"
-              className="text-sm text-neutral-500 lg:text-base"
+              className="text-center text-sm text-neutral-500 lg:text-left lg:text-base"
               defaultValue={copy.description}
               path="header.description"
             />

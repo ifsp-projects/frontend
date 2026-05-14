@@ -18,7 +18,7 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
                 color: palette.original
               }}
               as="span"
-              className="w-fit rounded-none pl-3 text-xs font-bold tracking-widest uppercase"
+              className="mx-auto w-fit rounded-none pl-3 text-xs font-bold tracking-widest uppercase md:mx-0"
               defaultValue={copy.label}
               path="header.label"
             />
@@ -29,7 +29,7 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
               <div className="flex flex-col">
                 <EditableCopyField
                   as="h1"
-                  className="max-w-xl text-4xl leading-[1.1] font-black text-neutral-800 lg:text-5xl xl:text-6xl"
+                  className="max-w-xl text-center text-4xl leading-[1.1] font-black text-neutral-800 md:text-left lg:text-5xl xl:text-6xl"
                   defaultValue={copy.title}
                   path="header.title"
                 />
@@ -43,19 +43,19 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
               </div>
               <EditableCopyField
                 as="p"
-                className="max-w-md text-sm leading-relaxed text-neutral-500 lg:text-base"
+                className="max-w-md text-center text-sm leading-relaxed text-neutral-500 md:text-left lg:text-base"
                 defaultValue={copy.description}
                 path="header.description"
               />
             </article>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-col flex-wrap items-center gap-3 md:flex-row">
               <EditableLinkField
                 defaultValue={{
                   href: copy.primaryAnchor?.href || '#',
                   label: copy.primaryAnchor?.label || 'Texto do link'
                 }}
-                className="rounded-none px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:brightness-105"
+                className="flex min-w-full items-center justify-center rounded-none px-4 py-2 text-sm font-black text-white transition-all duration-300 hover:brightness-110 md:min-w-0 lg:px-8 lg:py-3.5 lg:tracking-wider lg:uppercase"
                 path="header.primaryAnchor"
                 style={{ backgroundColor: palette.original }}
               />
@@ -64,14 +64,14 @@ export const Header: FC<HeaderProps> = ({ copy, palette }) => {
                   href: copy.secondaryAnchor?.href || '#',
                   label: copy.secondaryAnchor?.label || 'Texto do link'
                 }}
-                className="rounded-none px-8 py-3.5 text-sm font-black tracking-wider text-neutral-600 uppercase transition-all duration-300"
+                className="flex min-w-full items-center justify-center rounded-none border-2 border-neutral-200 px-4 py-2 text-sm font-black text-neutral-600 transition-all duration-300 md:min-w-0 lg:px-8 lg:py-3.5 lg:tracking-wider lg:uppercase"
                 path="header.secondaryAnchor"
                 style={{ border: `2px solid ${palette.shade}` }}
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-8 border-t border-neutral-100 pt-8">
+          <div className="hidden items-center gap-8 border-t border-neutral-100 pt-8 md:flex">
             {copy.stats.map((stat, index: number) => (
               <div className="flex flex-col gap-0.5" key={`stat-${index}`}>
                 <EditableCopyField

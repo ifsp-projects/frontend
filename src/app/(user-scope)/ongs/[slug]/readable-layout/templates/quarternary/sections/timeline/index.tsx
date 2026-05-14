@@ -35,7 +35,10 @@ export const Timeline: FC<TimelineProps> = ({ copy, palette }) => {
               className="relative flex gap-6 pb-12 last:pb-0 lg:flex-1 lg:flex-col lg:gap-6 lg:pt-12 lg:pr-8 lg:pb-0 last:lg:pr-0"
               key={`${card.title}-${index}`}
             >
-              <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center lg:absolute lg:top-[-19px] lg:left-0">
+              <div
+                className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center lg:absolute lg:top-[-20px] lg:left-0"
+                style={{ backgroundColor: palette.original }}
+              >
                 <span
                   className="text-[10px] font-black text-white"
                   style={{ backgroundColor: palette.original }}
@@ -71,7 +74,7 @@ export const Timeline: FC<TimelineProps> = ({ copy, palette }) => {
           ))}
         </div>
 
-        <div className="mt-20 flex flex-col items-center gap-4 border-t border-neutral-200 pt-12 text-center">
+        <div className="mt-20 hidden flex-col items-center gap-4 border-t border-neutral-200 pt-12 text-center md:flex">
           <p className="text-lg font-black text-neutral-700">
             {copy.anchorTitle}
           </p>
@@ -79,7 +82,8 @@ export const Timeline: FC<TimelineProps> = ({ copy, palette }) => {
             href={
               formatPhoneToWhatsappLink({ phone: copy?.anchor?.href }) || '#'
             }
-            className="rounded-none bg-rose-600 px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:bg-rose-700"
+            className="rounded-none px-6 py-2 text-sm font-black text-white transition-all duration-300 hover:brightness-110 lg:px-8 lg:py-3.5 lg:tracking-wider lg:uppercase"
+            style={{ backgroundColor: palette.original }}
             target="_blank"
           >
             {copy.anchor?.label || 'Texto do botão'}

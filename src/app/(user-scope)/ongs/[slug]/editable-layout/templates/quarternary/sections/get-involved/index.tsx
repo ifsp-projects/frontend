@@ -76,15 +76,15 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy, palette }) => {
           ))}
         </div>
 
-        <div className="mt-px flex flex-col gap-4 border border-t-0 border-neutral-100 bg-neutral-100 px-8 py-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-px flex flex-col gap-4 border border-t-0 border-neutral-100 bg-neutral-100 px-4 py-6 lg:flex-row lg:items-center lg:justify-between lg:px-8 lg:py-6">
           <div className="flex items-center gap-4">
             <div
-              className="h-2 w-2 animate-pulse rounded-full"
+              className="hidden h-2 w-2 animate-pulse rounded-full md:flex"
               style={{ backgroundColor: palette.original }}
             />
             <EditableCopyField
               as="p"
-              className="text-sm font-bold text-neutral-700"
+              className="text-sm text-neutral-500 lg:font-bold lg:text-neutral-700"
               defaultValue={copy.anchorText}
               path="getInvolved.anchorText"
             />
@@ -94,7 +94,7 @@ export const GetInvolved: FC<GetInvolvedProps> = ({ copy, palette }) => {
               href: copy.anchor?.href || '#',
               label: copy.anchor?.label || 'Texto do link'
             }}
-            className="shrink-0 rounded-none px-7 py-3 text-xs font-black tracking-wider text-white uppercase"
+            className="shrink-0 rounded-none px-7 py-3 text-center text-xs font-black tracking-wider text-white uppercase md:text-left"
             path="getInvolved.anchor"
             style={{ backgroundColor: palette.original }}
           />

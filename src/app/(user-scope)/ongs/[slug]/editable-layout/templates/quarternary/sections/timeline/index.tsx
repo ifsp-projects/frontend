@@ -40,7 +40,7 @@ export const Timeline: FC<TimelineProps> = ({ copy, palette }) => {
               key={`${card.title}-${index}`}
             >
               <div
-                className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center lg:absolute lg:top-[-19px] lg:left-0"
+                className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center lg:absolute lg:top-[-20px] lg:left-0"
                 style={{ backgroundColor: palette.original }}
               >
                 <span className="text-[10px] font-black text-white">
@@ -80,7 +80,7 @@ export const Timeline: FC<TimelineProps> = ({ copy, palette }) => {
           ))}
         </div>
 
-        <div className="mt-20 flex flex-col items-center gap-4 border-t border-neutral-200 pt-12 text-center">
+        <div className="mt-20 hidden flex-col items-center gap-4 border-t border-neutral-200 pt-12 text-center md:flex">
           <EditableCopyField
             as="p"
             className="text-lg font-black text-neutral-700"
@@ -92,7 +92,7 @@ export const Timeline: FC<TimelineProps> = ({ copy, palette }) => {
               href: copy.anchor?.href || '#',
               label: copy.anchor?.label || 'Texto do link'
             }}
-            className="rounded-none px-8 py-3.5 text-sm font-black tracking-wider text-white uppercase transition-all duration-300 hover:brightness-105"
+            className="rounded-none px-6 py-2 text-sm font-black text-white transition-all duration-300 hover:brightness-110 lg:px-8 lg:py-3.5 lg:tracking-wider lg:uppercase"
             path="timeline.anchor"
             style={{ backgroundColor: palette.original }}
           />
