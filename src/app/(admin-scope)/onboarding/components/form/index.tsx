@@ -91,7 +91,7 @@ export const OnboardingProfileForm = ({
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">
-            Finalizar cadastro
+            Finalizar cadastro do projeto
           </span>
           <div className="h-px flex-1 bg-neutral-100" />
         </div>
