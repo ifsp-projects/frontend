@@ -81,6 +81,7 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
           }`}
           {...register('password')}
           autoComplete="new-password"
+          disabled={isSubmitting}
           id="password"
           placeholder="••••••••"
           type="password"
@@ -125,6 +126,7 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
           }`}
           {...register('confirmPassword')}
           autoComplete="new-password"
+          disabled={isSubmitting}
           id="confirmPassword"
           placeholder="••••••••"
           type="password"

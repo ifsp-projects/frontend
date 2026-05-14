@@ -62,14 +62,23 @@ export async function completeOnboardingAction(
   token: string,
   formData: OnboardingProfileData
 ): Promise<ActionResult> {
-  const { data } = await admin.getInviteByToken({ inviteToken: token })
+  const tokenValidation = await validateTokenAction(token)
+
+  if (!tokenValidation.valid) {
+    return {
+      success: false,
+      errors: { _root: 'Convite inválido ou expirado.' }
+    }
+  }
+
+  const { organizationId } = tokenValidation
 
   const { data: created_organization_profile } =
     await instanceMotor.organizationProfiles.createOrganizationProfile({
       payload: {
         slug: generateSlug({ text: formData.name }),
         name: formData.name,
-        ong_id: data.inviteToken.organization_id,
+        ong_id: organizationId,
         ong_type: formData.ong_type as PostgresOngType,
         phone: formData.phone,
         design_template: formData.design_template as PostgresDesignTemplates,
@@ -78,6 +87,13 @@ export async function completeOnboardingAction(
         logo: 'https://static.vecteezy.com/ti/vetor-gratis/p1/19869277-ong-carta-logotipo-projeto-em-branco-fundo-ong-criativo-circulo-carta-logotipo-conceito-ong-carta-projeto-vetor.jpg'
       }
     })
+
+  if (!created_organization_profile?.organizationProfile?.id) {
+    return {
+      success: false,
+      errors: { _root: 'Erro ao criar perfil da ONG.' }
+    }
+  }
 
   await instanceMotor.addresses.createAddress({
     payload: {
@@ -92,9 +108,7 @@ export async function completeOnboardingAction(
     }
   })
 
-  await admin.useInviteToken({
-    inviteToken: data.inviteToken.id
-  })
+  await admin.useInviteToken({ inviteToken: token })
 
   return { success: true }
 }

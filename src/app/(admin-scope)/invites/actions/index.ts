@@ -48,7 +48,7 @@ export async function sendInviteAction(
     const { data: created_organization } =
       await instanceMotor.organizations.createOrganization({
         payload: {
-          account_status: 'inactive',
+          account_status: 'active',
           email: parsed.data.email,
           is_user_new: true,
           password: String(generateRandomNumber(1000, 9999)),
