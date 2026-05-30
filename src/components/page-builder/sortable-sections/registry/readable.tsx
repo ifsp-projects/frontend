@@ -36,6 +36,16 @@ type SectionRegistry = {
   >
 }
 
+/**
+ * Strongly typed registry contract.
+ *
+ * Guarantees that every template provides implementations
+ * for all sections declared in DEFAULT_TEMPLATES_ORDER.
+ *
+ * This prevents runtime failures caused by missing
+ * section registrations and provides compile-time safety
+ * whenever new sections are introduced.
+ */
 export const READABLE_TEMPLATE_SECTION_REGISTRY: SectionRegistry = {
   primary: {
     header: props => <PrimaryTemplateHeader {...props} />,

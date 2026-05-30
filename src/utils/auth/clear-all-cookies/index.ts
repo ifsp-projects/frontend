@@ -2,6 +2,12 @@
 
 import { cookies } from 'next/headers'
 
+/**
+ * Removes all cookies available in the current server request context.
+ *
+ * Useful for logout flows, session cleanup, or resetting
+ * user-related data stored in cookies.
+ */
 export const clearAllCookies = async () => {
   try {
     const cookie = await cookies()

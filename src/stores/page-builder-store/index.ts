@@ -18,11 +18,31 @@ import type { PageBuilderState } from './types'
 export const usePageBuilderStore = create<PageBuilderState>()(
   immer((set, get) => ({
     /**
-     * The current state of the page sections.
+     * Content for all page sections.
+     *
+     * Structure varies by template but generally contains
+     * all editable copy, images, links and configuration
+     * used to render the page.
      */
     sections: {},
+    /**
+     * Current visual ordering of sections.
+     *
+     * When empty, the builder falls back to the template's
+     * default ordering configuration.
+     */
     order: [],
+    /**
+     * Active theme palette selected for the page.
+     *
+     * Overrides template defaults when customized by users.
+     */
     colorPalette: null as unknown as PostgresColorPalette,
+    /**
+     * Primary brand color used throughout the page.
+     *
+     * Overrides the template default color when configured.
+     */
     mainColor: null as unknown as string,
 
     /**
@@ -31,8 +51,14 @@ export const usePageBuilderStore = create<PageBuilderState>()(
      */
     setInitialSections: sections => set({ sections }),
 
+    /**
+     * Initializes the page's primary color.
+     */
     setInitialMainColor: mainColor => set({ mainColor }),
 
+    /**
+     * Initializes the page's color palette.
+     */
     setInitialColorPalette: colorPalette => set({ colorPalette }),
 
     /**
@@ -52,8 +78,21 @@ export const usePageBuilderStore = create<PageBuilderState>()(
         state.sections = clonedSections
       }),
 
+    /**
+     * Moves a section from one position to another.
+     *
+     * Triggered by drag-and-drop interactions inside the
+     * page builder editor.
+     *
+     * If no custom ordering exists yet, the template's
+     * default ordering is used as the initial source.
+     */
     reorderSections: (fromIndex, toIndex, template: string) =>
       set((state: any) => {
+        /**
+         * Uses persisted ordering when available.
+         * Otherwise falls back to template defaults.
+         */
         const order: string[] = state.order.length
           ? state.order
           : DEFAULT_TEMPLATES_ORDER[template]
@@ -69,14 +108,38 @@ export const usePageBuilderStore = create<PageBuilderState>()(
      */
     getSections: () => get().sections,
 
+    /**
+     * Returns the current custom section ordering.
+     */
     getCurrentOrder: () => get().order,
 
+    /**
+     * Resolves the effective section order.
+     *
+     * Priority:
+     * 1. User-defined order
+     * 2. Template default order
+     */
     getSectionOrder: (template: string) =>
       get().order ?? DEFAULT_TEMPLATES_ORDER[template],
 
+    /**
+     * Resolves the active primary color.
+     *
+     * Priority:
+     * 1. Builder customization
+     * 2. Template default color
+     */
     getPageMainColor: (template: string) =>
       get().mainColor ?? DEFAULT_TEMPLATE_COLORS[template],
 
+    /**
+     * Resolves the active color palette.
+     *
+     * Priority:
+     * 1. Builder customization
+     * 2. Template default palette
+     */
     getColorPalette: (template: string) =>
       get().colorPalette ?? DEFAULT_TEMPLATE_COLOR_PALLETES[template]
   }))

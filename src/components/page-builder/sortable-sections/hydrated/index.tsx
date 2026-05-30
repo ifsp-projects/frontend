@@ -10,6 +10,18 @@ import { SortableSections } from '..'
 import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
 import type { TemplateType } from '@/types/postgres/page/psotgres-page-template-types'
 
+/**
+ * The page builder relies on Zustand as its client-side source
+ * of truth. However, the initial page configuration originates
+ * from server-rendered data.
+ *
+ * This component is responsible for synchronizing that initial
+ * server state into the client store during hydration.
+ *
+ * By isolating hydration logic here, the underlying builder
+ * components remain focused on rendering and interaction
+ * concerns instead of initialization details.
+ */
 export function SortableSectionsHydrated({
   sections,
   template,

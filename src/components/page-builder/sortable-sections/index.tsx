@@ -1,4 +1,3 @@
-// features/page-builder/components/sortable-sections.tsx
 'use client'
 
 import {
@@ -27,6 +26,19 @@ import { CSS } from '@dnd-kit/utilities'
 import { EDITABLE_TEMPLATE_SECTION_REGISTRY } from './registry/editable'
 import { READABLE_TEMPLATE_SECTION_REGISTRY } from './registry/readable'
 
+/**
+ * Responsible for rendering a single page section.
+ *
+ * This component abstracts the differences between editable and
+ * public/read-only modes:
+ *
+ * - In editable mode, it enables drag-and-drop reordering through dnd-kit.
+ * - In readable mode, it renders the section without any editing controls.
+ *
+ * The actual section implementation is resolved dynamically from the
+ * template registry, allowing templates to define their own section
+ * components while sharing the same rendering infrastructure.
+ */
 function SortableSection({
   id,
   copy,
@@ -81,6 +93,25 @@ function SortableSection({
   )
 }
 
+/**
+ * Main page-builder renderer.
+ *
+ * Renders all sections for a given template and optionally enables
+ * drag-and-drop reordering when editing is allowed.
+ *
+ * Responsibilities:
+ * - Resolve the current section order.
+ * - Resolve active theme colors and palette.
+ * - Configure dnd-kit drag-and-drop behavior.
+ * - Persist section reordering through the page builder store.
+ * - Render sections using the template registry.
+ *
+ * This component acts as the orchestration layer between:
+ * - Template definitions
+ * - Theme configuration
+ * - Page builder state
+ * - Drag-and-drop interactions
+ */
 export function SortableSections({
   sections,
   template,
@@ -94,10 +125,21 @@ export function SortableSections({
   initialColorPalette?: PostgresColorPalette
   initialMainColor?: string
 }) {
+  /**
+   * Uses the persisted order from the builder store.
+   * Falls back to the default template structure when no custom order exists.
+   */
   const order = usePageBuilderStore(s =>
     s.order.length ? s.order : DEFAULT_TEMPLATES_ORDER[template]
   )
 
+  /**
+   * Resolves the active color palette following the priority:
+   *
+   * 1. User customization from the page builder store.
+   * 2. Initial palette provided by the server.
+   * 3. Template default palette.
+   */
   const colorPalette =
     usePageBuilderStore(p =>
       p.colorPalette?.original ? p.colorPalette : null
@@ -105,6 +147,10 @@ export function SortableSections({
     initialColorPalette ??
     DEFAULT_TEMPLATE_COLOR_PALLETES[template]
 
+  /**
+   * Resolves the active primary color following the same
+   * precedence rules used for palette selection.
+   */
   const mainColor =
     usePageBuilderStore(c => c.mainColor || null) ??
     initialMainColor ??
@@ -112,8 +158,20 @@ export function SortableSections({
 
   const reorderSections = usePageBuilderStore(s => s.reorderSections)
 
+  /**
+   * Drag sensors are only initialized when the page is editable.
+   *
+   * Avoiding sensor registration in read-only mode prevents
+   * unnecessary event listeners and improves performance.
+   */
   const sensors = isEditable ? useSensors(useSensor(PointerSensor)) : undefined
 
+  /**
+   * Updates section order after a drag operation completes.
+   *
+   * If the dragged section changed position, the new order
+   * is persisted in the page builder store.
+   */
   function handleDragEnd(event: DragEndEvent) {
     if (!isEditable) return
 

@@ -1,3 +1,9 @@
+/**
+ * Generates a URL-friendly ID (slug) from a text string.
+ *
+ * @param text - Source text used to generate the ID.
+ * @returns Normalized ID containing lowercase letters, numbers, and hyphens.
+ */
 const generateIdFromText = (text: string) => {
   return text
     .toLowerCase()
@@ -5,6 +11,16 @@ const generateIdFromText = (text: string) => {
     .replace(/^-|-$/g, '')
 }
 
+/**
+ * Formats blog article HTML by:
+ * - Removing <strong> tags nested inside <h3> elements.
+ * - Generating and assigning IDs to <h3> elements that do not already have one.
+ *
+ * Useful for creating anchor links and table-of-contents navigation.
+ *
+ * @param html - Raw article HTML content.
+ * @returns Formatted HTML with normalized headings.
+ */
 export const formatBlogArticle = (html: string) => {
   const htmlWithoutStrong = html.replace(
     /<h3[^>]*>(.*?)<strong>(.*?)<\/strong>(.*?)<\/h3>/g,

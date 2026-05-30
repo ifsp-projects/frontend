@@ -3,6 +3,14 @@ import type { JWT } from 'next-auth'
 import { ACCESS_TOKEN_EXPIRES_MILLISECONDS } from '@/constants/auth/access-token-expires-milliseconds'
 import { apiPostgres } from '@/instances/postgres'
 
+/**
+ * Refreshes the current access token using the stored refresh token.
+ *
+ * Updates the access token, refresh token, and expiration timestamp.
+ *
+ * @param token - Current JWT containing the refresh token.
+ * @returns Updated token object or null if the refresh operation fails.
+ */
 export async function refreshAccessToken(token: JWT) {
   try {
     const response = await apiPostgres.post(

@@ -36,6 +36,14 @@ type SectionRegistry = {
   >
 }
 
+/**
+ * Registry responsible for mapping template sections
+ * to their public/read-only implementations.
+ *
+ * This allows the same page structure to be rendered
+ * in different contexts while keeping rendering logic
+ * completely decoupled from template selection.
+ */
 export const EDITABLE_TEMPLATE_SECTION_REGISTRY: SectionRegistry = {
   primary: {
     header: props => <PrimaryTemplateHeader {...props} />,
