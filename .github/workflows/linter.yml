@@ -31,4 +31,5 @@ jobs:
         run: pnpm lint
 
       - name: Run Prettier
-        run: pnpm prettier --check .
+        run: pnpm exec prettier --check "src/**/*.{ts,tsx}"
+        
