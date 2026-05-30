@@ -1,20 +1,20 @@
 'use client'
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 interface GooeyNavItem {
-  label: string
   href: string
+  label: string
 }
 
 export interface GooeyNavProps {
-  items: GooeyNavItem[]
   animationTime?: number
+  colors?: number[]
+  initialActiveIndex?: number
+  items: GooeyNavItem[]
   particleCount?: number
   particleDistances?: [number, number]
   particleR?: number
   timeVariance?: number
-  colors?: number[]
-  initialActiveIndex?: number
 }
 
 const GooeyNav: React.FC<GooeyNavProps> = ({
@@ -314,25 +314,25 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
           style={{ transform: 'translate3d(0,0,0.01px)' }}
         >
           <ul
-            ref={navRef}
-            className="relative z-[3] m-0 flex list-none gap-8 p-0 px-4"
             style={{
               color: 'white',
               textShadow: '0 1px 1px hsl(205deg 30% 10% / 0.2)'
             }}
+            className="relative z-3 m-0 flex list-none gap-8 p-0 px-4"
+            ref={navRef}
           >
             {items.map((item, index) => (
               <li
-                key={index}
                 className={`ease relative cursor-pointer rounded-full text-white shadow-[0_0_0.5px_1.5px_transparent] transition-[background-color_color_box-shadow] duration-300 ${
                   activeIndex === index ? 'active' : ''
                 }`}
+                key={index}
               >
                 <a
+                  className="inline-block px-[1em] py-[0.6em] outline-none"
                   href={item.href}
                   onClick={e => handleClick(e, index)}
                   onKeyDown={e => handleKeyDown(e, index)}
-                  className="inline-block px-[1em] py-[0.6em] outline-none"
                 >
                   {item.label}
                 </a>
