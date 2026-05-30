@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NEXT_PUBLIC_BASE_URL: "http://localhost:3001"
-      API_BASE_URL: "http://localhost:8000"
+      NEXT_PUBLIC_BASE_URL: "https://capivara-solidaria.com.br"
+      API_BASE_URL: "https://api.capivara-solidaria.com.br/"
       API_KEY: "dummy"
       NEXT_PUBLIC_POSTHOG_KEY: "dummy"
-      NEXTAUTH_URL: "http://localhost:3001"
-      NEXTAUTH_URL_INTERNAL: "http://localhost:3001"
+      NEXTAUTH_URL: "https://capivara-solidaria.com.br"
+      NEXTAUTH_URL_INTERNAL: "https://capivara-solidaria.com.br"
       NEXTAUTH_SECRET: "dummy"
       GOOGLE_CLIENT_ID: "dummy"
       GOOGLE_CLIENT_SECRET: "dummy"
