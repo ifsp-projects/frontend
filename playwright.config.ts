@@ -15,8 +15,8 @@ dotenv.config({
   path: [path.resolve(__dirname, '.env'), path.resolve(__dirname, '.env.local')]
 })
 
-// Use process.env.PORT by default and fallback to port 3000
-const PORT = process.env.PORT || 3000
+// Use process.env.PORT by default and fallback to port 3001
+const PORT = process.env.PORT || 3001
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 const baseURL = `http://localhost:${PORT}`
