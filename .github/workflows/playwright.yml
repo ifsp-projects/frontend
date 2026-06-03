@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: "(CI): Playwright Tests"
 
 on:
   pull_request:
@@ -27,7 +27,7 @@ jobs:
       - name: Install PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: 10.28.0
+          version: 10.28.2
 
       - name: Install dependencies
         run: pnpm install
@@ -38,9 +38,34 @@ jobs:
       - name: Create Environment Variables
         run: |
           echo -e "
-          NEXT_PUBLIC_BASE_DOMAIN="https://capivara-solidaria.com.br"
-          API_BASE_URL="https://api.capivara-solidaria.com.br"
+          NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          API_BASE_URL=${{ secrets.API_BASE_URL }}
+          API_KEY=${{ secrets.API_KEY }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          NEXTAUTH_URL_INTERNAL: ${{ secrets.NEXTAUTH_URL_INTERNAL }}
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXT_PUBLIC_CLOUDINARY_API_KEY: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_API_KEY }}
+          NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
+          NEXT_PUBLIC_CLOUDINARY_URL: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_URL }}
+          NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_TOKEN_BASE_URL: ${{ secrets.OPENAI_API_TOKEN_BASE_URL }}
+          OPENAI_ORGANIZATION_ID: ${{ secrets.OPENAI_ORGANIZATION_ID }}
+          OPENAI_PROJECT_ID: ${{ secrets.OPENAI_PROJECT_ID }}
+          PAGESPEED_API_KEY: ${{ secrets.PAGESPEED_API_KEY }}
+          WORDPRESS_BASE_URL: ${{ secrets.WORDPRESS_BASE_URL }}
           " > .env
+
+      # Activate again when the tests suite is too big and you want to fail fast (also enable fetch-depth: 0 in checkout step)
+      # - name: Run changed Playwright tests
+      #   run: npx playwright test --only-changed=origin/$GITHUB_BASE_REF
+      #   env:
+      #     CI: true
 
       - name: Run Playwright tests
         run: pnpm exec playwright test
@@ -50,4 +75,12 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
+          retention-days: 30
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: test-results
+          path: test-results/
           retention-days: 30
