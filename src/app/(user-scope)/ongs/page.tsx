@@ -26,7 +26,7 @@ const Page: NextPage<OngsPageProps> = async ({ searchParams }) => {
   })
 
   return (
-    <main className="overflow-x-hidden">
+    <main className="overflow-hidden">
       <Header />
       <List data={data} />
     </main>

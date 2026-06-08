@@ -38,6 +38,13 @@ export default async function RootLayout({
 
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <link
+          crossOrigin="use-credentials"
+          href="https://us-assets.i.posthog.com"
+          rel="preconnect"
+        />
+      </head>
       <body
         className={`${font.className} text-neutral-700 selection:bg-rose-50 selection:text-neutral-700`}
       >

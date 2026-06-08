@@ -4,7 +4,7 @@ import { type FC, useEffect } from 'react'
 
 import { Steps } from './steps'
 
-export const HowItWorks: FC = () => {
+const HowItWorks: FC = () => {
   useEffect(() => {
     import('@dotlottie/player-component')
   }, [])
@@ -30,3 +30,5 @@ export const HowItWorks: FC = () => {
     </section>
   )
 }
+
+export default HowItWorks

@@ -35,7 +35,9 @@ export const Details = async () => {
             <Image
               alt="Card Image"
               className="h-full max-h-[205px] w-full max-w-[205px] object-cover transition-all duration-300 group-hover:scale-[1.02]"
+              fetchPriority="high"
               height={400}
+              loading="eager"
               src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7bd686b6d20bb1cd568c_Hands-Build.svg"
               width={400}
             />
@@ -50,7 +52,9 @@ export const Details = async () => {
             <Image
               alt="Card Image"
               className="h-full max-h-[205px] w-full max-w-[205px] object-cover transition-all duration-300 group-hover:scale-[1.02]"
+              fetchPriority="high"
               height={400}
+              loading="eager"
               src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7bd72914c76f710d86fc_Hands-Stack.svg"
               width={400}
             />
@@ -65,7 +69,9 @@ export const Details = async () => {
             <Image
               alt="Card Image"
               className="h-full max-h-[205px] w-full max-w-[205px] object-cover transition-all duration-300 group-hover:scale-[1.02]"
+              fetchPriority="high"
               height={400}
+              loading="eager"
               src="https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67ed7b8d86b6d20bb1cd1292_Objects-Puzzle.svg"
               width={400}
             />
