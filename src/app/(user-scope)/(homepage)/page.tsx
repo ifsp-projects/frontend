@@ -1,16 +1,18 @@
 import type { Metadata, NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import Script from 'next/script'
 
 import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { getHomepageJsonLd } from './json-ld'
 import { Benefits } from './sections/benefits'
-import { Skiper } from './sections/contact'
 import { ContactSimplified } from './sections/contact-simplified'
 import { Details } from './sections/details'
 import { Header } from './sections/header'
-import { HowItWorks } from './sections/how-it-works'
 import { MoreInfoAbout } from './sections/more-info-about'
+
+const Contact = dynamic(() => import('./sections/contact'))
+const HowItWorks = dynamic(() => import('./sections/how-it-works'))
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -36,7 +38,7 @@ const Page: NextPage = async () => {
         <Benefits />
         <MoreInfoAbout />
         <HowItWorks />
-        <Skiper />
+        <Contact />
         <ContactSimplified />
       </main>
     </>

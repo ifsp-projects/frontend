@@ -21,6 +21,21 @@ html {
 * {
   scroll-behavior: smooth !important;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #737373 #fafafa;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #737373;
+  border-radius: 9999px;
 }
 
 .rounded-sm {

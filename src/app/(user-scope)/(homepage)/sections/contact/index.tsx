@@ -55,7 +55,7 @@ const Skiper = () => {
   )
 }
 
-export { Skiper }
+export default Skiper
 
 const LinePath = ({
   className,
