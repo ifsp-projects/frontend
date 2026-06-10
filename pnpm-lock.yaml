@@ -142,7 +142,7 @@ importers:
         version: 1.0.11
       openai:
         specifier: ^6.9.1
-        version: 6.32.0(ws@8.21.0)(zod@4.3.6)
+        version: 6.42.0(ws@8.21.0)(zod@4.3.6)
       posthog-js:
         specifier: ^1.281.0
         version: 1.369.2
@@ -3854,9 +3854,8 @@ packages:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
 
-  openai@6.32.0:
-    resolution: {integrity: sha512-j3k+BjydAf8yQlcOI7WUQMQTbbF5GEIMAE2iZYCOzwwB3S2pCheaWYp+XZRNAch4jWVc52PMDGRRjutao3lLCg==}
-    hasBin: true
+  openai@6.42.0:
+    resolution: {integrity: sha512-1WFEt/uXMXOLhYRNkgJWo08Y2YNvNwpVU72K7ibrWgWpNOXd4VojXLbe6SQ4bLiUQ3Y8jz4IiyVkylJCL1DtZg==}
     peerDependencies:
       ws: ^8.18.0
       zod: ^3.25 || ^4.0
@@ -8419,7 +8418,7 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openai@6.32.0(ws@8.21.0)(zod@4.3.6):
+  openai@6.42.0(ws@8.21.0)(zod@4.3.6):
     optionalDependencies:
       ws: 8.21.0
       zod: 4.3.6
