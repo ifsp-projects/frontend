@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 
 export function useOngSearch(orgs: PostgresOrganization[]) {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState<string>('')
 
   const results = useMemo(() => {
     if (!query.trim()) return []
