@@ -9,8 +9,8 @@ import { Benefits } from './sections/benefits'
 import { ContactSimplified } from './sections/contact-simplified'
 import { Details } from './sections/details'
 import { Header } from './sections/header'
-import { MoreInfoAbout } from './sections/more-info-about'
 
+const MoreInfoAbout = dynamic(() => import('./sections/more-info-about'))
 const Contact = dynamic(() => import('./sections/contact'))
 const HowItWorks = dynamic(() => import('./sections/how-it-works'))
 

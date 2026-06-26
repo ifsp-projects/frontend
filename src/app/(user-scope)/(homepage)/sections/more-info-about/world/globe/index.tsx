@@ -121,8 +121,8 @@ const Globe: React.FC<WorldProps> = ({ globeConfig, data }) => {
       .arcDashAnimateTime(() => defaultProps.arcTime)
 
     globeRef.current
-      .pointsData(data)
-      .pointColor(e => (e as { color: string }).color)
+      .pointsData(globeData)
+      .pointColor(e => (e as { color: (t: number) => string }).color(0))
       .pointsMerge(true)
       .pointAltitude(0.0)
       .pointRadius(2)

@@ -8,11 +8,11 @@ import { AnimatedImage } from './animated-image'
 import { CustomAnchor } from './custom-anchor'
 import { World } from './world'
 
-export const MoreInfoAbout: FC = () => {
+const MoreInfoAbout: FC = () => {
   return (
     <section className="bg-neutral-100 px-4 py-12 lg:py-8 xl:px-0">
       <div className="relative z-40 mx-auto flex w-full max-w-2xl flex-col gap-6 lg:max-w-7xl lg:gap-8">
-        <div className="absolute top-[160px] right-[-180px] z-20 hidden h-full w-[525px] items-center justify-center lg:flex">
+        <div className="absolute top-[160px] right-[-180px] z-20 hidden h-full w-[525px] items-center justify-center xl:flex">
           <div className="relative mx-auto h-[500px] w-full max-w-7xl overflow-hidden px-4">
             <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-40 w-full bg-linear-to-b from-transparent to-white select-none dark:to-black" />
             <div className="absolute z-10 h-72 w-full md:h-full">
@@ -47,3 +47,5 @@ export const MoreInfoAbout: FC = () => {
     </section>
   )
 }
+
+export default MoreInfoAbout

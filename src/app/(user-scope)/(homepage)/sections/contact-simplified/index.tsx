@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 export const ContactSimplified: FC = () => {
   return (
-    <section className="relative z-40 flex w-full bg-white px-4 pt-8 pb-12 lg:hidden lg:py-16 xl:px-0">
+    <section className="relative z-40 flex w-full bg-white px-4 pt-8 pb-12 lg:py-16 xl:hidden xl:px-0">
       <div className="mx-auto flex w-full max-w-2xl flex-col items-center gap-4 lg:max-w-7xl">
         <h2 className="text-2xl font-bold lg:text-4xl">Tem alguma sugestão?</h2>
         <p className="text-center text-sm text-neutral-500 lg:text-base">

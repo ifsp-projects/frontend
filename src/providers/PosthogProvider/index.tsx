@@ -12,13 +12,25 @@ interface PostHogProviderProps {
 
 export function PostHogProvider({ children }: PostHogProviderProps) {
   useEffect(() => {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
-      api_host: 'https://us.i.posthog.com',
-      ui_host: 'https://us.i.posthog.com',
-      person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
-      capture_pageview: false, // Disable automatic pageview capture, as we capture manually
-      capture_pageleave: true
-    })
+    const initPostHog = () => {
+      posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
+        api_host: 'https://us.i.posthog.com',
+        ui_host: 'https://us.i.posthog.com',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+        capture_pageview: false, // Disable automatic pageview capture, as we capture manually
+        capture_pageleave: true
+      })
+    }
+
+    if (typeof window !== 'undefined') {
+      if ('requestIdleCallback' in window) {
+        // For modern browsers
+        window.requestIdleCallback(initPostHog, { timeout: 2000 })
+      } else {
+        // Fallback for Safari/other browsers
+        setTimeout(initPostHog, 200)
+      }
+    }
   }, [])
 
   return (

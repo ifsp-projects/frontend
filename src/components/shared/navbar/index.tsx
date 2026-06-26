@@ -62,7 +62,8 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
               fetchPriority="high"
               height={220}
               loading="eager"
-              src="/capivara-solidaria-logo.png"
+              sizes="120px"
+              src="/capivara-solidaria-logo.webp"
               width={360}
             />
           </Link>
@@ -84,13 +85,13 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
             <button
               aria-expanded={isSearchOpen}
               aria-label="Abrir busca de organizações"
-              className="relative flex w-full max-w-[320px] items-center justify-between gap-2 rounded-full border border-neutral-300 px-4 py-1.5 text-left text-sm text-neutral-400 transition-colors hover:border-neutral-400"
+              className="relative flex max-h-8.5 w-full max-w-[320px] cursor-text items-center justify-between gap-2 rounded-full border border-neutral-300 px-4 py-1.5 text-left text-sm text-neutral-400 transition-colors hover:border-neutral-400"
               onClick={openSearch}
               type="button"
             >
-              Pesquisar ongs...
+              <p className="cursor-text">Pesquisar ongs...</p>
               <svg
-                className="h-4 w-4 shrink-0"
+                className="h-10 w-6 shrink-0 cursor-pointer"
                 viewBox="0 0 15 44"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -265,14 +266,14 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
                 </Link>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center py-8 text-center">
+              <article className="flex flex-col items-center justify-center py-8 text-center">
                 <p className="text-sm font-medium text-neutral-600">
                   Nenhuma organização encontrada para "{query}"
                 </p>
                 <p className="mt-1 text-xs text-neutral-400">
                   Tente um termo diferente ou navegue pelas categorias.
                 </p>
-              </div>
+              </article>
             )}
           </div>
         </div>
