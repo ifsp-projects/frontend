@@ -12,7 +12,7 @@ import { formatPhone } from '@/utils/helpers/format-phone'
 import { formatPostalCode } from '@/utils/helpers/format-postal-code'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { completeOnboardingAction } from '../../actions'
+import { completeOnboardingAction } from '../..'
 import { DESIGN_TEMPLATES } from './data'
 import { Field } from './field'
 import type { OnboardingProfileData } from './schema'
