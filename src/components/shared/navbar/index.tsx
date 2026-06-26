@@ -1,71 +1,43 @@
 'use client'
 
+import { ChevronRightIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
 
-import { useOngSearch } from '@/hooks/use-ong-search'
+import { useMobileMenu } from '@/hooks/use-mobile-menu'
+import { useNavbarSearch } from '@/hooks/use-mobile-navbar'
 import { useUserSession } from '@/hooks/use-user-session'
 import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 
 import { HamburgerButton } from '../hamburger-button'
+import { DESKTOP_NAV_LINKS, MOBILE_NAV_LINKS, QUICK_LINKS } from './data'
 
 interface NavbarProps {
   orgs?: PostgresOrganization[]
 }
 
 export const Navbar = ({ orgs = [] }: NavbarProps) => {
+  const pathname = usePathname()
   const { organization } = useUserSession()
 
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const searchPanelRef = useRef<HTMLDivElement>(null)
-  const [menuHeight, setMenuHeight] = useState(0)
+  const {
+    isOpen: isMenuOpen,
+    toggle: toggleMenu,
+    close: closeMenu
+  } = useMobileMenu()
 
-  const pathname = usePathname()
-  const { query, setQuery, results } = useOngSearch(orgs)
-
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [pathname])
-  useEffect(() => {
-    setSearchOpen(false)
-    setQuery('')
-  }, [pathname])
-
-  useEffect(() => {
-    if (menuRef.current) setMenuHeight(menuRef.current.scrollHeight)
-  }, [menuOpen, organization])
-
-  useEffect(() => {
-    if (searchOpen) {
-      setTimeout(() => searchInputRef.current?.focus(), 50)
-    }
-  }, [searchOpen])
-
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (
-        searchPanelRef.current &&
-        !searchPanelRef.current.contains(e.target as Node)
-      ) {
-        setSearchOpen(false)
-        setQuery('')
-      }
-    }
-    if (searchOpen) document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [searchOpen])
-
-  useEffect(() => {
-    document.body.style.overflow = searchOpen ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [searchOpen])
+  const {
+    clearQuery,
+    close: closeSearch,
+    inputRef: searchInputRef,
+    isOpen: isSearchOpen,
+    open: openSearch,
+    panelRef: searchPanelRef,
+    query,
+    results,
+    setQuery
+  } = useNavbarSearch(orgs)
 
   if (pathname === '/login') return null
 
@@ -73,14 +45,11 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
     <>
       <div
         className={`fixed inset-0 z-998 transition-all duration-300 ${
-          searchOpen
+          isSearchOpen
             ? 'pointer-events-auto bg-neutral-500/40 opacity-100 backdrop-blur-sm'
             : 'pointer-events-none opacity-0'
         }`}
-        onClick={() => {
-          setSearchOpen(false)
-          setQuery('')
-        }}
+        onClick={closeSearch}
         aria-hidden
       />
 
@@ -100,14 +69,7 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
 
           <div className="hidden w-full items-center justify-end gap-8 lg:flex xl:gap-12">
             <ul className="ml-8 flex w-full items-center justify-start gap-4.5">
-              {[
-                { href: '/', label: 'Home' },
-                { href: '/ongs', label: 'Ongs' },
-                { href: '/sobre', label: 'Sobre' },
-                { href: '/contato', label: 'Contato' },
-                { href: '/faq', label: 'FAQ' },
-                { href: '/blog', label: 'Blog' }
-              ].map(({ href, label }) => (
+              {DESKTOP_NAV_LINKS.map(({ href, label }) => (
                 <li key={href}>
                   <Link
                     className="text-sm font-medium transition-colors duration-150 ease-in-out hover:text-rose-400"
@@ -119,25 +81,22 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
               ))}
             </ul>
 
-            <div className="relative w-full rounded-full border border-neutral-300">
-              <input
-                className="relative z-10 max-w-[320px] px-4 py-1.5 text-sm text-neutral-600 placeholder:text-neutral-400 focus:outline-0"
-                onFocus={() => setSearchOpen(true)}
-                placeholder="Pesquisar ongs..."
-                type="text"
-                readOnly
-              />
-              <figure className="absolute -top-1.5 right-4 z-20">
-                <svg
-                  height="44px"
-                  viewBox="0 0 15 44"
-                  width="15px"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14.298,27.202l-3.87-3.87c0.701-0.929,1.122-2.081,1.122-3.332c0-3.06-2.489-5.55-5.55-5.55c-3.06,0-5.55,2.49-5.55,5.55 c0,3.061,2.49,5.55,5.55,5.55c1.251,0,2.403-0.421,3.332-1.122l3.87,3.87c0.151,0.151,0.35,0.228,0.548,0.228 s0.396-0.076,0.548-0.228C14.601,27.995,14.601,27.505,14.298,27.202z M1.55,20c0-2.454,1.997-4.45,4.45-4.45 c2.454,0,4.45,1.997,4.45,4.45S8.454,24.45,6,24.45C3.546,24.45,1.55,22.454,1.55,20z" />
-                </svg>
-              </figure>
-            </div>
+            <button
+              aria-expanded={isSearchOpen}
+              aria-label="Abrir busca de organizações"
+              className="relative flex w-full max-w-[320px] items-center justify-between gap-2 rounded-full border border-neutral-300 px-4 py-1.5 text-left text-sm text-neutral-400 transition-colors hover:border-neutral-400"
+              onClick={openSearch}
+              type="button"
+            >
+              Pesquisar ongs...
+              <svg
+                className="h-4 w-4 shrink-0"
+                viewBox="0 0 15 44"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M14.298,27.202l-3.87-3.87c0.701-0.929,1.122-2.081,1.122-3.332c0-3.06-2.489-5.55-5.55-5.55c-3.06,0-5.55,2.49-5.55,5.55 c0,3.061,2.49,5.55,5.55,5.55c1.251,0,2.403-0.421,3.332-1.122l3.87,3.87c0.151,0.151,0.35,0.228,0.548,0.228 s0.396-0.076,0.548-0.228C14.601,27.995,14.601,27.505,14.298,27.202z M1.55,20c0-2.454,1.997-4.45,4.45-4.45 c2.454,0,4.45,1.997,4.45,4.45S8.454,24.45,6,24.45C3.546,24.45,1.55,22.454,1.55,20z" />
+              </svg>
+            </button>
 
             {organization ? (
               <div className="flex w-full items-center justify-end gap-3 lg:justify-end">
@@ -153,14 +112,12 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
                 <Link
                   className="w-full cursor-pointer rounded-full bg-neutral-700 px-4 py-1.5 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800 lg:max-w-[115px]"
                   href="/login"
-                  onClick={() => setMenuOpen(false)}
                 >
                   Entrar
                 </Link>
                 <Link
                   className="w-full max-w-[150px] cursor-pointer rounded-full border border-neutral-700 px-4 py-1.5 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
                   href="/contato"
-                  onClick={() => setMenuOpen(false)}
                 >
                   Quero fazer parte
                 </Link>
@@ -170,8 +127,8 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
 
           <div className="flex items-center lg:hidden">
             <HamburgerButton
-              isOpen={menuOpen}
-              onClick={() => setMenuOpen(!menuOpen)}
+              isOpen={isMenuOpen}
+              onClick={toggleMenu}
               variant="primary"
             />
           </div>
@@ -179,7 +136,7 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
 
         <div
           className={`absolute left-0 w-full border-b border-neutral-100 bg-white transition-all duration-300 ease-in-out ${
-            searchOpen
+            isSearchOpen
               ? 'pointer-events-auto translate-y-0 opacity-100'
               : 'pointer-events-none -translate-y-2 opacity-0'
           }`}
@@ -208,8 +165,9 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
               />
               {query && (
                 <button
+                  aria-label="Limpar busca"
                   className="shrink-0 text-neutral-400 transition-colors hover:text-neutral-600"
-                  onClick={() => setQuery('')}
+                  onClick={clearQuery}
                   type="button"
                 >
                   <svg
@@ -235,29 +193,12 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
                   Links rápidos
                 </p>
                 <div className="mt-3 flex flex-col">
-                  {[
-                    { href: '/ongs', label: 'Ver todas as organizações' },
-                    {
-                      href: '/ongs?ong_type=animais',
-                      label: 'Proteção Animal'
-                    },
-                    {
-                      href: '/ongs?ong_type=criancasEAdolescentes',
-                      label: 'Crianças e Adolescentes'
-                    },
-                    {
-                      href: '/ongs?ong_type=combateAFome',
-                      label: 'Combate à Fome'
-                    }
-                  ].map(({ href, label }) => (
+                  {QUICK_LINKS.map(({ href, label }) => (
                     <Link
-                      onClick={() => {
-                        setSearchOpen(false)
-                        setQuery('')
-                      }}
                       className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] text-neutral-600 transition-colors hover:bg-neutral-50 hover:text-rose-500"
                       href={href}
                       key={href}
+                      onClick={closeSearch}
                     >
                       <svg
                         height="16"
@@ -283,12 +224,9 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
                     return (
                       <li key={ong.id}>
                         <Link
-                          onClick={() => {
-                            setSearchOpen(false)
-                            setQuery('')
-                          }}
                           className="flex items-center gap-3 rounded-md px-2 py-2.5 transition-colors hover:bg-neutral-50"
                           href={`/ongs/${ong.organization_profile?.slug}`}
+                          onClick={closeSearch}
                         >
                           {profile?.logo ? (
                             <Image
@@ -311,46 +249,19 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
                               {profile?.ong_type}
                             </span>
                           </div>
-                          <svg
-                            className="ml-auto h-4 w-4 shrink-0 text-neutral-300"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              d="M9 5l7 7-7 7"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
+                          <ChevronRightIcon className="ml-auto h-4 w-4 shrink-0 text-neutral-300" />
                         </Link>
                       </li>
                     )
                   })}
                 </ul>
                 <Link
-                  onClick={() => {
-                    setSearchOpen(false)
-                    setQuery('')
-                  }}
                   className="mt-2 flex items-center gap-1.5 px-2 py-2 text-xs font-medium text-rose-500 transition-colors hover:text-rose-600"
                   href={`/ongs?name=${encodeURIComponent(query)}`}
+                  onClick={closeSearch}
                 >
                   Ver todos os resultados para "{query}"
-                  <svg
-                    className="h-3.5 w-3.5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M9 5l7 7-7 7"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ChevronRightIcon className="h-3.5 w-3.5" />
                 </Link>
               </div>
             ) : (
@@ -367,64 +278,54 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
         </div>
 
         <div
-          style={{
-            maxHeight: menuOpen ? `${menuHeight}px` : '0px',
-            opacity: menuOpen ? 1 : 0
-          }}
-          className="overflow-hidden transition-all duration-300 ease-in-out lg:hidden"
+          className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out lg:hidden ${
+            isMenuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+          }`}
         >
-          <div
-            className="flex w-full flex-col gap-1 bg-white px-4 py-3 text-neutral-700 shadow-md"
-            ref={menuRef}
-          >
-            {[
-              { href: '/', label: 'Home' },
-              { href: '/ongs', label: 'Projetos' },
-              { href: '/sobre', label: 'Sobre' },
-              { href: '/contato', label: 'Contato' },
-              { href: '/faq', label: 'FAQ' },
-              { href: '/blog', label: 'Blog' }
-            ].map(({ href, label }) => (
-              <Link
-                className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === href ? 'bg-neutral-50 text-rose-500' : ''}`}
-                href={href}
-                key={href}
-                onClick={() => setMenuOpen(false)}
-              >
-                {label}
-              </Link>
-            ))}
+          <div className="overflow-hidden">
+            <div className="flex w-full flex-col gap-1 bg-white px-4 py-3 text-neutral-700 shadow-md">
+              {MOBILE_NAV_LINKS.map(({ href, label }) => (
+                <Link
+                  className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-150 ease-in-out hover:bg-neutral-50 hover:text-rose-400 ${pathname === href ? 'bg-neutral-50 text-rose-500' : ''}`}
+                  href={href}
+                  key={href}
+                  onClick={closeMenu}
+                >
+                  {label}
+                </Link>
+              ))}
 
-            <div className="my-1 h-px w-full bg-neutral-100" />
+              <div className="my-1 h-px w-full bg-neutral-100" />
 
-            {organization ? (
-              <div className="flex flex-col gap-2 px-3 py-2">
-                <Link
-                  className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
-                  href="/minha-ong"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Minha ONG
-                </Link>
-              </div>
-            ) : (
-              <div className="flex flex-col gap-2 px-3 py-2">
-                <Link
-                  className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
-                  href="/login"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Já tenho uma conta
-                </Link>
-                <Link
-                  className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
-                  href="/contato"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Quero fazer parte da iniciativa
-                </Link>
-              </div>
-            )}
+              {organization ? (
+                <div className="flex flex-col gap-2 px-3 py-2">
+                  <Link
+                    className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
+                    href="/minha-ong"
+                    onClick={closeMenu}
+                  >
+                    Minha ONG
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-2 px-3 py-2">
+                  <Link
+                    className="w-full cursor-pointer rounded-sm bg-neutral-700 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800"
+                    href="/login"
+                    onClick={closeMenu}
+                  >
+                    Já tenho uma conta
+                  </Link>
+                  <Link
+                    className="w-full cursor-pointer rounded-sm border border-neutral-700 px-4 py-2 text-center text-sm font-semibold text-neutral-700 transition-all duration-150 hover:bg-neutral-50"
+                    href="/contato"
+                    onClick={closeMenu}
+                  >
+                    Quero fazer parte da iniciativa
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>

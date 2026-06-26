@@ -3,10 +3,11 @@ import { notFound } from 'next/navigation'
 
 import { getMetaData } from '@/utils/seo/get-metadata'
 
-import { validateTokenAction } from '../actions'
 import { StepBadge } from '../components/step-badge'
 import { InvalidTokenScreen } from './components/invalid-token-screen'
 import { ResetPasswordForm } from './components/reset-password-form'
+
+import { validateTokenAction } from '..'
 
 interface PageProps {
   searchParams: Promise<{ token?: string }>

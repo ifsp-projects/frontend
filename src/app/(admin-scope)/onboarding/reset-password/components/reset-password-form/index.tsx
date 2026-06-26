@@ -9,7 +9,7 @@ import { Spin } from '@/components/ui/spin'
 import { posthogEventDispatch } from '@/instances/posthog/dispatch'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { resetPasswordAction } from '../../../actions'
+import { resetPasswordAction } from '../../..'
 import { PASSWORD_RULES } from './data'
 import type { ResetPasswordFormData } from './schema'
 import { resetPasswordSchema } from './schema'

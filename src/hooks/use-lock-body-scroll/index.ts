@@ -10,16 +10,15 @@ import { useEffect } from 'react'
  * useLockBodyScroll(isModalOpen);
  * ```
  */
-export const useLockBodyScroll = (isOpen: boolean) => {
+export const useLockBodyScroll = (locked: boolean) => {
   useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.body.style.overflow = isOpen ? 'hidden' : 'unset'
-    }
+    if (!locked) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
 
     return () => {
-      if (typeof document !== 'undefined') {
-        document.body.style.overflow = 'unset'
-      }
+      document.body.style.overflow = previousOverflow
     }
-  }, [isOpen])
+  }, [locked])
 }

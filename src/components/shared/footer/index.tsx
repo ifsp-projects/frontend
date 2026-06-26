@@ -16,7 +16,7 @@ export const Footer: FC = () => {
             className="flex w-full flex-col gap-4 border-b border-neutral-300 pb-4 sm:border-transparent sm:pb-0 lg:gap-6"
             key={`${footerSection.title}-${sectionIndex}`}
           >
-            <h6 className="font-medium lg:text-lg">{footerSection.title}</h6>
+            <p className="font-medium lg:text-lg">{footerSection.title}</p>
             <div className="flex w-full flex-col gap-2">
               {footerSection.links.map(
                 (footerLink: FooterLinkProps, index: number) => (
@@ -36,7 +36,6 @@ export const Footer: FC = () => {
                       <Link
                         className="w-fit border-b border-transparent text-xs transition-all duration-300 hover:text-rose-400 sm:text-xs lg:text-sm"
                         href={footerLink.href}
-                        target={sectionIndex === 2 ? '_blank' : '_self'}
                       >
                         {footerLink.label}
                       </Link>

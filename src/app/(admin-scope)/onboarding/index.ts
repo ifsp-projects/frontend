@@ -7,7 +7,7 @@ import type { PostgresDesignTemplates } from '@/types/postgres/enums/postgres-de
 import type { PostgresOngType } from '@/types/postgres/enums/postgres-ong-types'
 import { generateSlug } from '@/utils/helpers/generate-slug'
 
-import type { OnboardingProfileData } from '../components/form/schema'
+import type { OnboardingProfileData } from './components/form/schema'
 
 type ActionResult<T = void> =
   | { success: true; data?: T }

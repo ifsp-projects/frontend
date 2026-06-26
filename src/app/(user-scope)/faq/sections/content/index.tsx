@@ -1,7 +1,7 @@
 'use client'
 
 import type { FC } from 'react'
-import { useMemo, useState } from 'react'
+import { useDeferredValue, useMemo, useState } from 'react'
 
 import {
   Accordion,
@@ -15,28 +15,33 @@ import { Label } from '@/components/ui/label'
 
 import { TODOS_FAQS } from './data'
 
-export const Questions: FC = () => {
-  const normalizar = (txt: string) =>
-    txt
-      .normalize('NFD')
-      // @ts-ignore
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-  {
-    /* Rapaziada n tirem o 'gu' pois ele serve para caso alguem digitem sem assento na barra de pesquisa */
-  }
+const normalizar = (txt: string) =>
+  txt
+    .normalize('NFD')
+    // @ts-ignore
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+{
+  /* Rapaziada n tirem o 'gu' pois ele serve para caso alguem digitem sem assento na barra de pesquisa */
+}
 
-  const [q, setQ] = useState('')
+const FAQS_WITH_SEARCH_INDEX = TODOS_FAQS.map(faq => ({
+  ...faq,
+  _searchIndex: normalizar(`${faq.pergunta} ${faq.resposta}`)
+}))
+
+export const Questions: FC = () => {
+  const [query, setQuery] = useState<string>('')
+
+  const deferredQ = useDeferredValue(query)
 
   const faqs = useMemo(() => {
-    if (!q.trim()) return TODOS_FAQS
-    const termo = normalizar(q)
-    return TODOS_FAQS.filter(
-      f =>
-        normalizar(f.pergunta).includes(termo) ||
-        normalizar(f.resposta).includes(termo)
-    )
-  }, [q])
+    if (!deferredQ.trim()) return FAQS_WITH_SEARCH_INDEX
+
+    const termo = normalizar(deferredQ)
+
+    return FAQS_WITH_SEARCH_INDEX.filter(f => f._searchIndex.includes(termo))
+  }, [deferredQ])
 
   return (
     <section className="bg-white px-4 py-12 lg:py-16 xl:px-0">
@@ -47,13 +52,13 @@ export const Questions: FC = () => {
         <div className="flex gap-2">
           <Input
             id="faqSearch"
-            onChange={e => setQ(e.target.value)}
+            onChange={e => setQuery(e.target.value)}
             placeholder="Digite para filtrar…"
             type="search"
-            value={q}
+            value={query}
           />
-          {q && (
-            <Button onClick={() => setQ('')} variant="outline">
+          {query && (
+            <Button onClick={() => setQuery('')} variant="outline">
               Limpar
             </Button>
           )}
@@ -82,7 +87,7 @@ export const Questions: FC = () => {
           </Accordion>
         ) : (
           <div className="text-muted-foreground py-10 text-center">
-            Nenhum FAQ encontrado para “{q}”.
+            Nenhum FAQ encontrado para “{query}”.
           </div>
         )}
       </div>
