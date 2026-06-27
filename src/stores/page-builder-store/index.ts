@@ -1,4 +1,3 @@
-import lodashSet from 'lodash.set'
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
@@ -8,6 +7,7 @@ import {
   DEFAULT_TEMPLATE_COLOR_PALLETES
 } from '@/constants/page-templates/default-templates-order'
 import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
+import { setPath } from '@/utils/helpers/set-path'
 
 import type { PageBuilderState } from './types'
 
@@ -63,7 +63,7 @@ export const usePageBuilderStore = create<PageBuilderState>()(
 
     /**
      * Updates a specific nested field within the sections state.
-     * Uses `lodash.set` to deeply update the value based on the provided path.
+     * Uses `setPath` to deeply update the value based on the provided path.
      * * @param {string | string[]} path - The path to the field to update (e.g., 'header.title').
      * @param {any} value - The new value to assign to the specified path.
      */
@@ -73,7 +73,7 @@ export const usePageBuilderStore = create<PageBuilderState>()(
         // but it is preserved here as originally implemented.
         const clonedSections = JSON.parse(JSON.stringify(state.sections))
 
-        lodashSet(clonedSections, path, value)
+        setPath(clonedSections, path, value)
 
         state.sections = clonedSections
       }),

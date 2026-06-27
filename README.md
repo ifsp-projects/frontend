@@ -71,7 +71,6 @@ Utilizamos o Zustand para estados globais que precisam ser acessados em diferent
 **Exemplo de uso:**
 
 ```typescript
-import lodashSet from 'lodash.set'
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
@@ -96,7 +95,7 @@ export const usePageBuilderStore = create<PageBuilderState>()(
 
     /**
      * Updates a specific nested field within the sections state.
-     * Uses `lodash.set` to deeply update the value based on the provided path.
+     * Uses `setPath` to deeply update the value based on the provided path.
      * * @param {string | string[]} path - The path to the field to update (e.g., 'header.title').
      * @param {any} value - The new value to assign to the specified path.
      */
