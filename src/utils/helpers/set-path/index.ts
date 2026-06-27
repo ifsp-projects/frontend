@@ -1,5 +1,3 @@
-// src/utils/set-path.ts
-
 type Key = string | number
 type Path = Key | Key[]
 
