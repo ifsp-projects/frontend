@@ -64,7 +64,7 @@ export const usePageBuilderStore = create<PageBuilderState>()(
     /**
      * Updates a specific nested field within the sections state.
      * Uses `setPath` to deeply update the value based on the provided path.
-     * * @param {string | string[]} path - The path to the field to update (e.g., 'header.title').
+     * @param {string | string[]} path - The path to the field to update (e.g., 'header.title').
      * @param {any} value - The new value to assign to the specified path.
      */
     updateField: (path, value) =>
