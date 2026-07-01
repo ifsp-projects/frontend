@@ -59,7 +59,7 @@ const Page: NextPage<BlogArticlePageProps> = async ({ params }) => {
         id="blog-article-structured-data"
         type="application/ld+json"
       />
-      <main className="overflow-hidden">
+      <main>
         <Header article={article} />
         <Article article={article} />
         <Contact />

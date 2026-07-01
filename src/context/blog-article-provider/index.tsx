@@ -1,7 +1,14 @@
 'use client'
 
 import type { FC } from 'react'
-import { createContext, useContext, useEffect, useRef, useState } from 'react'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 
 import { getHtmlContentIndexes } from '@/utils/blog/get-html-content-indexes'
 
@@ -14,10 +21,8 @@ import type { BlogArticleContextProps, BlogArticleProviderProps } from './types'
  * - indexes: article section titles
  * - activeIdIndex: currently visible section index
  */
-const BlogArticleContext = createContext<BlogArticleContextProps>({
-  activeIdIndex: 0,
-  indexes: []
-})
+const BlogArticleIndexesContext = createContext<string[]>([])
+const BlogArticleActiveIndexContext = createContext<number>(0)
 
 /**
  * Provides article navigation state for blog pages.
@@ -67,80 +72,66 @@ export const BlogArticleProvider: FC<BlogArticleProviderProps> = ({
    * Scroll updates trigger observer recalculation and help keep
    * section visibility state synchronized with the viewport.
    */
-  const [windowScroll, setWindowScroll] = useState<number | null>(null)
-  const observerRef = useRef(null)
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
-  /**
-   * Extracts heading titles and IDs from the article HTML.
-   *
-   * This allows the table of contents structure to be generated
-   * automatically from the article content.
-   */
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-
-    const handleScroll = () => {
-      setWindowScroll(window.scrollY)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  /**
-   * Updates the active section whenever an observed heading
-   * enters the viewport.
-   */
   useEffect(() => {
     const [contentIndexes, contentIds] = getHtmlContentIndexes(html)
     if (contentIndexes) setIndexes(contentIndexes)
     if (contentIds) setIds(contentIds)
   }, [html])
 
+  const handleIntersection = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const visible = entries.filter(entry => entry.isIntersecting)
+      if (!visible.length) return
+
+      const topMost = visible.reduce((closest, entry) =>
+        entry.boundingClientRect.top < closest.boundingClientRect.top
+          ? entry
+          : closest
+      )
+
+      const nextIndex = ids.indexOf(topMost.target.id)
+
+      setActiveIdIndex(prev =>
+        nextIndex === -1 || nextIndex === prev ? prev : nextIndex
+      )
+    },
+    [ids]
+  )
+
   useEffect(() => {
     if (!ids.length) return
 
-    //@ts-ignore
-    const handleIntersection = entries => {
-      //@ts-ignore
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveIdIndex(ids.indexOf(entry.target.id))
-        }
-      })
-    }
-
-    //@ts-ignore
-    observerRef.current = new IntersectionObserver(handleIntersection, {
-      threshold: 1
+    const observer = new IntersectionObserver(handleIntersection, {
+      rootMargin: '0px 0px -70% 0px',
+      threshold: 0
     })
+
+    observerRef.current = observer
 
     ids.forEach(id => {
       const element = document.getElementById(id)
-      //@ts-ignore
-      if (element) observerRef.current?.observe(element)
+      if (element) observer.observe(element)
     })
 
-    //@ts-ignore
-    return () => observerRef.current?.disconnect()
-  }, [ids, windowScroll])
+    return () => observer.disconnect()
+  }, [ids, handleIntersection])
 
   return (
-    /**
-     * Exposes article navigation state to descendant components.
-     */
-    <BlogArticleContext.Provider value={{ indexes, activeIdIndex }}>
-      {children}
-    </BlogArticleContext.Provider>
+    <BlogArticleIndexesContext.Provider value={indexes}>
+      <BlogArticleActiveIndexContext.Provider value={activeIdIndex}>
+        {children}
+      </BlogArticleActiveIndexContext.Provider>
+    </BlogArticleIndexesContext.Provider>
   )
 }
 
-/**
- * Provides access to article navigation state.
- *
- * Common use cases:
- * - Table of contents
- * - Active heading indicators
- * - Reading progress navigation
- */
-export const useBlogArticleContext = () => useContext(BlogArticleContext)
+export const useBlogArticleIndexes = () => useContext(BlogArticleIndexesContext)
+export const useBlogArticleActiveIndex = () =>
+  useContext(BlogArticleActiveIndexContext)
+
+export const useBlogArticleContext = (): BlogArticleContextProps => ({
+  indexes: useBlogArticleIndexes(),
+  activeIdIndex: useBlogArticleActiveIndex()
+})
