@@ -4,7 +4,8 @@ import {
   DEFAULT_TEMPLATES_ORDER,
   DEFAULT_TEMPLATE_COLORS,
   DEFAULT_TEMPLATE_COLOR_PALLETES
-} from '@/constants/page-templates/default-templates-order'
+} from 'capivara-solidaria-ts-sdk'
+
 import { usePageBuilderStore } from '@/stores/page-builder-store'
 import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
 import type { TemplateType } from '@/types/postgres/page/psotgres-page-template-types'
@@ -129,7 +130,7 @@ export function SortableSections({
    * Uses the persisted order from the builder store.
    * Falls back to the default template structure when no custom order exists.
    */
-  const order = usePageBuilderStore(s =>
+  const order: readonly string[] = usePageBuilderStore(s =>
     s.order.length ? s.order : DEFAULT_TEMPLATES_ORDER[template]
   )
 
@@ -189,7 +190,10 @@ export function SortableSections({
       onDragEnd={isEditable ? handleDragEnd : undefined}
       sensors={sensors}
     >
-      <SortableContext items={order} strategy={verticalListSortingStrategy}>
+      <SortableContext
+        items={[...order]}
+        strategy={verticalListSortingStrategy}
+      >
         {order.map(key => (
           <SortableSection
             colorPalette={colorPalette}

@@ -25,8 +25,6 @@ const nextConfig: NextConfig = {
     ]
   },
   compress: true,
-  swcMinify: true,
-  optimizeFonts: true,
   output: 'standalone',
   experimental: {
     optimizePackageImports: [

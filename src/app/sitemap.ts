@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 
+import { STATIC_PATHS } from '@/constants/paths'
 import { blog } from '@/instances/blog'
 import { instanceMotor } from '@/instances/motor'
 
@@ -22,18 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   /**
    * Core application pages that are always available.
    */
-  const staticRoutes = [
-    '/',
-    '/faq',
-    '/sobre',
-    '/contato',
-    '/ongs',
-    '/gerador-de-conteudo-com-ia',
-    '/criador-de-paginas',
-    '/termos-de-uso',
-    '/blog',
-    '/changelog'
-  ].map(route => ({
+  const staticRoutes = STATIC_PATHS.map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

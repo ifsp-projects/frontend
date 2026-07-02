@@ -1,3 +1,5 @@
+import type { DEFAULT_TEMPLATES_ORDER } from 'capivara-solidaria-ts-sdk'
+
 import { FAQ } from '@/app/(user-scope)/ongs/[slug]/readable-layout//templates/common/sections/faq'
 import { MoreInfoAbout } from '@/app/(user-scope)/ongs/[slug]/readable-layout//templates/common/sections/more-info-about'
 import { Depoiments as PrimaryTemplateDepoiments } from '@/app/(user-scope)/ongs/[slug]/readable-layout/templates/primary/sections/depoiments'
@@ -18,7 +20,6 @@ import { HowItWorks as TertiaryTemplateHowItWorks } from '@/app/(user-scope)/ong
 import { Initiatives as TertiaryTemplateInitiatives } from '@/app/(user-scope)/ongs/[slug]/readable-layout/templates/tertiary/sections/initiatives'
 import { MoreInfoAbout as TertiaryTemplateMoreInfoAbout } from '@/app/(user-scope)/ongs/[slug]/readable-layout/templates/tertiary/sections/more-info-about'
 import { Testimonials as TertiaryTemplateTestimonials } from '@/app/(user-scope)/ongs/[slug]/readable-layout/templates/tertiary/sections/testimonials'
-import type { DEFAULT_TEMPLATES_ORDER } from '@/constants/page-templates/default-templates-order'
 import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
 import type { TemplateType } from '@/types/postgres/page/psotgres-page-template-types'
 

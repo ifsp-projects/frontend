@@ -1,7 +1,7 @@
+import { ACCESS_TOKEN_EXPIRES_SECONDS } from 'capivara-solidaria-ts-sdk'
 import type { TokenSet } from 'next-auth'
 import type { GoogleProfile } from 'next-auth/providers/google'
 
-import { ACCESS_TOKEN_EXPIRES_SECONDS } from '@/constants/auth/access-token-expires-seconds'
 import { account } from '@/instances/account'
 
 export const googleOptions = {

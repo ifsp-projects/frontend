@@ -1,11 +1,11 @@
 'use client'
 
+import { toBase64 } from 'capivara-solidaria-ts-sdk'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 
-import { toBase64 } from '@/utils/helpers/to-base-64'
 import { tryCatch } from '@/utils/helpers/try-catch'
 import { uploadImage } from '@/utils/helpers/upload-image'
 

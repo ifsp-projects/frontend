@@ -1,6 +1,12 @@
 export const STATIC_PATHS: string[] = [
   '/',
-  '/ongs',
   '/faq',
-  '/contato'
+  '/sobre',
+  '/contato',
+  '/ongs',
+  '/gerador-de-conteudo-com-ia',
+  '/criador-de-paginas',
+  '/termos-de-uso',
+  '/blog',
+  '/changelog'
 ] as const

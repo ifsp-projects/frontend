@@ -1,4 +1,0 @@
-import { ACCESS_TOKEN_EXPIRES_MINUTES } from './access-token-expires-minutes'
-
-export const ACCESS_TOKEN_EXPIRES_MILLISECONDS =
-  ACCESS_TOKEN_EXPIRES_MINUTES * 60 * 1000

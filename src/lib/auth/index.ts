@@ -1,8 +1,8 @@
+import { ACCESS_TOKEN_EXPIRES_MILLISECONDS } from 'capivara-solidaria-ts-sdk'
 import type { AuthOptions, JWT } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
-import { ACCESS_TOKEN_EXPIRES_MILLISECONDS } from '@/constants/auth/access-token-expires-milliseconds'
 import { instanceMotor } from '@/instances/motor'
 import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 import { refreshAccessToken } from '@/utils/auth/refresh-access-token'

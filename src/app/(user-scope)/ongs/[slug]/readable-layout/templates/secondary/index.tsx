@@ -1,10 +1,10 @@
-import type { FC } from 'react'
-
-import { SortableSectionsHydrated } from '@/components/page-builder/sortable-sections/hydrated'
 import {
   DEFAULT_TEMPLATE_COLORS,
   DEFAULT_TEMPLATE_COLOR_PALLETES
-} from '@/constants/page-templates/default-templates-order'
+} from 'capivara-solidaria-ts-sdk'
+import type { FC } from 'react'
+
+import { SortableSectionsHydrated } from '@/components/page-builder/sortable-sections/hydrated'
 import { instanceMotor } from '@/instances/motor'
 
 import type { LandingPageTemplateProps } from '../types'

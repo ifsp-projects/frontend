@@ -1,4 +1,5 @@
-import { ACCESS_TOKEN_EXPIRES_SECONDS } from '@/constants/auth/access-token-expires-seconds'
+import { ACCESS_TOKEN_EXPIRES_SECONDS } from 'capivara-solidaria-ts-sdk'
+
 import { account } from '@/instances/account'
 
 export const credentialsOptions = {

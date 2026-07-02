@@ -1,11 +1,11 @@
-import { create } from 'zustand'
-import { immer } from 'zustand/middleware/immer'
-
 import {
   DEFAULT_TEMPLATES_ORDER,
   DEFAULT_TEMPLATE_COLORS,
   DEFAULT_TEMPLATE_COLOR_PALLETES
-} from '@/constants/page-templates/default-templates-order'
+} from 'capivara-solidaria-ts-sdk'
+import { create } from 'zustand'
+import { immer } from 'zustand/middleware/immer'
+
 import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
 import { setPath } from '@/utils/helpers/set-path'
 
