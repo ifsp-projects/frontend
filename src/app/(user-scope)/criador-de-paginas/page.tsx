@@ -22,7 +22,6 @@ const Page: NextPage = async () => {
   return (
     <main className="overflow-hidden">
       <Header />
-      {/* <SocialProof /> */}
       <HowItWorks />
       <Features />
       <Testimonials />

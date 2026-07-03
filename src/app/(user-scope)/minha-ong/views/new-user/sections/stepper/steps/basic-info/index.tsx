@@ -1,5 +1,6 @@
 'use client'
 
+import { OngCategory, toHubspotOngValue } from 'capivara-solidaria-ts-sdk'
 import type { FC } from 'react'
 import { Controller } from 'react-hook-form'
 
@@ -10,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-import { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
 import { formatPhone } from '@/utils/helpers/format-phone'
 
 import { useStepperContext } from '../../../stepper-context'
@@ -72,9 +72,9 @@ export const BasicInfo: FC<ChildrenProps> = ({ nextStep, prevStep }) => {
                   <SelectValue placeholder="Qual a área de atuação da sua ONG?" />
                 </SelectTrigger>
                 <SelectContent>
-                  {HUBSPOT_ONG_VALUES.map((value: string, index: number) => (
+                  {Object.values(OngCategory).map((value, index: number) => (
                     <SelectItem key={`option-${index}`} value={value}>
-                      {value}
+                      {toHubspotOngValue(value)}
                     </SelectItem>
                   ))}
                 </SelectContent>

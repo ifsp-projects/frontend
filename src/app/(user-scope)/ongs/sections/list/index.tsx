@@ -10,6 +10,7 @@ import { FacebookIcon } from '@/assets/icons/facebook'
 import { TwitterIcon } from '@/assets/icons/twitter'
 import { InstagramIcon } from '@/assets/socials/instagram'
 import { posthogEventDispatch } from '@/instances/posthog/dispatch'
+import type { MeasurementOngTypes } from '@/services/measurement/types'
 import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
 import { formatOngType } from '@/utils/helpers/format-ong-type'
 
@@ -147,7 +148,7 @@ export const List: FC<ListProps> = ({ data }) => {
               onClick={() => {
                 handleSelectCategory(key)
                 posthogEventDispatch.ongsHub.filterCategory({
-                  category: label,
+                  category: label as MeasurementOngTypes,
                   resultsCount: orgs.length
                 })
               }}
@@ -182,7 +183,7 @@ export const List: FC<ListProps> = ({ data }) => {
                     posthogEventDispatch.ongsHub.clickOrgCard({
                       ongType: formatOngType({
                         ong_type: ong?.organization_profile?.ong_type
-                      }),
+                      }) as MeasurementOngTypes,
                       position: index,
                       orgId: ong.id
                     })

@@ -1,13 +1,18 @@
 'use client'
 
 import type { TemplateType } from 'capivara-solidaria-ts-sdk'
+import {
+  OngCategory,
+  toHubspotOngValue,
+  toOngCategory
+} from 'capivara-solidaria-ts-sdk'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { Spin } from '@/components/ui/spin'
-import { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
 import { posthogEventDispatch } from '@/instances/posthog/dispatch'
+import type { MeasurementOngTypes } from '@/services/measurement/types'
 import { formatPhone } from '@/utils/helpers/format-phone'
 import { formatPostalCode } from '@/utils/helpers/format-postal-code'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -64,9 +69,10 @@ export const OnboardingProfileForm = ({
 
     const email = sessionStorage.getItem('onboarding_email')
     const password = sessionStorage.getItem('onboarding_password')
+    const ongType = data.ong_type ? toOngCategory(data.ong_type) : undefined
 
     posthogEventDispatch.account.completeSignup({
-      ongType: data.ong_type,
+      ongType: ongType as MeasurementOngTypes,
       city: data?.city || '',
       email: email || ''
     })
@@ -135,9 +141,9 @@ export const OnboardingProfileForm = ({
               name="ong_type"
             >
               <option value="">Selecione uma categoria</option>
-              {HUBSPOT_ONG_VALUES.map((value, index: number) => (
+              {Object.values(OngCategory).map((value, index: number) => (
                 <option key={index} value={value}>
-                  {value}
+                  {toHubspotOngValue(value)}
                 </option>
               ))}
             </select>

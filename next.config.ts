@@ -34,7 +34,6 @@ const nextConfig: NextConfig = {
       'framer-motion',
       'react-hook-form',
       'immer',
-      'swiper',
       'react-markdown'
     ]
   },

@@ -1,5 +1,6 @@
 'use client'
 
+import { OngCategory, toHubspotOngValue } from 'capivara-solidaria-ts-sdk'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import type { FC } from 'react'
@@ -16,7 +17,6 @@ import {
   SelectValue
 } from '@/components/ui/select'
 import { Spin } from '@/components/ui/spin'
-import { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
 import { formatPhone } from '@/utils/helpers/format-phone'
 import { hubspotFormSubmit } from '@/utils/helpers/hubspot-form-submit'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -199,14 +199,14 @@ export const ContactForm: FC = () => {
                       <SelectValue placeholder="Qual a área de atuação da sua ONG?" />
                     </SelectTrigger>
                     <SelectContent>
-                      {HUBSPOT_ONG_VALUES.map(
-                        (value: string, index: number) => (
+                      {Object.values(OngCategory).map(
+                        (value, index: number) => (
                           <SelectItem
                             className="bg-white"
                             key={`option-${index}`}
                             value={value}
                           >
-                            {value}
+                            {toHubspotOngValue(value)}
                           </SelectItem>
                         )
                       )}

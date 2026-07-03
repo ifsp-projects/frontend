@@ -1,3 +1,4 @@
+import { OngCategory } from 'capivara-solidaria-ts-sdk'
 import { z } from 'zod'
 
 export const onboardingProfileSchema = z.object({
@@ -9,7 +10,7 @@ export const onboardingProfileSchema = z.object({
   city: z.string().min(1, 'Cidade é obrigatória'),
   state: z.string().min(2, 'Estado é obrigatório'),
   postal_code: z.string().min(1, 'CEP é obrigatório'),
-  ong_type: z.string().optional(),
+  ong_type: z.enum(OngCategory).optional(),
   design_template: z.string().nonempty('Este campo é obrigatório')
 })
 
