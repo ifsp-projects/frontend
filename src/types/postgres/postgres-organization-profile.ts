@@ -1,11 +1,11 @@
-import type { PostgresDesignTemplates } from './enums/postgres-design-template'
-import type { PostgresOngType } from './enums/postgres-ong-types'
+import type { OngCategory, TemplateType } from 'capivara-solidaria-ts-sdk'
+
 import type { PostgresAddress } from './postgres-address'
 
 export interface PostgresOrganizationProfile {
   addresses?: PostgresAddress
   created_at: string
-  design_template?: PostgresDesignTemplates
+  design_template?: TemplateType
   facebook_url?: string
   google_id?: string
   id: string
@@ -14,7 +14,7 @@ export interface PostgresOrganizationProfile {
   name?: string
   ong_description?: string
   ong_id?: string
-  ong_type?: PostgresOngType
+  ong_type?: OngCategory
   phone?: string
   slug?: string
   token?: string

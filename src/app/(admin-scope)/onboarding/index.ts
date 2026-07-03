@@ -1,10 +1,10 @@
 'use server'
 
+import type { OngCategory, TemplateType } from 'capivara-solidaria-ts-sdk'
+
 import { account } from '@/instances/account'
 import { admin } from '@/instances/admin'
 import { instanceMotor } from '@/instances/motor'
-import type { PostgresDesignTemplates } from '@/types/postgres/enums/postgres-design-template'
-import type { PostgresOngType } from '@/types/postgres/enums/postgres-ong-types'
 import { generateSlug } from '@/utils/helpers/generate-slug'
 
 import type { OnboardingProfileData } from './components/form/schema'
@@ -86,9 +86,9 @@ export async function completeOnboardingAction(
         slug: generateSlug({ text: formData.name }),
         name: formData.name,
         ong_id: organizationId,
-        ong_type: formData.ong_type as PostgresOngType,
+        ong_type: formData.ong_type as OngCategory,
         phone: formData.phone,
-        design_template: formData.design_template as PostgresDesignTemplates,
+        design_template: formData.design_template as TemplateType,
         inviteToken: token,
         ong_description: formData.description,
         logo: 'https://static.vecteezy.com/ti/vetor-gratis/p1/19869277-ong-carta-logotipo-projeto-em-branco-fundo-ong-criativo-circulo-carta-logotipo-conceito-ong-carta-projeto-vetor.jpg'

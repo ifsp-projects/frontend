@@ -14,7 +14,7 @@ export const Details: FC<DetailsProps> = ({ copy, palette }) => {
             className="text-sm uppercase lg:text-center"
             style={{ color: palette.original }}
           >
-            {copy.feature}
+            {copy.label}
           </p>
           <h2 className="text-2xl font-bold lg:text-center lg:text-4xl">
             {copy.title}

@@ -130,20 +130,20 @@ export const Testimonials: FC<TestimonialsProps> = ({ copy, palette }) => {
                   path={`testimonials.cards[${index}].image`}
                   width={40}
                 />
-                <div>
+                <article>
                   <EditableCopyField
                     as="p"
                     className="text-xs font-bold text-neutral-700"
                     defaultValue={author.name}
                     path={`testimonials.cards[${index}].name`}
                   />
-                  <EditableCopyField
+                  {/* <EditableCopyField
                     as="p"
                     className="text-xs text-neutral-400"
                     defaultValue={author.city}
                     path={`testimonials.cards[${index}].city`}
-                  />
-                </div>
+                  /> */}
+                </article>
               </div>
             </div>
           ))}

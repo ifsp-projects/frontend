@@ -1,7 +1,7 @@
-import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
+import type { ColorPalette } from 'capivara-solidaria-ts-sdk'
 
 export interface StepsProps {
-  palette: PostgresColorPalette
+  palette: ColorPalette
   stats: {
     icon: string
     value: string

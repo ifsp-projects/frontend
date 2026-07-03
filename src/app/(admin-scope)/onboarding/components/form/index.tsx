@@ -1,5 +1,6 @@
 'use client'
 
+import type { TemplateType } from 'capivara-solidaria-ts-sdk'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -7,7 +8,6 @@ import { Controller, useForm } from 'react-hook-form'
 import { Spin } from '@/components/ui/spin'
 import { HUBSPOT_ONG_VALUES } from '@/constants/hubspot/hubspot-ong-types'
 import { posthogEventDispatch } from '@/instances/posthog/dispatch'
-import type { PostgresDesignTemplates } from '@/types/postgres/enums/postgres-design-template'
 import { formatPhone } from '@/utils/helpers/format-phone'
 import { formatPostalCode } from '@/utils/helpers/format-postal-code'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -29,8 +29,9 @@ export const OnboardingProfileForm = ({
   token
 }: OnboardingProfileFormProps) => {
   const [rootError, setRootError] = useState<string | null>(null)
-  const [previewTemplate, setPreviewTemplate] =
-    useState<PostgresDesignTemplates | null>(null)
+  const [previewTemplate, setPreviewTemplate] = useState<TemplateType | null>(
+    null
+  )
   const [isPreviewDesignTemplateOpen, setIsPreviewDesignTemplateOpen] =
     useState<boolean>(false)
 
@@ -149,9 +150,7 @@ export const OnboardingProfileForm = ({
               <>
                 <select
                   onChange={e => {
-                    setPreviewTemplate(
-                      e.target.value as PostgresDesignTemplates
-                    )
+                    setPreviewTemplate(e.target.value as TemplateType)
                     setIsPreviewDesignTemplateOpen(true)
                   }}
                   className={`${inputClass(!!errors.design_template)} bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a3a3a3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")] cursor-pointer appearance-none bg-position-[right_14px_center] bg-no-repeat pr-9`}

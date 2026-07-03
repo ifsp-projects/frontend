@@ -5,10 +5,9 @@ import {
   DEFAULT_TEMPLATE_COLORS,
   DEFAULT_TEMPLATE_COLOR_PALLETES
 } from 'capivara-solidaria-ts-sdk'
+import type { ColorPalette, TemplateType } from 'capivara-solidaria-ts-sdk'
 
 import { usePageBuilderStore } from '@/stores/page-builder-store'
-import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
-import type { TemplateType } from '@/types/postgres/page/psotgres-page-template-types'
 import type { DragEndEvent } from '@dnd-kit/core'
 import {
   DndContext,
@@ -53,7 +52,7 @@ function SortableSection({
   template: TemplateType
   isEditable: boolean
   mainColor: string
-  colorPalette: PostgresColorPalette
+  colorPalette: ColorPalette
 }) {
   const {
     attributes,
@@ -123,7 +122,7 @@ export function SortableSections({
   sections: Record<string, any>
   template: TemplateType
   isEditable: boolean
-  initialColorPalette?: PostgresColorPalette
+  initialColorPalette?: ColorPalette
   initialMainColor?: string
 }) {
   /**

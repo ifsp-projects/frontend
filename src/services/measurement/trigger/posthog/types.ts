@@ -1,4 +1,4 @@
-import type { PostgresDesignTemplates } from '@/types/postgres/enums/postgres-design-template'
+import type { TemplateType } from 'capivara-solidaria-ts-sdk'
 
 import type {
   MeasurementAiIntentType,
@@ -53,7 +53,7 @@ interface EditorSessionEndedProperties extends EditorSessionBaseProperties {
 
 interface TemplateSelectedProperties extends EditorSessionBaseProperties {
   templateId: string
-  templateType: PostgresDesignTemplates
+  templateType: TemplateType
 }
 
 interface CategoryFilteredProperties {

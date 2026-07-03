@@ -15,8 +15,8 @@ export const Details: FC<DetailsProps> = ({ copy, palette }) => {
           <EditableCopyField
             as="p"
             className="text-sm uppercase lg:text-center"
-            defaultValue={copy?.feature}
-            path="details.feature"
+            defaultValue={copy?.label}
+            path="details.label"
             style={{ color: palette.original }}
           />
           <EditableCopyField

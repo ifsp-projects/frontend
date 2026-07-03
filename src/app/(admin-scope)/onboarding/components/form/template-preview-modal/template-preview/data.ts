@@ -1,6 +1,6 @@
-import type { PostgresDesignTemplates } from '@/types/postgres/enums/postgres-design-template'
+import type { TemplateType } from 'capivara-solidaria-ts-sdk'
 
-export const TEMPLATE_PREVIEWS: Record<PostgresDesignTemplates, string> = {
+export const TEMPLATE_PREVIEWS: Record<TemplateType, string> = {
   primary: 'ongs/templates/primary',
   secondary: 'ongs/templates/secondary',
   tertiary: 'ongs/templates/tertiary',

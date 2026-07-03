@@ -1,5 +1,5 @@
-import type { PostgresPageTertiaryTemplate } from '@/types/postgres/page/postgres-page-tertiary-template'
+import type { TertiaryTemplate } from 'capivara-solidaria-ts-sdk'
 
 export interface MoreInfoAboutProps {
-  copy: PostgresPageTertiaryTemplate['moreInfoAbout']
+  copy: TertiaryTemplate['moreInfoAbout']
 }

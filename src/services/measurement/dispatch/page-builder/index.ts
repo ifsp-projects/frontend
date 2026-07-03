@@ -1,4 +1,4 @@
-import type { PostgresDesignTemplates } from '@/types/postgres/enums/postgres-design-template'
+import type { TemplateType } from 'capivara-solidaria-ts-sdk'
 
 import { Trigger } from '../../trigger'
 import type { MeasurementOrgContext, MeasurementUserContext } from '../types'
@@ -36,7 +36,7 @@ export class PageBuilder {
   public selectTemplate(
     ctx: MeasurementOrgContext & {
       templateId: string
-      templateType: PostgresDesignTemplates
+      templateType: TemplateType
     }
   ) {
     this.trigger.posthog.track('template_selected', ctx)

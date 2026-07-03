@@ -265,7 +265,7 @@ Primary theme color.
 ### Color Palette
 
 ```tsx
-colorPalette: PostgresColorPalette
+colorPalette: ColorPalette
 ```
 
 Theme palette configuration.

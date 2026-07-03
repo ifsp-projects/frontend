@@ -110,12 +110,12 @@ export const Testimonials: FC<TestimonialsProps> = ({ copy, palette }) => {
                   src={author.image}
                   width={40}
                 />
-                <div>
+                <article>
                   <p className="text-xs font-bold text-neutral-700">
                     {author.name}
                   </p>
-                  <p className="text-xs text-neutral-400">{author.city}</p>
-                </div>
+                  {/* <p className="text-xs text-neutral-400">{author.city}</p> */}
+                </article>
               </div>
             </div>
           ))}

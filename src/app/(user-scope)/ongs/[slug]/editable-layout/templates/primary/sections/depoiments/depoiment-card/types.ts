@@ -1,4 +1,4 @@
-import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
+import type { ColorPalette } from 'capivara-solidaria-ts-sdk'
 
 export interface DepoimentCardProps {
   copy: {
@@ -10,5 +10,5 @@ export interface DepoimentCardProps {
     content: string
   }
   index: number
-  palette: PostgresColorPalette
+  palette: ColorPalette
 }

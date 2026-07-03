@@ -1,4 +1,8 @@
-import type { DEFAULT_TEMPLATES_ORDER } from 'capivara-solidaria-ts-sdk'
+import type {
+  DEFAULT_TEMPLATES_ORDER,
+  TemplateType
+} from 'capivara-solidaria-ts-sdk'
+import type { ColorPalette } from 'capivara-solidaria-ts-sdk'
 
 import { FAQ } from '@/app/(user-scope)/ongs/[slug]/editable-layout//templates/common/sections/faq'
 import { MoreInfoAbout } from '@/app/(user-scope)/ongs/[slug]/editable-layout//templates/common/sections/more-info-about'
@@ -20,8 +24,6 @@ import { HowItWorks as TertiaryTemplateHowItWorks } from '@/app/(user-scope)/ong
 import { Initiatives as TertiaryTemplateInitiatives } from '@/app/(user-scope)/ongs/[slug]/editable-layout/templates/tertiary/sections/initiatives'
 import { MoreInfoAbout as TertiaryTemplateMoreInfoAbout } from '@/app/(user-scope)/ongs/[slug]/editable-layout/templates/tertiary/sections/more-info-about'
 import { Testimonials as TertiaryTemplateTestimonials } from '@/app/(user-scope)/ongs/[slug]/editable-layout/templates/tertiary/sections/testimonials'
-import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
-import type { TemplateType } from '@/types/postgres/page/psotgres-page-template-types'
 
 type SectionKeys<T extends TemplateType> =
   (typeof DEFAULT_TEMPLATES_ORDER)[T][number]
@@ -32,7 +34,7 @@ type SectionRegistry = {
     React.FC<{
       copy: any
       mainColor: string
-      palette: PostgresColorPalette
+      palette: ColorPalette
     }>
   >
 }

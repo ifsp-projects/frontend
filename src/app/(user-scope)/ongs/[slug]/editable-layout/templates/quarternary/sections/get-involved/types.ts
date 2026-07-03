@@ -1,7 +1,9 @@
-import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
-import type { PostgresPageQuarternaryTemplate } from '@/types/postgres/page/postgres-page-quarternary-template'
+import type {
+  ColorPalette,
+  QuarternaryTemplate
+} from 'capivara-solidaria-ts-sdk'
 
 export interface GetInvolvedProps {
-  copy: PostgresPageQuarternaryTemplate['getInvolved']
-  palette: PostgresColorPalette
+  copy: QuarternaryTemplate['getInvolved']
+  palette: ColorPalette
 }

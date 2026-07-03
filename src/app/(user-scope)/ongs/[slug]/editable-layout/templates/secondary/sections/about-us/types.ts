@@ -1,7 +1,6 @@
-import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
-import type { PostgresPageSecondaryTemplate } from '@/types/postgres/page/postgres-page-secondary-template'
+import type { ColorPalette, SecondaryTemplate } from 'capivara-solidaria-ts-sdk'
 
 export interface AboutUsProps {
-  copy: PostgresPageSecondaryTemplate['aboutUs']
-  palette: PostgresColorPalette
+  copy: SecondaryTemplate['aboutUs']
+  palette: ColorPalette
 }

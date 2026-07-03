@@ -1,14 +1,12 @@
 // sortable-sections-hydrated.tsx
 'use client'
 
+import type { ColorPalette, TemplateType } from 'capivara-solidaria-ts-sdk'
 import { useEffect } from 'react'
 
 import { usePageBuilderStore } from '@/stores/page-builder-store'
 
 import { SortableSections } from '..'
-
-import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
-import type { TemplateType } from '@/types/postgres/page/psotgres-page-template-types'
 
 /**
  * The page builder relies on Zustand as its client-side source
@@ -35,7 +33,7 @@ export function SortableSectionsHydrated({
   isEditable?: boolean
   order: string[]
   mainColor: string
-  colorPalette: PostgresColorPalette
+  colorPalette: ColorPalette
 }) {
   const setInitialSections = usePageBuilderStore(s => s.setInitialSections)
   const setInitialMainColor = usePageBuilderStore(s => s.setInitialMainColor)

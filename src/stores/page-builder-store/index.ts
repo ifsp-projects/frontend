@@ -3,10 +3,10 @@ import {
   DEFAULT_TEMPLATE_COLORS,
   DEFAULT_TEMPLATE_COLOR_PALLETES
 } from 'capivara-solidaria-ts-sdk'
+import type { ColorPalette } from 'capivara-solidaria-ts-sdk'
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
-import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
 import { setPath } from '@/utils/helpers/set-path'
 
 import type { PageBuilderState } from './types'
@@ -37,7 +37,7 @@ export const usePageBuilderStore = create<PageBuilderState>()(
      *
      * Overrides template defaults when customized by users.
      */
-    colorPalette: null as unknown as PostgresColorPalette,
+    colorPalette: null as unknown as ColorPalette,
     /**
      * Primary brand color used throughout the page.
      *

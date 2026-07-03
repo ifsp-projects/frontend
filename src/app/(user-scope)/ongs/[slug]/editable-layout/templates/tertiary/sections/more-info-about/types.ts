@@ -1,7 +1,6 @@
-import type { PostgresColorPalette } from '@/types/postgres/enums/postgres-color-pallete'
-import type { PostgresPageTertiaryTemplate } from '@/types/postgres/page/postgres-page-tertiary-template'
+import type { ColorPalette, TertiaryTemplate } from 'capivara-solidaria-ts-sdk'
 
 export interface MoreInfoAboutProps {
-  copy: PostgresPageTertiaryTemplate['moreInfoAbout']
-  palette: PostgresColorPalette
+  copy: TertiaryTemplate['moreInfoAbout']
+  palette: ColorPalette
 }
