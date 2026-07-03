@@ -6,7 +6,7 @@ import Image from 'next/image'
 export const AnimatedImage = () => {
   return (
     <motion.figure
-      className="h-auto max-h-full w-full max-w-full rounded-sm bg-[#fdd7d9] lg:aspect-square lg:max-h-[520px] lg:max-w-[400px]"
+      className="h-auto max-h-full w-full max-w-full rounded-sm bg-[#fdd7d9] lg:aspect-square lg:max-h-[520px] lg:max-w-[360px]"
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       transition={{ duration: 0.65, ease: [0.6, 0.05, -0.01, 0.9] }}
       viewport={{ once: true, amount: 0.3 }}

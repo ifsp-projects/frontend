@@ -8,7 +8,7 @@ import ToastMessage from '@/components/shared/toast-message'
 import { font } from '@/constants/font'
 import NextAuthProvider from '@/context/next-auth-provider'
 import { authOptions } from '@/lib/auth'
-import { PostHogProvider } from '@/providers/PosthogProvider'
+import { PostHogProvider } from '@/providers/posthog-provider'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import 'lenis/dist/lenis.css'

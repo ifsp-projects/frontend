@@ -886,7 +886,7 @@ g > path:nth-of-type(2) {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.8rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   background-color: #fdd7d9;
   background-image: linear-gradient(#0000, rgba(0, 0, 0, 0.13));
   border: none;

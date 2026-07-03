@@ -19,22 +19,25 @@ extend({ ThreeGlobe })
 const Globe: React.FC<WorldProps> = ({ globeConfig, data }) => {
   const globeRef = useRef<ThreeGlobe | null>(null)
 
-  const defaultProps = {
-    pointSize: 1,
-    atmosphereColor: '#ffffff',
-    showAtmosphere: true,
-    atmosphereAltitude: 0.1,
-    polygonColor: 'rgba(255,255,255,0.7)',
-    globeColor: '#1d072e',
-    emissive: '#000000',
-    emissiveIntensity: 0.1,
-    shininess: 0.9,
-    arcTime: 2000,
-    arcLength: 0.9,
-    rings: 1,
-    maxRings: 3,
-    ...globeConfig
-  }
+  const defaultProps = useMemo(
+    () => ({
+      pointSize: 1,
+      atmosphereColor: '#ffffff',
+      showAtmosphere: true,
+      atmosphereAltitude: 0.1,
+      polygonColor: 'rgba(255,255,255,0.7)',
+      globeColor: '#1d072e',
+      emissive: '#000000',
+      emissiveIntensity: 0.1,
+      shininess: 0.9,
+      arcTime: 2000,
+      arcLength: 0.9,
+      rings: 1,
+      maxRings: 3,
+      ...globeConfig
+    }),
+    [globeConfig]
+  )
 
   const globeData = useMemo(() => {
     const points = data.flatMap(arc => {
@@ -101,7 +104,7 @@ const Globe: React.FC<WorldProps> = ({ globeConfig, data }) => {
       .hexPolygonColor(() => defaultProps.polygonColor)
 
     startAnimation()
-  }, [globeRef.current, globeData])
+  }, [globeData, defaultProps])
 
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return
@@ -121,7 +124,7 @@ const Globe: React.FC<WorldProps> = ({ globeConfig, data }) => {
       .arcDashAnimateTime(() => defaultProps.arcTime)
 
     globeRef.current
-      .pointsData(globeData)
+      .pointsData([])
       .pointColor(e => (e as { color: (t: number) => string }).color(0))
       .pointsMerge(true)
       .pointAltitude(0.0)
@@ -154,7 +157,7 @@ const Globe: React.FC<WorldProps> = ({ globeConfig, data }) => {
     }, 2000)
 
     return () => clearInterval(interval)
-  }, [globeRef.current, globeData])
+  }, [globeData, data])
 
   const [shouldRenderGlobe, setShouldRenderGlobe] = useState<boolean>(true)
 

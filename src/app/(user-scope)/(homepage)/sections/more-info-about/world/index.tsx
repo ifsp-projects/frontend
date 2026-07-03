@@ -2,7 +2,7 @@
 
 'use client'
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Fog, PerspectiveCamera, Scene, Vector3 } from 'three'
 
 import { OrbitControls } from '@react-three/drei'
@@ -23,12 +23,25 @@ const aspect = 1.2
 const cameraZ = 300
 
 export const World: React.FC<WorldProps> = ({ data, globeConfig }) => {
-  const scene = new Scene()
+  const scene = useMemo(() => {
+    const scene = new Scene()
+    scene.fog = new Fog(0xf8fafc, 400, 2000)
+    return scene
+  }, [])
 
-  scene.fog = new Fog(0xf8fafc, 400, 2000)
+  const camera = useMemo(() => new PerspectiveCamera(50, aspect, 180, 1800), [])
 
   return (
-    <Canvas camera={new PerspectiveCamera(50, aspect, 180, 1800)} scene={scene}>
+    <Canvas
+      camera={camera}
+      scene={scene}
+      gl={{
+        antialias: false,
+        alpha: true,
+        powerPreference: 'high-performance'
+      }}
+      frameloop="demand"
+    >
       <WebGLRendererConfig />
       <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
       <directionalLight
