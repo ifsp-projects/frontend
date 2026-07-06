@@ -1,9 +1,9 @@
 import type { IconProps } from '@/types/components/icon-props'
 
-export const DrawEffect: React.FC<IconProps> = async props => {
+export const DrawEffect: React.FC<IconProps> = props => {
   return (
     <svg
-      className="-bottom-[32px] -left-[12px] block"
+      className="bottom-[-32px] left-[-12px] block"
       fill="none"
       height="32"
       viewBox="0 0 207 32"

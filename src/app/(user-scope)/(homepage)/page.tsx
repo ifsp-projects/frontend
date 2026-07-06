@@ -6,12 +6,11 @@ import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { getHomepageJsonLd } from './json-ld'
 import { Benefits } from './sections/benefits'
-import { ContactSimplified } from './sections/contact-simplified'
+import { Contact } from './sections/contact'
 import { Details } from './sections/details'
 import { Header } from './sections/header'
 
 const MoreInfoAbout = dynamic(() => import('./sections/more-info-about'))
-const Contact = dynamic(() => import('./sections/contact'))
 const HowItWorks = dynamic(() => import('./sections/how-it-works'))
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -39,7 +38,6 @@ const Page: NextPage = async () => {
         <MoreInfoAbout />
         <HowItWorks />
         <Contact />
-        <ContactSimplified />
       </main>
     </>
   )
