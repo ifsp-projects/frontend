@@ -9,7 +9,6 @@ import { font } from '@/constants/font'
 import NextAuthProvider from '@/context/next-auth-provider'
 import { authOptions } from '@/lib/auth'
 import { PostHogProvider } from '@/providers/posthog-provider'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import 'lenis/dist/lenis.css'
 
@@ -48,7 +47,6 @@ export default async function RootLayout({
       <body
         className={`${font.className} text-neutral-700 selection:bg-rose-50 selection:text-neutral-700`}
       >
-        <SpeedInsights />
         <PostHogProvider>
           <NextAuthProvider session={session}>
             <ToastMessage />
