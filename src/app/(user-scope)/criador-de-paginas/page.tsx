@@ -1,12 +1,11 @@
 import type { Metadata, NextPage } from 'next'
 
+import { Features } from '@/features/pages/criador-de-paginas/sections/features'
+import { Header } from '@/features/pages/criador-de-paginas/sections/header'
+import { HowItWorks } from '@/features/pages/criador-de-paginas/sections/how-it-works'
+import { Testimonials } from '@/features/pages/criador-de-paginas/sections/testimonials'
+import { TryNow } from '@/features/pages/criador-de-paginas/sections/try-now'
 import { getMetaData } from '@/utils/seo/get-metadata'
-
-import { Features } from './sections/features'
-import { Header } from './sections/header'
-import { HowItWorks } from './sections/how-it-works'
-import { Testimonials } from './sections/testimonials'
-import { TryNow } from './sections/try-now'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

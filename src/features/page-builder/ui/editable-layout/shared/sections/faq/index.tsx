@@ -1,0 +1,48 @@
+'use client'
+
+import type { FC } from 'react'
+
+import { EditableLinkField } from '@/features/page-builder/components/template-fields/editable-link-field'
+
+import { QuestionItem } from './question-item'
+import type { FaqProps } from './types'
+
+export const FAQ: FC<FaqProps> = ({ copy, palette }) => {
+  return (
+    <section className="px-4 py-12 lg:py-16 xl:px-0">
+      <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:justify-between lg:gap-0">
+        <article className="flex w-full flex-col gap-3 lg:gap-6">
+          <span className="w-fit rounded-full border border-neutral-200 bg-neutral-50 px-4 py-1.5 text-xs font-medium text-neutral-500 backdrop-blur-[10px] transition duration-200">
+            FAQs
+          </span>
+          <h2 className="text-2xl font-bold lg:text-5xl xl:text-6xl">
+            Perguntas <br /> mais frequentes
+          </h2>
+          <p className="text-sm text-neutral-500 lg:text-base">
+            Respostas para as perguntas mais frequentes da nossa comunidade{' '}
+            <br /> Não teve sua pergunta respondida? Entre em contato com a
+            gente:
+          </p>
+          <EditableLinkField
+            defaultValue={{
+              href: copy.anchor?.href || '#',
+              label: copy.anchor?.label || 'Texto do link'
+            }}
+            className="mt-2 mb-7 flex max-w-fit items-center justify-center rounded-md border px-6 py-2 text-center text-sm transition-all duration-300 hover:brightness-105 lg:mb-0"
+            path="faq.anchor"
+            style={{ color: palette.shade, borderColor: palette.shade }}
+          />
+        </article>
+        <div className="flex w-full flex-col gap-y-6">
+          {copy.questions.map((question, index) => (
+            <QuestionItem
+              copy={question}
+              index={index}
+              key={`cmms-questions-question-${question.title}-${index}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,129 @@
+'use client'
+
+import { OngCategory, toHubspotOngValue } from 'capivara-solidaria-ts-sdk'
+import { Controller } from 'react-hook-form'
+
+import { Button } from '@/components/ui/button'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select'
+import { Spin } from '@/components/ui/spin'
+import { formatOngType } from '@/utils/helpers/format-ong-type'
+
+import { SectionCard } from '../../ui/section-card'
+import type { AboutTabProps } from './types'
+
+export const AboutTab = ({
+  control,
+  register,
+  defaultDescription,
+  isSubmitting,
+  organization
+}: AboutTabProps) => (
+  <SectionCard title="Sobre a organização">
+    <div className="w-full">
+      <label className="mb-2 block font-medium text-neutral-700">
+        Sobre a minha ONG
+      </label>
+      <textarea
+        className="w-full resize-none rounded-sm border border-neutral-300 px-4 py-2 transition-all duration-300 outline-none placeholder:text-sm focus:ring-1 focus:ring-neutral-500 focus:outline-none"
+        defaultValue={defaultDescription}
+        minLength={1}
+        placeholder="Ex.: Somos uma ONG dedicada a apoiar crianças em situação de vulnerabilidade por meio de educação, alimentação e atividades culturais."
+        rows={5}
+        required
+        {...register('description')}
+      />
+    </div>
+
+    <div className="w-full">
+      <label className="mb-2 block font-medium text-neutral-700">
+        Template de Design da minha page
+        <span className="ml-1 text-xs font-normal text-neutral-500 italic">
+          (ao trocar, as edições atuais serão perdidas — estamos ajustando)
+        </span>
+        <span className="ml-1 text-rose-500">*</span>
+      </label>
+      <Controller
+        render={({ field }) => (
+          <Select
+            defaultValue={organization.organization_profile?.design_template}
+            onValueChange={field.onChange}
+            value={field.value ?? ''}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Escolha o template do layout da sua página." />
+            </SelectTrigger>
+            <SelectContent>
+              {[
+                {
+                  label: 'Template Aurora',
+                  value: 'primary'
+                },
+                {
+                  label: 'Template Atlas',
+                  value: 'secondary'
+                },
+                {
+                  label: 'Template Hélios',
+                  value: 'tertiary'
+                },
+                {
+                  label: 'Template Vulcan',
+                  value: 'quarternary'
+                }
+              ].map((option, index: number) => (
+                <SelectItem key={`option-${index}`} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
+        control={control}
+        name="design_template"
+      />
+    </div>
+
+    <div className="w-full">
+      <label className="mb-2 block font-medium text-neutral-700">
+        Área de atuação da ONG
+        <span className="ml-2 text-rose-500">*</span>
+      </label>
+      <Controller
+        render={({ field }) => (
+          <Select
+            onValueChange={field.onChange}
+            value={formatOngType({ ong_type: field.value }) ?? ''}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Qual a área de atuação da sua ONG?" />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.values(OngCategory).map((value, index: number) => (
+                <SelectItem key={`option-${index}`} value={value}>
+                  {toHubspotOngValue(value)}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
+        control={control}
+        name="ong_type"
+      />
+    </div>
+    <div className="flex w-full items-center md:justify-end">
+      <Button
+        className="mt-4 flex cursor-pointer items-center gap-3 text-sm"
+        type="submit"
+      >
+        Salvar alterações
+        {isSubmitting ? <Spin /> : null}
+      </Button>
+    </div>
+  </SectionCard>
+)

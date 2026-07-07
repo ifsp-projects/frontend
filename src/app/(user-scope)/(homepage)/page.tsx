@@ -2,16 +2,18 @@ import type { Metadata, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 
+import { Benefits } from '@/features/pages/homepage/sections/benefits'
+import { Contact } from '@/features/pages/homepage/sections/contact'
+import { Details } from '@/features/pages/homepage/sections/details'
+import { Header } from '@/features/pages/homepage/sections/header'
+import MoreInfoAbout from '@/features/pages/homepage/sections/more-info-about'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
 import { getHomepageJsonLd } from './json-ld'
-import { Benefits } from './sections/benefits'
-import { Contact } from './sections/contact'
-import { Details } from './sections/details'
-import { Header } from './sections/header'
 
-const MoreInfoAbout = dynamic(() => import('./sections/more-info-about'))
-const HowItWorks = dynamic(() => import('./sections/how-it-works'))
+const HowItWorks = dynamic(
+  () => import('@/features/pages/homepage/sections/how-it-works')
+)
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -20,7 +22,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     description:
       'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade — sem precisar de programador.',
     image: '',
-    url: '  /'
+    url: '/'
   })
 }
 

@@ -1,9 +1,8 @@
 import type { Metadata, NextPage } from 'next'
 
+import { Questions } from '@/features/pages/faq/sections/content'
+import { Header } from '@/features/pages/faq/sections/header'
 import { getMetaData } from '@/utils/seo/get-metadata'
-
-import { Questions } from './sections/content'
-import { Header } from './sections/header'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

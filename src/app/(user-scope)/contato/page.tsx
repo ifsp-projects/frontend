@@ -1,9 +1,8 @@
 import type { Metadata, NextPage } from 'next'
 
+import { ContactForm } from '@/features/pages/contato/sections/contact-form'
+import { Header } from '@/features/pages/contato/sections/header'
 import { getMetaData } from '@/utils/seo/get-metadata'
-
-import { ContactForm } from './sections/contact-form'
-import { Header } from './sections/header'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

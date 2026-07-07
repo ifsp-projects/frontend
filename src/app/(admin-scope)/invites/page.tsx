@@ -2,12 +2,11 @@ import type { Metadata } from 'next'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 
+import { InviteList } from '@/features/onboarding/components/invites/invite-list'
+import { SendInviteForm } from '@/features/onboarding/components/invites/send-invite-form'
 import { admin } from '@/instances/admin'
 import { authOptions } from '@/lib/auth'
 import { getMetaData } from '@/utils/seo/get-metadata'
-
-import { InviteList } from './components/invite-list'
-import { SendInviteForm } from './components/send-invite-form'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {

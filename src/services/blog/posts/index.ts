@@ -1,7 +1,7 @@
-import { FEATURED_ARTICLES_TAGS_IDS } from '@/constants/wordpress/featured-articles-tags-id'
+import { FEATURED_ARTICLES_TAGS_IDS } from '@/features/blog/constants/wordpress/featured-articles-tags-id'
 import { apiWordpress } from '@/instances/wordpress'
-import type { WordpressArticle } from '@/types/wordpress/wordpress-article'
-import type { WordPressTag } from '@/types/wordpress/wordpress-tag'
+import type { WordpressArticle } from '@/features/blog/types/wordpress/wordpress-article'
+import type { WordPressTag } from '@/features/blog/types/wordpress/wordpress-tag'
 
 import type {
   EnrichedWordpressArticle,

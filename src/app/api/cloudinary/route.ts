@@ -1,9 +1,9 @@
 import { v2 as cloudinary } from 'cloudinary'
 import { NextResponse } from 'next/server'
 
-import { cloudinaryApiKey } from '@/constants/environments/cloudinary-api-key'
-import { cloudinaryBucketname } from '@/constants/environments/cloudinary-bucket-name'
-import { cloudinarySecret } from '@/constants/environments/cloudinary-secret'
+import { cloudinaryApiKey } from '@/constants/env/cloudinary-api-key'
+import { cloudinaryBucketname } from '@/constants/env/cloudinary-bucket-name'
+import { cloudinarySecret } from '@/constants/env/cloudinary-secret'
 
 cloudinary.config({
   cloud_name: cloudinaryBucketname,

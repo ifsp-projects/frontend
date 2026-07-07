@@ -2,14 +2,18 @@ import he from 'he'
 import type { NextPage } from 'next'
 import Script from 'next/script'
 
+import { ArticleBody } from '@/features/blog/components/article/article-body'
+import { ArticleHeader } from '@/features/blog/components/article/article-header'
+import { Contact } from '@/features/pages/homepage/sections/contact'
 import { blog } from '@/instances/blog'
 import { blogArticleStructuredData } from '@/utils/seo/dts-schemas/blog-article'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
-import { Article } from './sections/article'
-import { Contact } from './sections/contact'
-import { Header } from './sections/header'
-import type { BlogArticlePageProps } from './types'
+type BlogArticlePageProps = {
+  params: Promise<{
+    slug: string
+  }>
+}
 
 export async function generateStaticParams() {
   try {
@@ -60,8 +64,8 @@ const Page: NextPage<BlogArticlePageProps> = async ({ params }) => {
         type="application/ld+json"
       />
       <main>
-        <Header article={article} />
-        <Article article={article} />
+        <ArticleHeader article={article} />
+        <ArticleBody article={article} />
         <Contact />
       </main>
     </>

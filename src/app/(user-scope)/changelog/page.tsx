@@ -1,10 +1,9 @@
 import type { Metadata, NextPage } from 'next'
 
+import { Content } from '@/features/pages/changelog/sections/content'
+import { Header } from '@/features/pages/changelog/sections/header'
+import { Divider } from '@/features/pages/changelog/sections/try-now'
 import { getMetaData } from '@/utils/seo/get-metadata'
-
-import { Content } from './sections/content'
-import { Header } from './sections/header'
-import { Divider } from './sections/try-now'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

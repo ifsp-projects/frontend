@@ -1,5 +1,5 @@
 import { apiWordpress } from '@/instances/wordpress'
-import type { WordPressTag } from '@/types/wordpress/wordpress-tag'
+import type { WordPressTag } from '@/features/blog/types/wordpress/wordpress-tag'
 
 import type { GetAllTagsReturn, GetTagBySlugReturn } from './types'
 

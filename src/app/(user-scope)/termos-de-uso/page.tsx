@@ -1,13 +1,13 @@
 import type { Metadata, NextPage } from 'next'
 import Script from 'next/script'
 
+import { ScrollProgressProvider } from '@/features/pages/termos-de-uso/context/scroll-progress-context'
+import { Content } from '@/features/pages/termos-de-uso/sections/content'
+import { Header } from '@/features/pages/termos-de-uso/sections/header'
+import { ScrollProgress } from '@/features/pages/termos-de-uso/sections/scroll-progress'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
-import { ScrollProgressProvider } from './context/scroll-progress-context'
 import { jsonLd } from './json-ld'
-import { Content } from './sections/content'
-import { Header } from './sections/header'
-import { ScrollProgress } from './sections/scroll-progress'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

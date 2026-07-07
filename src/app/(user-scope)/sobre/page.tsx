@@ -1,11 +1,10 @@
 import type { Metadata, NextPage } from 'next'
 
+import { Header } from '@/features/pages/sobre/sections/header'
+import { HowItWorks } from '@/features/pages/sobre/sections/how-it-works'
+import { Members } from '@/features/pages/sobre/sections/members'
+import { Stack } from '@/features/pages/sobre/sections/stack'
 import { getMetaData } from '@/utils/seo/get-metadata'
-
-import { Header } from './sections/header'
-import { HowItWorks } from './sections/how-it-works'
-import { Members } from './sections/members'
-import { Stack } from './sections/stack'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

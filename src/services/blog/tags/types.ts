@@ -1,4 +1,4 @@
-import type { WordPressTag } from '@/types/wordpress/wordpress-tag'
+import type { WordPressTag } from '@/features/blog/types/wordpress/wordpress-tag'
 
 export interface GetTagBySlugPayload {
   slug: string

@@ -2,15 +2,20 @@ import './globals.css'
 
 import type { Metadata, Viewport } from 'next'
 import { getServerSession } from 'next-auth'
+import { Albert_Sans } from 'next/font/google'
 import { Toaster } from 'sonner'
 
-import ToastMessage from '@/components/shared/toast-message'
-import { font } from '@/constants/font'
 import NextAuthProvider from '@/context/next-auth-provider'
+import { PostHogProvider } from '@/context/posthog-provider'
 import { authOptions } from '@/lib/auth'
-import { PostHogProvider } from '@/providers/posthog-provider'
 
 import 'lenis/dist/lenis.css'
+
+const font = Albert_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -49,7 +54,6 @@ export default async function RootLayout({
       >
         <PostHogProvider>
           <NextAuthProvider session={session}>
-            <ToastMessage />
             {children}
             <Toaster />
           </NextAuthProvider>

@@ -45,6 +45,9 @@ jobs:
         run: |
           pnpm install
 
+      - name: Run Unit Tests
+        run: pnpm test:run
+
       - name: Run Build
         run: |
           pnpm run build

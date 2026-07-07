@@ -2,15 +2,14 @@ import type { Metadata, NextPage } from 'next'
 import { redirect } from 'next/navigation'
 
 import Beams from '@/components/ui/beams'
+import { Header } from '@/features/pages/admin/sections/header'
 import { getUserSession } from '@/utils/auth/get-user-session'
 import { getMetaData } from '@/utils/seo/get-metadata'
-
-import { Header } from './sections/header'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
     ...getMetaData({
-      title: 'Login | Capivara Solidária',
+      title: 'Admin | Capivara Solidária',
       description:
         'Acesse sua conta Capivara Solidária para criar e editar suas landing pages de forma rápida e segura.',
       image: '',

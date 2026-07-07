@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-import { apiBaseUrl } from '@/constants/environments/api-base-url'
-import { apiKey } from '@/constants/environments/api-key'
+import { apiBaseUrl } from '@/constants/env/api-base-url'
+import { apiKey } from '@/constants/env/api-key'
 
 export const apiPostgres = axios.create({
   baseURL: apiBaseUrl,

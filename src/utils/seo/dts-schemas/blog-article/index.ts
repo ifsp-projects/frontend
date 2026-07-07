@@ -1,7 +1,7 @@
 import he from 'he'
 import type { Article, WithContext } from 'schema-dts'
 
-import { BASE_URL } from '@/constants/environments/base-url'
+import { BASE_URL } from '@/constants/env/base-url'
 
 import type { BlogArticleStructuredDataPayload } from './types'
 

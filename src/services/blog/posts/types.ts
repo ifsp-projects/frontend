@@ -1,5 +1,5 @@
-import type { WordpressArticle } from '@/types/wordpress/wordpress-article'
-import type { WordPressTag } from '@/types/wordpress/wordpress-tag'
+import type { WordpressArticle } from '@/features/blog/types/wordpress/wordpress-article'
+import type { WordPressTag } from '@/features/blog/types/wordpress/wordpress-tag'
 
 export type EnrichedWordpressArticle = WordpressArticle & {
   tagDetails: WordPressTag[]

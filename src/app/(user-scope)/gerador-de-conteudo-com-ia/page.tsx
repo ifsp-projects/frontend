@@ -1,13 +1,12 @@
 import type { Metadata, NextPage } from 'next'
 
+import { Features } from '@/features/pages/gerador-de-conteudo-com-ia/sections/features'
+import { Header } from '@/features/pages/gerador-de-conteudo-com-ia/sections/header'
+import { OutputTypes } from '@/features/pages/gerador-de-conteudo-com-ia/sections/output-types'
+import { Testimonials } from '@/features/pages/gerador-de-conteudo-com-ia/sections/testimonials'
+import { TryNow } from '@/features/pages/gerador-de-conteudo-com-ia/sections/try-now'
+import { UseCases } from '@/features/pages/gerador-de-conteudo-com-ia/sections/use-cases'
 import { getMetaData } from '@/utils/seo/get-metadata'
-
-import { Features } from './sections/features'
-import { Header } from './sections/header'
-import { OutputTypes } from './sections/output-types'
-import { Testimonials } from './sections/testimonials'
-import { TryNow } from './sections/try-now'
-import { UseCases } from './sections/use-cases'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

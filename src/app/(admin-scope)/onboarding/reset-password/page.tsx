@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { NoInviteIcon } from '@/assets/icons/no-invite'
+import { validateTokenAction } from '@/features/onboarding/actions/onboarding-actions'
+import { ResetPasswordForm } from '@/features/onboarding/components/reset-password/reset-password-form'
+import { StepBadge } from '@/features/onboarding/components/reset-password/step-badge'
+import { RESET_PASSWORD_FEEDBACK_MESSAGES } from '@/features/onboarding/constants/reset-password-messages'
 import { getMetaData } from '@/utils/seo/get-metadata'
-
-import { StepBadge } from '../components/step-badge'
-import { InvalidTokenScreen } from './components/invalid-token-screen'
-import { ResetPasswordForm } from './components/reset-password-form'
-
-import { validateTokenAction } from '..'
 
 interface PageProps {
   searchParams: Promise<{ token?: string }>
@@ -37,7 +36,21 @@ const Page = async ({ searchParams }: PageProps) => {
   const validation = await validateTokenAction(token)
 
   if (!validation.valid) {
-    return <InvalidTokenScreen reason={validation?.reason || ''} />
+    const msg =
+      RESET_PASSWORD_FEEDBACK_MESSAGES[validation.reason || ''] ??
+      RESET_PASSWORD_FEEDBACK_MESSAGES['not_found']
+
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-white px-4">
+        <header className="w-full max-w-sm text-center">
+          <div className="mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full border border-rose-100 bg-rose-50">
+            <NoInviteIcon />
+          </div>
+          <h1 className="text-xl font-bold text-neutral-600">{msg.title}</h1>
+          <p className="text-sm text-neutral-500">{msg.body}</p>
+        </header>
+      </main>
+    )
   }
 
   return (

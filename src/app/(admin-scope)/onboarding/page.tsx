@@ -1,13 +1,15 @@
 import type { Metadata, NextPage } from 'next'
 import { notFound, redirect } from 'next/navigation'
 
+import { OnboardingProfileForm } from '@/features/onboarding/components/onboarding/form'
+import { StepBadge } from '@/features/onboarding/components/onboarding/step-badge'
 import { admin } from '@/instances/admin'
 import { instanceMotor } from '@/instances/motor'
 import { getMetaData } from '@/utils/seo/get-metadata'
 
-import { OnboardingProfileForm } from './components/form'
-import { StepBadge } from './components/step-badge'
-import type { OnboardingPageProps } from './types'
+type OnboardingPageProps = {
+  searchParams: Promise<{ token?: string; email?: string }>
+}
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
