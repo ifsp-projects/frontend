@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { IconProps } from '@/types/components/icon-props'
+import type { IconProps } from '@/shared/types/icon-props'
 
 export const Copy: React.FC<IconProps> = props => {
   return (

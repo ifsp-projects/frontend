@@ -3,7 +3,9 @@
 import posthog from 'posthog-js'
 import { type FC, useEffect, useRef, useState } from 'react'
 
-import { EmptyBox } from '@/assets/icons/empty-box'
+import { useUserStore } from '@/features/page-builder/hooks/user-store'
+import { posthogEventDispatch } from '@/services/posthog/dispatch'
+import { EmptyBox } from '@/shared/assets/icons/empty-box'
 import {
   Drawer,
   DrawerClose,
@@ -12,10 +14,8 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger
-} from '@/components/ui/drawer'
-import { useUserStore } from '@/features/page-builder/hooks/user-store'
-import { useUserSession } from '@/hooks/use-user-session'
-import { posthogEventDispatch } from '@/instances/posthog/dispatch'
+} from '@/shared/components/ui/drawer'
+import { useUserSession } from '@/shared/hooks/use-user-session'
 import { ArrowLeft, StarLightbulb } from '@vectoricons/atlas-icons-react'
 
 import { AssistantMessage } from './components/assistant-message'

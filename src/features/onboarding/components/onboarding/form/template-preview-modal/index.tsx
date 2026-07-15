@@ -1,4 +1,4 @@
-import { Modal } from '@/components/shared/modal'
+import { Modal } from '@/shared/components/common/modal'
 
 import { TemplatePreview } from './template-preview'
 import type { TemplatePreviewModalProps } from './types'

@@ -1,8 +1,8 @@
-import { CookiesConsent } from '@/components/shared/cookies-consent'
-import { Footer } from '@/components/shared/footer'
-import { HighlightStripe } from '@/components/shared/highlight-stripe'
-import { Navbar } from '@/components/shared/navbar'
-import type { NextLayoutDefaultProps } from '@/types/next-layout-default-props'
+import { CookiesConsent } from '@/shared/components/common/cookies-consent'
+import { Footer } from '@/shared/components/common/footer'
+import { HighlightStripe } from '@/shared/components/common/highlight-stripe'
+import { Navbar } from '@/shared/components/common/navbar'
+import type { NextLayoutDefaultProps } from '@/shared/types/next-layout-default-props'
 
 const UserScopePagesLayout: React.FC<NextLayoutDefaultProps> = async ({
   children

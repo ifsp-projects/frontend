@@ -1,9 +1,9 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { RateLimiterMemory } from 'rate-limiter-flexible'
 
-import { instanceMotor } from '@/instances/motor'
-import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
-import { getIpAdress } from '@/utils/helpers/get-ip-address'
+import type { OrganizationProps } from '@/domain/entities/organization'
+import { instanceMotor } from '@/services/motor'
+import { getIpAdress } from '@/shared/utils/helpers/get-ip-address'
 
 const rateLimiter = new RateLimiterMemory({
   points: 10,
@@ -24,9 +24,7 @@ export const PATCH = async (
     const {
       token,
       ...rest
-    }: Partial<
-      Omit<PostgresOrganization, 'id' | 'created_at' | 'updated_at'>
-    > & {
+    }: Partial<Omit<OrganizationProps, 'id' | 'created_at' | 'updated_at'>> & {
       token: string
     } = await req.json()
 

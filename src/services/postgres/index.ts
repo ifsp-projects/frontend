@@ -1,18 +1,13 @@
-import { Addresses } from './addresses'
-import { OrganizationProfiles } from './organization-profiles'
-import { Organizations } from './organizations'
-import { Pages } from './pages'
+import axios from 'axios'
 
-export class Postgres {
-  public organizationProfiles: OrganizationProfiles
-  public organizations: Organizations
-  public addresses: Addresses
-  public pages: Pages
+import { apiBaseUrl } from '@/shared/config/env/api-base-url'
+import { apiKey } from '@/shared/config/env/api-key'
 
-  constructor() {
-    this.organizationProfiles = new OrganizationProfiles()
-    this.organizations = new Organizations()
-    this.addresses = new Addresses()
-    this.pages = new Pages()
+export const apiPostgres = axios.create({
+  baseURL: apiBaseUrl,
+  withCredentials: true,
+  headers: {
+    'x-api-key': apiKey,
+    'Content-Type': 'application/json'
   }
-}
+})

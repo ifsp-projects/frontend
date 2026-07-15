@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
 
-import { instanceMotor } from '@/instances/motor'
+import { instanceMotor } from '@/services/motor'
 
 export const POST = async (req: NextRequest) => {
   try {

@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from 'react'
 import type { FC } from 'react'
 import { toast } from 'sonner'
 
-import { useUserSession } from '@/hooks/use-user-session'
 import { usePageBuilderStore } from '@/features/page-builder/stores/page-builder-store'
+import { useUserSession } from '@/shared/hooks/use-user-session'
 import {
   DashboardPerformance,
   Eye,

@@ -2,9 +2,9 @@ import type { Metadata, NextPage } from 'next'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
-import { Header } from '@/features/pages/login/sections/header'
-import { getUserSession } from '@/utils/auth/get-user-session'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { getUserSession } from '@/features/auth/utils/get-user-session'
+import { Header } from '@/_pages/login/sections/header'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {

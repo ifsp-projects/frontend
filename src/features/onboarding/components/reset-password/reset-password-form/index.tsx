@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { Spin } from '@/components/ui/spin'
+import { Spin } from '@/shared/components/ui/spin'
 import { resetPasswordAction } from '@/features/onboarding/actions/onboarding-actions'
-import { posthogEventDispatch } from '@/instances/posthog/dispatch'
+import { posthogEventDispatch } from '@/services/posthog/dispatch'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { PASSWORD_RULES } from './data'

@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from '@/components/ui/dialog'
+} from '@/shared/components/ui/dialog'
 import { usePageBuilderStore } from '@/features/page-builder/stores/page-builder-store'
 import { PencilBox } from '@vectoricons/atlas-icons-react'
 

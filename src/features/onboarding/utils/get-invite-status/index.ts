@@ -1,8 +1,8 @@
-import type { PostgresInviteToken } from '@/types/postgres/postgres-invite-token'
+import type { InviteTokenProps } from '@/domain/entities/invite-token'
 
 import type { InviteStatus } from '../../components/invites/invite-list/types'
 
-export const getInviteStatus = (invite: PostgresInviteToken): InviteStatus => {
+export const getInviteStatus = (invite: InviteTokenProps): InviteStatus => {
   if (invite.used_at) return 'used'
   if (invite.cancelled_at) return 'cancelled'
   if (new Date(invite.expires_at) < new Date()) return 'expired'

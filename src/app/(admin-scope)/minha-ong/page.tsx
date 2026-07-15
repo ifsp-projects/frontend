@@ -1,10 +1,10 @@
 import type { Metadata, NextPage } from 'next'
 import { redirect } from 'next/navigation'
 
-import { Profile } from '@/features/minha-ong/containers/profile'
-import { account } from '@/instances/account'
-import { getUserSession } from '@/utils/auth/get-user-session'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { Profile } from '@/features/admin/containers/profile'
+import { getUserSession } from '@/features/auth/utils/get-user-session'
+import { account } from '@/services/account'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

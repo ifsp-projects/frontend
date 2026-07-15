@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { toast } from 'sonner'
 
-import { posthogEventDispatch } from '@/instances/posthog/dispatch'
+import { posthogEventDispatch } from '@/services/posthog/dispatch'
 
 import { Check } from '../../icons/check'
 import { Copy } from '../../icons/copy'

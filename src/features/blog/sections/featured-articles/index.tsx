@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { blog } from '@/instances/blog'
+import { blog } from '@/services/blog'
 
 export const FeaturedArticles = async () => {
   const { data: featuredArticle } = await blog.articles.getFeaturedArticle()

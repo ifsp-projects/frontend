@@ -1,4 +1,4 @@
-import { blog } from '@/instances/blog'
+import { blog } from '@/services/blog'
 
 import { ArticleCard } from './article-card'
 

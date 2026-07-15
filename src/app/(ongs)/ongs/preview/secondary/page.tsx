@@ -7,7 +7,7 @@ import {
 import type { Metadata, NextPage } from 'next'
 
 import { SortableSectionsHydrated } from '@/features/page-builder/components/sortable-sections/hydrated'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {

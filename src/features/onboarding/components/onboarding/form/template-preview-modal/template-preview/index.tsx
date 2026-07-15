@@ -1,4 +1,4 @@
-import { BASE_URL } from '@/constants/env/base-url'
+import { BASE_URL } from '@/shared/config/env/base-url'
 
 import { TEMPLATE_PREVIEWS } from './data'
 import type { TemplatePreviewProps } from './types'

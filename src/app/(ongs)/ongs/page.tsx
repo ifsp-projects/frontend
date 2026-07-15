@@ -1,9 +1,9 @@
 import type { Metadata, NextPage } from 'next'
 
-import { Header } from '@/features/pages/ongs/header'
-import { List } from '@/features/pages/ongs/list'
-import { instanceMotor } from '@/instances/motor'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { Header } from '@/_pages/ongs/header'
+import { List } from '@/_pages/ongs/list'
+import { instanceMotor } from '@/services/motor'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 type OngsPageProps = {
   searchParams: Promise<{ name?: string; ong_type?: string }>

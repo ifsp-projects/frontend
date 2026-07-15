@@ -1,15 +1,15 @@
 import type { Metadata, NextPage } from 'next'
 import { notFound } from 'next/navigation'
 
+import type { OrganizationProps } from '@/domain/entities/organization'
 import {
   LANDING_PAGE_LAYOUTS,
   isDesignTemplate
 } from '@/features/page-builder/config/landing-page-layouts'
 import { getOrganizationBySlug } from '@/features/page-builder/utils/get-organization-by-slug'
-import { instanceMotor } from '@/instances/motor'
-import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
-import { getUserSession } from '@/utils/auth/get-user-session'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { instanceMotor } from '@/services/motor'
+import { getUserSession } from '@/features/auth/utils/get-user-session'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 type OngPageProps = {
   params: Promise<{
@@ -47,7 +47,7 @@ export async function generateStaticParams() {
       ?.filter(
         (
           org
-        ): org is PostgresOrganization & {
+        ): org is OrganizationProps & {
           organization_profile: { slug: string }
         } =>
           typeof org?.organization_profile?.slug === 'string' &&

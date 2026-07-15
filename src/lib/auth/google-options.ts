@@ -2,7 +2,7 @@ import { ACCESS_TOKEN_EXPIRES_SECONDS } from 'capivara-solidaria-ts-sdk'
 import type { TokenSet } from 'next-auth'
 import type { GoogleProfile } from 'next-auth/providers/google'
 
-import { account } from '@/instances/account'
+import { account } from '@/services/account'
 
 export const googleOptions = {
   clientId: process.env.GOOGLE_CLIENT_ID,

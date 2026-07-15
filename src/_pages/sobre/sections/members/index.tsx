@@ -1,0 +1,92 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import type { FC } from 'react'
+
+import { GithubIcon } from '@/shared/assets/socials/github'
+import { LinkedinIcon } from '@/shared/assets/socials/linkedin'
+import { Paperclip } from '@vectoricons/atlas-icons-react'
+
+import { TEAM_MEMBERS } from './data'
+
+export const Members: FC = async () => {
+  return (
+    <section className="bg-white px-4 py-12 lg:py-16 xl:px-0">
+      <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:gap-16">
+        <article className="flex flex-col gap-4 lg:items-center">
+          <h2 className="text-center text-2xl font-bold lg:text-4xl">
+            Conheça nosso time
+          </h2>
+          <p className="text-center text-sm text-neutral-500 lg:text-base">
+            Veja quem são nossos desenvolvedores e suas funções dentro do nosso
+            time
+          </p>
+        </article>
+        <ul className="grid h-auto grid-cols-1 items-stretch gap-6 rounded-sm sm:grid-cols-2 lg:grid-cols-3">
+          {TEAM_MEMBERS.map((member, index: number) => (
+            <li
+              className="flex h-auto w-full flex-col gap-4 rounded-sm bg-white py-4 lg:px-4"
+              key={`${member.name}-${index}`}
+            >
+              <div className="flex w-full items-center gap-4">
+                <Link
+                  className="group aspect-square max-h-20 w-full max-w-20 cursor-pointer rounded-sm"
+                  href={member.urls.linkedin}
+                  target="_blank"
+                >
+                  <Image
+                    alt={member.name}
+                    className="aspect-square h-full max-h-20 w-full max-w-20 rounded-sm object-cover transition-all duration-300 hover:brightness-90"
+                    fetchPriority="low"
+                    height={200}
+                    loading="lazy"
+                    src={member.thumb}
+                    width={200}
+                  />
+                </Link>
+                <article className="flex flex-col">
+                  <Link
+                    className="cursor-pointer text-sm font-bold transition-all duration-300 hover:text-rose-400 lg:text-base"
+                    href={member.urls.linkedin}
+                    target="_blank"
+                  >
+                    {member.name}
+                  </Link>
+                  <p className="text-sm">{member.job_title}</p>
+                </article>
+              </div>
+              <p className="text-sm text-neutral-500">{member.description} </p>
+              <div className="flex w-full items-center gap-3">
+                <a
+                  aria-label="Linkedin Profile"
+                  href={member.urls.linkedin}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <LinkedinIcon className="h-5.5 w-5.5 rounded-sm text-blue-600" />
+                </a>
+                <a
+                  aria-label="Github Profile"
+                  href={member.urls.github}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <GithubIcon className="h-5.5 w-5.5 text-neutral-700" />
+                </a>
+                {member.urls?.portfolio ? (
+                  <a
+                    aria-label="Portfolio"
+                    href={member.urls?.portfolio}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <Paperclip className="h-5.5 w-5.5 text-neutral-700" />
+                  </a>
+                ) : null}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

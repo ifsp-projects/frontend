@@ -1,8 +1,8 @@
+import type { InviteTokenProps } from '@/domain/entities/invite-token'
 import { INVITE_STATUS } from '@/features/onboarding/constants/invite-status'
 import { getInviteStatus } from '@/features/onboarding/utils/get-invite-status'
-import type { PostgresInviteToken } from '@/types/postgres/postgres-invite-token'
 
-export const InviteRow = ({ invite }: { invite: PostgresInviteToken }) => {
+export const InviteRow = ({ invite }: { invite: InviteTokenProps }) => {
   const status = getInviteStatus(invite)
 
   const { label, classes } = INVITE_STATUS[status]

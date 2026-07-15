@@ -27,7 +27,6 @@ const nextConfig: NextConfig = {
   compress: true,
   output: 'standalone',
   experimental: {
-    inlineCss: true,
     optimizePackageImports: [
       '@vectopus/atlas-icons-react',
       'posthog-js',

@@ -1,12 +1,3 @@
-import { Articles } from './posts'
-import { Tags } from './tags'
+import { BlogRepository } from '@/repositories/blog-repository'
 
-export class Blog {
-  public readonly articles: Articles
-  public readonly tags: Tags
-
-  constructor() {
-    this.articles = new Articles()
-    this.tags = new Tags()
-  }
-}
+export const blog = new BlogRepository()

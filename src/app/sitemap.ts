@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next'
 
-import { STATIC_PATHS } from '@/constants/paths'
-import { blog } from '@/instances/blog'
-import { instanceMotor } from '@/instances/motor'
+import { STATIC_PATHS } from '@/domain/constants/static-paths'
+import { blog } from '@/services/blog'
+import { instanceMotor } from '@/services/motor'
 
 /**
  * Generates the sitemap for the application.

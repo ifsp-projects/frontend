@@ -4,9 +4,9 @@ import { redirect } from 'next/navigation'
 
 import { InviteList } from '@/features/onboarding/components/invites/invite-list'
 import { SendInviteForm } from '@/features/onboarding/components/invites/send-invite-form'
-import { admin } from '@/instances/admin'
 import { authOptions } from '@/lib/auth'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { admin } from '@/services/admin'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {

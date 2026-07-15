@@ -3,9 +3,9 @@ import { notFound, redirect } from 'next/navigation'
 
 import { OnboardingProfileForm } from '@/features/onboarding/components/onboarding/form'
 import { StepBadge } from '@/features/onboarding/components/onboarding/step-badge'
-import { admin } from '@/instances/admin'
-import { instanceMotor } from '@/instances/motor'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { admin } from '@/services/admin'
+import { instanceMotor } from '@/services/motor'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 type OnboardingPageProps = {
   searchParams: Promise<{ token?: string; email?: string }>

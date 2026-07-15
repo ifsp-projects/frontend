@@ -2,8 +2,8 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { RateLimiterMemory } from 'rate-limiter-flexible'
 
-import { instanceMotor } from '@/instances/motor'
-import { getIpAdress } from '@/utils/helpers/get-ip-address'
+import { instanceMotor } from '@/services/motor'
+import { getIpAdress } from '@/shared/utils/helpers/get-ip-address'
 
 const rateLimiter = new RateLimiterMemory({
   points: 10,

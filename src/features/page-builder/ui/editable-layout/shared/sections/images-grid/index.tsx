@@ -3,7 +3,7 @@
 import type { FC } from 'react'
 
 import { EditableCopyField } from '@/features/page-builder/components/template-fields/editable-copy-field'
-import Masonry from '@/components/ui/mansory'
+import Masonry from '@/shared/components/ui/mansory'
 
 import { IMAGES_DATA } from './data'
 import type { ImagesGridProps } from './types'

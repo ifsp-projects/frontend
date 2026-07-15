@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import type { FC } from 'react'
 
-import Iridescence from '@/components/ui/iridescence'
-import { formatPhoneToWhatsappLink } from '@/utils/helpers/format-phone-to-whatsapp-link'
+import Iridescence from '@/shared/components/ui/iridescence'
+import { formatPhoneToWhatsappLink } from '@/shared/utils/helpers/format-phone-to-whatsapp-link'
 
 import type { HeaderProps } from './types'
 

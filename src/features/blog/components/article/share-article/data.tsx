@@ -1,6 +1,6 @@
-import { FacebookIcon } from '@/assets/icons/facebook'
-import { TwitterIcon } from '@/assets/icons/twitter'
-import { WhatsappIcon } from '@/assets/icons/whatsapp'
+import { FacebookIcon } from '@/shared/assets/icons/facebook'
+import { TwitterIcon } from '@/shared/assets/icons/twitter'
+import { WhatsappIcon } from '@/shared/assets/icons/whatsapp'
 
 import type { ShareLink } from './types'
 

@@ -1,9 +1,7 @@
 import type { Metadata, NextPage } from 'next'
 
-import { Content } from '@/features/pages/changelog/sections/content'
-import { Header } from '@/features/pages/changelog/sections/header'
-import { Divider } from '@/features/pages/changelog/sections/try-now'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { Changelog } from '@/_pages/changelog'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -16,13 +14,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Page: NextPage = async () => {
-  return (
-    <main className="overflow-hidden">
-      <Header />
-      <Divider />
-      <Content />
-    </main>
-  )
+  return <Changelog />
 }
 
 export default Page

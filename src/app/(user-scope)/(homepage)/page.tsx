@@ -1,19 +1,10 @@
 import type { Metadata, NextPage } from 'next'
-import dynamic from 'next/dynamic'
 import Script from 'next/script'
 
-import { Benefits } from '@/features/pages/homepage/sections/benefits'
-import { Contact } from '@/features/pages/homepage/sections/contact'
-import { Details } from '@/features/pages/homepage/sections/details'
-import { Header } from '@/features/pages/homepage/sections/header'
-import MoreInfoAbout from '@/features/pages/homepage/sections/more-info-about'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { Homepage } from '@/_pages/homepage'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 import { getHomepageJsonLd } from './json-ld'
-
-const HowItWorks = dynamic(
-  () => import('@/features/pages/homepage/sections/how-it-works')
-)
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -33,14 +24,7 @@ const Page: NextPage = async () => {
         dangerouslySetInnerHTML={{ __html: getHomepageJsonLd() }}
         type="application/ld+json"
       />
-      <main className="overflow-x-hidden" id="website">
-        <Header />
-        <Details />
-        <Benefits />
-        <MoreInfoAbout />
-        <HowItWorks />
-        <Contact />
-      </main>
+      <Homepage />
     </>
   )
 }

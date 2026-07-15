@@ -1,7 +1,7 @@
 import { GraduationCap } from 'lucide-react'
 import type { ReactNode } from 'react'
 
-import { PeopleGroup } from '@/features/pages/homepage/icons/people-group'
+import { PeopleGroup } from '@/_pages/homepage/icons/people-group'
 import {
   AlarmClock,
   AlignDown,

@@ -1,14 +1,15 @@
-import './globals.css'
-
 import type { Metadata, Viewport } from 'next'
 import { getServerSession } from 'next-auth'
 import { Albert_Sans } from 'next/font/google'
 import { Toaster } from 'sonner'
 
-import NextAuthProvider from '@/context/next-auth-provider'
-import { PostHogProvider } from '@/context/posthog-provider'
 import { authOptions } from '@/lib/auth'
+import NextAuthProvider from '@/shared/context/next-auth-provider'
+import { PostHogProvider } from '@/shared/context/posthog-provider'
 
+//@ts-ignore
+import './globals.css'
+//@ts-ignore
 import 'lenis/dist/lenis.css'
 
 const font = Albert_Sans({

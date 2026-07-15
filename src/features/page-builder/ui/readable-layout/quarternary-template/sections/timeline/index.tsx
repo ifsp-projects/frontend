@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { FC } from 'react'
 
-import { formatPhoneToWhatsappLink } from '@/utils/helpers/format-phone-to-whatsapp-link'
+import { formatPhoneToWhatsappLink } from '@/shared/utils/helpers/format-phone-to-whatsapp-link'
 
 import type { TimelineProps } from './types'
 

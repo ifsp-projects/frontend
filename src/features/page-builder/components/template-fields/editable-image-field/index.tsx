@@ -6,8 +6,8 @@ import Image from 'next/image'
 import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 
-import { cloudinaryApiKey } from '@/constants/env/cloudinary-api-key'
 import { usePageBuilderStore } from '@/features/page-builder/stores/page-builder-store'
+import { cloudinaryApiKey } from '@/shared/config/env/cloudinary-api-key'
 import { PencilBox } from '@vectoricons/atlas-icons-react'
 
 import type { EditableImageFieldProps } from './types'

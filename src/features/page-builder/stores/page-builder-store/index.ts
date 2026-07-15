@@ -7,7 +7,7 @@ import type { ColorPalette } from 'capivara-solidaria-ts-sdk'
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
-import { setPath } from '@/utils/helpers/set-path'
+import { setPath } from '@/shared/utils/helpers/set-path'
 
 import type { PageBuilderState } from './types'
 

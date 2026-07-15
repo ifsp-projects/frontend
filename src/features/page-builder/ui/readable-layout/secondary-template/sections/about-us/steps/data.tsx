@@ -1,7 +1,7 @@
-import { ArrowUpGraph } from '@/features/pages/sobre/icons/arrow-up-graph'
-import { MagnifyingGlassWebsite } from '@/features/pages/sobre/icons/magnifying-glass-website'
-import { PeopleGroup } from '@/features/pages/sobre/icons/people-group'
-import { WritePaper } from '@/features/pages/sobre/icons/write-paper'
+import { ArrowUpGraph } from '@/_pages/sobre/icons/arrow-up-graph'
+import { MagnifyingGlassWebsite } from '@/_pages/sobre/icons/magnifying-glass-website'
+import { PeopleGroup } from '@/_pages/sobre/icons/people-group'
+import { WritePaper } from '@/_pages/sobre/icons/write-paper'
 
 export const STEP_CARDS_ICONS = [
   <WritePaper

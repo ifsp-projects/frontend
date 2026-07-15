@@ -2,7 +2,7 @@
 
 import { useActionState } from 'react'
 
-import { Spin } from '@/components/ui/spin'
+import { Spin } from '@/shared/components/ui/spin'
 import { sendInviteAction } from '@/features/onboarding/actions/invites-actions'
 
 const initialState = { success: false as const, errors: {} }

@@ -3,9 +3,9 @@ import type { AuthOptions, JWT } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
-import { instanceMotor } from '@/instances/motor'
-import type { PostgresOrganization } from '@/types/postgres/postgres-organization'
-import { refreshAccessToken } from '@/utils/auth/refresh-access-token'
+import type { OrganizationProps } from '@/domain/entities/organization'
+import { instanceMotor } from '@/services/motor'
+import { refreshAccessToken } from '@/features/auth/utils/refresh-access-token'
 
 import { ALLOWED_EMAILS_FOR_ADMIN_LOGIN } from './authorized-emails'
 import { credentialsOptions } from './credentials-options'
@@ -87,7 +87,7 @@ export const authOptions: AuthOptions = {
       session.error = token.error as string
 
       const { refreshToken: _refreshToken, ...safeToken } = token as JWT
-      session.organization = safeToken as unknown as PostgresOrganization
+      session.organization = safeToken as unknown as OrganizationProps
       return session
     }
   },

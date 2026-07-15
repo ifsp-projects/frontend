@@ -3,7 +3,7 @@ import type { CSSProperties, FC } from 'react'
 import React from 'react'
 
 import { EDITABLE_ICON_FIELD_ICONS } from '@/features/page-builder/components/template-fields/editable-icon-field/data'
-import { formatPhoneToWhatsappLink } from '@/utils/helpers/format-phone-to-whatsapp-link'
+import { formatPhoneToWhatsappLink } from '@/shared/utils/helpers/format-phone-to-whatsapp-link'
 
 import type { GetInvolvedProps } from './types'
 

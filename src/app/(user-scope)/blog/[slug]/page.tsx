@@ -4,10 +4,10 @@ import Script from 'next/script'
 
 import { ArticleBody } from '@/features/blog/components/article/article-body'
 import { ArticleHeader } from '@/features/blog/components/article/article-header'
-import { Contact } from '@/features/pages/homepage/sections/contact'
-import { blog } from '@/instances/blog'
-import { blogArticleStructuredData } from '@/utils/seo/dts-schemas/blog-article'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { Contact } from '@/_pages/homepage/sections/contact'
+import { blog } from '@/services/blog'
+import { blogArticleStructuredData } from '@/shared/utils/seo/dts-schemas/blog-article'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 type BlogArticlePageProps = {
   params: Promise<{

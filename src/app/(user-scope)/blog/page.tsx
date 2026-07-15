@@ -2,8 +2,8 @@ import type { Metadata, NextPage } from 'next'
 
 import { AllArticles } from '@/features/blog/sections/all-articles'
 import { FeaturedArticles } from '@/features/blog/sections/featured-articles'
-import { Contact } from '@/features/pages/homepage/sections/contact'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { Contact } from '@/_pages/homepage/sections/contact'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({

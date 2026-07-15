@@ -1,11 +1,7 @@
 import type { Metadata, NextPage } from 'next'
 
-import { Features } from '@/features/pages/criador-de-paginas/sections/features'
-import { Header } from '@/features/pages/criador-de-paginas/sections/header'
-import { HowItWorks } from '@/features/pages/criador-de-paginas/sections/how-it-works'
-import { Testimonials } from '@/features/pages/criador-de-paginas/sections/testimonials'
-import { TryNow } from '@/features/pages/criador-de-paginas/sections/try-now'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { CriadorDePaginas } from '@/_pages/criador-de-paginas'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -18,15 +14,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Page: NextPage = async () => {
-  return (
-    <main className="overflow-hidden">
-      <Header />
-      <HowItWorks />
-      <Features />
-      <Testimonials />
-      <TryNow />
-    </main>
-  )
+  return <CriadorDePaginas />
 }
 
 export default Page

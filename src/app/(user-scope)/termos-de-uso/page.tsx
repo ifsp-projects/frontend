@@ -1,11 +1,8 @@
 import type { Metadata, NextPage } from 'next'
 import Script from 'next/script'
 
-import { ScrollProgressProvider } from '@/features/pages/termos-de-uso/context/scroll-progress-context'
-import { Content } from '@/features/pages/termos-de-uso/sections/content'
-import { Header } from '@/features/pages/termos-de-uso/sections/header'
-import { ScrollProgress } from '@/features/pages/termos-de-uso/sections/scroll-progress'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { TermosDeUso } from '@/_pages/termos-de-uso'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 import { jsonLd } from './json-ld'
 
@@ -26,13 +23,7 @@ const Page: NextPage = async () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         type="application/ld+json"
       />
-      <main className="min-h-screen overflow-hidden">
-        <ScrollProgressProvider>
-          <ScrollProgress />
-          <Header />
-          <Content />
-        </ScrollProgressProvider>
-      </main>
+      <TermosDeUso />
     </>
   )
 }

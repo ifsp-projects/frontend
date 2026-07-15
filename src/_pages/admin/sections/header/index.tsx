@@ -1,0 +1,67 @@
+'use client'
+
+import { signIn } from 'next-auth/react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { type FC, useState } from 'react'
+
+import { Google } from '@/shared/assets/socials/google'
+
+export const Header: FC = () => {
+  const [isLoadingSubmit, setIsLoadingSubmit] = useState({
+    google: false
+  })
+
+  const handleSignInWithGoogle = async () => {
+    setIsLoadingSubmit(prev => ({
+      ...prev,
+      google: true
+    }))
+
+    await signIn('google', { callbackUrl: '/minha-ong' })
+  }
+
+  return (
+    <section className="flex min-h-screen w-full items-center justify-center bg-neutral-50 px-4 py-8 sm:px-6 lg:min-h-0 lg:max-w-1/2 lg:bg-transparent lg:px-0 lg:py-0">
+      <div className="mx-auto flex w-full max-w-sm flex-col items-center gap-8">
+        <figure className="mx-auto flex w-full items-center justify-center">
+          <Image
+            alt="Project Logo"
+            className="ml-2 aspect-video max-h-16 max-w-52 object-cover sm:max-h-20 sm:max-w-64"
+            fetchPriority="high"
+            height={180}
+            loading="eager"
+            src="/brands/company-logo.png"
+            width={360}
+          />
+        </figure>
+        <article className="-mt-3 flex flex-col items-center gap-1">
+          <p className="text-center text-sm text-neutral-500! sm:text-base">
+            Entre na sua conta para continuar sua jornada{' '}
+            <br className="hidden xl:block" /> comentando ou curtindo artigos
+          </p>
+        </article>
+        <button
+          className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-sm border border-neutral-200 bg-white px-4 py-2.5 transition-all duration-300 hover:bg-neutral-50 sm:py-2"
+          disabled={isLoadingSubmit.google}
+          onClick={() => handleSignInWithGoogle()}
+          type="button"
+        >
+          <figure className="w-auto">
+            <Google className="h-5 w-5" />
+          </figure>
+          <p className="text-sm">Entrar com o Google</p>
+        </button>
+        <p className="mx-auto text-sm">
+          Ou entre em contato com nosso{' '}
+          <Link
+            className="text-sm text-rose-400! underline-offset-2 hover:underline"
+            href="/contato"
+          >
+            suporte
+          </Link>
+        </p>
+      </div>
+    </section>
+  )
+}

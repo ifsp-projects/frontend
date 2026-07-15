@@ -5,7 +5,7 @@ import {
 import type { FC } from 'react'
 
 import { SortableSectionsHydrated } from '@/features/page-builder/components/sortable-sections/hydrated'
-import { instanceMotor } from '@/instances/motor'
+import { instanceMotor } from '@/services/motor'
 
 import type { LandingPageTemplateProps } from '../types'
 

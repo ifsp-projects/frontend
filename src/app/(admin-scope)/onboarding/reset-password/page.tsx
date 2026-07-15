@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { NoInviteIcon } from '@/assets/icons/no-invite'
 import { validateTokenAction } from '@/features/onboarding/actions/onboarding-actions'
 import { ResetPasswordForm } from '@/features/onboarding/components/reset-password/reset-password-form'
 import { StepBadge } from '@/features/onboarding/components/reset-password/step-badge'
 import { RESET_PASSWORD_FEEDBACK_MESSAGES } from '@/features/onboarding/constants/reset-password-messages'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { NoInviteIcon } from '@/shared/assets/icons/no-invite'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 interface PageProps {
   searchParams: Promise<{ token?: string }>

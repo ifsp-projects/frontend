@@ -1,6 +1,6 @@
 import { cache } from 'react'
 
-import { instanceMotor } from '@/instances/motor'
+import { instanceMotor } from '@/services/motor'
 
 export const getOrganizationBySlug = cache(async (slug: string) => {
   const { data } = await instanceMotor.organizations.getOrganizationBySlug({

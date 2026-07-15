@@ -9,8 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from '@/components/ui/dialog'
-import { ScrollArea } from '@/components/ui/scroll-area'
+} from '@/shared/components/ui/dialog'
+import { ScrollArea } from '@/shared/components/ui/scroll-area'
 import { usePageBuilderStore } from '@/features/page-builder/stores/page-builder-store'
 import { PencilBox } from '@vectoricons/atlas-icons-react'
 

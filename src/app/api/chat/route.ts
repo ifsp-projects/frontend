@@ -3,9 +3,9 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
-import { openAiApk } from '@/constants/env/openai-api-key'
-import { organizationID } from '@/constants/env/openai-organization-id'
-import { projectID } from '@/constants/env/openai-project-id'
+import { openAiApk } from '@/shared/config/env/openai-api-key'
+import { organizationID } from '@/shared/config/env/openai-organization-id'
+import { projectID } from '@/shared/config/env/openai-project-id'
 import { openai as openaiProvider } from '@ai-sdk/openai'
 
 const openai = new OpenAI({

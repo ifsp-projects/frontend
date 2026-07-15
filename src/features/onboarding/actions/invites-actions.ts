@@ -3,12 +3,9 @@
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
 
-import { instanceMotor } from '@/instances/motor'
-import { Admin } from '@/services/admin'
-import { getUserSession } from '@/utils/auth/get-user-session'
-import { generateRandomNumber } from '@/utils/helpers/generate-random-number'
-
-const admin = new Admin()
+import { admin } from '@/services/admin'
+import { instanceMotor } from '@/services/motor'
+import { getUserSession } from '@/features/auth/utils/get-user-session'
 
 type ActionResult =
   | { success: true }
@@ -51,7 +48,6 @@ export async function sendInviteAction(
           account_status: 'active',
           email: parsed.data.email,
           is_user_new: true,
-          password: String(generateRandomNumber(1000, 9999)),
           role: 'member'
         },
         token: user.accessToken

@@ -2,10 +2,10 @@
 
 import type { OngCategory, TemplateType } from 'capivara-solidaria-ts-sdk'
 
-import { account } from '@/instances/account'
-import { admin } from '@/instances/admin'
-import { instanceMotor } from '@/instances/motor'
-import { generateSlug } from '@/utils/helpers/generate-slug'
+import { account } from '@/services/account'
+import { admin } from '@/services/admin'
+import { instanceMotor } from '@/services/motor'
+import { generateSlug } from '@/shared/utils/helpers/generate-slug'
 
 import type { OnboardingProfileData } from '../components/onboarding/form/schema'
 

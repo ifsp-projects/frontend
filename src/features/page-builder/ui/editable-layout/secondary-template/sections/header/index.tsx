@@ -1,6 +1,6 @@
 import { EditableCopyField } from '@/features/page-builder/components/template-fields/editable-copy-field'
 import { EditableLinkField } from '@/features/page-builder/components/template-fields/editable-link-field'
-import Iridescence from '@/components/ui/iridescence'
+import Iridescence from '@/shared/components/ui/iridescence'
 
 import type { HeaderProps } from './types'
 

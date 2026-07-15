@@ -1,6 +1,6 @@
 import type { ColorPalette } from 'capivara-solidaria-ts-sdk'
 
-import type { JsonValue } from '@/types/components/json-value'
+import type { JsonValue } from '@/shared/types/json-value'
 
 export interface PageSections {
   [key: string]: JsonValue

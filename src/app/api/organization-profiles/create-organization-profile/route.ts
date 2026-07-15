@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 
-import { instanceMotor } from '@/instances/motor'
-import { generateSlug } from '@/utils/helpers/generate-slug'
+import { instanceMotor } from '@/services/motor'
+import { generateSlug } from '@/shared/utils/helpers/generate-slug'
 
 export const POST = async (req: NextRequest) => {
   try {

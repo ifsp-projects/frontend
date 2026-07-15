@@ -1,8 +1,7 @@
 import type { Metadata, NextPage } from 'next'
 
-import { Questions } from '@/features/pages/faq/sections/content'
-import { Header } from '@/features/pages/faq/sections/header'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { FAQ } from '@/_pages/faq'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -15,12 +14,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Page: NextPage = async () => {
-  return (
-    <main className="overflow-hidden">
-      <Header />
-      <Questions />
-    </main>
-  )
+  return <FAQ />
 }
 
 export default Page

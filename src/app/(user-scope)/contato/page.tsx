@@ -1,8 +1,7 @@
 import type { Metadata, NextPage } from 'next'
 
-import { ContactForm } from '@/features/pages/contato/sections/contact-form'
-import { Header } from '@/features/pages/contato/sections/header'
-import { getMetaData } from '@/utils/seo/get-metadata'
+import { Contato } from '@/_pages/contato'
+import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return getMetaData({
@@ -15,12 +14,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const Page: NextPage = async () => {
-  return (
-    <main className="overflow-hidden bg-neutral-50">
-      <Header />
-      <ContactForm />
-    </main>
-  )
+  return <Contato />
 }
 
 export default Page

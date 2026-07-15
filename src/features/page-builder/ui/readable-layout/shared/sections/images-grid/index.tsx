@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import Masonry from '@/components/ui/mansory'
+import Masonry from '@/shared/components/ui/mansory'
 
 import { IMAGES_DATA } from './data'
 import type { ImagesGridProps } from './types'
