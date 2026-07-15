@@ -3,36 +3,15 @@ import type { PostgresInviteToken } from '@/types/postgres/postgres-invite-token
 import type { ServiceRequestResponse } from '@/types/services/service-request-response'
 
 import type {
-  CancelPendingInvitePayload,
   CreateInviteTokenPayload,
   GetInviteByTokenPayload,
   InviteTokenValidationResponse,
   ListAllInvitesPayload,
-  RegenerateInviteTokenPayload,
   UseInviteTokenPayload,
   ValidateInviteTokenPayload
 } from './types'
 
 export class Admin {
-  cancelPendingInvite = async ({ token, id }: CancelPendingInvitePayload) => {
-    try {
-      return await apiPostgres.delete(`/admin/invites/${id.toString()}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-    } catch (error) {
-      console.error({
-        cancelPendingInviteError: error.message
-      })
-
-      return {
-        message: error.message,
-        status: 500
-      }
-    }
-  }
-
   listAllInvites = async ({
     token
   }: ListAllInvitesPayload): Promise<
@@ -53,29 +32,6 @@ export class Admin {
 
       return {
         error: error.message
-      }
-    }
-  }
-
-  regenerateAndResendInviteToken = async ({
-    token,
-    id
-  }: RegenerateInviteTokenPayload): Promise<
-    ServiceRequestResponse<PostgresInviteToken>
-  > => {
-    try {
-      return await apiPostgres.post(`/admin/invites/${id.toString()}/resend`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-    } catch (error) {
-      console.error({
-        regenerateAndResendInviteToken: error.message
-      })
-
-      return {
-        message: error.message
       }
     }
   }

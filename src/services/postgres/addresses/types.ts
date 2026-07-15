@@ -9,10 +9,6 @@ export interface GetAddressByIdData {
   token: string
 }
 
-export interface GetAllAddressesData {
-  token: string
-}
-
 export interface UpdateAddressData {
   payload: Omit<PostgresAddress, 'created_at'>
   token: string
@@ -29,10 +25,6 @@ export interface CreateAddressResponse {
 
 export interface GetAddressByIdResponse {
   address: PostgresAddress
-}
-
-export interface GetAllAddressesResponse {
-  address: PostgresAddress[]
 }
 
 export interface UpdateAddressResponse {

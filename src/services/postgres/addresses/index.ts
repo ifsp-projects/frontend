@@ -8,8 +8,6 @@ import type {
   DeleteAddressResponse,
   GetAddressByIdData,
   GetAddressByIdResponse,
-  GetAllAddressesData,
-  GetAllAddressesResponse,
   UpdateAddressData,
   UpdateAddressResponse
 } from './types'
@@ -43,31 +41,6 @@ export class Addresses {
 
       return {
         error: error.message
-      }
-    }
-  }
-
-  /**
-   * Retrieves all addresses associated with the authenticated user.
-   * * @async
-   * @param {GetAllAddressesData} params - The data required to fetch all addresses.
-   * @param {string} params.token - The authorization bearer token.
-   * @returns {Promise<GetAllAddressesResponse | { status: number }>} A promise that resolves to the API response containing the addresses, or an object with a 500 status code on error.
-   */
-  getAllAddresses = async ({ token }: GetAllAddressesData) => {
-    try {
-      return await apiPostgres.get<GetAllAddressesResponse>('/addresses', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-    } catch (error) {
-      console.error({
-        getAllAddressesErrorMessage: error.message
-      })
-
-      return {
-        status: 500
       }
     }
   }

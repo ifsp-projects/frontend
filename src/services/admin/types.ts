@@ -1,14 +1,4 @@
-export interface CancelPendingInvitePayload {
-  id: string
-  token: string
-}
-
 export interface ListAllInvitesPayload {
-  token: string
-}
-
-export interface RegenerateInviteTokenPayload {
-  id: string
   token: string
 }
 
