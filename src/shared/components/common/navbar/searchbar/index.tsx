@@ -7,12 +7,11 @@ import { useNavbarSearch } from '@/shared/components/common/navbar/hooks/use-nav
 import { QUICK_LINKS } from '../data'
 import type { SearchbarProps } from './types'
 
-export const Searchbar: React.FC<SearchbarProps> = ({ orgs }) => {
+export const Searchbar: React.FC<SearchbarProps> = ({ orgs, isSearchOpen }) => {
   const {
     clearQuery,
     close: closeSearch,
     inputRef: searchInputRef,
-    isOpen: isSearchOpen,
     panelRef: searchPanelRef,
     query,
     results,

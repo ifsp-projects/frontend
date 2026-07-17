@@ -91,7 +91,7 @@ export const Navbar = ({ orgs = [] }: NavbarProps) => {
           </div>
         </div>
 
-        <Searchbar orgs={orgs} />
+        <Searchbar isSearchOpen={isSearchOpen} orgs={orgs} />
 
         <MobileNavigation
           closeMenu={closeMenu}
