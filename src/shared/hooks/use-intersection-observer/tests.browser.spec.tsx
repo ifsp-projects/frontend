@@ -137,7 +137,7 @@ describe('useIntersectionObserver', () => {
       await render(<TestComponent />)
       const observer = TestHelpers.getLatestObserver()
 
-      expect(observer.observe).toHaveBeenCalledWith(TestHelpers.getTargetEl)
+      expect(observer.observe).toHaveBeenCalledWith(TestHelpers.getTargetEl())
     })
 
     it('should forward the provided options to the insersection observer constructor', async () => {
@@ -260,7 +260,7 @@ describe('useIntersectionObserver', () => {
     it('should not call observe when given a ref that current is null', async () => {
       const nullRef = TestHelpers.createMockRef(null)
 
-      renderHook(() => useIntersectionObserver({}, nullRef))
+      await renderHook(() => useIntersectionObserver({}, nullRef))
       const observer = TestHelpers.getLatestObserver()
 
       expect(observer.observe).not.toHaveBeenCalled()

@@ -63,7 +63,7 @@ export const ContactForm: FC = () => {
   return (
     <section className="relative w-full bg-white px-4 py-12 lg:py-16">
       <div
-        className="group absolute top-[40%] z-20 w-full lg:min-h-[190px]"
+        className="group absolute top-[40%] z-20 w-full lg:min-h-47.5"
         id="page-wrap"
       >
         <div id="inner-wrap">
