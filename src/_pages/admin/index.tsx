@@ -17,7 +17,6 @@ export const Admin = async () => {
           scale={0.2}
           speed={2}
         />
-        <p></p>
       </figure>
     </main>
   )
