@@ -1,6 +1,5 @@
-import { afterEach, beforeEach } from 'node:test'
 import { useRef } from 'react'
-import { describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { render, renderHook } from 'vitest-browser-react'
 import { page } from 'vitest/browser'
 
@@ -30,9 +29,22 @@ function TestComponent({
   })
 
   return (
-    <div data-testid={TEST_IDS.container} ref={containerRef} tabIndex={0}>
-      <div data-testid={TEST_IDS.inside}>Inside</div>
-      <div data-testid={TEST_IDS.outside}>Outside</div>
+    <div style={{ padding: '20px', display: 'flex', gap: '20px' }}>
+      <div
+        data-testid={TEST_IDS.container}
+        ref={containerRef}
+        style={{ width: '100px', height: '100px', background: 'lightblue' }}
+        tabIndex={0}
+      >
+        <div data-testid={TEST_IDS.inside}>Inside</div>
+      </div>
+
+      <div
+        data-testid={TEST_IDS.outside}
+        style={{ width: '100px', height: '100px', background: 'lightcoral' }}
+      >
+        Outside
+      </div>
     </div>
   )
 }
@@ -44,7 +56,7 @@ const TestHelpers = {
     current: element
   }),
   fireMouseDown: (target: EventTarget) => {
-    target.dispatchEvent(new MouseEvent('mousedodwn', { bubbles: true }))
+    target.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }))
   }
 }
 
@@ -204,23 +216,17 @@ describe('useClickOutside', () => {
       }).not.toThrow()
     })
 
-    it('should only responde to mousedown, not other click events', () => {
-      const target = document.createElement('div')
-      const outside = document.createElement('div')
-
-      container.append(target, outside)
-
-      const ref = TestHelpers.createMockRef(target)
+    it('should only responde to mousedown, not other click events', async () => {
       const handler = vi.fn()
 
-      renderHook(() => {
-        useClickOutside({ ref, handler, enabled: true })
-      })
+      await render(<TestComponent onOutsideClick={handler} />)
 
-      outside.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+      const outsideEl = TestHelpers.getOutsideEl()
+
+      outsideEl.dispatchEvent(new MouseEvent('click', { bubbles: true }))
       expect(handler).not.toHaveBeenCalled()
 
-      TestHelpers.fireMouseDown(outside)
+      TestHelpers.fireMouseDown(outsideEl)
       expect(handler).toHaveBeenCalledOnce()
     })
   })

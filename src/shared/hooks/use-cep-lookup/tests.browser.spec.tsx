@@ -24,7 +24,7 @@ describe('useCeppLookup', () => {
   beforeEach(() => {
     vi.clearAllMocks()
 
-    fetchSpy = vi.spyOn(global, 'fetch')
+    fetchSpy = vi.spyOn(window, 'fetch')
     consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
   })
 
@@ -66,7 +66,7 @@ describe('useCeppLookup', () => {
     expect(consoleSpy).toHaveBeenCalledWith(mockError)
 
     expect(toast.error).toHaveBeenCalledWith(
-      'An error occurred while retrieving the address information.',
+      'Houve um erro ao encontrar as informações referentes ao endereço',
       { position: 'top-center' }
     )
 
