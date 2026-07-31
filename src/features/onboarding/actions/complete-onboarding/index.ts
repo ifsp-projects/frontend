@@ -61,7 +61,6 @@ export const completeOnboardingAction = async (
       number: formData.number,
       organization_profile_id:
         created_organization_profile.organizationProfile.id,
-      postal_code: formData.postal_code,
       state: formData.state,
       street: formData.street
     }
