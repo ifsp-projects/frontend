@@ -7,17 +7,19 @@ import {
   toOngCategory
 } from 'capivara-solidaria-ts-sdk'
 import { signIn } from 'next-auth/react'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
-import { Spin } from '@/shared/components/ui/spin'
-import { posthogEventDispatch } from '@/services/posthog/dispatch'
+import { getMunicipiosByUf } from '@/domain/location/cities'
+import type { BrazilianStateUF } from '@/domain/location/states'
+import { BRAZILIAN_STATES } from '@/domain/location/states'
+import { completeOnboardingAction } from '@/features/onboarding/actions/complete-onboarding'
 import type { MeasurementOngTypes } from '@/repositories/measurement-repository/types'
+import { posthogEventDispatch } from '@/services/posthog/dispatch'
+import { Spin } from '@/shared/components/ui/spin'
 import { formatPhone } from '@/shared/utils/helpers/format-phone'
-import { formatPostalCode } from '@/shared/utils/helpers/format-postal-code'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { completeOnboardingAction } from '../../../actions/onboarding-actions'
 import { DESIGN_TEMPLATES } from './data'
 import { Field } from './field'
 import type { OnboardingProfileData } from './schema'
@@ -44,10 +46,18 @@ export const OnboardingProfileForm = ({
     control,
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors, isSubmitting }
   } = useForm<OnboardingProfileData>({
     resolver: zodResolver(onboardingProfileSchema)
   })
+
+  const selectedState = watch('state') as BrazilianStateUF | undefined
+  const cities = useMemo(
+    () => getMunicipiosByUf(selectedState),
+    [selectedState]
+  )
 
   const onSubmit = async (data: OnboardingProfileData) => {
     setRootError(null)
@@ -88,7 +98,10 @@ export const OnboardingProfileForm = ({
   }
 
   return (
-    <form className="flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="flex flex-col gap-8 rounded-md border border-neutral-300 bg-white px-4 py-8"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       {rootError && (
         <div className="rounded-sm border border-rose-100 bg-rose-50 px-4 py-3">
           <p className="text-xs text-rose-600">{rootError}</p>
@@ -96,8 +109,8 @@ export const OnboardingProfileForm = ({
       )}
 
       <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-3">
-          <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="rounded-sm bg-rose-400 px-3 py-1 text-[10px] font-bold text-white uppercase">
             Finalizar cadastro do projeto
           </span>
           <div className="h-px flex-1 bg-neutral-100" />
@@ -122,6 +135,7 @@ export const OnboardingProfileForm = ({
                   {...field}
                   className={inputClass(!!errors.phone)}
                   id="phone"
+                  maxLength={15}
                   onChange={e => field.onChange(formatPhone(e.target.value))}
                   placeholder="(11) 99999-9999"
                   type="tel"
@@ -240,49 +254,43 @@ export const OnboardingProfileForm = ({
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <div className="md:col-span-1">
+          <Field error={errors.state?.[0]} label="Estado" required>
+            <select
+              {...register('state', {
+                onChange: () => setValue('city', '')
+              })}
+              className={`${inputClass(!!errors.state)} cursor-pointer appearance-none pr-9`}
+              id="state"
+            >
+              <option value="">Selecione um estado</option>
+              {BRAZILIAN_STATES.map(s => (
+                <option key={s.uf} value={s.uf}>
+                  {s.nome}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <div className="md:col-span-2">
             <Field error={errors.city?.[0]} label="Cidade" required>
-              <input
+              <select
                 {...register('city')}
-                className={inputClass(!!errors.city)}
+                className={`${inputClass(!!errors.city)} cursor-pointer appearance-none pr-9 disabled:cursor-not-allowed disabled:bg-neutral-50 disabled:text-neutral-300`}
+                disabled={!selectedState}
                 id="city"
-                name="city"
-                placeholder="Ex.: São Paulo"
-                type="text"
-              />
+              >
+                <option value="">
+                  {selectedState
+                    ? 'Selecione uma cidade'
+                    : 'Selecione um estado primeiro'}
+                </option>
+                {cities.map(c => (
+                  <option key={c.id} value={c.nome}>
+                    {c.nome}
+                  </option>
+                ))}
+              </select>
             </Field>
           </div>
-          <Field error={errors.state?.[0]} label="Estado" required>
-            <input
-              {...register('state')}
-              className={`${inputClass(!!errors.state)} uppercase`}
-              id="state"
-              maxLength={2}
-              name="state"
-              placeholder="Ex.: SP"
-              type="text"
-            />
-          </Field>
-          <Field error={errors.postal_code?.[0]} label="CEP" required>
-            <Controller
-              render={({ field }) => (
-                <input
-                  {...field}
-                  onChange={e =>
-                    field.onChange(formatPostalCode(e.target.value))
-                  }
-                  className={inputClass(!!errors.postal_code)}
-                  id="postal_code"
-                  maxLength={9}
-                  placeholder="Ex.: 00000-000"
-                  type="text"
-                  value={field.value || ''}
-                />
-              )}
-              control={control}
-              name="postal_code"
-            />
-          </Field>
         </div>
       </div>
 

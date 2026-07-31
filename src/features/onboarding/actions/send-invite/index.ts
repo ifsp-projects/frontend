@@ -1,15 +1,13 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { z } from 'zod'
 
+import { getUserSession } from '@/features/auth/utils/get-user-session'
 import { admin } from '@/services/admin'
 import { instanceMotor } from '@/services/motor'
-import { getUserSession } from '@/features/auth/utils/get-user-session'
 
-type ActionResult =
-  | { success: true }
-  | { success: false; errors: Record<string, string[]> | { _root: string } }
+import { sendInviteSchema } from './schemas'
+import type { ActionResult } from './types'
 
 function rootError(message?: string): ActionResult {
   return {
@@ -18,14 +16,10 @@ function rootError(message?: string): ActionResult {
   }
 }
 
-const sendInviteSchema = z.object({
-  email: z.string().email('Invalid email address')
-})
-
-export async function sendInviteAction(
+export const sendInviteAction = async (
   _prevState: ActionResult,
   formData: FormData
-): Promise<ActionResult> {
+): Promise<ActionResult> => {
   const user = await getUserSession()
 
   const raw = {
@@ -45,9 +39,8 @@ export async function sendInviteAction(
     const { data: created_organization } =
       await instanceMotor.organizations.createOrganization({
         payload: {
-          account_status: 'active',
+          account_status: 'inactive',
           email: parsed.data.email,
-          is_user_new: true,
           role: 'member'
         },
         token: user.accessToken

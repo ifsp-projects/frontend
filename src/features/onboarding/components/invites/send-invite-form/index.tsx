@@ -2,8 +2,8 @@
 
 import { useActionState } from 'react'
 
+import { sendInviteAction } from '@/features/onboarding/actions/send-invite'
 import { Spin } from '@/shared/components/ui/spin'
-import { sendInviteAction } from '@/features/onboarding/actions/invites-actions'
 
 const initialState = { success: false as const, errors: {} }
 
@@ -37,16 +37,18 @@ export function SendInviteForm() {
           </svg>
         </div>
         <div>
-          <p className="text-sm font-semibold text-neutral-800">Invite sent!</p>
+          <p className="text-sm font-semibold text-neutral-800">
+            Convite enviado!
+          </p>
           <p className="mt-0.5 text-xs text-neutral-500">
-            The user will receive an email shortly.
+            O usuário irá receber um email com o token em breve.
           </p>
         </div>
         <button
-          className="mt-1 cursor-pointer text-xs font-semibold text-rose-400 transition-colors hover:text-rose-500"
+          className="mt-1 cursor-pointer rounded-sm bg-rose-400 px-4 py-1 text-xs font-semibold text-white transition-colors hover:bg-rose-500"
           onClick={() => window.location.reload()}
         >
-          Send another →
+          Enviar mais convites
         </button>
       </div>
     )

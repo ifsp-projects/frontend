@@ -2,7 +2,7 @@ import type { OrganizationProps } from '@/domain/entities/organization'
 import type { OrganizationProfileProps } from '@/domain/entities/organization-profile'
 
 export interface CreateOrganizationData {
-  payload: Omit<OrganizationProps, 'id' | 'created_at'>
+  payload: Omit<OrganizationProps, 'id' | 'created_at' | 'is_user_new'>
   token: string
 }
 

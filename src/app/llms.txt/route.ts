@@ -16,10 +16,10 @@ Capivara Solidária é uma plataforma digital sem fins lucrativos que facilita a
 
 ## Categorias atendidas
 
-- **Assistência Social** — organizações voltadas a populações vulneráveis, moradores em situação de rua, famílias em risco social e apoio comunitário.
-- **Educação** — projetos de reforço escolar, alfabetização, capacitação profissional e acesso ao ensino.
-- **Saúde** — ONGs de saúde preventiva, saúde mental, atendimento a pacientes e campanhas de conscientização.
-- **Meio Ambiente** — iniciativas de preservação ambiental, reciclagem, defesa animal e educação ecológica.
+- **Assistência Social**: organizações voltadas a populações vulneráveis, moradores em situação de rua, famílias em risco social e apoio comunitário.
+- **Educação**: projetos de reforço escolar, alfabetização, capacitação profissional e acesso ao ensino.
+- **Saúde**: ONGs de saúde preventiva, saúde mental, atendimento a pacientes e campanhas de conscientização.
+- **Meio Ambiente**: iniciativas de preservação ambiental, reciclagem, defesa animal e educação ecológica.
 
 ## Informações legais e institucionais
 
@@ -32,7 +32,7 @@ Capivara Solidária é uma plataforma digital sem fins lucrativos que facilita a
 
 Fundada em 2025, a Capivara Solidária nasceu da necessidade de centralizar e tornar mais acessível a descoberta de ONGs confiáveis no Brasil. Todas as organizações listadas passam por um processo de curadoria e verificação documental antes de aparecerem na plataforma.
 
-A plataforma é gratuita tanto para apoiadores quanto para ONGs. Não realizamos captação de recursos diretamente — nosso papel é conectar pessoas a causas.`
+A plataforma é gratuita tanto para apoiadores quanto para ONGs. Não realizamos captação de recursos diretamente, nosso papel é conectar pessoas a causas.`
 
 export const dynamic = 'force-static'
 

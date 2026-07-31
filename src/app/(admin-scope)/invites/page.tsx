@@ -13,7 +13,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     ...getMetaData({
       title: 'Invites | Capivara Solidária',
       description:
-        'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade — sem precisar de programador.',
+        'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade, sem precisar de programador.',
       image: '',
       url: '/invites'
     }),

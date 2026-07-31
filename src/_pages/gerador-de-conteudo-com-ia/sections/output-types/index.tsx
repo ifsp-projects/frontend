@@ -12,8 +12,8 @@ export const OutputTypes = async () => {
             Um gerador. Qualquer formato.
           </h2>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-neutral-500">
-            Da legenda do Instagram ao e-mail de captação de grandes doadores —
-            a IA se adapta ao formato e ao canal.
+            Da legenda do Instagram ao e-mail de captação de grandes doadores, a
+            IA se adapta ao formato e ao canal.
           </p>
         </article>
 

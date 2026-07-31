@@ -16,7 +16,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     ...getMetaData({
       title: 'Onboarding | Capivara Solidária',
       description:
-        'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade — sem precisar de programador.',
+        'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade, sem precisar de programador.',
       image: '',
       url: '/onboarding'
     }),
@@ -50,10 +50,8 @@ const Page: NextPage<OnboardingPageProps> = async ({ searchParams }) => {
   if (!data.organization?.is_user_new) redirect('/minha-ong')
 
   return (
-    <main className="flex min-h-screen items-center justify-center overflow-hidden bg-white px-4 py-16">
+    <main className="flex min-h-screen items-center justify-center overflow-hidden bg-neutral-100 px-4 py-16">
       <section className="w-full max-w-lg">
-        <div className="mb-10 h-6 w-6 rounded-sm bg-rose-400" />
-
         <div className="mb-8 flex items-center gap-2.5">
           <StepBadge state="done" step={1} />
           <div className="h-px flex-1 bg-rose-200" />

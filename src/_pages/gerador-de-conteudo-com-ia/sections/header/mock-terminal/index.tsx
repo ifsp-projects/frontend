@@ -12,7 +12,7 @@ export const MockTerminal = async () => {
         <div className="flex items-center gap-1.5 rounded-sm border border-neutral-100 bg-white px-3 py-1">
           <Sparkles className="h-3 w-3 text-rose-400" />
           <span className="text-[10px] font-medium text-neutral-400">
-            Gerador de Copy — Capivara Solidária
+            Gerador de Copy: Capivara Solidária
           </span>
         </div>
       </div>
@@ -72,7 +72,7 @@ export const MockTerminal = async () => {
               mudar isso.
               <br />
               <br />
-              Por apenas R$45 — menos do que um jantar fora — você garante uma
+              Por apenas R$45, menos do que um jantar fora, você garante uma
               cesta básica completa para uma família passar as festas com
               dignidade. Cada real doado vai direto para quem mais precisa, com
               transparência e prestação de contas públicas.

@@ -17,7 +17,7 @@ export const Details = async () => {
             <p className="text-sm text-neutral-700 lg:text-base">
               Acreditamos que a tecnologia pode ser uma aliada poderosa do
               impacto social. Por isso, desenvolvemos o Capivara Solidário para
-              dar autonomia às ONGs — sem precisar de equipe técnica — e ajudar
+              dar autonomia às ONGs, sem precisar de equipe técnica, e ajudar
               cada projeto a contar sua história de forma profissional,
               transparente e inspiradora.
             </p>

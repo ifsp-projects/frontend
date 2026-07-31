@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { validateTokenAction } from '@/features/onboarding/actions/onboarding-actions'
+import { validateTokenAction } from '@/features/onboarding/actions/validate-token'
 import { ResetPasswordForm } from '@/features/onboarding/components/reset-password/reset-password-form'
 import { StepBadge } from '@/features/onboarding/components/reset-password/step-badge'
 import { RESET_PASSWORD_FEEDBACK_MESSAGES } from '@/features/onboarding/constants/reset-password-messages'
@@ -17,7 +17,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     ...getMetaData({
       title: 'Onboarding | Capivara Solidária',
       description:
-        'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade — sem precisar de programador.',
+        'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade, sem precisar de programador.',
       image: '',
       url: '/onboarding/reset-password'
     }),
@@ -56,8 +56,6 @@ const Page = async ({ searchParams }: PageProps) => {
   return (
     <main className="flex min-h-screen items-center justify-center bg-white px-4 py-16">
       <div className="w-full max-w-md">
-        <div className="mb-10 h-6 w-6 rounded-sm bg-rose-400" />
-
         <section className="mb-8 flex items-center gap-2.5">
           <StepBadge state="active" step={1} />
           <div className="h-px flex-1 bg-neutral-200" />
@@ -65,10 +63,8 @@ const Page = async ({ searchParams }: PageProps) => {
         </section>
 
         <section className="mb-8">
-          <h1 className="mb-1.5 text-2xl font-black tracking-tight text-neutral-800">
-            Defina sua senha
-          </h1>
-          <p className="text-sm leading-relaxed text-neutral-500">
+          <h1 className="mb-1.5 text-2xl font-semibold">Defina sua senha</h1>
+          <p className="text-sm text-neutral-500">
             Bem-vindo,{' '}
             <span className="font-medium text-neutral-700">
               {validation.email}

@@ -61,12 +61,7 @@ export const AddressTab = ({
 
   return (
     <SectionCard title="Informações de Contato">
-      <AddressFormFields
-        control={control}
-        register={register}
-        setValue={setValue}
-        showPhone
-      />
+      <AddressFormFields control={control} register={register} showPhone />
       <div className="flex w-full items-center md:justify-end">
         <Button
           aria-label="Save changes"

@@ -12,7 +12,7 @@ export const FEATURES = [
     icon: Sparkles,
     title: 'IA contextualizada para o seu projeto',
     description:
-      'Quanto mais você usa, mais a IA aprende sobre sua ONG — missão, público, tom de voz e causas. Os textos ficam cada vez mais precisos.'
+      'Quanto mais você usa, mais a IA aprende sobre sua ONG, missão, público, tom de voz e causas. Os textos ficam cada vez mais precisos.'
   },
   {
     icon: Sliders,

@@ -1,13 +1,13 @@
 'use client'
 
-import { CheckCircle2, XCircle } from 'lucide-react'
+import { CheckCircle2, Eye, EyeOff, XCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { Spin } from '@/shared/components/ui/spin'
-import { resetPasswordAction } from '@/features/onboarding/actions/onboarding-actions'
+import { resetPasswordAction } from '@/features/onboarding/actions/reset-password'
 import { posthogEventDispatch } from '@/services/posthog/dispatch'
+import { Spin } from '@/shared/components/ui/spin'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { PASSWORD_RULES } from './data'
@@ -17,7 +17,10 @@ import type { ResetPasswordFormProps } from './types'
 
 export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
   const router = useRouter()
+
   const [rootError, setRootError] = useState<string | null>(null)
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
 
   const {
     register,
@@ -73,19 +76,34 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
         >
           Nova senha
         </label>
-        <input
-          className={`w-full rounded-sm border bg-white px-3.5 py-2.5 text-sm text-neutral-800 placeholder-neutral-300 transition-colors outline-none focus:border-rose-300 focus:ring-2 focus:ring-rose-100 ${
-            errors.password
-              ? 'border-rose-300 ring-2 ring-rose-100'
-              : 'border-neutral-200'
-          }`}
-          {...register('password')}
-          autoComplete="new-password"
-          disabled={isSubmitting}
-          id="password"
-          placeholder="••••••••"
-          type="password"
-        />
+        <div className="relative">
+          <input
+            className={`w-full rounded-sm border bg-white px-3.5 py-2.5 pr-10 text-sm text-neutral-600 placeholder-neutral-300 transition-colors outline-none focus:border-rose-300 focus:ring-2 focus:ring-rose-100 ${
+              errors.password
+                ? 'border-rose-300 ring-2 ring-rose-100'
+                : 'border-neutral-200'
+            }`}
+            {...register('password')}
+            autoComplete="new-password"
+            disabled={isSubmitting}
+            id="password"
+            placeholder="••••••••"
+            type={showPassword ? 'text' : 'password'}
+          />
+          <button
+            aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+            className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-neutral-400 hover:text-neutral-600"
+            onClick={() => setShowPassword(prev => !prev)}
+            tabIndex={-1}
+            type="button"
+          >
+            {showPassword ? (
+              <EyeOff className="h-4 w-4" />
+            ) : (
+              <Eye className="h-4 w-4" />
+            )}
+          </button>
+        </div>
 
         {hasInteracted && (
           <ul className="mt-1 flex flex-col gap-1">
@@ -94,7 +112,7 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
               return (
                 <li
                   className={`flex items-center gap-2 text-xs transition-colors ${
-                    passed ? 'text-emerald-600' : 'text-rose-500'
+                    passed ? 'text-emerald-600' : 'text-rose-400'
                   }`}
                   key={label}
                 >
@@ -118,21 +136,36 @@ export function ResetPasswordForm({ token, email }: ResetPasswordFormProps) {
         >
           Confirmar senha
         </label>
-        <input
-          className={`w-full rounded-sm border bg-white px-3.5 py-2.5 text-sm text-neutral-800 placeholder-neutral-300 transition-colors outline-none focus:border-rose-300 focus:ring-2 focus:ring-rose-100 ${
-            errors.confirmPassword
-              ? 'border-rose-300 ring-2 ring-rose-100'
-              : 'border-neutral-200'
-          }`}
-          {...register('confirmPassword')}
-          autoComplete="new-password"
-          disabled={isSubmitting}
-          id="confirmPassword"
-          placeholder="••••••••"
-          type="password"
-        />
+        <div className="relative">
+          <input
+            className={`w-full rounded-sm border bg-white px-3.5 py-2.5 pr-10 text-sm text-neutral-600 placeholder-neutral-300 transition-colors outline-none focus:border-rose-300 focus:ring-2 focus:ring-rose-100 ${
+              errors.confirmPassword
+                ? 'border-rose-300 ring-2 ring-rose-100'
+                : 'border-neutral-200'
+            }`}
+            {...register('confirmPassword')}
+            autoComplete="new-password"
+            disabled={isSubmitting}
+            id="confirmPassword"
+            placeholder="••••••••"
+            type={showConfirmPassword ? 'text' : 'password'}
+          />
+          <button
+            aria-label={showConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
+            className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-neutral-400 hover:text-neutral-600"
+            onClick={() => setShowConfirmPassword(prev => !prev)}
+            tabIndex={-1}
+            type="button"
+          >
+            {showConfirmPassword ? (
+              <EyeOff className="h-4 w-4" />
+            ) : (
+              <Eye className="h-4 w-4" />
+            )}
+          </button>
+        </div>
         {errors.confirmPassword && (
-          <p className="text-xs text-rose-500">
+          <p className="text-xs text-rose-400">
             {errors.confirmPassword.message}
           </p>
         )}
