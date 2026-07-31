@@ -14,7 +14,7 @@ const robots = (): MetadataRoute.Robots => {
     rules: {
       userAgent: '*',
       allow: ['/'],
-      disallow: '/private/'
+      disallow: ['/api']
     },
     sitemap: ['https://capivara-solidaria.com.br/sitemap.xml']
   }

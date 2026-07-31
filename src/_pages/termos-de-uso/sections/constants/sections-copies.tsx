@@ -16,14 +16,14 @@ export const COPIES: Section[] = [
       <>
         <p>
           Ao acessar ou utilizar a plataforma{' '}
-          <strong>Capivara Solidária</strong> — disponível em{' '}
+          <strong>Capivara Solidária</strong>, disponível em{' '}
           <a
             className="text-rose-500 underline decoration-rose-200 underline-offset-2 transition-colors hover:decoration-rose-400"
             href="https://capivara-solidaria.com.br"
           >
             capivara-solidaria.com.br
           </a>{' '}
-          —, você declara ter lido, compreendido e concordado com os presentes
+          . Você declara ter lido, compreendido e concordado com os presentes
           Termos de Uso, bem como com nossa Política de Privacidade.
         </p>
         <p>
@@ -199,9 +199,9 @@ export const COPIES: Section[] = [
     content: (
       <>
         <p>
-          Todo o conteúdo disponível na Plataforma — incluindo mas não se
+          Todo o conteúdo disponível na Plataforma, incluindo mas não se
           limitando a textos, logotipos, ilustrações, ícones, fotografias,
-          interfaces, código-fonte e identidade visual — é de propriedade
+          interfaces, código-fonte e identidade visual, é de propriedade
           exclusiva da Capivara Solidária ou de seus parceiros licenciantes, e
           está protegido pela legislação brasileira e internacional de direitos
           autorais.
@@ -236,9 +236,7 @@ export const COPIES: Section[] = [
         <p>
           A Capivara Solidária trata os dados pessoais dos usuários em
           conformidade com a{' '}
-          <strong>
-            Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018)
-          </strong>
+          <strong>Lei Geral de Proteção de Dados (LGPD Lei 13.709/2018)</strong>
           . O tratamento ocorre com base em fundamentos legais sólidos, como
           consentimento, execução contratual e legítimo interesse.
         </p>

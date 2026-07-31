@@ -10,7 +10,7 @@ export const Header: FC = () => {
 
       <p className="mx-auto max-w-2xl text-center text-sm text-neutral-500 lg:text-base">
         Conhece uma ONG, projeto social ou iniciativa solidária em Capivari e
-        região? Envie sua sugestão — nossa equipe vai analisar e incluir novas
+        região? Envie sua sugestão, nossa equipe vai analisar e incluir novas
         iniciativas no site.
       </p> */}
       <header className="mx-auto flex w-full max-w-2xl flex-col gap-8 lg:max-w-7xl lg:flex-row lg:items-center lg:gap-16">

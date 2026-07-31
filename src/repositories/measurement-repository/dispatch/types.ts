@@ -4,7 +4,7 @@ import type {
   MeasurementTrafficSource
 } from '../types'
 
-/** Authenticated user context — passed from the app session */
+/** Authenticated user context, passed from the app session */
 export interface MeasurementUserContext {
   city?: string
   /** Triggers posthog.identify() when present */
@@ -18,7 +18,7 @@ export interface MeasurementOrgContext {
   pageId: string
 }
 
-/** Public LP context — available without authentication */
+/** Public LP context, available without authentication */
 export interface MeasurementLpContext {
   deviceType?: MeasurementDeviceType
   lpId: string

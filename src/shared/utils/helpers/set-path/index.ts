@@ -27,7 +27,7 @@ function toPath(path: Path): Key[] {
  * Deeply sets `value` at `path` within `target`, creating any
  * intermediate objects/arrays that don't exist yet.
  *
- * Mutates `target` in place — designed to be called inside an
+ * Mutates `target` in place, designed to be called inside an
  * immer producer (e.g. zustand's `immer` middleware), where
  * mutating the draft is the correct, intended pattern.
  */

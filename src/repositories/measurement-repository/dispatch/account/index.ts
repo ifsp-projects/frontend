@@ -31,7 +31,6 @@ export class Account {
 
   /**
    * The very first LP is published.
-   * Key activation event — use as the "aha moment" milestone.
    */
   public completeFirstPublish(
     ctx: MeasurementUserContext & {

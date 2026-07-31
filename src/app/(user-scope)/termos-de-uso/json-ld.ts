@@ -5,7 +5,7 @@ export const jsonLd: WithContext<WebPage> = {
   '@type': 'WebPage',
   name: 'Termos de Uso',
   description:
-    'Termos de Uso da plataforma Capivara Solidária — condições de uso, direitos e responsabilidades.',
+    'Termos de Uso da plataforma Capivara Solidária, condições de uso, direitos e responsabilidades.',
   url: 'https://capivara-solidaria.com.br/termos-de-uso',
   publisher: {
     '@type': 'Organization',

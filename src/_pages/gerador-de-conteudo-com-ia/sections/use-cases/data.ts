@@ -5,7 +5,7 @@ export const USE_CASES = [
     prompt:
       'Escreva um e-mail emocionante pedindo doações para nossa campanha de cestas básicas de Natal para 200 famílias em Campinas.',
     output:
-      'Neste Natal, 200 famílias em Campinas acordarão sem saber se haverá comida na mesa. Mas com a sua ajuda, podemos mudar isso. Por apenas R$45 — menos do que um jantar fora — você garante uma cesta básica completa para uma família passar as festas com dignidade...'
+      'Neste Natal, 200 famílias em Campinas acordarão sem saber se haverá comida na mesa. Mas com a sua ajuda, podemos mudar isso. Por apenas R$45, menos do que um jantar fora, você garante uma cesta básica completa para uma família passar as festas com dignidade...'
   },
   {
     tag: 'Redes sociais',
@@ -13,7 +13,7 @@ export const USE_CASES = [
     prompt:
       'Crie um post para o Instagram comemorando que atendemos 500 famílias em outubro. Tom inspirador, com call to action.',
     output:
-      '🧡 500 famílias. 500 histórias. Um outubro que não vamos esquecer. Cada cesta entregue, cada criança que voltou à escola, cada sorriso — foi construído com a sua ajuda. Obrigado por fazer parte disso. ✨ Bora continuar juntos em novembro?'
+      '🧡 500 famílias. 500 histórias. Um outubro que não vamos esquecer. Cada cesta entregue, cada criança que voltou à escola, cada sorriso, foi construído com a sua ajuda. Obrigado por fazer parte disso. ✨ Bora continuar juntos em novembro?'
   },
   {
     tag: 'Institucional',

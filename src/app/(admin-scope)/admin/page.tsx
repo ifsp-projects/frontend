@@ -1,8 +1,8 @@
 import type { Metadata, NextPage } from 'next'
 import { redirect } from 'next/navigation'
 
-import { getUserSession } from '@/features/auth/utils/get-user-session'
 import { Admin } from '@/_pages/admin'
+import { getUserSession } from '@/features/auth/utils/get-user-session'
 import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {

@@ -2,13 +2,13 @@ import type { Metadata, NextPage } from 'next'
 import { notFound } from 'next/navigation'
 
 import type { OrganizationProps } from '@/domain/entities/organization'
+import { getUserSession } from '@/features/auth/utils/get-user-session'
 import {
   LANDING_PAGE_LAYOUTS,
   isDesignTemplate
 } from '@/features/page-builder/config/landing-page-layouts'
 import { getOrganizationBySlug } from '@/features/page-builder/utils/get-organization-by-slug'
 import { instanceMotor } from '@/services/motor'
-import { getUserSession } from '@/features/auth/utils/get-user-session'
 import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 type OngPageProps = {

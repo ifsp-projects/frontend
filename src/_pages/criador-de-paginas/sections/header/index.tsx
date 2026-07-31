@@ -9,7 +9,7 @@ export const Header = async () => {
       <header className="flex flex-col items-center gap-6 xl:gap-8">
         <div className="flex items-center gap-2 rounded-sm border border-rose-100 bg-rose-50 px-3 py-1.5">
           <span className="text-xs font-semibold text-rose-500">
-            Funcionalidade — Páginas Interativas
+            Funcionalidade: Páginas Interativas
           </span>
         </div>
 
@@ -20,7 +20,7 @@ export const Header = async () => {
 
         <p className="max-w-xl text-base leading-relaxed text-neutral-500 lg:text-lg">
           Crie páginas institucionais, de campanha e de captação de doações em
-          minutos — sem código, sem agência, sem custo adicional.
+          minutos, sem código, sem agência, sem custo adicional.
         </p>
 
         <div className="flex flex-col items-center gap-3 sm:flex-row">

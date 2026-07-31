@@ -2,66 +2,18 @@
 
 import type { OngCategory, TemplateType } from 'capivara-solidaria-ts-sdk'
 
-import { account } from '@/services/account'
 import { admin } from '@/services/admin'
 import { instanceMotor } from '@/services/motor'
 import { generateSlug } from '@/shared/utils/helpers/generate-slug'
 
-import type { OnboardingProfileData } from '../components/onboarding/form/schema'
+import type { OnboardingProfileData } from '../../components/onboarding/form/schema'
+import { validateTokenAction } from '../validate-token'
+import type { ActionResult } from './types'
 
-type ActionResult<T = void> =
-  | { success: true; data?: T }
-  | { success: false; errors: Record<string, string[]> | { _root: string } }
-
-export async function validateTokenAction(
-  token: string
-): Promise<
-  | { valid: true; email: string; organizationId: string; reason?: string }
-  | { valid: false; reason: 'not_found' | 'used' | 'cancelled' | 'expired' }
-> {
-  const { data: invite } = await admin.validateInviteToken({
-    inviteToken: token
-  })
-
-  if (!invite) return { valid: false, reason: 'not_found' }
-
-  return {
-    valid: true,
-    email: invite.email,
-    organizationId: invite.organizationId
-  }
-}
-
-export async function resetPasswordAction(
-  token: string,
-  formData: {
-    email: string
-    password: string
-    confirmPassword: string
-  }
-): Promise<ActionResult> {
-  const tokenValidation = await validateTokenAction(token)
-  if (!tokenValidation.valid) {
-    return {
-      success: false,
-      errors: { _root: 'This invite link is no longer valid.' }
-    }
-  }
-
-  if (formData.confirmPassword === formData.password) {
-    await account.auth.changePasswordAndLogin({
-      invite_token: token,
-      new_password: formData.password
-    })
-  }
-
-  return { success: true }
-}
-
-export async function completeOnboardingAction(
+export const completeOnboardingAction = async (
   token: string,
   formData: OnboardingProfileData
-): Promise<ActionResult> {
+): Promise<ActionResult> => {
   const tokenValidation = await validateTokenAction(token)
 
   if (!tokenValidation.valid) {

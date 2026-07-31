@@ -7,7 +7,7 @@ export const StepBadge = ({
 }) => {
   if (state === 'done') {
     return (
-      <figure className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-rose-200 bg-rose-50">
+      <figure className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-rose-200 bg-white">
         <svg className="h-3 w-3 text-rose-400" fill="none" viewBox="0 0 12 12">
           <path
             d="M2 6l3 3 5-5"

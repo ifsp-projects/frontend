@@ -34,3 +34,10 @@ declare module '@react-three/fiber' {
     threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>
   }
 }
+
+interface NpmCommands {
+  __bun__?: string
+  __npm__?: string
+  __pnpm__?: string
+  __yarn__?: string
+}

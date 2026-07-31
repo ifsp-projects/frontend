@@ -106,7 +106,7 @@ export const homepageJsonLd: WithContext<WebPage> = {
   '@type': 'WebPage',
   '@id': 'https://capivara-solidaria.com.br/#website',
   url: 'https://capivara-solidaria.com.br',
-  name: 'Capivara Solidária — Conectando você a ONGs que transformam o Brasil',
+  name: 'Capivara Solidária, Conectando você a ONGs que transformam o Brasil',
   description:
     'Plataforma gratuita para descobrir, conhecer e apoiar organizações sem fins lucrativos verificadas nas áreas de Assistência Social, Educação, Saúde e Meio Ambiente.',
   isPartOf: { '@id': 'https://capivara-solidaria.com.br/#website' },
@@ -136,7 +136,7 @@ export const getHomepageJsonLd = (): string => {
     '@context': 'https://schema.org',
     '@graph': [websiteJsonLd, homepageJsonLd, organizationJsonLd].map(
       ({ '@context': _, ...rest }) => rest
-    ) // strip @context from each node — @graph handles it
+    ) // strip @context from each node - @graph handles it
   }
   return JSON.stringify(graph)
 }

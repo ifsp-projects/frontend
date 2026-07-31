@@ -86,7 +86,7 @@ export const Header: FC = () => {
           <p className="text-center text-sm lg:text-left lg:text-base xl:text-xl">
             Com o Capivara Solidária, sua ONG pode gerar landing pages
             completas, editar textos, imagens e ícones e se destacar entre as
-            demais — em poucos minutos.
+            demais, em poucos minutos.
           </p>
         </div>
         <div className="mt-4 flex w-fit items-center gap-4 lg:mt-0 lg:hidden">

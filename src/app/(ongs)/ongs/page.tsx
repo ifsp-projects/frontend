@@ -1,8 +1,6 @@
 import type { Metadata, NextPage } from 'next'
 
-import { Header } from '@/_pages/ongs/header'
-import { List } from '@/_pages/ongs/list'
-import { instanceMotor } from '@/services/motor'
+import { OngsHub } from '@/_pages/ongs'
 import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
 type OngsPageProps = {
@@ -22,17 +20,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const Page: NextPage<OngsPageProps> = async ({ searchParams }) => {
   const { name, ong_type } = await searchParams
 
-  const { data } = await instanceMotor.organizations.getAllOrganizations({
-    name,
-    ong_type
-  })
-
-  return (
-    <main className="overflow-hidden">
-      <Header />
-      <List data={data} />
-    </main>
-  )
+  return <OngsHub name={name} ong_type={ong_type} />
 }
 
 export default Page

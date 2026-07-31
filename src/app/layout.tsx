@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: '%s · Capivara Solidária'
   },
   description:
-    'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade — sem precisar de programador.'
+    'Transforme a presença digital da sua ONG com o Capivara Solidária. Gere páginas incríveis, personalize conteúdo e conquiste mais doadores e visibilidade, sem precisar de programador.'
 }
 
 export const viewport: Viewport = {

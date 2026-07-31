@@ -14,7 +14,7 @@ export const Features = async () => {
             </h2>
             <p className="max-w-sm text-sm leading-relaxed text-neutral-500">
               Cada funcionalidade foi pensada para as necessidades reais de
-              projetos sociais — não para grandes empresas.
+              projetos sociais.
             </p>
           </article>
         </div>

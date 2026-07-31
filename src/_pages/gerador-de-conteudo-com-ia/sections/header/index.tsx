@@ -6,7 +6,7 @@ export const Header = async () => {
       <div className="flex flex-col items-center gap-6 xl:gap-8">
         <div className="flex items-center gap-2 rounded-sm border border-rose-100 bg-rose-50 px-3 py-1.5">
           <p className="text-xs font-semibold text-rose-500">
-            Funcionalidade — Gerador de Copy com IA
+            Funcionalidade: Gerador de Copy com IA
           </p>
         </div>
 
@@ -17,7 +17,7 @@ export const Header = async () => {
 
         <p className="max-w-xl text-base leading-relaxed text-neutral-500 lg:text-lg">
           IA treinada para o universo das ONGs. Gere textos para site, redes
-          sociais, e-mails e campanhas em segundos — com o tom certo para cada
+          sociais, e-mails e campanhas em segundos, com o tom certo para cada
           momento.
         </p>
       </div>
