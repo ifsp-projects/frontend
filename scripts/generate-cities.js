@@ -13,7 +13,7 @@ async function main() {
     ).then(r => r.json())
 
     result[estado.sigla] = municipios.map(m => ({ id: m.id, nome: m.nome }))
-    await new Promise(resolve => setTimeout(resolve, 150)) // não martelar a API pública
+    await new Promise(resolve => setTimeout(resolve, 150))
   }
 
   await writeFile(

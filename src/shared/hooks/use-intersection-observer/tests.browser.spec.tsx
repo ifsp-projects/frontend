@@ -100,7 +100,6 @@ function NoRefTargetComponent({
 
   useIntersectionObserver(options, ref)
 
-  // Intentionally never attached via `ref={ref}` -> ref.current stays null
   return <div data-testid={TEST_IDS.target} />
 }
 

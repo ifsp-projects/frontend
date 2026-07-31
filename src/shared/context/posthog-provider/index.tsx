@@ -27,10 +27,8 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
 
     if (typeof window !== 'undefined') {
       if ('requestIdleCallback' in window) {
-        // For modern browsers
         window.requestIdleCallback(initPostHog, { timeout: 2000 })
       } else {
-        // Fallback for Safari/other browsers
         setTimeout(initPostHog, 200)
       }
     }

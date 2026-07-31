@@ -1,6 +1,3 @@
-// Wrap PostHogPageView in Suspense to avoid the useSearchParams usage above
-// from de-opting the whole app into client-side rendering
-
 import { Suspense } from 'react'
 
 import { PostHogPageView } from '../posthog-page-view'

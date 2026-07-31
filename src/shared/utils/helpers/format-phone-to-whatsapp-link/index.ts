@@ -19,7 +19,6 @@ export const formatPhoneToWhatsappLink = ({
   phone: string
   message?: string
 }): string => {
-  // Strip everything that is not a digit
   const digits = phone.replace(/\D/g, '')
 
   const withCountryCode = digits.startsWith('55') ? digits : `55${digits}`
