@@ -29,11 +29,10 @@ export const CreateAddressModal = ({
     }
   })
 
-  const { control, register, handleSubmit, setValue, reset } =
-    useForm<AddressFormInput>({
-      resolver: zodResolver(addressSchema),
-      defaultValues: DEFAULT_VALUES_CREATE_FORM_MODAL
-    })
+  const { control, register, handleSubmit, reset } = useForm<AddressFormInput>({
+    resolver: zodResolver(addressSchema),
+    defaultValues: DEFAULT_VALUES_CREATE_FORM_MODAL
+  })
 
   const onSubmit = async (values: AddressFormInput) => {
     await createAddress(values)
@@ -57,11 +56,7 @@ export const CreateAddressModal = ({
         </header>
 
         <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
-          <AddressFormFields
-            control={control}
-            register={register}
-            setValue={setValue}
-          />
+          <AddressFormFields control={control} register={register} />
 
           <div className="flex w-full flex-col-reverse gap-2 sm:flex-row sm:justify-between">
             <button
