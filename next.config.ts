@@ -2,18 +2,23 @@ import type { NextConfig } from 'next'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-import { cspHeaders } from '@/lib/csp'
+import { cspHeaders } from '@/lib/security/csp'
+import { securityHeaders } from '@/lib/security/headers'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   eslint: { ignoreDuringBuilds: true },
+  poweredByHeader: false,
   reactStrictMode: false,
   async headers() {
-    return cspHeaders.length > 0
-      ? [{ source: '/(.*)', headers: cspHeaders }]
-      : []
+    return [
+      {
+        source: '/(.*)',
+        headers: [...securityHeaders, ...cspHeaders]
+      }
+    ]
   },
   images: {
     // domains: ['lh3.googleusercontent.com'],
