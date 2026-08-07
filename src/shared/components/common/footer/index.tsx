@@ -10,7 +10,7 @@ import type { FooterLinkProps } from './types'
 export const Footer: FC = () => {
   return (
     <footer className="relative z-20 w-full border-t-2 border-neutral-200 bg-neutral-100 px-4 py-8 sm:py-12 lg:pt-14 lg:pb-20">
-      <div className="mx-auto flex w-full max-w-3xl flex-col justify-between gap-6 border-b border-neutral-300 pb-6 md:flex-row lg:max-w-6xl lg:gap-12">
+      <div className="mx-auto flex w-full max-w-3xl flex-col justify-between gap-6 pb-6 sm:border-b sm:border-neutral-300 md:flex-row lg:max-w-6xl lg:gap-12">
         {FOOTER_LINKS.map((footerSection, sectionIndex: number) => (
           <article
             className="flex w-full flex-col gap-4 border-b border-neutral-300 pb-4 sm:border-transparent sm:pb-0 lg:gap-6"
@@ -47,7 +47,7 @@ export const Footer: FC = () => {
           </article>
         ))}
       </div>
-      <div className="mx-auto flex w-full max-w-3xl items-center gap-6 pt-4 md:pt-6 lg:max-w-6xl">
+      <div className="mx-auto flex w-full max-w-3xl items-center gap-6 sm:pt-2 md:pt-6 lg:max-w-6xl">
         <p className="w-full text-[13px] font-light sm:text-xs lg:text-sm">
           Copyright © 2026 Projeto Capivara Solidária All rights reserved.
         </p>
