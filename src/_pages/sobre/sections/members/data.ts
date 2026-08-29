@@ -11,7 +11,8 @@ export const TEAM_MEMBERS: MemberData[] = [
     urls: {
       linkedin:
         'https://www.linkedin.com/in/gabriel-gardeazabal-ortona-8332511ab/',
-      github: 'https://github.com/Gortona-dev'
+      github: 'https://github.com/Gortona-dev',
+      portfolio: 'https://gabriel-ortona-dev.vercel.app/'
     }
   },
   {
