@@ -153,7 +153,6 @@ const Stack = () => {
     'https://images.icon-icons.com/2389/PNG/512/next_js_logo_icon_145038.png',
     'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1280px-Tailwind_CSS_Logo.svg.png',
     'https://images.seeklogo.com/logo-png/44/2/framer-motion-logo-png_seeklogo-446185.png',
-    'https://logo.svgcdn.com/devicon/zustand-original.png',
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/posthog.png',
     'https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/logos/zod-y1q3vdp0xohonaq2l9m0c9.png/zod-272tgei389yqljmp061a1h.png?_a=DATAiZAAZAA0',
     'https://react-hook-form.com/images/logo/react-hook-form-logo-only.png',
