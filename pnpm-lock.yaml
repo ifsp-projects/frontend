@@ -14,7 +14,7 @@ importers:
     dependencies:
       '@ai-sdk/openai':
         specifier: ^2.0.109
-        version: 2.0.114(zod@4.4.3)
+        version: 2.0.125(zod@4.4.3)
       '@ai-sdk/react':
         specifier: ^2.0.208
         version: 2.0.221(react@19.2.8)(zod@4.4.3)
@@ -131,7 +131,7 @@ importers:
         version: 6.48.0(ws@8.21.1)(zod@4.4.3)
       posthog-js:
         specifier: ^1.395.0
-        version: 1.407.1(preact-render-to-string@5.2.6(preact@10.29.7))
+        version: 1.407.1(preact-render-to-string@5.2.6)
       posthog-node:
         specifier: ^5.38.6
         version: 5.46.1
@@ -319,14 +319,20 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/openai@2.0.114':
-    resolution: {integrity: sha512-cZ1dqr0qDqYvURjoKS7eyRe9bqHzJW6sBeoTMrkuDh7dmeLxuHF09WqWaQvsbYPF2ss3KuUpTCBbyaHDtqCItQ==}
+  '@ai-sdk/openai@2.0.125':
+    resolution: {integrity: sha512-9VWeQuY8eJwKlTQO8qbYGb18nPREb80DcWZVlhP6534tc1vEalRDCDXfv5zg3ied5wrAksLpvWQPa2379w4kmQ==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
   '@ai-sdk/provider-utils@3.0.30':
     resolution: {integrity: sha512-NCJ9JKow5ENAgEZxzvEvF20thwDiH+hutvzmrUDbloRX0azpJHNst8+7pZIVryYhLM9wgpT5/ShTSjPTFhkxEQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
+
+  '@ai-sdk/provider-utils@3.0.36':
+    resolution: {integrity: sha512-2eSw90hn32Je6n2a8Gf4dJ2EoecPJuOCWqwZCw+BkhPq2LOS01HX3s6ljgOm0iIkZiD5aAuMdpOw17rYKQF/Zg==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -551,6 +557,10 @@ packages:
     peerDependenciesMeta:
       '@noble/hashes':
         optional: true
+
+  '@fastify/busboy@2.1.1':
+    resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
+    engines: {node: '>=14'}
 
   '@floating-ui/core@1.8.0':
     resolution: {integrity: sha512-0CIZ5itps/8x7BG8dEIhs53BvCUH2PCoogtakwRTut+Arm58sJooJ0AuZhLw2HJYIR5cMLNPBSS728sPho2khQ==}
@@ -4608,6 +4618,10 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
+  undici@5.29.0:
+    resolution: {integrity: sha512-raqeBD6NQK4SkWhQzeYKd1KmIG6dllBOTt55Rmkt4HtI9mwdWtJljnrXjAFUBLTSN67HWrOIZ3EPF4kjUw80Bg==}
+    engines: {node: '>=14.0'}
+
   undici@7.28.0:
     resolution: {integrity: sha512-cRZYrTDwWznlnRiPjggAGxZXanty6M8RV1ff8Wm4LWXBp7/IG8v5DnOm74DtUBp9OONpK75YlPnIjQqX0dBDtA==}
     engines: {node: '>=20.18.1'}
@@ -4947,10 +4961,10 @@ snapshots:
       '@vercel/oidc': 3.1.0
       zod: 4.4.3
 
-  '@ai-sdk/openai@2.0.114(zod@4.4.3)':
+  '@ai-sdk/openai@2.0.125(zod@4.4.3)':
     dependencies:
       '@ai-sdk/provider': 2.0.3
-      '@ai-sdk/provider-utils': 3.0.30(zod@4.4.3)
+      '@ai-sdk/provider-utils': 3.0.36(zod@4.4.3)
       zod: 4.4.3
 
   '@ai-sdk/provider-utils@3.0.30(zod@4.4.3)':
@@ -4958,6 +4972,14 @@ snapshots:
       '@ai-sdk/provider': 2.0.3
       '@standard-schema/spec': 1.1.0
       eventsource-parser: 3.1.0
+      zod: 4.4.3
+
+  '@ai-sdk/provider-utils@3.0.36(zod@4.4.3)':
+    dependencies:
+      '@ai-sdk/provider': 2.0.3
+      '@standard-schema/spec': 1.1.0
+      eventsource-parser: 3.1.0
+      undici: 5.29.0
       zod: 4.4.3
 
   '@ai-sdk/provider@2.0.3':
@@ -5193,6 +5215,8 @@ snapshots:
       levn: 0.4.1
 
   '@exodus/bytes@1.15.1': {}
+
+  '@fastify/busboy@2.1.1': {}
 
   '@floating-ui/core@1.8.0':
     dependencies:
@@ -8582,7 +8606,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  posthog-js@1.407.1(preact-render-to-string@5.2.6(preact@10.29.7)):
+  posthog-js@1.407.1(preact-render-to-string@5.2.6):
     dependencies:
       '@posthog/browser-common': 0.2.0
       '@posthog/core': 1.45.1
@@ -9361,6 +9385,10 @@ snapshots:
       which-boxed-primitive: 1.1.1
 
   undici-types@6.21.0: {}
+
+  undici@5.29.0:
+    dependencies:
+      '@fastify/busboy': 2.1.1
 
   undici@7.28.0: {}
 
