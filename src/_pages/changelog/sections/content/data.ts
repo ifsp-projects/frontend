@@ -146,3 +146,18 @@ export const CHANGELOG = [
     ]
   }
 ] as const
+
+export const BADGE_COLORS = {
+  'page-builder':
+    'rounded-full bg-purple-50 px-2.5 lg:px-3 p-0.5 lg:py-1 text-[11px] md:text-xs font-semibold text-purple-500 border-purple-300 border',
+  'copy-generator':
+    'rounded-full bg-rose-50 px-2.5 lg:px-3 border-rose-200 border p-0.5 lg:py-1 text-[11px] md:text-xs font-semibold text-rose-500',
+  'ongs-hub':
+    'rounded-full px-2.5 lg:px-3 p-0.5 lg:py-1 text-[11px] md:text-xs font-semibold text-neutral-600 border border-neutral-300'
+} as const
+
+export const BADGE_NAME = {
+  'page-builder': 'Editor de Pagina',
+  'copy-generator': 'Gerador de Copies',
+  'ongs-hub': 'Hub de Ongs'
+} as const

@@ -1,19 +1,4 @@
-import { CHANGELOG } from './data'
-
-const BADGE_COLORS = {
-  'page-builder':
-    'rounded-full bg-purple-50 px-2.5 lg:px-3 p-0.5 lg:py-1 text-[11px] md:text-xs font-semibold text-purple-500 border-purple-300 border',
-  'copy-generator':
-    'rounded-full bg-rose-50 px-2.5 lg:px-3 border-rose-200 border p-0.5 lg:py-1 text-[11px] md:text-xs font-semibold text-rose-500',
-  'ongs-hub':
-    'rounded-full px-2.5 lg:px-3 p-0.5 lg:py-1 text-[11px] md:text-xs font-semibold text-neutral-600 border border-neutral-300'
-}
-
-const BADGE_NAME = {
-  'page-builder': 'Editor de Pagina',
-  'copy-generator': 'Gerador de Copies',
-  'ongs-hub': 'Hub de Ongs'
-}
+import { BADGE_COLORS, BADGE_NAME, CHANGELOG } from './data'
 
 export const Content = async () => {
   return (
@@ -39,7 +24,7 @@ export const Content = async () => {
                   className="flex w-full flex-col gap-4 border-b border-neutral-200 py-3 lg:flex-row lg:justify-between lg:gap-0 lg:border-transparent lg:py-0"
                   key={`feature-item-${featureIndex}`}
                 >
-                  <div className="flex w-[190px] items-start border-neutral-200 pr-3 lg:justify-end lg:border-x lg:border-dashed lg:pt-12 lg:pb-4">
+                  <div className="flex w-47.5 items-start border-neutral-200 pr-3 lg:justify-end lg:border-x lg:border-dashed lg:pt-12 lg:pb-4">
                     <span className={BADGE_COLORS[feature.type]}>
                       {BADGE_NAME[feature.type]}
                     </span>
