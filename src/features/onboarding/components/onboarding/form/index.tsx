@@ -54,6 +54,7 @@ export const OnboardingProfileForm = ({
   })
 
   const selectedState = watch('state') as BrazilianStateUF | undefined
+
   const cities = useMemo(
     () => getMunicipiosByUf(selectedState),
     [selectedState]

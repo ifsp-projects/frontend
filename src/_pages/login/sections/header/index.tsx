@@ -1,5 +1,6 @@
 'use client'
 
+import { Eye, EyeOff } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,6 +15,7 @@ import { signInSchema } from './schema'
 
 export const Header: FC = () => {
   const [serverError, setServerError] = useState<string | null>(null)
+  const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const {
     register,
@@ -67,42 +69,58 @@ export const Header: FC = () => {
           className="flex w-full flex-col gap-3 sm:gap-2"
           onSubmit={handleSubmit(onSubmit)}
         >
-          {serverError && (
-            <p className="rounded-sm bg-rose-50 px-4 py-2 text-sm text-rose-500">
+          {serverError ? (
+            <p
+              className="rounded-sm bg-rose-50 px-4 py-2 text-sm text-rose-500"
+              role="alert"
+            >
               {serverError}
             </p>
-          )}
+          ) : null}
           <div className="w-full">
-            <label className="mb-2 block text-sm font-medium text-neutral-700 sm:text-base">
+            <label
+              className="mb-2 block text-sm font-medium text-neutral-700 sm:text-base"
+              htmlFor="email"
+            >
               E-mail
             </label>
             <input
               {...register('email')}
+              autoComplete="email"
               className="w-full rounded-sm border border-neutral-300 px-4 py-2.5 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none sm:py-2 sm:text-base"
               placeholder="seuemail@exemplo.com"
               type="email"
             />
-            {errors.email && (
+            {errors.email ? (
               <p className="mt-1 text-xs text-rose-500">
                 {errors.email.message}
               </p>
-            )}
+            ) : null}
           </div>
           <div className="w-full">
-            <label className="mb-2 block text-sm font-medium text-neutral-700 sm:text-base">
+            <label
+              className="mb-2 block text-sm font-medium text-neutral-700 sm:text-base"
+              htmlFor="password"
+            >
               Senha
             </label>
-            <input
-              {...register('password')}
-              className="w-full rounded-sm border border-neutral-300 px-4 py-2.5 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none sm:py-2 sm:text-base"
-              placeholder="Digite aqui sua senha"
-              type="password"
-            />
-            {errors.password && (
-              <p className="mt-1 text-xs text-rose-500">
-                {errors.password.message}
-              </p>
-            )}
+            <div className="relative">
+              <input
+                {...register('password')}
+                autoComplete="password"
+                className="w-full rounded-sm border border-neutral-300 px-4 py-2.5 pr-10 text-sm transition-all duration-300 outline-none focus:ring-1 focus:ring-neutral-500 focus:outline-none sm:py-2 sm:text-base"
+                placeholder="Digite aqui sua senha"
+                type={showPassword ? 'text' : 'password'}
+              />
+              <button
+                aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                className="absolute inset-y-0 right-0 flex cursor-pointer items-center px-3 text-neutral-400 transition-colors hover:text-neutral-600"
+                onClick={() => setShowPassword(prev => !prev)}
+                type="button"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
           </div>
           <button
             className="mt-4 flex min-w-full cursor-pointer items-center justify-center rounded-sm bg-neutral-900 px-6 py-2.5 text-center text-sm text-white! transition-all duration-150 hover:bg-neutral-800 disabled:opacity-60 sm:py-2 sm:text-base"
@@ -113,12 +131,12 @@ export const Header: FC = () => {
           </button>
         </form>
         <p className="mx-auto text-sm">
-          Ou entre em contato com nosso{' '}
+          Ainda não tem uma conta?{' '}
           <Link
             className="text-sm text-rose-400! underline-offset-2 hover:underline"
             href="/contato"
           >
-            suporte
+            crie agora mesmo aqui!
           </Link>
         </p>
       </div>

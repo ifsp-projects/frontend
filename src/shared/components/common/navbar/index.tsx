@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import type { FC } from 'react'
 
-import type { OrganizationProps } from '@/domain/entities/organization'
 import { MagnifyingGlass } from '@/shared/assets/icons/magnifying-glass'
 import { useUserSession } from '@/shared/hooks/use-user-session'
 
@@ -15,12 +15,9 @@ import { useNavbarSearch } from './hooks/use-navbar-search'
 import { Logo } from './logo'
 import { MobileNavigation } from './mobile-navigation'
 import { Searchbar } from './searchbar'
+import type { NavbarProps } from './types'
 
-interface NavbarProps {
-  orgs?: OrganizationProps[]
-}
-
-export const Navbar = ({ orgs = [] }: NavbarProps) => {
+export const Navbar: FC = ({ orgs = [] }: NavbarProps) => {
   const pathname = usePathname()
   const { organization } = useUserSession()
 

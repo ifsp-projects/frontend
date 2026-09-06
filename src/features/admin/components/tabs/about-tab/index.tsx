@@ -12,7 +12,6 @@ import {
   SelectValue
 } from '@/shared/components/ui/select'
 import { Spin } from '@/shared/components/ui/spin'
-import { formatOngType } from '@/shared/utils/helpers/format-ong-type'
 
 import { SectionCard } from '../../ui/section-card'
 import type { AboutTabProps } from './types'
@@ -96,10 +95,7 @@ export const AboutTab = ({
       </label>
       <Controller
         render={({ field }) => (
-          <Select
-            onValueChange={field.onChange}
-            value={formatOngType({ ong_type: field.value }) ?? ''}
-          >
+          <Select onValueChange={field.onChange} value={field.value ?? ''}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Qual a área de atuação da sua ONG?" />
             </SelectTrigger>
@@ -118,6 +114,7 @@ export const AboutTab = ({
     </div>
     <div className="flex w-full items-center md:justify-end">
       <Button
+        aria-label="Salvar alterações do perfil da ONG"
         className="mt-4 flex cursor-pointer items-center gap-3 text-sm"
         type="submit"
       >

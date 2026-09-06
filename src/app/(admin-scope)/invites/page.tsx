@@ -34,8 +34,8 @@ export default async function AdminInvitesPage() {
   const { data } = await admin.listAllInvites({ token: session.accessToken })
 
   return (
-    <main className="mx-auto max-w-5xl px-6 py-10">
-      <header className="mb-10 flex flex-col gap-1">
+    <main className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-10 lg:gap-10">
+      <header className="flex flex-col gap-1">
         <span className="text-xs font-semibold tracking-widest text-rose-400 uppercase">
           Admin
         </span>
@@ -50,12 +50,12 @@ export default async function AdminInvitesPage() {
 
       <section className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="lg:col-span-1">
-          <div className="rounded-sm border border-neutral-100 bg-neutral-50 p-6">
-            <article className="mb-5">
+          <div className="flex flex-col gap-4 rounded-sm border border-neutral-100 bg-neutral-50 p-6 lg:gap-5">
+            <article className="flex flex-col gap-1">
               <h2 className="text-sm font-bold text-neutral-800">
                 Enviar convite
               </h2>
-              <p className="mt-1 text-xs leading-relaxed text-neutral-500">
+              <p className="text-xs leading-relaxed text-neutral-500">
                 O usuário irá receber um email com um link para ativar a sua
                 conta.
               </p>
