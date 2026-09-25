@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
     ]
   },
   compress: true,
-  output: 'standalone',
+  output: process.platform === 'win32' ? undefined : 'standalone',
   experimental: {
     optimizePackageImports: [
       '@vectopus/atlas-icons-react',

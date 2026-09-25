@@ -70,8 +70,8 @@ importers:
         specifier: ^1.18.1
         version: 1.19.0(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
       capivara-solidaria-ts-sdk:
-        specifier: 1.0.9
-        version: 1.0.9
+        specifier: file:../ts-sdk
+        version: file:../ts-sdk
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -2258,8 +2258,8 @@ packages:
   caniuse-lite@1.0.30001806:
     resolution: {integrity: sha512-72Cuvd95zbSYPKq6Fhg8eDJRlzgWDf7/mtoZv6Qe/DYNCEBdNxoA3+rZAU2ZhGCpZlns3EssFavaZomckT5Uuw==}
 
-  capivara-solidaria-ts-sdk@1.0.9:
-    resolution: {integrity: sha512-rzckLSNrUqXbO8Y55AbMqN49vaGca3Pl30s1Bh0q9nKH8qQtYb+DGN4Ji0moHDQnefvYtuYmtYDq/oepQ9LM9Q==}
+  capivara-solidaria-ts-sdk@file:../ts-sdk:
+    resolution: {directory: ../ts-sdk, type: directory}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -6688,7 +6688,7 @@ snapshots:
 
   caniuse-lite@1.0.30001806: {}
 
-  capivara-solidaria-ts-sdk@1.0.9:
+  capivara-solidaria-ts-sdk@file:../ts-sdk:
     dependencies:
       zod: 4.4.3
 

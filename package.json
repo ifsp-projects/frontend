@@ -38,7 +38,7 @@
     "@vectoricons/atlas-icons-react": "^0.0.10",
     "ai": "^5.0.206",
     "axios": "^1.18.1",
-    "capivara-solidaria-ts-sdk": "1.0.9",
+    "capivara-solidaria-ts-sdk": "file:../ts-sdk",
     "class-variance-authority": "^0.7.1",
     "cloudinary": "^2.10.0",
     "clsx": "^2.1.1",
