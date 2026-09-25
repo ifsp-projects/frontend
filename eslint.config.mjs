@@ -8,9 +8,9 @@ import perfectionist from 'eslint-plugin-perfectionist'
 import svgJsx from 'eslint-plugin-svg-jsx'
 
 export default [
+  { ignores: ['.next/**', 'node_modules/**'] },
   {
     ...js.configs.recommended,
-    ignores: ['node_modules/**', '.next/*'],
     files: ['**/*.{js,ts,jsx,tsx}'],
     languageOptions: {
       parser,
