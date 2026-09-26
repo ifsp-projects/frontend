@@ -1,14 +1,15 @@
 import type {
   VisitorsErrorResponse,
-  VisitorsResponse
+  VisitorsRange
 } from 'capivara-solidaria-ts-sdk'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-import { apiBaseUrl } from '@/shared/config/env/api-base-url'
+import { instanceMotor } from '@/services/motor'
 
 export async function GET(request: NextRequest) {
   const authorization = request.headers.get('authorization')
+
   if (!authorization?.startsWith('Bearer ')) {
     return NextResponse.json<VisitorsErrorResponse>(
       { error: 'Sessão inválida' },
@@ -16,37 +17,32 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  if (!apiBaseUrl) {
+  const token = authorization.replace('Bearer ', '')
+
+  const slug = request.nextUrl.searchParams.get('slug')
+  const range = request.nextUrl.searchParams.get(
+    'range'
+  ) as VisitorsRange | null
+  const date = request.nextUrl.searchParams.get('date')
+
+  if (!slug || !range) {
     return NextResponse.json<VisitorsErrorResponse>(
-      { error: 'Serviço indisponível' },
-      { status: 503 }
+      { error: 'Parâmetros inválidos' },
+      { status: 400 }
     )
   }
 
   try {
-    const url = new URL('/api/analytics/visitors', apiBaseUrl)
-    url.search = request.nextUrl.searchParams.toString()
-    const response = await fetch(url, {
-      headers: { Authorization: authorization },
-      cache: 'no-store'
+    const response = await instanceMotor.visitors.getVisitors({
+      slug,
+      range,
+      ...(date ? { date } : {}),
+      token
     })
-    const body: unknown = await response.json()
 
-    if (!response.ok) {
-      const error =
-        typeof body === 'object' &&
-        body !== null &&
-        'error' in body &&
-        typeof body.error === 'string'
-          ? body.error
-          : 'Não foi possível carregar os visitantes'
-      return NextResponse.json<VisitorsErrorResponse>(
-        { error },
-        { status: response.status }
-      )
-    }
+    console.log('VISITORS RESPONSE:', response.data)
 
-    return NextResponse.json<VisitorsResponse>(body as VisitorsResponse)
+    return NextResponse.json(response.data)
   } catch {
     return NextResponse.json<VisitorsErrorResponse>(
       { error: 'Não foi possível carregar os visitantes' },
