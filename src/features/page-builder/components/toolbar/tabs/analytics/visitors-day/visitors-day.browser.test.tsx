@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { render } from 'vitest-browser-react'
 import { page } from 'vitest/browser'
 
-import { VisitorsChart } from './visitors-chart'
+import { VisitorsChart } from '../visitors-chart/visitors-chart'
 import { VisitorsDay } from './visitors-day'
 
 const period = {

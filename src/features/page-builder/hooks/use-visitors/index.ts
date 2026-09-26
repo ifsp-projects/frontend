@@ -3,38 +3,25 @@
 import type { VisitorsRange, VisitorsResponse } from 'capivara-solidaria-ts-sdk'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { fetchVisitors } from './visitors-api'
-
-const TTL_MS = 10 * 60 * 1000
-
-type CacheEntry = {
-  data: VisitorsResponse
-  cachedAt: number
-  brasiliaDay: string
-}
-
-const brasiliaDay = () =>
-  new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'America/Sao_Paulo',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-  }).format(new Date())
-
-const queryKey = (range: VisitorsRange, date: string | null) =>
-  `${range}:${date ?? 'period'}`
+import { ANALYTICS_CACHE_TTL_MS } from '../../constants/cache-ttl'
+import { fetchVisitors } from '../../utils/fetch-visitors'
+import { formatDatetime } from '../../utils/format-datetime'
+import { getPosthogQueryKey } from '../../utils/get-posthog-query-key'
+import type { CacheEntry } from './types'
 
 export function useVisitors(slug: string, token: string | null | undefined) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState<boolean>(false)
   const [range, setRangeState] = useState<VisitorsRange>('30d')
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [data, setData] = useState<VisitorsResponse | null>(null)
   const [periodData, setPeriodData] = useState<VisitorsResponse | null>(null)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<Error | null>(null)
+
   const cache = useRef(new Map<string, CacheEntry>())
   const inflight = useRef(new Map<string, Promise<VisitorsResponse>>())
   const selection = useRef(0)
+
   const context = `${slug}\u0000${token ?? ''}`
   const contextRef = useRef(context)
 
@@ -57,13 +44,13 @@ export function useVisitors(slug: string, token: string | null | undefined) {
     async (nextRange: VisitorsRange, date: string | null, force = false) => {
       const requestId = ++selection.current
       const requestContext = context
-      const key = queryKey(nextRange, date)
+      const key = getPosthogQueryKey(nextRange, date)
       const cached = cache.current.get(key)
       if (
         !force &&
         cached &&
-        Date.now() - cached.cachedAt < TTL_MS &&
-        cached.brasiliaDay === brasiliaDay()
+        Date.now() - cached.cachedAt < ANALYTICS_CACHE_TTL_MS &&
+        cached.brasiliaDay === formatDatetime()
       ) {
         setData(cached.data)
         if (!date) setPeriodData(cached.data)
@@ -101,7 +88,7 @@ export function useVisitors(slug: string, token: string | null | undefined) {
         cache.current.set(key, {
           data: result,
           cachedAt: Date.now(),
-          brasiliaDay: brasiliaDay()
+          brasiliaDay: formatDatetime()
         })
         if (selection.current !== requestId) return
         setData(result)

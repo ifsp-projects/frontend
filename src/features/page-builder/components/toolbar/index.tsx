@@ -6,6 +6,7 @@ import type { FC } from 'react'
 import { toast } from 'sonner'
 
 import { usePageBuilderStore } from '@/features/page-builder/stores/page-builder-store'
+import { ActiveColor } from '@/shared/assets/icons/active-color'
 import { AnalyticsIcon } from '@/shared/assets/icons/analytics-icon'
 import { useUserSession } from '@/shared/hooks/use-user-session'
 import {
@@ -16,18 +17,16 @@ import {
   Sunny
 } from '@vectoricons/atlas-icons-react'
 
-import { PRESET_COLORS } from './data'
+import { PRESET_COLORS } from '../../constants/preset-colors'
+import { useVisitors } from '../../hooks/use-visitors'
+import { getScoreColor } from '../../utils/get-score-color'
+import { isValidHex } from '../../utils/is-valid-hex'
+import { VisitorsChart } from './tabs/analytics/visitors-chart/visitors-chart'
+import { VisitorsDay } from './tabs/analytics/visitors-day/visitors-day'
+import { VisitorsDistributions } from './tabs/analytics/visitors-distribution/visitors-distributions'
+import { VisitorsModal } from './tabs/analytics/visitors-modal/visitors-modal'
+import { VisitorsSummary } from './tabs/analytics/visitors-summary/visitors-summary'
 import type { PerfScore, ToolbarProps } from './types'
-import { useVisitors } from './use-visitors'
-import { VisitorsChart } from './visitors-chart'
-import { VisitorsDay } from './visitors-day'
-import { VisitorsDistributions } from './visitors-distributions'
-import { VisitorsModal } from './visitors-modal'
-import { VisitorsSummary } from './visitors-summary'
-
-const isValidHex = (value: string) => {
-  return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(value)
-}
 
 export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
   const { token } = useUserSession()
@@ -169,9 +168,6 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
     handleSelectColor(hex)
   }
 
-  const scoreColor = (n: number) =>
-    n >= 90 ? 'text-green-400' : n >= 50 ? 'text-yellow-400' : 'text-red-400'
-
   const handleCopyLink = () => {
     const url = `https://capivara-solidaria.com.br/ongs/${slug}`
     navigator.clipboard
@@ -267,7 +263,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
                         key={label}
                       >
                         <span
-                          className={`text-2xl font-bold ${scoreColor(score)}`}
+                          className={`text-2xl font-bold ${getScoreColor(score)}`}
                         >
                           {score}
                         </span>
@@ -290,7 +286,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
 
       {showPalette && (
         <div
-          className="fixed bottom-24 left-1/2 z-40 w-[calc(100%-2rem)] max-w-[392px] -translate-x-1/2 rounded-sm border border-neutral-700 bg-neutral-900 p-3 shadow-2xl"
+          className="fixed bottom-24 left-1/2 z-40 w-[calc(100%-2rem)] max-w-112.5 -translate-x-1/2 rounded-sm border border-neutral-700 bg-neutral-900 p-3 shadow-2xl"
           ref={paletteRef}
         >
           <p className="mb-2.5 text-[11px] font-medium tracking-widest text-neutral-400 uppercase">
@@ -298,30 +294,16 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
           </p>
 
           <div className="mb-3 grid grid-cols-5 gap-1.5">
-            {PRESET_COLORS.map(({ label, value }) => (
+            {PRESET_COLORS.map(({ label, value }, index: number) => (
               <button
                 className="group relative flex h-9 w-full cursor-pointer items-center justify-center rounded-sm transition-all duration-300 hover:brightness-125 focus:outline-none"
-                key={value}
+                key={`${value}-${index}`}
                 onClick={() => handleSelectColor(value)}
                 style={{ backgroundColor: value }}
                 title={label}
                 type="button"
               >
-                {activeColor === value && (
-                  <svg
-                    className="h-4 w-4 text-white drop-shadow"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={3}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M5 13l4 4L19 7"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
+                {activeColor === value ? <ActiveColor /> : null}
               </button>
             ))}
           </div>
@@ -351,8 +333,8 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
               />
             </div>
             <button
-              className="rounded-sm bg-neutral-700 px-3 text-xs text-neutral-100 transition-colors hover:bg-neutral-600"
-              onClick={handleCustomHexSubmit}
+              className="cursor-pointer rounded-sm bg-neutral-700 px-3 text-xs text-neutral-100 transition-colors hover:bg-neutral-600"
+              onClick={() => handleCustomHexSubmit()}
               type="button"
             >
               OK
@@ -366,7 +348,7 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
         </div>
       )}
 
-      <div className="fixed bottom-8 left-1/2 z-30 flex w-[calc(100%-2rem)] max-w-[392px] -translate-x-1/2 transform items-center gap-1 rounded-sm bg-linear-to-r from-neutral-900 to-neutral-800 px-1 py-1 shadow lg:justify-between">
+      <div className="fixed bottom-8 left-1/2 z-30 flex w-[calc(100%-2rem)] max-w-112.5 -translate-x-1/2 transform items-center gap-1 overflow-hidden rounded-sm bg-linear-to-r from-neutral-900 to-neutral-800 px-1 py-1 shadow lg:justify-between">
         <a
           className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600"
           href="/faq"

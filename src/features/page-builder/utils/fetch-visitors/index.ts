@@ -4,7 +4,7 @@ import type {
   VisitorsResponse
 } from 'capivara-solidaria-ts-sdk'
 
-export class VisitorsApiError extends Error {
+class VisitorsApiError extends Error {
   constructor(
     message: string,
     readonly status: number
@@ -13,11 +13,11 @@ export class VisitorsApiError extends Error {
   }
 }
 
-export async function fetchVisitors(
+export const fetchVisitors = async (
   request: VisitorsRequest,
   token: string,
   signal?: AbortSignal
-): Promise<VisitorsResponse> {
+): Promise<VisitorsResponse> => {
   const params = new URLSearchParams({
     slug: request.slug,
     range: request.range

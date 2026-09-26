@@ -1,6 +1,7 @@
-import { cleanup, render, screen } from '@testing-library/react'
 import type { VisitorsResponse } from 'capivara-solidaria-ts-sdk'
 import { afterEach, describe, expect, it } from 'vitest'
+
+import { cleanup, render, screen } from '@testing-library/react'
 
 import { VisitorsSummary } from './visitors-summary'
 
