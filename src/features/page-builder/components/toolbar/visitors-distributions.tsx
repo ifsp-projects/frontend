@@ -43,22 +43,22 @@ function Distribution({
       <ul className="flex flex-col gap-2">
         {rows.map((row, index) => (
           <li
-            className="flex min-w-0 items-center gap-2 text-sm text-neutral-700"
+            className="flex min-w-0 flex-col gap-0.5 border-b border-neutral-100 pb-2 text-sm text-neutral-700 last:border-0 last:pb-0"
             key={`${row.label}-${index}`}
           >
-            <span className="min-w-0 flex-1 truncate" title={row.label}>
-              {row.label}
-            </span>
-            <span className="shrink-0 tabular-nums">
-              {row.pageviews}{' '}
-              {row.pageviews === 1 ? 'visualização' : 'visualizações'}
-            </span>
-            <span className="w-11 shrink-0 text-right font-medium text-rose-700 tabular-nums">
-              {row.share_pct.toLocaleString('pt-BR', {
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 1
-              })}
-              %
+            <span className="min-w-0 font-medium break-all">{row.label}</span>
+            <span className="flex items-center justify-between gap-2">
+              <span className="tabular-nums">
+                {row.pageviews}{' '}
+                {row.pageviews === 1 ? 'visualização' : 'visualizações'}
+              </span>
+              <span className="font-medium text-rose-700 tabular-nums">
+                {row.share_pct.toLocaleString('pt-BR', {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 1
+                })}
+                %
+              </span>
             </span>
           </li>
         ))}
