@@ -6,6 +6,7 @@ import type { FC } from 'react'
 import { toast } from 'sonner'
 
 import { usePageBuilderStore } from '@/features/page-builder/stores/page-builder-store'
+import { AnalyticsIcon } from '@/shared/assets/icons/analytics-icon'
 import { useUserSession } from '@/shared/hooks/use-user-session'
 import {
   DashboardPerformance,
@@ -17,6 +18,12 @@ import {
 
 import { PRESET_COLORS } from './data'
 import type { PerfScore, ToolbarProps } from './types'
+import { useVisitors } from './use-visitors'
+import { VisitorsChart } from './visitors-chart'
+import { VisitorsDay } from './visitors-day'
+import { VisitorsDistributions } from './visitors-distributions'
+import { VisitorsModal } from './visitors-modal'
+import { VisitorsSummary } from './visitors-summary'
 
 const isValidHex = (value: string) => {
   return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(value)
@@ -42,6 +49,27 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
   const [perfData, setPerfData] = useState<PerfScore | null>(null)
   const [perfLoading, setPerfLoading] = useState<boolean>(false)
   const [showPerfModal, setShowPerfModal] = useState<boolean>(false)
+  const visitorsTrigger = useRef<HTMLButtonElement>(null)
+  const {
+    open: visitorsOpen,
+    range: visitorsRange,
+    selectedDate: visitorsDate,
+    data: visitorsData,
+    periodData: visitorsPeriodData,
+    loading: visitorsLoading,
+    error: visitorsError,
+    openReport: openVisitors,
+    closeReport: closeVisitors,
+    changeRange: changeVisitorsRange,
+    selectDate: selectVisitorsDate,
+    backToPeriod: backToVisitorsPeriod
+  } = useVisitors(slug, token)
+
+  useEffect(() => {
+    if (!visitorsOpen || !visitorsError) return
+    toast.error(visitorsError.message, { position: 'top-center' })
+    closeVisitors()
+  }, [visitorsError, visitorsOpen, closeVisitors])
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -158,6 +186,37 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
 
   return (
     <>
+      <VisitorsModal
+        onOpenChange={nextOpen => {
+          if (!nextOpen) closeVisitors()
+        }}
+        data={visitorsData}
+        loading={visitorsLoading}
+        onRangeChange={changeVisitorsRange}
+        open={visitorsOpen}
+        range={visitorsRange}
+        triggerRef={visitorsTrigger}
+      >
+        {visitorsData && (
+          <div className="flex min-w-0 flex-col gap-8 pb-2">
+            {visitorsPeriodData && (
+              <VisitorsSummary data={visitorsPeriodData} />
+            )}
+            <VisitorsChart
+              daily={visitorsData.daily}
+              onSelectDate={selectVisitorsDate}
+              selectedDate={visitorsDate}
+            />
+            <VisitorsDay
+              data={visitorsData}
+              onBackToPeriod={backToVisitorsPeriod}
+              onSelectDate={selectVisitorsDate}
+              selectedDate={visitorsDate}
+            />
+            <VisitorsDistributions data={visitorsData} />
+          </div>
+        )}
+      </VisitorsModal>
       {showPerfModal && (
         <div
           onClick={() => {
@@ -333,6 +392,20 @@ export const Toolbar: FC<ToolbarProps> = ({ slug, id }) => {
             type="button"
           >
             <DashboardPerformance className="h-5 w-5 text-neutral-50" />
+          </button>
+
+          <button
+            aria-label="Visitantes"
+            className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-sm transition-all duration-200 hover:bg-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-400"
+            onClick={openVisitors}
+            ref={visitorsTrigger}
+            title="Visitantes"
+            type="button"
+          >
+            <AnalyticsIcon
+              aria-hidden="true"
+              className="h-5 w-5 text-neutral-50"
+            />
           </button>
 
           <button
