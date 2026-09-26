@@ -82,4 +82,13 @@ describe('VisitorsModal', () => {
     await expect.element(page.getByRole('dialog')).not.toBeInTheDocument()
     expect(document.activeElement).toBe(trigger.element())
   })
+
+  it('closes through its button and returns focus', async () => {
+    await render(<Harness />)
+    const trigger = page.getByRole('button', { name: 'Abrir visitantes' })
+    await trigger.click()
+    await page.getByRole('button', { name: 'Fechar visitantes' }).click()
+    await expect.element(page.getByRole('dialog')).not.toBeInTheDocument()
+    expect(document.activeElement).toBe(trigger.element())
+  })
 })
