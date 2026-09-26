@@ -2,28 +2,14 @@
 
 set -e
 
-echo "Authenticating with AWS using Vercel OIDC..."
+TMP_DIR="/tmp/aws-codeartifact-auth"
 
-CREDS=$(aws sts assume-role-with-web-identity \
-  --role-arn "$AWS_ROLE_ARN" \
-  --role-session-name "vercel-codeartifact" \
-  --web-identity-token "$VERCEL_OIDC_TOKEN" \
-  --duration-seconds 3600)
+mkdir -p "$TMP_DIR"
 
-export AWS_ACCESS_KEY_ID=$(echo "$CREDS" | jq -r '.Credentials.AccessKeyId')
-export AWS_SECRET_ACCESS_KEY=$(echo "$CREDS" | jq -r '.Credentials.SecretAccessKey')
-export AWS_SESSION_TOKEN=$(echo "$CREDS" | jq -r '.Credentials.SessionToken')
+npm install \
+  --prefix "$TMP_DIR" \
+  --no-save \
+  @aws-sdk/client-sts \
+  @aws-sdk/client-codeartifact
 
-echo "Getting CodeArtifact token..."
-
-export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token \
-  --domain npm \
-  --domain-owner 412898606600 \
-  --region us-east-1 \
-  --duration-seconds 0 \
-  --query authorizationToken \
-  --output text)
-
-echo "Installing dependencies..."
-
-pnpm install --frozen-lockfile
+NODE_PATH="$TMP_DIR/node_modules" node scripts/codeartifact-auth.mjs
