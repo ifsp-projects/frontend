@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import type { FC } from 'react'
 import React, { useEffect, useState } from 'react'
 
+import { usePageBuilderStore } from '@/features/page-builder/stores/page-builder-store'
 import {
   Dialog,
   DialogContent,
@@ -11,25 +12,10 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/shared/components/ui/dialog'
-import { usePageBuilderStore } from '@/features/page-builder/stores/page-builder-store'
+import { sanitizeUrl } from '@/shared/utils/helpers/sanitize-url'
 import { PencilBox } from '@vectoricons/atlas-icons-react'
 
-import type { EditableLinkFieldProps } from './types'
-
-type Variant = 'filled' | 'outline' | 'ghost'
-
-interface LinkState {
-  href: string
-  label: string
-  showArrow: boolean
-  variant: Variant
-}
-
-// const VARIANT_LABELS: Record<Variant, string> = {
-//   filled: 'Preenchido',
-//   outline: 'Contorno',
-//   ghost: 'Fantasma'
-// }
+import type { EditableLinkFieldProps, LinkState } from './types'
 
 export const EditableLinkField: FC<EditableLinkFieldProps> = ({
   path,
@@ -88,7 +74,7 @@ export const EditableLinkField: FC<EditableLinkFieldProps> = ({
         <div className={`group relative inline-flex w-fit`}>
           <a
             className={`flex items-center justify-center gap-2 ${className}`}
-            href={state.href}
+            href={sanitizeUrl(state.href)}
             onClick={e => e.preventDefault()}
             rel="noreferrer"
             style={style}

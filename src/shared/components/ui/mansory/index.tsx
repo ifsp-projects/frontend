@@ -9,6 +9,8 @@ import React, {
   useState
 } from 'react'
 
+import type { GridItem, MasonryProps } from './types'
+
 const useMedia = (
   queries: string[],
   values: number[],
@@ -69,32 +71,6 @@ const preloadImages = async (urls: string[]): Promise<void> => {
   )
 }
 
-interface Item {
-  height: number
-  id: string
-  img: string
-  url: string
-}
-
-interface GridItem extends Item {
-  h: number
-  w: number
-  x: number
-  y: number
-}
-
-interface MasonryProps {
-  animateFrom?: 'bottom' | 'top' | 'left' | 'right' | 'center' | 'random'
-  blurToFocus?: boolean
-  colorShiftOnHover?: boolean
-  duration?: number
-  ease?: string
-  hoverScale?: number
-  items: Item[]
-  scaleOnHover?: boolean
-  stagger?: number
-}
-
 const Masonry: React.FC<MasonryProps> = ({
   items,
   ease = 'power3.out',
@@ -118,7 +94,7 @@ const Masonry: React.FC<MasonryProps> = ({
   )
 
   const [containerRef, { width }] = useMeasure<HTMLDivElement>()
-  const [imagesReady, setImagesReady] = useState(false)
+  const [imagesReady, setImagesReady] = useState<boolean>(false)
 
   const getInitialPosition = (item: GridItem) => {
     const containerRect = containerRef.current?.getBoundingClientRect()

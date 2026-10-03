@@ -13,7 +13,6 @@ import {
 import Link from 'next/link'
 import * as React from 'react'
 
-import type { OrganizationProps } from '@/domain/entities/organization'
 import {
   Drawer,
   DrawerClose,
@@ -22,11 +21,7 @@ import {
 } from '@/shared/components/ui/drawer'
 import { formatOngType } from '@/shared/utils/helpers/format-ong-type'
 
-interface OngDrawerProps {
-  onClose: () => void
-  ong: OrganizationProps | null
-  open: boolean
-}
+import type { OngDrawerProps } from './types'
 
 const categoryColors: Record<string, string> = {
   Animais: 'bg-yellow-50 text-yellow-700 border-yellow-200',

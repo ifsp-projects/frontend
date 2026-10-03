@@ -1,5 +1,6 @@
 import type { OrganizationProfileProps } from '@/domain/entities/organization-profile'
 import { apiPostgres } from '@/services/postgres'
+import { isUuid } from '@/shared/utils/helpers/validate-uuid'
 
 import type {
   CreateOrganizationProfileData,
@@ -53,6 +54,12 @@ export class OrganizationProfiles {
     token
   }: UpdateOrganizationProfileData) => {
     try {
+      const ongId = payload?.ong_id
+
+      if (!isUuid(ongId)) {
+        throw new Error('Invalid organization id')
+      }
+
       return await apiPostgres.patch(
         `/organizations-profiles/${payload.ong_id.toString()}`,
         payload,

@@ -12,3 +12,12 @@ export interface EditableLinkFieldProps {
   path: string
   style?: CSSProperties
 }
+
+export type Variant = 'filled' | 'outline' | 'ghost'
+
+export interface LinkState {
+  href: string
+  label: string
+  showArrow: boolean
+  variant: Variant
+}

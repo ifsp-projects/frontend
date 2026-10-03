@@ -1,6 +1,7 @@
 import type { OrganizationProps } from '@/domain/entities/organization'
 import { apiPostgres } from '@/services/postgres'
 import type { ServiceRequestResponse } from '@/shared/types/service-request-response'
+import { isUuid } from '@/shared/utils/helpers/validate-uuid'
 
 import type {
   CreateOrganizationData,
@@ -164,6 +165,12 @@ export class Organizations {
    */
   updateOrganization = async ({ payload, token }: UpdateOrganizationData) => {
     try {
+      const organizationId = payload?.id
+
+      if (!isUuid(organizationId)) {
+        throw new Error('Invalid organization id')
+      }
+
       return await apiPostgres.patch(
         `/organizations/${payload?.id?.toString()}`,
         payload,

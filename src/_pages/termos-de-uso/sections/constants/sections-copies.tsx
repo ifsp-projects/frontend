@@ -1,11 +1,6 @@
 import Link from 'next/link'
 
-export interface Section {
-  content: React.ReactNode
-  icon: string
-  id: string
-  title: string
-}
+import type { Section } from './types'
 
 export const COPIES: Section[] = [
   {

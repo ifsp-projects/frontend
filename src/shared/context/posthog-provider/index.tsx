@@ -5,10 +5,7 @@ import { PostHogProvider as PHProvider } from 'posthog-js/react'
 import { useEffect } from 'react'
 
 import { SuspendedPostHogPageView } from './suspended-posthog-page-view'
-
-interface PostHogProviderProps {
-  children: React.ReactNode
-}
+import type { PostHogProviderProps } from './types'
 
 export function PostHogProvider({ children }: PostHogProviderProps) {
   useEffect(() => {

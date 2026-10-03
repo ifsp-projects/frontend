@@ -1,6 +1,7 @@
 import type { InviteTokenProps } from '@/domain/entities/invite-token'
 import { apiPostgres } from '@/services/postgres'
 import type { ServiceRequestResponse } from '@/shared/types/service-request-response'
+import { isUuid } from '@/shared/utils/helpers/validate-uuid'
 
 import type {
   CreateInviteTokenPayload,
@@ -111,6 +112,10 @@ export class AdminRepository {
     ServiceRequestResponse<InviteTokenValidationResponse>
   > => {
     try {
+      if (!isUuid(inviteToken)) {
+        throw new Error('Invalid invite token')
+      }
+
       return await apiPostgres.get(
         `/admin/invites/validate/${inviteToken.toString()}`
       )

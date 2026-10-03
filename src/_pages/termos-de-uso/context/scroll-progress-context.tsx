@@ -3,11 +3,7 @@
 import { createContext, useContext, useState } from 'react'
 
 import { COPIES } from '../sections/constants/sections-copies'
-
-interface ScrollProgressContextProps {
-  activeSection: string
-  setActiveSection: (e: string) => void
-}
+import type { ScrollProgressContextProps } from './types'
 
 export const ScrollProgressContext =
   createContext<ScrollProgressContextProps>(null)

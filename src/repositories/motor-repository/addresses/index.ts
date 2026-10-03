@@ -1,6 +1,7 @@
 import type { AddressProps } from '@/domain/entities/address'
 import { apiPostgres } from '@/services/postgres'
 import type { ServiceRequestResponse } from '@/shared/types/service-request-response'
+import { isUuid } from '@/shared/utils/helpers/validate-uuid'
 
 import type {
   CreateAddressData,
@@ -84,6 +85,12 @@ export class Addresses {
    */
   updateAddress = async ({ payload, token }: UpdateAddressData) => {
     try {
+      const ongId = payload?.id
+
+      if (!isUuid(ongId)) {
+        throw new Error('Invalid organization id')
+      }
+
       return await apiPostgres.patch<UpdateAddressResponse>(
         `/addresses/${payload?.id?.toString()}`,
         payload,

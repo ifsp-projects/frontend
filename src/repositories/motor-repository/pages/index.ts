@@ -1,5 +1,6 @@
 import type { PageProps } from '@/domain/entities/page'
 import { apiPostgres } from '@/services/postgres'
+import { isCuid } from '@/shared/utils/helpers/validate-uuid'
 
 import type {
   GetPageBySlugData,
@@ -60,6 +61,12 @@ export class Pages {
    */
   updatePage = async ({ payload, token }: UpdatePageData) => {
     try {
+      const organizationId = payload?.id
+
+      if (!isCuid(organizationId)) {
+        throw new Error('Invalid page id')
+      }
+
       return await apiPostgres.patch<UpdatePageResponse>(
         `/pages/${payload.id.toString()}`,
         payload,

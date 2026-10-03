@@ -8,9 +8,7 @@ import { RESET_PASSWORD_FEEDBACK_MESSAGES } from '@/features/onboarding/constant
 import { NoInviteIcon } from '@/shared/assets/icons/no-invite'
 import { getMetaData } from '@/shared/utils/seo/get-metadata'
 
-interface PageProps {
-  searchParams: Promise<{ token?: string }>
-}
+import type { PageProps } from './types'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
